@@ -54,7 +54,7 @@ const services = [
   {
     icon: SearchCheck,
     title: "Kötelező szivárgásvizsgálat",
-    description: "Jogszabály szerinti kötelező szivárgásvizsgálat klíma- és hűtőberendezésekhez.",
+    description: "Az EU 517/2014 rendelet értelmében az 5 tonna CO₂-egyenértéket meghaladó hűtőközeget tartalmazó berendezések évente kötelező szivárgásvizsgálatra kötelezettek. Akkreditált szakembereink elvégzik a vizsgálatot és kiállítják a szükséges dokumentációt.",
   },
 ];
 
