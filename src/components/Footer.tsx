@@ -1,4 +1,5 @@
 import { Wind, Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -66,7 +67,7 @@ const Footer = () => {
             © 2024 Northwind Hűtéstechnika Kft. Minden jog fenntartva.
           </p>
           <div className="flex gap-6 text-sm">
-            <a href="#" className="text-background/50 hover:text-background transition-colors">Adatvédelem</a>
+            <Link to="/adatvedelem" className="text-background/50 hover:text-background transition-colors">Adatvédelem</Link>
             <a href="#" className="text-background/50 hover:text-background transition-colors">ÁSZF</a>
           </div>
         </div>
