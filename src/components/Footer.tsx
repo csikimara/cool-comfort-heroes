@@ -21,9 +21,9 @@ const Footer = () => {
               Bízza ránk otthona vagy irodája komfortját!
             </p>
             <div className="flex gap-6">
-              <a href="tel:+36123456789" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
+              <a href="tel:+36704099760" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
                 <Phone className="w-4 h-4" />
-                +36 1 234 5678
+                +36 70 409 9760
               </a>
               <a href="mailto:info@northwind.hu" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
                 <Mail className="w-4 h-4" />
