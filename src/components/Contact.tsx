@@ -20,7 +20,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Cím",
-    value: "1138 Budapest, Váci út 140.",
+    value: "1118 Budapest, Torbágy u. 16.",
     href: "#",
   },
   {
@@ -89,7 +89,7 @@ const Contact = () => {
             <div className="rounded-2xl overflow-hidden shadow-card border border-border/50 h-64 bg-gradient-frost flex items-center justify-center">
               <div className="text-center">
                 <MapPin className="w-12 h-12 text-primary mx-auto mb-3" />
-                <p className="text-muted-foreground font-medium">Budapest, Váci út 140.</p>
+                <p className="text-muted-foreground font-medium">Budapest, Torbágy u. 16.</p>
               </div>
             </div>
           </div>

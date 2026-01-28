@@ -50,7 +50,7 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 opacity-70" />
-                <span className="text-background/70">1138 Budapest,<br />Váci út 140.</span>
+                <span className="text-background/70">1118 Budapest,<br />Torbágy u. 16.</span>
               </li>
               <li>
                 <p className="text-background/70 text-sm">Nyitvatartás:</p>
