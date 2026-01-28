@@ -25,9 +25,9 @@ const Footer = () => {
                 <Phone className="w-4 h-4" />
                 +36 70 409 9760
               </a>
-              <a href="mailto:info@northwind.hu" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
+              <a href="mailto:northwind@northwind.hu" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
                 <Mail className="w-4 h-4" />
-                info@northwind.hu
+                northwind@northwind.hu
               </a>
             </div>
           </div>
