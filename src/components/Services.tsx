@@ -6,7 +6,8 @@ import {
   SprayCan, 
   Wind,
   Fan,
-  ArrowRight
+  ArrowRight,
+  SearchCheck
 } from "lucide-react";
 
 const services = [
@@ -49,6 +50,11 @@ const services = [
     icon: AirVent,
     title: "Légkezelők",
     description: "Központi légkezelő egységek szerelése és szervize ipari környezetben.",
+  },
+  {
+    icon: SearchCheck,
+    title: "Kötelező szivárgásvizsgálat",
+    description: "Jogszabály szerinti kötelező szivárgásvizsgálat klíma- és hűtőberendezésekhez.",
   },
 ];
 
