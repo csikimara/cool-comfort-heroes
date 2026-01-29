@@ -17,6 +17,13 @@ const services = [
     description: "Professzionális split és multi-split klímaberendezések telepítése otthonokba és irodákba.",
   },
   {
+    icon: null, // Fujitsu uses custom branding
+    title: "Fujitsu Partner",
+    description: "Hivatalos Fujitsu klíma értékesítési és szerelési partner. Prémium minőség, akár 10 év garanciával.",
+    isFujitsu: true,
+    link: "/fujitsu",
+  },
+  {
     icon: Wrench,
     title: "Karbantartás",
     description: "Rendszeres klíma karbantartás a hosszú élettartam és optimális működés érdekében.",
@@ -78,39 +85,61 @@ const Services = () => {
         </div>
 
         {/* Services grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="group relative bg-gradient-card rounded-2xl p-6 border border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
-
-              {/* Content */}
-              <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                {service.description}
-              </p>
-
-              {/* Link */}
-              <a 
-                href="#kapcsolat" 
-                className="inline-flex items-center gap-2 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+          {services.map((service, index) => {
+            const isFujitsu = 'isFujitsu' in service && service.isFujitsu;
+            
+            return (
+              <a
+                key={service.title}
+                href={isFujitsu ? service.link : "#kapcsolat"}
+                className={`group relative rounded-2xl p-6 border shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 block ${
+                  isFujitsu 
+                    ? "bg-gradient-to-br from-red-600 to-red-700 border-red-500/50 text-white" 
+                    : "bg-gradient-card border-border/50"
+                }`}
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                Részletek
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+                {/* Icon */}
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 ${
+                  isFujitsu ? "bg-white/20" : "bg-gradient-hero"
+                }`}>
+                  {isFujitsu ? (
+                    <span className="text-xl font-bold text-white tracking-tight">FJ</span>
+                  ) : (
+                    service.icon && <service.icon className="w-7 h-7 text-primary-foreground" />
+                  )}
+                </div>
 
-              {/* Decorative gradient */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-hero opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-            </div>
-          ))}
+                {/* Content */}
+                <h3 className={`text-xl font-semibold mb-3 transition-colors ${
+                  isFujitsu ? "text-white" : "text-foreground group-hover:text-primary"
+                }`}>
+                  {service.title}
+                </h3>
+                <p className={`text-sm leading-relaxed mb-4 ${
+                  isFujitsu ? "text-white/90" : "text-muted-foreground"
+                }`}>
+                  {service.description}
+                </p>
+
+                {/* Link */}
+                <span 
+                  className={`inline-flex items-center gap-2 text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                    isFujitsu ? "text-white" : "text-primary"
+                  }`}
+                >
+                  {isFujitsu ? "Tovább" : "Részletek"}
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </span>
+
+                {/* Decorative gradient */}
+                <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-5 transition-opacity duration-500 ${
+                  isFujitsu ? "bg-white" : "bg-gradient-hero"
+                }`} />
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
