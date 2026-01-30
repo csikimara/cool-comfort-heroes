@@ -64,16 +64,12 @@ const Hero = () => {
           <div className="mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <div className="flex flex-wrap justify-center gap-8 sm:gap-12 text-primary-foreground/70">
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">15+</div>
+                <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">33+</div>
                 <div className="text-sm">Év tapasztalat</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">2000+</div>
                 <div className="text-sm">Elégedett ügyfél</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">24/7</div>
-                <div className="text-sm">Ügyfélszolgálat</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">100%</div>
