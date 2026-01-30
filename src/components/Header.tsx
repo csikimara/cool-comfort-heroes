@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Wind, Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,14 +18,12 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center shadow-soft group-hover:shadow-elevated transition-shadow duration-300">
-              <Wind className="w-7 h-7 text-primary-foreground" />
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="font-bold text-lg text-foreground leading-tight">Northwind</h1>
-              <p className="text-xs text-muted-foreground">Hűtéstechnika Kft.</p>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img 
+              src={logo} 
+              alt="Northwind Hűtéstechnika Kft." 
+              className="h-10 sm:h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
