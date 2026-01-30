@@ -40,36 +40,6 @@ const About = () => {
               ))}
             </div>
 
-            {/* Stats */}
-            <div className="flex flex-wrap gap-8">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Award className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">ISO 9001</div>
-                  <div className="text-sm text-muted-foreground">Minősítés</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Users className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">12+</div>
-                  <div className="text-sm text-muted-foreground">Szakember</div>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                  <Clock className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">24 óra</div>
-                  <div className="text-sm text-muted-foreground">Reakcióidő</div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Right content - Image placeholder with design */}
