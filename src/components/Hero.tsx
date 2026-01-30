@@ -44,9 +44,16 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.3s" }}>
-            <Button variant="heroOutline" size="lg" className="group">
-              Ingyenes felmérés
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Button 
+              variant="heroOutline" 
+              size="lg" 
+              className="group"
+              asChild
+            >
+              <a href="mailto:northwind@northwind.hu?subject=Ingyenes%20felmérés%20kérése">
+                Ingyenes felmérés
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
             <Button variant="heroOutline" size="lg">
               Szolgáltatásaink
