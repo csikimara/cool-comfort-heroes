@@ -55,8 +55,8 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button variant="heroOutline" size="lg">
-              Szolgáltatásaink
+            <Button variant="heroOutline" size="lg" asChild>
+              <a href="#szolgaltatasok">Szolgáltatásaink</a>
             </Button>
           </div>
 
