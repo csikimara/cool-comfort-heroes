@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Wind, Menu, X, Phone } from "lucide-react";
 
@@ -16,7 +17,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center shadow-soft group-hover:shadow-elevated transition-shadow duration-300">
               <Wind className="w-7 h-7 text-primary-foreground" />
             </div>
@@ -24,7 +25,7 @@ const Header = () => {
               <h1 className="font-bold text-lg text-foreground leading-tight">Northwind</h1>
               <p className="text-xs text-muted-foreground">Hűtéstechnika Kft.</p>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
