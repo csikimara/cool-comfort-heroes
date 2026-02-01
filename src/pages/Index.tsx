@@ -5,8 +5,10 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
+import { useScrollToHash } from "@/hooks/useScrollToHash";
 
 const Index = () => {
+  useScrollToHash();
   return (
     <div className="min-h-screen">
       <Header />
