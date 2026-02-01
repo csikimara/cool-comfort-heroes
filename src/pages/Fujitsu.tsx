@@ -60,7 +60,7 @@ const Fujitsu = () => {
                 className="bg-white text-red-600 hover:bg-white/90 hover:text-red-700 font-semibold"
                 asChild
               >
-                <a href="#kapcsolat">Ajánlatkérés</a>
+                <a href="/#kapcsolat">Ajánlatkérés</a>
               </Button>
               <Button 
                 size="lg" 
@@ -128,9 +128,8 @@ const Fujitsu = () => {
               className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white"
               asChild
             >
-              <a href="tel:+36309123456" className="inline-flex items-center gap-2">
-                <Phone className="w-5 h-5" />
-                Hívjon minket
+              <a href="/#kapcsolat" className="inline-flex items-center gap-2">
+                Ajánlatkérés
               </a>
             </Button>
           </div>
