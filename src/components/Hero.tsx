@@ -50,7 +50,7 @@ const Hero = () => {
               className="group"
               asChild
             >
-              <a href="mailto:northwind@northwind.hu?subject=Ingyenes%20felmérés%20kérése">
+              <a href="#kapcsolat">
                 Ingyenes felmérés
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
