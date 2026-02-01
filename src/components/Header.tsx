@@ -45,8 +45,8 @@ const Header = () => {
               <Phone className="w-4 h-4" />
               +36 70 409 9760
             </a>
-            <Button variant="default" size="sm">
-              Ajánlatkérés
+            <Button variant="default" size="sm" asChild>
+              <a href="#kapcsolat">Ajánlatkérés</a>
             </Button>
           </div>
 
@@ -73,8 +73,8 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <Button variant="default" className="mt-2">
-                Ajánlatkérés
+              <Button variant="default" className="mt-2" asChild>
+                <a href="#kapcsolat" onClick={() => setIsMenuOpen(false)}>Ajánlatkérés</a>
               </Button>
             </div>
           </nav>
