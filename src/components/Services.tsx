@@ -37,6 +37,7 @@ const services: Service[] = [
     icon: Wind,
     title: "Légtechnikai szerelés",
     description: "Komplex szellőztető és légkezelő rendszerek tervezése és kivitelezése.",
+    detailedDescription: "A légtechnikai rendszerek biztosítják az épületek friss levegő ellátását, a megfelelő légcserét és a páratartalom szabályozását. Vállaljuk komplett szellőztető rendszerek tervezését és kivitelezését ipari, kereskedelmi és lakossági környezetben egyaránt.\n\nLakások esetében foglalkozunk konyhai páraelszívók, WC- és fürdőszobai ventilátorok, valamint egyhelyiséges hővisszanyerős szellőztetők telepítésével és cseréjével is. Ezek segítenek megelőzni a penészedést, javítják a levegő minőségét és biztosítják a folyamatos friss levegő utánpótlást.\n\nA nagyobb rendszereknél kiépítjük a csőhálózatot, telepítjük a légkezelő egységeket, elvégezzük a beszabályozást és gondoskodunk a hosszú távú, hatékony működésről. Egy jól megtervezett légtechnikai rendszer komfortosabbá, egészségesebbé és energiatakarékosabbá teszi a helyiségeket.",
   },
   {
     icon: ThermometerSun,
