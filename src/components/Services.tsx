@@ -14,7 +14,7 @@ const services = [
   {
     icon: AirVent,
     title: "Klímaszerelés",
-    description: "Professzionális split és multi-split klímaberendezések telepítése otthonokba és irodákba.",
+    description: "A klímaszerelés során felmérjük a helyiségek adottságait, kiválasztjuk a megfelelő teljesítményű készüléket, majd szakszerűen telepítjük a beltéri és kültéri egységet. A csövezést, elektromos bekötést, vákuumozást és beüzemelést is elvégezzük. A pontos telepítés biztosítja a csendes működést, az alacsony fogyasztást és a hosszú élettartamot.",
   },
   {
     icon: Wrench,
