@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { 
   AirVent, 
   Wrench, 
@@ -7,14 +8,24 @@ import {
   Wind,
   Fan,
   ArrowRight,
-  SearchCheck
+  SearchCheck,
+  LucideIcon
 } from "lucide-react";
+import ServiceDetailModal from "./ServiceDetailModal";
 
-const services = [
+interface Service {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  detailedDescription?: string;
+}
+
+const services: Service[] = [
   {
     icon: AirVent,
     title: "Klímaszerelés",
-    description: "A klímaszerelés során felmérjük a helyiségek adottságait, kiválasztjuk a megfelelő teljesítményű készüléket, majd szakszerűen telepítjük a beltéri és kültéri egységet. A csövezést, elektromos bekötést, vákuumozást és beüzemelést is elvégezzük. A pontos telepítés biztosítja a csendes működést, az alacsony fogyasztást és a hosszú élettartamot.",
+    description: "Professzionális split és multi-split klímaberendezések telepítése otthonokba és irodákba.",
+    detailedDescription: "A klímaszerelés során felmérjük a helyiségek adottságait, kiválasztjuk a megfelelő teljesítményű készüléket, majd szakszerűen telepítjük a beltéri és kültéri egységet. A csövezést, elektromos bekötést, vákuumozást és beüzemelést is elvégezzük. A pontos telepítés biztosítja a csendes működést, az alacsony fogyasztást és a hosszú élettartamot.",
   },
   {
     icon: Wrench,
@@ -59,6 +70,15 @@ const services = [
 ];
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
+
+  const handleCardClick = (service: Service, e: React.MouseEvent) => {
+    if (service.detailedDescription) {
+      e.preventDefault();
+      setSelectedService(service);
+    }
+  };
+
   return (
     <section id="szolgaltatasok" className="py-20 sm:py-32 bg-background">
       <div className="container mx-auto px-4">
@@ -83,6 +103,7 @@ const Services = () => {
             <a
               key={service.title}
               href="#kapcsolat"
+              onClick={(e) => handleCardClick(service, e)}
               className="group relative rounded-2xl p-6 border bg-gradient-card border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 block"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
@@ -101,7 +122,7 @@ const Services = () => {
 
               {/* Link */}
               <span className="inline-flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Részletek
+                {service.detailedDescription ? "Részletek" : "Ajánlatkérés"}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
 
@@ -111,6 +132,17 @@ const Services = () => {
           ))}
         </div>
       </div>
+
+      {/* Service Detail Modal */}
+      {selectedService && (
+        <ServiceDetailModal
+          isOpen={!!selectedService}
+          onClose={() => setSelectedService(null)}
+          title={selectedService.title}
+          description={selectedService.detailedDescription || selectedService.description}
+          icon={selectedService.icon}
+        />
+      )}
     </section>
   );
 };
