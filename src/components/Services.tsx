@@ -31,6 +31,7 @@ const services: Service[] = [
     icon: Wrench,
     title: "Karbantartás",
     description: "Rendszeres klíma karbantartás a hosszú élettartam és optimális működés érdekében.",
+    detailedDescription: "A rendszeres karbantartás és klímatisztítás alapvető feltétele annak, hogy a klíma hosszú távon megbízhatóan, csendesen és energiatakarékosan működjön. A folyamat során eltávolítjuk a készülékben felgyülemlett port, gombát és baktériumokat, amelyek kellemetlen szagokat, allergiás tüneteket vagy akár komoly meghibásodást is okozhatnak. Ellenőrizzük a hűtőközeg mennyiségét, a csatlakozásokat, a kondenzvíz elvezetését, a ventilátor működését és a készülék általános műszaki állapotát.\n\nHa a klímát csak hűtésre használják, akkor évi 1 alkalom karbantartás elegendő. Amennyiben fűtésre is használják, a készülék sokkal nagyobb terhelést kap, ezért évi 2 alkalom javasolt a biztonságos és hatékony működés érdekében. A tiszta és karbantartott klíma egészségesebb levegőt biztosít, kevesebb energiát fogyaszt, és jelentősen meghosszabbítja a berendezés élettartamát.",
   },
   {
     icon: Wind,
