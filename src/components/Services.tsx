@@ -48,6 +48,7 @@ const services: Service[] = [
     icon: Building2,
     title: "Irodaház hűtés",
     description: "Nagyméretű irodaházak hűtési rendszereinek karbantartása és javítása.",
+    detailedDescription: "Nagyobb épületekben a hűtési rendszerek folyamatos, stabil működése elengedhetetlen. A karbantartás során ellenőrizzük a hűtőköröket, tisztítjuk a hőcserélőket, beszabályozzuk a rendszert és elhárítjuk az esetleges hibákat. Célunk, hogy a hűtés a legmelegebb időszakban is megbízhatóan működjön, és az energiafelhasználás optimális maradjon.",
   },
   {
     icon: SprayCan,
