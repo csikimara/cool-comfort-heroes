@@ -1,16 +1,22 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const isOnHomePage = location.pathname === "/";
+
+  const getNavHref = (hash: string) => {
+    return isOnHomePage ? hash : `/${hash}`;
+  };
 
   const navLinks = [
-    { href: "#szolgaltatasok", label: "Szolgáltatások" },
-    { href: "#rolunk", label: "Rólunk" },
-    { href: "#kapcsolat", label: "Kapcsolat" },
+    { href: getNavHref("#szolgaltatasok"), label: "Szolgáltatások" },
+    { href: getNavHref("#rolunk"), label: "Rólunk" },
+    { href: getNavHref("#kapcsolat"), label: "Kapcsolat" },
   ];
 
   return (
