@@ -53,6 +53,7 @@ const services: Service[] = [
     icon: SprayCan,
     title: "Klímatisztítás",
     description: "Professzionális klímatisztítás és fertőtlenítés az egészséges levegőért.",
+    detailedDescription: "A professzionális klímatisztítás során speciális tisztítózsákot használunk, amely lehetővé teszi a beltéri egység teljes, vegyszeres átmosását anélkül, hogy a fal vagy a helyiség koszolódna. A zsákos mosás eltávolítja a hőcserélőn és a ventilátoron lerakódott port, gombát, nyálkás szennyeződéseket és baktériumokat, amelyek kellemetlen szagokat, allergiás tüneteket és hatásfokromlást okozhatnak.\n\nA tisztítás része a kültéri egység alapos mosása is: nagy nyomású vízzel és megfelelő tisztítószerekkel eltávolítjuk a hőcserélőről a port, pollent, rovarokat és egyéb lerakódásokat. Ez javítja a hűtési-fűtési teljesítményt, csökkenti a zajszintet és növeli a kompresszor élettartamát.\n\nA rendszeres, alapos klímatisztítás nemcsak egészségesebb levegőt biztosít, hanem jelentősen javítja a készülék hatékonyságát és megbízhatóságát is.",
   },
   {
     icon: Fan,
