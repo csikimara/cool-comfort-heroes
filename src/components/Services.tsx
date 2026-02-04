@@ -59,6 +59,7 @@ const services: Service[] = [
     icon: Fan,
     title: "Fan-coilok",
     description: "Fan-coil berendezések telepítése, karbantartása és javítása.",
+    detailedDescription: "A légkezelők felelnek a levegő szűréséért, hőmérsékletének és páratartalmának szabályozásáért. Ipari környezetben kiemelten fontos a folyamatos, megbízható működés. A telepítés mellett rendszeres szervizt is biztosítunk, hogy a rendszer mindig tiszta, hatékony és üzembiztos legyen.",
   },
   {
     icon: AirVent,
