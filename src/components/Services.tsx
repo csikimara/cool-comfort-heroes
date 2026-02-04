@@ -43,6 +43,7 @@ const services: Service[] = [
     icon: ThermometerSun,
     title: "Hőszivattyú",
     description: "Energiahatékony hőszivattyú rendszerek telepítése fűtéshez és hűtéshez egyaránt.",
+    detailedDescription: "A hőszivattyú korszerű, környezetbarát megoldás fűtésre és hűtésre egyaránt. A levegőből vagy talajból nyert energiát hasznosítja, így jelentősen csökkenti a rezsiköltségeket. A telepítés során gondoskodunk a megfelelő méretezésről, beépítésről és beállításról, hogy a rendszer a lehető legjobb hatásfokkal működjön.",
   },
   {
     icon: Building2,
