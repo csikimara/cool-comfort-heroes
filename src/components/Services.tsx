@@ -64,6 +64,7 @@ const services: Service[] = [
     icon: AirVent,
     title: "Légkezelők",
     description: "Központi légkezelő egységek szerelése és szervize ipari környezetben.",
+    detailedDescription: "A légkezelők felelnek a levegő szűréséért, hőmérsékletének és páratartalmának szabályozásáért. Ipari környezetben kiemelten fontos a folyamatos, megbízható működés. A telepítés mellett rendszeres szervizt is biztosítunk, hogy a rendszer mindig tiszta, hatékony és üzembiztos legyen.",
   },
   {
     icon: SearchCheck,
