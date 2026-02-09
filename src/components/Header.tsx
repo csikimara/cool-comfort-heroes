@@ -52,7 +52,7 @@ const Header = () => {
               +36 70 409 9760
             </a>
             <Button variant="default" size="sm" asChild>
-              <a href="#kapcsolat">Ajánlatkérés</a>
+              <a href={getNavHref("#kapcsolat")}>Ajánlatkérés</a>
             </Button>
           </div>
 
@@ -80,7 +80,7 @@ const Header = () => {
                 </a>
               ))}
               <Button variant="default" className="mt-2" asChild>
-                <a href="#kapcsolat" onClick={() => setIsMenuOpen(false)}>Ajánlatkérés</a>
+                <a href={getNavHref("#kapcsolat")} onClick={() => setIsMenuOpen(false)}>Ajánlatkérés</a>
               </Button>
             </div>
           </nav>
