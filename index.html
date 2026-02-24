@@ -15,6 +15,17 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@northwind_hu" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <script src="https://do.featurebase.app/js/sdk.js" id="featurebase-sdk"></script>
+    <script>
+      if (typeof window.Featurebase !== 'function') {
+        window.Featurebase = function () {
+          (window.Featurebase.q = window.Featurebase.q || []).push(arguments);
+        };
+      }
+      window.Featurebase('initialize_messenger', {
+        appId: '699d9791df681b5493364ade'
+      });
+    </script>
   </head>
 
   <body>
