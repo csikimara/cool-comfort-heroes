@@ -15,6 +15,11 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@northwind_hu" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
     <script src="https://do.featurebase.app/js/sdk.js" id="featurebase-sdk"></script>
     <script>
       if (typeof window.Featurebase !== 'function') {
@@ -26,10 +31,5 @@
         appId: '699d9791df681b5493364ade'
       });
     </script>
-  </head>
-
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
