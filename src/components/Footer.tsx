@@ -18,7 +18,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-background/70 leading-relaxed max-w-md mb-6">
-              Professzionális klíma és légtechnikai megoldások már több mint 15 éve. 
+              Professzionális klíma és légtechnikai megoldások már több mint 30 éve. 
               Bízza ránk otthona vagy irodája komfortját!
             </p>
             <div className="flex gap-6">
@@ -64,7 +64,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-background/50 text-sm">
-            © 2024 Northwind Hűtéstechnika Kft. Minden jog fenntartva.
+            © 2026 Northwind Hűtéstechnika Kft. Minden jog fenntartva.
           </p>
           <div className="flex gap-6 text-sm">
             <Link to="/adatvedelem" className="text-background/50 hover:text-background transition-colors">Adatvédelem</Link>
