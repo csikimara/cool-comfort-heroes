@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
   {
@@ -32,6 +34,8 @@ const contactInfo = [
 ];
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,10 +43,33 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: formData,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Üzenet elküldve!",
+        description: "Köszönjük megkeresését, hamarosan felvesszük Önnel a kapcsolatot.",
+      });
+
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (error) {
+      console.error("Submit error:", error);
+      toast({
+        title: "Hiba történt",
+        description: "Az üzenet küldése sikertelen. Kérjük, próbálja újra később.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -160,9 +187,18 @@ const Contact = () => {
                   className="resize-none"
                 />
               </div>
-              <Button type="submit" variant="hero" size="lg" className="w-full">
-                Üzenet küldése
-                <Send className="w-5 h-5" />
+              <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Küldés...
+                  </>
+                ) : (
+                  <>
+                    Üzenet küldése
+                    <Send className="w-5 h-5" />
+                  </>
+                )}
               </Button>
             </form>
           </div>
