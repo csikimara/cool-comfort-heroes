@@ -188,7 +188,7 @@ const PrivacyPolicy = () => {
       <footer className="bg-foreground text-background py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="text-background/50 text-sm">
-            © 2024 Northwind Hűtéstechnika Kft. Minden jog fenntartva.
+            © 2026 Northwind Hűtéstechnika Kft. Minden jog fenntartva.
           </p>
         </div>
       </footer>

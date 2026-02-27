@@ -21,13 +21,13 @@ const contactInfo = [
     icon: MapPin,
     label: "Cím",
     value: "1118 Budapest, Torbágy u. 16.",
-    href: "#",
+    href: "https://maps.google.com/?q=1118+Budapest+Torbágy+u.+16.",
   },
   {
     icon: Clock,
     label: "Nyitvatartás",
     value: "H-P: 8:00 - 17:00",
-    href: "#",
+    href: "",
   },
 ];
 
@@ -66,23 +66,26 @@ const Contact = () => {
           {/* Contact info */}
           <div>
             <div className="grid sm:grid-cols-2 gap-6 mb-10">
-              {contactInfo.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="group flex items-start gap-4 p-5 rounded-2xl bg-gradient-card border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-0.5"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <item.icon className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <div className="text-sm text-muted-foreground mb-1">{item.label}</div>
-                    <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
-                      {item.value}
+              {contactInfo.map((item) => {
+                const Tag = item.href ? 'a' : 'div';
+                return (
+                  <Tag
+                    key={item.label}
+                    {...(item.href ? { href: item.href, target: item.href.startsWith('http') ? '_blank' : undefined, rel: item.href.startsWith('http') ? 'noopener noreferrer' : undefined } : {})}
+                    className="group flex items-start gap-4 p-5 rounded-2xl bg-gradient-card border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-0.5"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                      <item.icon className="w-6 h-6 text-primary-foreground" />
                     </div>
-                  </div>
-                </a>
-              ))}
+                    <div>
+                      <div className="text-sm text-muted-foreground mb-1">{item.label}</div>
+                      <div className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                        {item.value}
+                      </div>
+                    </div>
+                  </Tag>
+                );
+              })}
             </div>
 
             {/* Map placeholder */}

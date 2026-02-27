@@ -20,11 +20,11 @@ const About = () => {
               Rólunk
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Több mint 15 év{" "}
+            Több mint 30 év{" "}
               <span className="text-gradient">szakmai tapasztalat</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              A Northwind Hűtéstechnika Kft. 2008 óta foglalkozik klímaberendezések és 
+              A Northwind Hűtéstechnika Kft. az 1990-es évek óta foglalkozik klímaberendezések és 
               légtechnikai rendszerek telepítésével, karbantartásával. Szakembereink 
               folyamatosan képzik magukat, hogy a legmodernebb technológiákkal szolgálhassuk 
               ki ügyfeleinket.
