@@ -72,7 +72,7 @@ Deno.serve(async (req) => {
         },
         body: JSON.stringify({
           from: "Northwind Weboldal <onboarding@resend.dev>",
-          to: ["northwind@northwind.hu"],
+          to: ["csikimara@gmail.com"],
           subject: `Új ajánlatkérés: ${name}`,
           html: `
             <h2>Új üzenet érkezett a weboldalról</h2>
