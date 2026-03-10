@@ -20,6 +20,7 @@ const Index = () => {
       <JapaneseTechnology />
       <IndustrialCooling />
       <About />
+      <TransparentPricing />
       <Contact />
       <Footer />
       <FujitsuFloatingButton />
