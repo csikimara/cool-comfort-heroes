@@ -17,6 +17,7 @@ const Index = () => {
       <Hero />
       <Services />
       <JapaneseTechnology />
+      <IndustrialCooling />
       <About />
       <Contact />
       <Footer />
