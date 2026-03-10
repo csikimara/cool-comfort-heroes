@@ -1,21 +1,26 @@
-import { CheckCircle2, Award } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, ShieldCheck, Cpu, Wrench } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const features = [
   {
+    icon: ClipboardCheck,
     title: "Ingyenes helyszíni felmérés",
-    desc: "Személyesen mérjük fel ingatlanát, hogy az Ön igényeihez és a lakás lehetőségeihez legoptimálisabb (Fujitsu vagy Daikin) rendszert javasoljuk.",
+    desc: "Személyesen mérem fel ingatlana adottságait, hogy az Ön igényeihez legoptimálisabb (Fujitsu vagy Daikin) rendszert javasoljam.",
   },
   {
+    icon: ShieldCheck,
     title: "Valódi garanciális biztonság",
-    desc: "32 év szakmai múlt a garancia arra, hogy a telepítés után is elérhetőek maradunk. Hosszú távú felelősséget vállalunk a munkánkért.",
+    desc: "1993 óta vagyunk jelen a piacon – ez a garancia arra, hogy a telepítés után is elérhetőek maradunk és felelősséget vállalunk munkánkért.",
   },
   {
-    title: "Válogatott japán márkák",
-    desc: "Kizárólag prémium technológiát telepítünk (Fujitsu, Daikin), amelyek évtizedekig megbízhatóan, halkan és takarékosan szolgálják Önt.",
+    icon: Cpu,
+    title: "Válogatott japán technológia",
+    desc: "Kizárólag prémium márkákat telepítünk, amelyek évtizedekig megbízhatóan és halkan szolgálják az Ön kényelmét.",
   },
   {
-    title: "30 éves szakmai rutin",
-    desc: "1993 óta gyűjtött tapasztalatunk a biztosíték arra, hogy nincs váratlan technikai akadály – a precizitás és tisztaság alapkövetelmény.",
+    icon: Wrench,
+    title: "Mérnöki precizitás és tisztaság",
+    desc: "30+ év rutinnal nincs váratlan technikai akadály. A pormentes munkavégzés nálunk alapkövetelmény.",
   },
 ];
 
@@ -30,23 +35,24 @@ const About = () => {
               Rólunk
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              32 év prémium klímatechnika –{" "}
-              <span className="text-gradient">Garanciával és Japán minőséggel</span>
+              32 év tapasztalat a prémium klímatechnika{" "}
+              <span className="text-gradient">világában</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              1993 óta válogatom meg, mit teszek fel ügyfeleim falára. Pályafutásomat a legmagasabb 
-              minőségű japán rendszerekre alapoztam: szívesen dolgozom a patinás <strong>Daikin</strong> modellekkel, 
-              de az elmúlt évek tapasztalatai alapján kiemelt bizalmat szavazok a <strong>Fujitsu</strong> megoldásainak. 
-              Ez a technológia teremti meg ma a legjobb egyensúlyt a precizitás, a csend és a hosszú távú 
-              megbízhatóság között. Nem csak klímát szerelek, hanem nyugalmat – én magam is ezekkel a 
-              gépekkel alszom nyugodtan.
+              1993 óta foglalkozom klíma- és légtechnikával, így az elmúlt három évtizedben a piac összes 
+              jelentős márkáját megismertem. Számomra a munka nem a telepítésnél ér véget, hanem a sokéves, 
+              zavartalan üzemeltetésnél kezdődik. Pályafutásom során a legmagasabb minőségű japán rendszerekre 
+              specializálódtam: ma is szívesen dolgozom a patinás <strong>Daikin</strong> modellekkel, de az elmúlt évek 
+              tapasztalatai alapján kiemelt bizalmat szavazok a <strong>Fujitsu</strong> megoldásainak. Ez a technológia 
+              teremti meg a legjobb egyensúlyt a precizitás, a csend és a hosszú távú megbízhatóság között. 
+              Nálunk nem egy névtelen alvállalkozó, hanem több évtizedes rutin érkezik a helyszínre.
             </p>
 
             {/* Features list */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
               {features.map((feature) => (
                 <div key={feature.title} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
+                  <feature.icon className="w-5 h-5 text-accent flex-shrink-0 mt-1" />
                   <div>
                     <span className="text-foreground font-semibold block mb-1">{feature.title}</span>
                     <span className="text-muted-foreground text-sm leading-relaxed">{feature.desc}</span>
@@ -55,15 +61,18 @@ const About = () => {
               ))}
             </div>
 
+            <Button variant="hero" size="lg" asChild>
+              <a href="#kapcsolat">Kérjen ingyenes szaktanácsadást!</a>
+            </Button>
           </div>
 
-          {/* Right content - Image placeholder with design */}
+          {/* Right content - Image */}
           <div className="relative">
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-elevated">
               <div className="aspect-[4/3] bg-gradient-hero flex items-center justify-center">
                 <div className="text-center p-8">
                   <div className="w-24 h-24 mx-auto rounded-2xl bg-primary-foreground/20 flex items-center justify-center mb-6">
-                    <Award className="w-12 h-12 text-primary-foreground" />
+                    <ShieldCheck className="w-12 h-12 text-primary-foreground" />
                   </div>
                   <h3 className="text-2xl font-bold text-primary-foreground mb-2">
                     1993 óta megbízható partner
