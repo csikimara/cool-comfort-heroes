@@ -4,6 +4,7 @@ import Services from "@/components/Services";
 import JapaneseTechnology from "@/components/JapaneseTechnology";
 import IndustrialCooling from "@/components/IndustrialCooling";
 import About from "@/components/About";
+import TransparentPricing from "@/components/TransparentPricing";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
