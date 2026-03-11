@@ -167,6 +167,7 @@ const Services = () => {
           title={selectedService.title}
           description={selectedService.detailedDescription || selectedService.description}
           icon={selectedService.icon}
+          extraContent={selectedService.extraContent}
         />
       )}
     </section>
