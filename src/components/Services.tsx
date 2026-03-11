@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { 
   AirVent, 
   Wrench, 
@@ -9,6 +9,7 @@ import {
   Fan,
   ArrowRight,
   SearchCheck,
+  ImageIcon,
   LucideIcon
 } from "lucide-react";
 import ServiceDetailModal from "./ServiceDetailModal";
@@ -18,6 +19,7 @@ interface Service {
   title: string;
   description: string;
   detailedDescription?: string;
+  extraContent?: ReactNode;
 }
 
 const services: Service[] = [
