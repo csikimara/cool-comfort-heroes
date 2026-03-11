@@ -1,7 +1,12 @@
-import { Droplets, Wind, Wrench } from "lucide-react";
+import { Droplets, Wind, Wrench, ClipboardCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const features = [
+  {
+    icon: ClipboardCheck,
+    title: "Műszaki tanácsadás és precíz kivitelezés",
+    desc: "Helyszíni felmérés alapján javasolunk optimális gépészeti megoldásokat irodaházak és üzemi területek részére, figyelembe véve a meglévő rendszerek adottságait.",
+  },
   {
     icon: Droplets,
     title: "Folyadékhűtők és Fan-coil rendszerek",
