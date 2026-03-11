@@ -22,6 +22,7 @@ const Index = () => {
       <IndustrialCooling />
       <About />
       <TransparentPricing />
+      <MaintenanceTimeline />
       <Contact />
       <Footer />
       <FujitsuFloatingButton />
