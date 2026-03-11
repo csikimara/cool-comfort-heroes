@@ -84,8 +84,11 @@ const Contact = () => {
             Kérjen{" "}
             <span className="text-gradient">ingyenes árajánlatot</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground mb-2">
             Vegye fel velünk a kapcsolatot telefonon, emailben vagy az alábbi űrlap kitöltésével!
+          </p>
+          <p className="text-sm text-muted-foreground/80">
+            Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén – 1993 óta.
           </p>
         </div>
 
