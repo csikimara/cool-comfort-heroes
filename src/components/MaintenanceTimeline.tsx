@@ -22,7 +22,7 @@ const phases = [
     period: "Szeptember - Október",
     title: "Őszi fűtési szezon",
     description:
-      "Ha klímával is fűt (pl. Fujitsu Nordic modellek), az őszi karbantartás elengedhetetlen. A tiszta hőcserélővel akár 20-30%-kal is csökkentheti a fűtési költségeit.",
+      "Ha klímával is fűt (például a kiemelkedő hatékonyságú Fujitsu KG sorozattal), az őszi karbantartás elengedhetetlen. A tiszta hőcserélővel és a japán inverteres technológiával jelentősen csökkentheti a fűtési költségeit.",
   },
   {
     icon: Snowflake,

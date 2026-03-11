@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 const pillars = [
   {
     icon: Thermometer,
-    title: "Valódi fűtésre optimalizálva (Fujitsu Nordic)",
+    title: "Valódi fűtésre optimalizálva (Fujitsu KG sorozat)",
     desc: "A legtöbb olcsó klíma csak hűtésre jó igazán. A nálunk elérhető japán modellek akár -25°C-os külső hőmérséklet mellett is stabil, gazdaságos fűtést biztosítanak, kiváltva akár a gázfűtést is.",
   },
   {
