@@ -17,9 +17,12 @@ const Footer = () => {
                 <p className="text-sm opacity-70">Hűtéstechnika Kft.</p>
               </div>
             </div>
-            <p className="text-background/70 leading-relaxed max-w-md mb-6">
+            <p className="text-background/70 leading-relaxed max-w-md mb-4">
               Professzionális klíma és légtechnikai megoldások már több mint 30 éve. 
               Bízza ránk otthona vagy irodája komfortját!
+            </p>
+            <p className="text-background/60 text-sm leading-relaxed max-w-md mb-6">
+              Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén – 1993 óta.
             </p>
             <div className="flex gap-6">
               <a href="tel:+36704099760" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
