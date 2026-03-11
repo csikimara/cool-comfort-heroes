@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { 
   AirVent, 
   Wrench, 
@@ -9,6 +9,7 @@ import {
   Fan,
   ArrowRight,
   SearchCheck,
+  ImageIcon,
   LucideIcon
 } from "lucide-react";
 import ServiceDetailModal from "./ServiceDetailModal";
@@ -18,6 +19,7 @@ interface Service {
   title: string;
   description: string;
   detailedDescription?: string;
+  extraContent?: ReactNode;
 }
 
 const services: Service[] = [
@@ -56,6 +58,23 @@ const services: Service[] = [
     title: "Klímatisztítás",
     description: "Professzionális klímatisztítás és fertőtlenítés az egészséges levegőért.",
     detailedDescription: "A professzionális klímatisztítás során speciális tisztítózsákot használunk, amely lehetővé teszi a beltéri egység teljes, vegyszeres átmosását anélkül, hogy a fal vagy a helyiség koszolódna. A zsákos mosás eltávolítja a hőcserélőn és a ventilátoron lerakódott port, gombát, nyálkás szennyeződéseket és baktériumokat, amelyek kellemetlen szagokat, allergiás tüneteket és hatásfokromlást okozhatnak.\n\nA tisztítás része a kültéri egység alapos mosása is: nagy nyomású vízzel és megfelelő tisztítószerekkel eltávolítjuk a hőcserélőről a port, pollent, rovarokat és egyéb lerakódásokat. Ez javítja a hűtési-fűtési teljesítményt, csökkenti a zajszintet és növeli a kompresszor élettartamát.\n\nA rendszeres, alapos klímatisztítás nemcsak egészségesebb levegőt biztosít, hanem jelentősen javítja a készülék hatékonyságát és megbízhatóságát is.",
+    extraContent: (
+      <>
+        <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 my-6">
+          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+            <SprayCan className="w-5 h-5 text-primary" />
+            Mi a különbség?
+          </h4>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            Míg a hagyományos karbantartás csak felületi tisztítás, a zsákos mélymosás vegyszeresen távolítja el a baktériumokat és a lerakódott szennyeződéseket a gép belsejéből is.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-border/50 bg-muted/30 h-48 flex flex-col items-center justify-center gap-3">
+          <ImageIcon className="w-10 h-10 text-muted-foreground/50" />
+          <p className="text-sm text-muted-foreground/70 font-medium">Előtte / Utána fotó helye</p>
+        </div>
+      </>
+    ),
   },
   {
     icon: Fan,
@@ -148,6 +167,7 @@ const Services = () => {
           title={selectedService.title}
           description={selectedService.detailedDescription || selectedService.description}
           icon={selectedService.icon}
+          extraContent={selectedService.extraContent}
         />
       )}
     </section>
