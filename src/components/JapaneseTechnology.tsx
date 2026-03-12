@@ -28,8 +28,8 @@ const JapaneseTechnology = () => {
             Japán technológia
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Miért választunk Japán technológiát{" "}
-            <span className="text-gradient">az Ön otthonába?</span>
+            Miért a Fujitsu KG sorozat{" "}
+            <span className="text-gradient">a legjobb választás fűtésre?</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Egy klíma nem csak egy-két szezonra szól. Mi a <strong>Fujitsu</strong> és <strong>Daikin</strong> rendszereivel 

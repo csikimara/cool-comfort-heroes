@@ -32,7 +32,7 @@ const services: Service[] = [
   {
     icon: Wrench,
     title: "Karbantartás",
-    description: "Rendszeres klíma karbantartás a hosszú élettartam és optimális működés érdekében.",
+    description: "Rendszeres éves felülvizsgálat a biztonságos működésért. Hosszú élettartam és optimális hatékonyság.",
     detailedDescription: "A rendszeres karbantartás és klímatisztítás alapvető feltétele annak, hogy a klíma hosszú távon megbízhatóan, csendesen és energiatakarékosan működjön. A folyamat során eltávolítjuk a készülékben felgyülemlett port, gombát és baktériumokat, amelyek kellemetlen szagokat, allergiás tüneteket vagy akár komoly meghibásodást is okozhatnak. Ellenőrizzük a hűtőközeg mennyiségét, a csatlakozásokat, a kondenzvíz elvezetését, a ventilátor működését és a készülék általános műszaki állapotát.\n\nHa a klímát csak hűtésre használják, akkor évi 1 alkalom karbantartás elegendő. Amennyiben fűtésre is használják, a készülék sokkal nagyobb terhelést kap, ezért évi 2 alkalom javasolt a biztonságos és hatékony működés érdekében. A tiszta és karbantartott klíma egészségesebb levegőt biztosít, kevesebb energiát fogyaszt, és jelentősen meghosszabbítja a berendezés élettartamát.",
   },
   {
@@ -55,8 +55,8 @@ const services: Service[] = [
   },
   {
     icon: SprayCan,
-    title: "Klímatisztítás",
-    description: "Professzionális klímatisztítás és fertőtlenítés az egészséges levegőért.",
+    title: "Büdös a klíma? Zsákos klímamosás",
+    description: "Zsákos mélymosás technológia: Teljes vegyszeres fertőtlenítés, amely eltávolítja a lerakódott baktériumokat a gép belsejéből is – nem csak egy sima szűrőtisztítás!",
     detailedDescription: "A professzionális klímatisztítás során speciális tisztítózsákot használunk, amely lehetővé teszi a beltéri egység teljes, vegyszeres átmosását anélkül, hogy a fal vagy a helyiség koszolódna. A zsákos mosás eltávolítja a hőcserélőn és a ventilátoron lerakódott port, gombát, nyálkás szennyeződéseket és baktériumokat, amelyek kellemetlen szagokat, allergiás tüneteket és hatásfokromlást okozhatnak.\n\nA tisztítás része a kültéri egység alapos mosása is: nagy nyomású vízzel és megfelelő tisztítószerekkel eltávolítjuk a hőcserélőről a port, pollent, rovarokat és egyéb lerakódásokat. Ez javítja a hűtési-fűtési teljesítményt, csökkenti a zajszintet és növeli a kompresszor élettartamát.\n\nA rendszeres, alapos klímatisztítás nemcsak egészségesebb levegőt biztosít, hanem jelentősen javítja a készülék hatékonyságát és megbízhatóságát is.",
     extraContent: (
       <>

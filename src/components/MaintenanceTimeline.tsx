@@ -46,6 +46,9 @@ const MaintenanceTimeline = () => {
             Mikor érdemes{" "}
             <span className="text-gradient">klímakarbantartást</span> kérni?
           </h2>
+          <p className="text-sm font-semibold text-primary mb-4">
+            Március-Április: Tavaszi felkészítés | Szeptember-Október: Fűtési szezon előtti tisztítás (Fujitsu KG modellekhez elengedhetetlen).
+          </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Ne várja meg a kánikulát vagy az első fagyokat! A rendszeres
             felülvizsgálat nem csak a garancia feltétele, hanem a gazdaságos és
