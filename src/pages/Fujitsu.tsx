@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { AirVent, Shield, Zap, ThermometerSun, Phone, Award } from "lucide-react";
+import { AirVent, Shield, Zap, ThermometerSun, Award, CheckCircle2, User, Settings, ImageIcon } from "lucide-react";
 
 const features = [
   {
@@ -11,18 +11,33 @@ const features = [
   },
   {
     icon: Zap,
-    title: "Alacsony fogyasztás",
-    description: "Energiahatékony inverter technológia a minimális üzemeltetési költségért.",
+    title: "A+++ energiaosztály",
+    description: "A Fujitsu KG sorozat A+++ besorolású, minimális üzemeltetési költséggel.",
   },
   {
     icon: AirVent,
     title: "Csendes működés",
-    description: "Piacvezető zajszint már 19 dB(A)-tól beltéri egységeknél.",
+    description: "Piacvezető zajszint már 19 dB(A)-tól – ideális hálószobákba.",
   },
   {
     icon: ThermometerSun,
-    title: "Fűtés-hűtés",
-    description: "Egész évben használható fűtésre és hűtésre egyaránt.",
+    title: "Fűtés akár -25°C-ig",
+    description: "A KG sorozat extrém hidegben is stabil, gazdaságos fűtést biztosít.",
+  },
+];
+
+const sellingPoints = [
+  {
+    icon: AirVent,
+    text: "Halk működés hálószobába – már 19 dB(A)-tól, ami halkabb, mint a suttogás.",
+  },
+  {
+    icon: User,
+    text: "Human Sensor technológia – automatikusan csökkenti a fogyasztást, ha nincs senki a szobában.",
+  },
+  {
+    icon: Settings,
+    text: "Hosszú távú megbízhatóság – évtizedekig garantált alkatrészellátás és szervizháttér.",
   },
 ];
 
@@ -31,27 +46,25 @@ const Fujitsu = () => {
     <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero section - Fujitsu branded */}
+      {/* Hero section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
-        {/* Red gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-red-700 to-red-800" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center text-white">
-            {/* Fujitsu logo text */}
             <div className="inline-flex items-center gap-3 mb-6">
               <span className="text-4xl sm:text-5xl font-bold tracking-tight">FUJITSU</span>
-              <span className="text-2xl sm:text-3xl font-light">KLÍMA</span>
+              <span className="text-2xl sm:text-3xl font-light">KG SOROZAT</span>
             </div>
             
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Hivatalos Fujitsu Partner
+              A prémium megoldás fűtésre és hűtésre – A+++ hatékonysággal
             </h1>
             
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Prémium japán minőség, professzionális telepítéssel. 
-              Válasszon a Fujitsu klíma termékek széles választékából.
+              Japán precizitás, amely akár -25°C-os hidegben is megbízható fűtést nyújt.
+              Hivatalos Fujitsu partnerként 33 év szakmai tapasztalattal állunk rendelkezésére.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -82,10 +95,10 @@ const Fujitsu = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-1.5 rounded-full bg-red-100 text-red-600 text-sm font-medium mb-4">
-              Miért Fujitsu?
+              Miért a Fujitsu KG sorozat?
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-              Japán precizitás, világszínvonalú minőség
+              Japán precizitás, A+++ hatékonyság
             </h2>
           </div>
 
@@ -110,18 +123,65 @@ const Fujitsu = () => {
         </div>
       </section>
 
+      {/* Selling Points + Installation Photo */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Benefits */}
+            <div>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-red-100 text-red-600 text-sm font-medium mb-4">
+                Előnyök
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-8">
+                Miért választják ügyfeleink a Fujitsu KG-t?
+              </h2>
+              
+              <ul className="space-y-6">
+                {sellingPoints.map((point) => (
+                  <li key={point.text} className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shrink-0 mt-0.5">
+                      <point.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <p className="text-foreground leading-relaxed">{point.text}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 p-5 rounded-xl border border-border/50 bg-background">
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  <strong className="text-foreground">33 év szakmai tapasztalattal</strong> és hivatalos Fujitsu partnerként 
+                  segítünk a legmegfelelőbb modell kiválasztásában Budapesten és Pest vármegyében.
+                </p>
+              </div>
+            </div>
+
+            {/* Installation Photo Placeholder */}
+            <div className="relative rounded-2xl overflow-hidden border border-border/50 bg-muted aspect-[4/3] flex flex-col items-center justify-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-muted-foreground/10 flex items-center justify-center">
+                <ImageIcon className="w-8 h-8 text-muted-foreground/50" />
+              </div>
+              <div className="text-center px-6">
+                <p className="text-muted-foreground font-medium">Professzionális Fujitsu telepítés</p>
+                <p className="text-muted-foreground/60 text-sm mt-1">Fotó helye – tiszta, igényes beltéri egység beszerelés</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA section */}
-      <section id="kapcsolat" className="py-20 bg-muted/50">
+      <section id="kapcsolat" className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
             <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mx-auto mb-6">
               <Award className="w-8 h-8 text-white" />
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Kérjen ajánlatot Fujitsu klímára
+              Kérjen ajánlatot Fujitsu KG klímára
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Vegye fel velünk a kapcsolatot és segítünk kiválasztani az Önnek megfelelő Fujitsu klímát.
+              Vegye fel velünk a kapcsolatot és segítünk kiválasztani az Önnek megfelelő Fujitsu modellt 
+              – 33 éves tapasztalattal, Budapesten és Pest vármegyében.
             </p>
             <Button 
               size="lg" 
