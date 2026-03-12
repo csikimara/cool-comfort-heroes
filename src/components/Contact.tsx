@@ -203,6 +203,9 @@ const Contact = () => {
                   </>
                 )}
               </Button>
+              <p className="text-xs text-muted-foreground mt-3 text-center">
+                Korrekt elszámolás: Nincsenek rejtett költségek és váratlan kiszállási díjak. Amit a felméréskor rögzítünk, az a végösszeg.
+              </p>
             </form>
           </div>
         </div>

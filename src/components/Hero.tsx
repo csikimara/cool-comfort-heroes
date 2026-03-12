@@ -60,6 +60,11 @@ const Hero = () => {
             </Button>
           </div>
 
+          {/* Trust text */}
+          <p className="text-sm text-primary-foreground/70 mt-6 animate-fade-up" style={{ animationDelay: "0.35s" }}>
+            Korrekt elszámolás: Nincsenek rejtett költségek és váratlan kiszállási díjak. Amit a felméréskor rögzítünk, az a végösszeg.
+          </p>
+
           {/* Trust badges */}
           <div className="mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up" style={{ animationDelay: "0.4s" }}>
             <div className="flex flex-wrap justify-center gap-8 sm:gap-12 text-primary-foreground/70">

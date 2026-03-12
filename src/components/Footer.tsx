@@ -64,8 +64,15 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Service area */}
+        <div className="pt-8 border-t border-background/10 mb-6">
+          <p className="text-background/60 text-sm leading-relaxed">
+            Szolgáltatási területünk: Budapest (kiemelten XI., XII., XXII. kerület), Budaörs, Érd, Törökbálint, Diósd és Pest vármegye teljes területe.
+          </p>
+        </div>
+
         {/* Bottom bar */}
-        <div className="pt-8 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="pt-6 border-t border-background/10 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-background/50 text-sm">
             © 2026 Northwind Hűtéstechnika Kft. Minden jog fenntartva.
           </p>
