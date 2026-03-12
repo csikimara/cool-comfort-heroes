@@ -27,9 +27,9 @@ const Hero = () => {
 
           {/* Main heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
-            A tökéletes hőmérséklet,{" "}
+            Klímaszerelés Budapesten és Pest megyében{" "}
             <span className="relative">
-              minden évszakban
+              – 1993 óta
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
                 <path d="M2 10C50 2 100 2 150 6C200 10 250 8 298 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-primary-foreground/40" />
               </svg>
