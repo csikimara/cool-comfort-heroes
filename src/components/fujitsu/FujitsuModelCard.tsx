@@ -13,6 +13,8 @@ export interface FujitsuModel {
   accentClass: string;
   badgeClass: string;
   catalogUrl: string;
+  catalogLabel?: string;
+  note?: string;
 }
 
 const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
