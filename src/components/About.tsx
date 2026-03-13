@@ -5,7 +5,7 @@ const features = [
   {
     icon: ClipboardCheck,
     title: "Ingyenes helyszíni felmérés",
-    desc: "Személyesen mérem fel ingatlana adottságait, hogy az Ön igényeihez legoptimálisabb Fujitsu rendszert javasoljam.",
+    desc: "Személyesen mérjük fel ingatlana adottságait, hogy az Ön igényeihez legoptimálisabb Fujitsu rendszert javasoljuk.",
   },
   {
     icon: ShieldCheck,
@@ -35,19 +35,20 @@ const About = () => {
               Rólunk
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              33 év szakmai tapasztalat a prémium klímatechnika{" "}
+              Csapatunk 33 év szakmai tapasztalatával a prémium klímatechnika{" "}
               <span className="text-gradient">világában</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              1993 óta foglalkozom klíma- és légtechnikával, így az elmúlt három évtizedben a piac összes 
-              jelentős márkáját megismertem. A <strong>Northwind Hűtéstechnika Kft.</strong> 2009 óta biztosít stabil 
-              vállalkozói hátteret ehhez a szakértelemhez. Számomra a munka nem a telepítésnél ér véget, hanem a sokéves, 
-              zavartalan üzemeltetésnél kezdődik. Pályafutásom során a legmagasabb minőségű japán rendszerekre 
-              specializálódtam, és az elmúlt évek tapasztalatai alapján kiemelt bizalmat szavazok a <strong>Fujitsu</strong> megoldásainak. 
+              Csapatunk 33 év szakmai tapasztalatával a prémium klímatechnika világában nyújtunk kiemelkedő szolgáltatást.
+              1993 óta foglalkozunk klíma- és légtechnikával, így az elmúlt három évtizedben a piac összes 
+              jelentős márkáját megismertük. A <strong>Northwind Hűtéstechnika Kft.</strong> 2009 óta biztosít stabil 
+              vállalkozói hátteret ehhez a szakértelemhez. Számunkra a munka nem a telepítésnél ér véget, hanem a sokéves, 
+              zavartalan üzemeltetésnél kezdődik. A legmagasabb minőségű japán rendszerekre 
+              specializálódtunk, és az elmúlt évek tapasztalatai alapján kiemelt bizalmat szavazunk a <strong>Fujitsu</strong> megoldásainak. 
               Ez a technológia teremti meg a legjobb egyensúlyt a precizitás, a csend és a hosszú távú megbízhatóság között. 
               Bár elsősorban a japán Fujitsu mérnöki megoldásait ajánljuk, egyedi igény esetén egyéb prémium japán márkák telepítését is vállaljuk. 
               Javítás és karbantartás terén márkafüggetlen szakértelemmel állunk rendelkezésre: legyen szó bármilyen típusról, 33 év rutinnal orvosoljuk a hibákat. 
-              Nálunk nem egy névtelen alvállalkozó, hanem több évtizedes rutin érkezik a helyszínre.
+              Nálunk nem egy névtelen alvállalkozó, hanem több évtizedes csapatrutin érkezik a helyszínre.
             </p>
 
             {/* Features list */}
