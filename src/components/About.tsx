@@ -5,7 +5,7 @@ const features = [
   {
     icon: ClipboardCheck,
     title: "Ingyenes helyszíni felmérés",
-    desc: "Személyesen mérem fel ingatlana adottságait, hogy az Ön igényeihez legoptimálisabb (Fujitsu vagy Daikin) rendszert javasoljam.",
+    desc: "Személyesen mérem fel ingatlana adottságait, hogy az Ön igényeihez legoptimálisabb Fujitsu rendszert javasoljam.",
   },
   {
     icon: ShieldCheck,
@@ -43,9 +43,10 @@ const About = () => {
               jelentős márkáját megismertem. A <strong>Northwind Hűtéstechnika Kft.</strong> 2009 óta biztosít stabil 
               vállalkozói hátteret ehhez a szakértelemhez. Számomra a munka nem a telepítésnél ér véget, hanem a sokéves, 
               zavartalan üzemeltetésnél kezdődik. Pályafutásom során a legmagasabb minőségű japán rendszerekre 
-              specializálódtam: ma is szívesen dolgozom a patinás <strong>Daikin</strong> modellekkel, de az elmúlt évek 
-              tapasztalatai alapján kiemelt bizalmat szavazok a <strong>Fujitsu</strong> megoldásainak. Ez a technológia 
-              teremti meg a legjobb egyensúlyt a precizitás, a csend és a hosszú távú megbízhatóság között. 
+              specializálódtam, és az elmúlt évek tapasztalatai alapján kiemelt bizalmat szavazok a <strong>Fujitsu</strong> megoldásainak. 
+              Ez a technológia teremti meg a legjobb egyensúlyt a precizitás, a csend és a hosszú távú megbízhatóság között. 
+              Bár elsősorban a japán Fujitsu mérnöki megoldásait ajánljuk, egyedi igény esetén egyéb prémium japán márkák telepítését is vállaljuk. 
+              Javítás és karbantartás terén márkafüggetlen szakértelemmel állunk rendelkezésre: legyen szó bármilyen típusról, 33 év rutinnal orvosoljuk a hibákat. 
               Nálunk nem egy névtelen alvállalkozó, hanem több évtizedes rutin érkezik a helyszínre.
             </p>
 
