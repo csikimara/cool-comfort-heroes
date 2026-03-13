@@ -175,12 +175,13 @@
   .dark .hero-subtitle-force {
     color: hsl(0 0% 100%) !important;
     -webkit-text-fill-color: hsl(0 0% 100%) !important;
+    forced-color-adjust: none !important;
   }
 
   .dark .hero-highlight-force {
-    /* #7dd3fc equivalent in HSL for consistent design tokens */
-    color: hsl(198 97% 74%) !important;
-    -webkit-text-fill-color: hsl(198 97% 74%) !important;
+    color: hsl(0 0% 100%) !important;
+    -webkit-text-fill-color: hsl(0 0% 100%) !important;
+    forced-color-adjust: none !important;
   }
 }
 

@@ -68,7 +68,7 @@ const Footer = () => {
         {/* Service area */}
         <div className="pt-8 border-t border-background/10 mb-6">
           <p className="text-background/60 text-sm leading-relaxed">
-            Szolgáltatási területünk: Budapest (kiemelten XI., XII., XXII. kerület), Budaörs, Érd, Törökbálint, Diósd és Pest vármegye teljes területe.
+            Elsődleges szolgáltatási területünk: Budapest és Pest vármegye (kiemelten XI., XII., XXII. kerület, Budaörs, Érd, Törökbálint, Diósd).
           </p>
         </div>
 
