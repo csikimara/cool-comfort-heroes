@@ -76,10 +76,10 @@ const About = () => {
                     <ShieldCheck className="w-12 h-12 text-primary-foreground" />
                   </div>
                   <h3 className="text-2xl font-bold text-primary-foreground mb-2">
-                    1993 óta megbízható partner
+                    33 év szakmai tapasztalat
                   </h3>
                   <p className="text-primary-foreground/80">
-                    Több ezer elégedett ügyfél országszerte
+                    1993 óta a szakmában · Northwind Kft. 2009 óta
                   </p>
                 </div>
               </div>

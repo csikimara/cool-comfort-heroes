@@ -55,18 +55,20 @@ const services: Service[] = [
   },
   {
     icon: SprayCan,
-    title: "Büdös a klíma? Zsákos klímamosás",
-    description: "Zsákos mélymosás technológia: Teljes vegyszeres fertőtlenítés, amely eltávolítja a lerakódott baktériumokat a gép belsejéből is – nem csak egy sima szűrőtisztítás!",
+    title: "Prémium Zsákos Klímamosás",
+    description: "Gyári higiénia helyreállítása: professzionális vegyszeres mélymosás, amely visszaadja a klíma eredeti tisztaságát és hatékonyságát.",
     detailedDescription: "A professzionális klímatisztítás során speciális tisztítózsákot használunk, amely lehetővé teszi a beltéri egység teljes, vegyszeres átmosását anélkül, hogy a fal vagy a helyiség koszolódna. A zsákos mosás eltávolítja a hőcserélőn és a ventilátoron lerakódott port, gombát, nyálkás szennyeződéseket és baktériumokat, amelyek kellemetlen szagokat, allergiás tüneteket és hatásfokromlást okozhatnak.\n\nA tisztítás része a kültéri egység alapos mosása is: nagy nyomású vízzel és megfelelő tisztítószerekkel eltávolítjuk a hőcserélőről a port, pollent, rovarokat és egyéb lerakódásokat. Ez javítja a hűtési-fűtési teljesítményt, csökkenti a zajszintet és növeli a kompresszor élettartamát.\n\nA rendszeres, alapos klímatisztítás nemcsak egészségesebb levegőt biztosít, hanem jelentősen javítja a készülék hatékonyságát és megbízhatóságát is.",
     extraContent: (
       <>
         <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 my-6">
           <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
             <SprayCan className="w-5 h-5 text-primary" />
-            Mi a különbség?
+            Miért szükséges a mélytisztítás?
           </h4>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            Míg a hagyományos karbantartás csak felületi tisztítás, a zsákos mélymosás vegyszeresen távolítja el a baktériumokat és a lerakódott szennyeződéseket a gép belsejéből is.
+            Idővel a klíma belsejében gomba, baktérium és allergén halmozódik fel – ezek kellemetlen szagokat, 
+            egészségügyi problémákat és hatásfokromlást okozhatnak. A zsákos mélymosás mindezt eltávolítja, 
+            míg a hagyományos karbantartás csak a felületet tisztítja.
           </p>
         </div>
         <div className="rounded-2xl border border-border/50 bg-muted/30 h-48 flex flex-col items-center justify-center gap-3">

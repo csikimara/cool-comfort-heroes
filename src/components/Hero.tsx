@@ -39,7 +39,8 @@ const Hero = () => {
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10 animate-fade-up" style={{ animationDelay: "0.2s" }}>
             Klímaszerelés, karbantartás, hőszivattyúk és komplex légtechnikai megoldások 
-            lakossági és ipari ügyfelek részére. Megbízhatóság és szakértelem.
+            lakossági és ipari ügyfelek részére. A Northwind Hűtéstechnika 2009 óta biztosít stabil vállalkozói hátteret 
+            a 33 éves szakmai tapasztalathoz.
           </p>
 
           {/* CTA Buttons */}

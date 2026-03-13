@@ -148,9 +148,10 @@ const Fujitsu = () => {
               </ul>
 
               <div className="mt-8 p-5 rounded-xl border border-border/50 bg-background">
-                <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-muted-foreground text-sm leading-relaxed">
                   <strong className="text-foreground">33 év szakmai tapasztalattal</strong> és hivatalos Fujitsu partnerként 
-                  segítünk a legmegfelelőbb modell kiválasztásában Budapesten és Pest vármegyében.
+                  segítünk a legmegfelelőbb modell kiválasztásában Budapesten és Pest vármegyében. 
+                  A Northwind Hűtéstechnika 2009 óta biztosít stabil vállalkozói hátteret ehhez a tudáshoz.
                 </p>
               </div>
             </div>
