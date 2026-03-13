@@ -87,15 +87,15 @@ const models = [
   },
   {
     id: "kj",
-    badge: "2026 Prémium csúcsmodell",
+    badge: "Új prémium csúcsmodell",
     name: "Fujitsu KJ sorozat",
-    subtitle: "Az új fűtésbajnok",
+    subtitle: "Az új prémium modell",
     tagline: "Hűtés A+++ / Fűtés A+++ – Prémium megjelenés",
     description:
-      "A KG sorozat utódja, a legmagasabb hatékonysággal. Akár -25°C-os extrém hidegben is stabil, gazdaságos teljesítmény – most már elegáns fekete kivitelben is elérhető.",
+      "A legújabb Fujitsu csúcsmodell, a legmagasabb hatékonysággal. Akár -25°C-os extrém hidegben is stabil, gazdaságos teljesítmény – elegáns fekete kivitelben is elérhető.",
     highlights: [
       "A+++ / A+++ energiaosztály hűtésben és fűtésben",
-      "Új: Fekete (Black) dizájn választható",
+      "Elérhető modern fekete (Black) dizájnban",
       "Stabil fűtés akár -25°C-ig",
       "Human Sensor – automatikus energiamegtakarítás",
       "19 dB(A) suttogó üzemmód",
@@ -105,7 +105,26 @@ const models = [
     badgeClass: "bg-red-100 text-red-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima",
     catalogLabel: "KJ sorozat részletek és árak",
-    note: "A KG sorozat kifutó modell – utódja a KJ sorozat.",
+  },
+  {
+    id: "kg",
+    badge: "Bizonyított fűtésbajnok",
+    name: "Fujitsu KG sorozat",
+    subtitle: "A bizonyított fűtésbajnok",
+    tagline: "A++ / A+++ hatékonyság",
+    description:
+      "Évek óta bizonyított, megbízható fűtési megoldás. Extrém hidegben is stabil teljesítmény – továbbra is elérhető kínálatunkban.",
+    highlights: [
+      "A+++ energiaosztály, minimális rezsiköltség",
+      "Stabil fűtés akár -25°C-ig",
+      "Human Sensor technológia",
+      "Évek óta bizonyított megbízhatóság",
+    ],
+    icon: Flame,
+    accentClass: "from-emerald-500 to-emerald-600",
+    badgeClass: "bg-emerald-100 text-emerald-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima",
+    catalogLabel: "KG sorozat részletek és árak",
   },
 ];
 
@@ -155,14 +174,11 @@ const Fujitsu = () => {
               Melyik Fujitsu modell illik Önhöz?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Három sorozat, három különböző igényre szabva – a nyári hűtéstől az egész éves prémium fűtésig.
-              <span className="block mt-2 text-sm text-muted-foreground/80 italic">
-                A KG sorozat kifutó modell – utódja a vadonatúj KJ sorozat.
-              </span>
+              Négy sorozat, négy különböző igényre szabva – a nyári hűtéstől az egész éves prémium fűtésig.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {models.map((model) => (
               <FujitsuModelCard key={model.id} model={model} />
             ))}
