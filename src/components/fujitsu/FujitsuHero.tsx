@@ -17,7 +17,7 @@ const FujitsuHero = () => (
         </h1>
 
         <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-          Három sorozat, három különböző igényre – a nyári hűtéstől az egész éves prémium fűtésig.
+          2026-os modellek: KL (ECO), KM (Standard) és az új KJ csúcsmodell – a nyári hűtéstől az egész éves prémium fűtésig.
           Hivatalos Fujitsu partnerként 33 év tapasztalattal segítünk a választásban.
         </p>
 
