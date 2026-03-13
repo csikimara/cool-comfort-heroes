@@ -174,10 +174,7 @@ const Fujitsu = () => {
               Melyik Fujitsu modell illik Önhöz?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Három sorozat, három különböző igényre szabva – a nyári hűtéstől az egész éves prémium fűtésig.
-              <span className="block mt-2 text-sm text-muted-foreground/80 italic">
-                A KG sorozat kifutó modell – utódja a vadonatúj KJ sorozat.
-              </span>
+              Négy sorozat, négy különböző igényre szabva – a nyári hűtéstől az egész éves prémium fűtésig.
             </p>
           </div>
 
