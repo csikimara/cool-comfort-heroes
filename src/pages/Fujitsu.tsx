@@ -169,6 +169,54 @@ const Fujitsu = () => {
         </div>
       </section>
 
+      {/* Entry-level cooling section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                Megbízható hűtés
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                Megbízható hűtés kompromisszumok nélkül
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                Nem mindenkinek van szüksége a csúcskategóriás KG sorozatra. A Fujitsu belépő szintű modelljei 
+                is japán minőséget képviselnek – elérhető áron, évtizedes élettartammal.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+              <div className="rounded-2xl p-6 border border-border/50 bg-gradient-card shadow-card text-center">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <AirVent className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Japán minőség</h3>
+                <p className="text-sm text-muted-foreground">Megbízható alkatrészek és összeszerelés, amely évtizedekig szolgál.</p>
+              </div>
+              <div className="rounded-2xl p-6 border border-border/50 bg-gradient-card shadow-card text-center">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Zap className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Elérhető ár</h3>
+                <p className="text-sm text-muted-foreground">Prémium technológia ésszerű költségvetéssel, rejtett díjak nélkül.</p>
+              </div>
+              <div className="rounded-2xl p-6 border border-border/50 bg-gradient-card shadow-card text-center">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-2">Évtizedes élettartam</h3>
+                <p className="text-sm text-muted-foreground">Garantált alkatrészellátás és szervizháttér a teljes életciklusra.</p>
+              </div>
+            </div>
+
+            <p className="text-center text-muted-foreground text-sm">
+              Japán minőség, elérhető áron, évtizedes élettartammal – kérjen személyre szabott ajánlatot!
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA section */}
       <section id="kapcsolat" className="py-20">
         <div className="container mx-auto px-4">
