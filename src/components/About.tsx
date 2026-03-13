@@ -5,7 +5,7 @@ const features = [
   {
     icon: ClipboardCheck,
     title: "Ingyenes helyszíni felmérés",
-    desc: "Személyesen mérem fel ingatlana adottságait, hogy az Ön igényeihez legoptimálisabb (Fujitsu vagy Daikin) rendszert javasoljam.",
+    desc: "Személyesen mérem fel ingatlana adottságait, hogy az Ön igényeihez legoptimálisabb Fujitsu rendszert javasoljam.",
   },
   {
     icon: ShieldCheck,
