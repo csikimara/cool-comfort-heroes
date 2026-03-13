@@ -1,7 +1,7 @@
-import { CheckCircle2, ImageIcon, type LucideIcon } from "lucide-react";
+import { CheckCircle2, ExternalLink, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface FujitsuModel {
+export interface FujitsuModel {
   id: string;
   badge: string;
   name: string;
@@ -12,6 +12,7 @@ interface FujitsuModel {
   icon: LucideIcon;
   accentClass: string;
   badgeClass: string;
+  catalogUrl: string;
 }
 
 const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
@@ -44,9 +45,31 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
         ))}
       </ul>
 
-      <Button className={`w-full bg-gradient-to-r ${model.accentClass} text-white hover:opacity-90`} asChild>
-        <a href="/#kapcsolat">Ajánlatot kérek</a>
-      </Button>
+      <div className="flex flex-col gap-3">
+        <Button
+          size="lg"
+          className={`w-full bg-gradient-to-r ${model.accentClass} text-white hover:opacity-90 min-h-[48px]`}
+          asChild
+        >
+          <a href="/#kapcsolat">Ajánlatot kérek</a>
+        </Button>
+        <Button
+          size="lg"
+          variant="outline"
+          className="w-full border-border hover:bg-accent min-h-[48px]"
+          asChild
+        >
+          <a
+            href={model.catalogUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Műszaki adatok és árak
+          </a>
+        </Button>
+      </div>
     </div>
   </div>
 );
