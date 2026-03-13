@@ -21,13 +21,25 @@ const FujitsuHero = () => (
           Hivatalos Fujitsu partnerként 33 év tapasztalattal segítünk a választásban.
         </p>
 
-        <Button
-          size="lg"
-          className="bg-white text-red-600 hover:bg-white/90 hover:text-red-700 font-semibold"
-          asChild
-        >
-          <a href="/#kapcsolat">Személyre szabott ajánlat</a>
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button
+            size="lg"
+            className="bg-white text-red-600 hover:bg-white/90 hover:text-red-700 font-semibold"
+            asChild
+          >
+            <a href="/#kapcsolat">Személyre szabott ajánlat</a>
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-white/30 bg-white/10 text-white hover:bg-white/20 hover:border-white/50"
+            asChild
+          >
+            <a href="https://www.fujitsuklima.hu/klimak" target="_blank" rel="noopener noreferrer">
+              Fujitsu termékkatalógus
+            </a>
+          </Button>
+        </div>
       </div>
     </div>
   </section>
