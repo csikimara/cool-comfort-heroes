@@ -46,9 +46,9 @@ const sellingPoints = [
 
 const models = [
   {
-    id: "kp",
+    id: "kl",
     badge: "Belépő szint",
-    name: "Fujitsu KP sorozat",
+    name: "Fujitsu KL sorozat",
     subtitle: "A racionális belépő",
     tagline: "Megbízható hűtés elérhető áron",
     description:
