@@ -35,12 +35,13 @@ const About = () => {
               Rólunk
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              33 év tapasztalat a prémium klímatechnika{" "}
+              33 év szakmai tapasztalat a prémium klímatechnika{" "}
               <span className="text-gradient">világában</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               1993 óta foglalkozom klíma- és légtechnikával, így az elmúlt három évtizedben a piac összes 
-              jelentős márkáját megismertem. Számomra a munka nem a telepítésnél ér véget, hanem a sokéves, 
+              jelentős márkáját megismertem. A <strong>Northwind Hűtéstechnika Kft.</strong> 2009 óta biztosít stabil 
+              vállalkozói hátteret ehhez a szakértelemhez. Számomra a munka nem a telepítésnél ér véget, hanem a sokéves, 
               zavartalan üzemeltetésnél kezdődik. Pályafutásom során a legmagasabb minőségű japán rendszerekre 
               specializálódtam: ma is szívesen dolgozom a patinás <strong>Daikin</strong> modellekkel, de az elmúlt évek 
               tapasztalatai alapján kiemelt bizalmat szavazok a <strong>Fujitsu</strong> megoldásainak. Ez a technológia 
