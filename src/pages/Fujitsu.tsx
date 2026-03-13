@@ -62,6 +62,7 @@ const models = [
     icon: Snowflake,
     accentClass: "from-sky-500 to-sky-600",
     badgeClass: "bg-sky-100 text-sky-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/split-klima/kp-sorozat",
   },
   {
     id: "km",
