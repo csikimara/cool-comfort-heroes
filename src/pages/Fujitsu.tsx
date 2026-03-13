@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import FujitsuHero from "@/components/fujitsu/FujitsuHero";
 import FujitsuModelCard from "@/components/fujitsu/FujitsuModelCard";
 import FujitsuSummary from "@/components/fujitsu/FujitsuSummary";
-import { Shield, Zap, AirVent, ThermometerSun, Snowflake, Sun, Flame, User, Settings } from "lucide-react";
+import { Shield, Zap, AirVent, ThermometerSun, Snowflake, Sun, Flame, Star, User, Settings } from "lucide-react";
 import fujitsuInstallation from "@/assets/fujitsu-installation.png";
 
 const features = [
@@ -15,7 +15,7 @@ const features = [
   {
     icon: Zap,
     title: "A+++ energiaosztály",
-    description: "A Fujitsu KG sorozat A+++ besorolású, minimális üzemeltetési költséggel.",
+    description: "Az új KJ sorozat A+++ besorolású hűtésben és fűtésben egyaránt.",
   },
   {
     icon: AirVent,
@@ -25,7 +25,7 @@ const features = [
   {
     icon: ThermometerSun,
     title: "Fűtés akár -25°C-ig",
-    description: "A KG sorozat extrém hidegben is stabil, gazdaságos fűtést biztosít.",
+    description: "A KJ sorozat extrém hidegben is stabil, gazdaságos fűtést biztosít.",
   },
 ];
 
@@ -47,60 +47,65 @@ const sellingPoints = [
 const models = [
   {
     id: "kl",
-    badge: "Belépő szint",
-    name: "Fujitsu KL sorozat",
-    subtitle: "A racionális belépő",
-    tagline: "Megbízható hűtés elérhető áron",
+    badge: "ECO – Belépő szint",
+    name: "Fujitsu KL sorozat (ECO)",
+    subtitle: "A racionális belépő modell",
+    tagline: "Hűtés A++ / Fűtés A+",
     description:
       "Elsősorban megbízható nyári hűtésre. Japán minőség, hosszú élettartam és garantált alkatrészellátás – felesleges extrák nélkül.",
     highlights: [
+      "Hűtés A++ / Fűtés A+ energiaosztály",
       "Japán megbízhatóság elérhető áron",
       "Csendes működés lakásokba",
       "Hosszú élettartam, évtizedes szervizháttér",
-      "Egyszerű, megbízható technológia",
     ],
     icon: Snowflake,
     accentClass: "from-sky-500 to-sky-600",
     badgeClass: "bg-sky-100 text-sky-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/eco-sorozat-kl",
+    catalogLabel: "KL (ECO) részletek és árak",
   },
   {
     id: "km",
-    badge: "Legjobb ár-érték",
-    name: "Fujitsu KM sorozat",
-    subtitle: "A sokoldalú kedvenc",
-    tagline: "Kiváló ár-érték arány",
+    badge: "Standard – Legjobb ár-érték",
+    name: "Fujitsu KM sorozat (Standard)",
+    subtitle: "A sokoldalú közönségkedvenc",
+    tagline: "Kiváló ár-érték, megbízható teljesítmény",
     description:
-      "Átmeneti időszaki fűtésre és hűtésre egyaránt tökéletes. Kiváló kompromisszum a teljesítmény és az ár között.",
+      "Hűtésre és fűtésre egyaránt kiváló. Évek óta a legkeresettebb Fujitsu modell – megbízhatóság és hatékonyság a legjobb áron.",
     highlights: [
+      "Évek óta a legkelendőbb Fujitsu modell",
       "Hatékony hűtés és fűtés egyaránt",
       "Kiváló ár-érték arány",
-      "Átmeneti időszakban is gazdaságos",
       "Modern, energiatakarékos technológia",
     ],
     icon: Sun,
     accentClass: "from-amber-500 to-orange-500",
     badgeClass: "bg-amber-100 text-amber-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima",
+    catalogLabel: "KM (Standard) részletek és árak",
   },
   {
-    id: "kg",
-    badge: "Prémium csúcsmodell",
-    name: "Fujitsu KG sorozat",
-    subtitle: "A fűtésbajnok",
-    tagline: "A++ / A+++ hatékonyság",
+    id: "kj",
+    badge: "2026 Prémium csúcsmodell",
+    name: "Fujitsu KJ sorozat",
+    subtitle: "Az új fűtésbajnok",
+    tagline: "Hűtés A+++ / Fűtés A+++ – Prémium megjelenés",
     description:
-      "Elsődleges fűtésre, a legmagasabb hatékonysággal – akár -25°C-os extrém hidegben is stabil, gazdaságos teljesítményt nyújt.",
+      "A KG sorozat utódja, a legmagasabb hatékonysággal. Akár -25°C-os extrém hidegben is stabil, gazdaságos teljesítmény – most már elegáns fekete kivitelben is elérhető.",
     highlights: [
-      "A+++ energiaosztály, minimális rezsiköltség",
+      "A+++ / A+++ energiaosztály hűtésben és fűtésben",
+      "Új: Fekete (Black) dizájn választható",
       "Stabil fűtés akár -25°C-ig",
       "Human Sensor – automatikus energiamegtakarítás",
       "19 dB(A) suttogó üzemmód",
     ],
-    icon: Flame,
+    icon: Star,
     accentClass: "from-red-500 to-red-600",
     badgeClass: "bg-red-100 text-red-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima",
+    catalogLabel: "KJ sorozat részletek és árak",
+    note: "A KG sorozat kifutó modell – utódja a KJ sorozat.",
   },
 ];
 
@@ -150,7 +155,10 @@ const Fujitsu = () => {
               Melyik Fujitsu modell illik Önhöz?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Három sorozat, három különböző igényre szabva – a nyári hűtéstől az egész éves fűtésig.
+              Három sorozat, három különböző igényre szabva – a nyári hűtéstől az egész éves prémium fűtésig.
+              <span className="block mt-2 text-sm text-muted-foreground/80 italic">
+                A KG sorozat kifutó modell – utódja a vadonatúj KJ sorozat.
+              </span>
             </p>
           </div>
 

@@ -13,6 +13,8 @@ export interface FujitsuModel {
   accentClass: string;
   badgeClass: string;
   catalogUrl: string;
+  catalogLabel?: string;
+  note?: string;
 }
 
 const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
@@ -45,6 +47,10 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
         ))}
       </ul>
 
+      {model.note && (
+        <p className="text-xs text-muted-foreground italic mb-4 px-1">{model.note}</p>
+      )}
+
       <div className="flex flex-col gap-3">
         <Button
           size="lg"
@@ -66,7 +72,7 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
             className="inline-flex items-center gap-2"
           >
             <ExternalLink className="w-4 h-4" />
-            Műszaki adatok és árak
+            {model.catalogLabel || "Műszaki adatok és árak"}
           </a>
         </Button>
       </div>
