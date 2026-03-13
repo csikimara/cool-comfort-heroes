@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { AirVent, Shield, Zap, ThermometerSun, Award, CheckCircle2, User, Settings, ImageIcon } from "lucide-react";
+import { AirVent, Shield, Zap, ThermometerSun, Award, CheckCircle2, User, Settings } from "lucide-react";
+import fujitsuInstallation from "@/assets/fujitsu-installation.png";
 
 const features = [
   {
@@ -156,15 +157,14 @@ const Fujitsu = () => {
               </div>
             </div>
 
-            {/* Installation Photo Placeholder */}
-            <div className="relative rounded-2xl overflow-hidden border border-border/50 bg-muted aspect-[4/3] flex flex-col items-center justify-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-muted-foreground/10 flex items-center justify-center">
-                <ImageIcon className="w-8 h-8 text-muted-foreground/50" />
-              </div>
-              <div className="text-center px-6">
-                <p className="text-muted-foreground font-medium">Professzionális Fujitsu telepítés</p>
-                <p className="text-muted-foreground/60 text-sm mt-1">Fotó helye – tiszta, igényes beltéri egység beszerelés</p>
-              </div>
+            {/* Installation Photo */}
+            <div className="relative rounded-2xl overflow-hidden border border-border/50 aspect-[4/3]">
+              <img 
+                src={fujitsuInstallation} 
+                alt="Professzionális Fujitsu klíma telepítés egy elegáns nappaliban" 
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
