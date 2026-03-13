@@ -123,7 +123,7 @@ const models = [
     icon: Flame,
     accentClass: "from-emerald-500 to-emerald-600",
     badgeClass: "bg-emerald-100 text-emerald-700",
-    catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/design-sorozat-kg",
     catalogLabel: "KG sorozat részletek és árak",
   },
 ];
