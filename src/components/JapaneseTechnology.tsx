@@ -32,7 +32,7 @@ const JapaneseTechnology = () => {
             <span className="text-gradient">a legjobb választás fűtésre?</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Egy klíma nem csak egy-két szezonra szól. Mi a <strong>Fujitsu</strong> és <strong>Daikin</strong> rendszereivel 
+            Egy klíma nem csak egy-két szezonra szól. Mi a <strong>Fujitsu</strong> rendszereivel 
             olyan megoldást kínálunk, amely 15-20 év múlva is ugyanolyan csendesen és hatékonyan működik, mint az első napon.
           </p>
         </div>

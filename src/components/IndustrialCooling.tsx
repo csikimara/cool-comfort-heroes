@@ -20,7 +20,7 @@ const features = [
   {
     icon: Wrench,
     title: "Szerviz, Javítás és Karbantartás",
-    desc: "Nem csak telepítünk: gyors hibaelhárítást vállalunk ipari berendezésekre is. Megelőző karbantartási szerződéseinkkel segítünk elkerülni a váratlan és drága leállásokat.",
+    desc: "Nem csak telepítünk: gyors hibaelhárítást vállalunk ipari berendezésekre is. Javítás és karbantartás terén márkafüggetlen szakértelemmel állunk rendelkezésre. Megelőző karbantartási szerződéseinkkel segítünk elkerülni a váratlan és drága leállásokat.",
   },
 ];
 
