@@ -62,6 +62,7 @@ const models = [
     icon: Snowflake,
     accentClass: "from-sky-500 to-sky-600",
     badgeClass: "bg-sky-100 text-sky-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/split-klima/kp-sorozat",
   },
   {
     id: "km",
@@ -80,6 +81,7 @@ const models = [
     icon: Sun,
     accentClass: "from-amber-500 to-orange-500",
     badgeClass: "bg-amber-100 text-amber-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/split-klima/km-sorozat",
   },
   {
     id: "kg",
@@ -98,6 +100,7 @@ const models = [
     icon: Flame,
     accentClass: "from-red-500 to-red-600",
     badgeClass: "bg-red-100 text-red-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/split-klima/kg-sorozat",
   },
 ];
 
