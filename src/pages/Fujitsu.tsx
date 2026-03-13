@@ -100,6 +100,7 @@ const models = [
     icon: Flame,
     accentClass: "from-red-500 to-red-600",
     badgeClass: "bg-red-100 text-red-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/split-klima/kg-sorozat",
   },
 ];
 
