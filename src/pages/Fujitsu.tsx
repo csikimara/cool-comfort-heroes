@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { AirVent, Shield, Zap, ThermometerSun, Award, CheckCircle2, User, Settings, ImageIcon } from "lucide-react";
+import { AirVent, Shield, Zap, ThermometerSun, Award, CheckCircle2, User, Settings } from "lucide-react";
+import fujitsuInstallation from "@/assets/fujitsu-installation.png";
 
 const features = [
   {
