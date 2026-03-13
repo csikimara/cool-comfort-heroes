@@ -18,11 +18,12 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-background/70 leading-relaxed max-w-md mb-4">
-              Professzionális klíma és légtechnikai megoldások már több mint 30 éve. 
+              Professzionális klíma és légtechnikai megoldások 33 év szakmai tapasztalattal.
               Bízza ránk otthona vagy irodája komfortját!
             </p>
             <p className="text-background/60 text-sm leading-relaxed max-w-md mb-6">
-              Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén – 1993 óta.
+              Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén.
+              A Northwind Hűtéstechnika 2009 óta biztosít megbízható vállalkozói hátteret ügyfeleinek.
             </p>
             <div className="flex gap-6">
               <a href="tel:+36704099760" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
@@ -67,7 +68,7 @@ const Footer = () => {
         {/* Service area */}
         <div className="pt-8 border-t border-background/10 mb-6">
           <p className="text-background/60 text-sm leading-relaxed">
-            Szolgáltatási területünk: Budapest (kiemelten XI., XII., XXII. kerület), Budaörs, Érd, Törökbálint, Diósd és Pest vármegye teljes területe.
+            Elsődleges szolgáltatási területünk: Budapest és Pest vármegye (kiemelten XI., XII., XXII. kerület, Budaörs, Érd, Törökbálint, Diósd).
           </p>
         </div>
 

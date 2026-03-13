@@ -42,7 +42,7 @@ const Hero = () => {
             style={{ animationDelay: "0.2s" }}
           >
             Klímaszerelés, karbantartás, hőszivattyúk és komplex{" "}
-            <span className="hero-highlight-force dark:text-sky-300">légtechnikai megoldások</span>{" "}
+            <span className="hero-highlight-force dark:text-white">légtechnikai megoldások</span>{" "}
             lakossági és ipari ügyfelek részére. A Northwind Hűtéstechnika 2009 óta biztosít stabil vállalkozói hátteret
             a 33 éves szakmai tapasztalathoz.
           </p>

@@ -161,7 +161,7 @@ const Fujitsu = () => {
             <div className="relative rounded-2xl overflow-hidden border border-border/50 aspect-[4/3]">
               <img 
                 src={fujitsuInstallation} 
-                alt="Professzionális Fujitsu klíma telepítés egy elegáns nappaliban" 
+                alt="Professzionális Fujitsu KG beltéri egység telepítés egy elegáns nappaliban" 
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
