@@ -81,6 +81,7 @@ const models = [
     icon: Sun,
     accentClass: "from-amber-500 to-orange-500",
     badgeClass: "bg-amber-100 text-amber-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/split-klima/km-sorozat",
   },
   {
     id: "kg",
