@@ -70,14 +70,14 @@ const models = [
     badge: "Standard – Legjobb ár-érték",
     name: "Fujitsu KM sorozat (Standard)",
     subtitle: "A sokoldalú közönségkedvenc",
-    tagline: "Kiváló ár-érték, megbízható teljesítmény",
+    tagline: "Hűtés A++ / Fűtés A++ – Fekete kivitelben is",
     description:
-      "Hűtésre és fűtésre egyaránt kiváló. Évek óta a legkeresettebb Fujitsu modell – megbízhatóság és hatékonyság a legjobb áron.",
+      "Hűtésre és fűtésre egyaránt kiváló. Évek óta a legkeresettebb Fujitsu modell – most már elegáns fekete kivitelben is, prémium megjelenés standard áron.",
     highlights: [
+      "Hűtés A++ / Fűtés A++ energiaosztály",
+      "Elérhető modern fekete (Black) dizájnban",
       "Évek óta a legkelendőbb Fujitsu modell",
-      "Hatékony hűtés és fűtés egyaránt",
       "Kiváló ár-érték arány",
-      "Modern, energiatakarékos technológia",
     ],
     icon: Sun,
     accentClass: "from-amber-500 to-orange-500",
