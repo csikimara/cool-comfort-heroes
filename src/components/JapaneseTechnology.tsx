@@ -15,7 +15,7 @@ const pillars = [
   {
     icon: Settings,
     title: "Hosszú távú alkatrészellátás",
-    desc: "Míg az olcsó kínai márkáknál pár év után sokszor nincs alkatrész, a Fujitsu és Daikin esetében évtizedekig biztosított a szervizháttér. Ez a valódi fenntarthatóság.",
+    desc: "Míg az olcsó kínai márkáknál pár év után sokszor nincs alkatrész, a Fujitsu esetében évtizedekig biztosított a szervizháttér. Ez a valódi fenntarthatóság.",
   },
 ];
 
