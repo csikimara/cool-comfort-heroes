@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Phone, Mail, MapPin, Clock, Send, Loader2 } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, Loader2, Facebook } from "lucide-react";
 import { useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -125,6 +125,21 @@ const Contact = () => {
                 <p className="text-muted-foreground font-medium">Budapest, Torbágy u. 16.</p>
               </div>
             </div>
+
+            {/* Facebook CTA */}
+            <a
+              href="https://www.facebook.com/northwindkft/?locale=hu_HU"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 flex items-center justify-center gap-3 p-4 rounded-2xl bg-gradient-card border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-0.5 group"
+            >
+              <div className="w-10 h-10 rounded-xl bg-[#1877F2] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Facebook className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                Kövessenek minket a Facebookon is a legfrissebb munkáinkért!
+              </span>
+            </a>
           </div>
 
           {/* Contact form */}

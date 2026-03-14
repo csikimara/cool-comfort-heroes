@@ -1,4 +1,4 @@
-import { Wind, Phone, Mail, MapPin } from "lucide-react";
+import { Wind, Phone, Mail, MapPin, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -25,7 +25,7 @@ const Footer = () => {
               Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén.
               A Northwind Hűtéstechnika 2009 óta biztosít megbízható vállalkozói hátteret ügyfeleinek.
             </p>
-            <div className="flex gap-6">
+            <div className="flex flex-wrap gap-6">
               <a href="tel:+36704099760" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
                 <Phone className="w-4 h-4" />
                 +36 70 409 9760
@@ -33,6 +33,10 @@ const Footer = () => {
               <a href="mailto:northwind@northwind.hu" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
                 <Mail className="w-4 h-4" />
                 northwind@northwind.hu
+              </a>
+              <a href="https://www.facebook.com/northwindkft/?locale=hu_HU" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
+                <Facebook className="w-4 h-4" />
+                Facebook
               </a>
             </div>
           </div>
