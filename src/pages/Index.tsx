@@ -25,6 +25,7 @@ const Index = () => {
       <TransparentPricing />
       <MaintenanceTimeline />
       <Contact />
+      <GoogleMap />
       <Footer />
       <FujitsuFloatingButton />
     </div>
