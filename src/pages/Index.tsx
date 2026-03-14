@@ -8,6 +8,7 @@ import TransparentPricing from "@/components/TransparentPricing";
 import MaintenanceTimeline from "@/components/MaintenanceTimeline";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import GoogleMap from "@/components/GoogleMap";
 import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
 import { useScrollToHash } from "@/hooks/useScrollToHash";
 
@@ -24,6 +25,7 @@ const Index = () => {
       <TransparentPricing />
       <MaintenanceTimeline />
       <Contact />
+      <GoogleMap />
       <Footer />
       <FujitsuFloatingButton />
     </div>
