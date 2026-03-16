@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import { Phone, Flower2, Sun, Leaf, Snowflake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -34,9 +33,9 @@ const phases = [
   },
 ];
 
-const MaintenanceTimeline = forwardRef<HTMLElement>((_, ref) => {
+const MaintenanceTimeline = () => {
   return (
-    <section ref={ref} className="py-20 sm:py-32 bg-gradient-frost">
+    <section className="py-20 sm:py-32 bg-gradient-frost">
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
@@ -136,8 +135,6 @@ const MaintenanceTimeline = forwardRef<HTMLElement>((_, ref) => {
       </div>
     </section>
   );
-});
-
-MaintenanceTimeline.displayName = "MaintenanceTimeline";
+};
 
 export default MaintenanceTimeline;
