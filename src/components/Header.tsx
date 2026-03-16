@@ -27,8 +27,10 @@ const Header = () => {
           <Link to="/" className="flex items-center group">
             <img 
               src={logo} 
-              alt="Northwind Hűtéstechnika Kft." 
+              alt="Northwind Hűtéstechnika Kft. logó" 
               className="h-10 sm:h-12 w-auto"
+              width={48}
+              height={48}
             />
           </Link>
 

@@ -1,9 +1,15 @@
 import { Wind, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import SEOHead from "@/components/SEOHead";
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Adatvédelmi Szabályzat | Northwind Hűtéstechnika Kft."
+        description="A Northwind Hűtéstechnika Kft. adatvédelmi szabályzata. Tájékoztatás a személyes adatok kezeléséről, cookie-k használatáról és az érintettek jogairól."
+      />
+
       {/* Header */}
       <header className="bg-background/80 backdrop-blur-lg border-b border-border/50 py-6">
         <div className="container mx-auto px-4">
@@ -13,7 +19,7 @@ const PrivacyPolicy = () => {
                 <Wind className="w-7 h-7 text-primary-foreground" />
               </div>
               <div>
-                <h1 className="font-bold text-lg text-foreground leading-tight">Northwind</h1>
+                <span className="font-bold text-lg text-foreground leading-tight">Northwind</span>
                 <p className="text-xs text-muted-foreground">Hűtéstechnika Kft.</p>
               </div>
             </Link>
