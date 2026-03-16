@@ -26,7 +26,7 @@ const Hero = () => {
           </div>
 
           {/* Main heading */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
             Klímaszerelés Budapesten és Pest vármegyében{" "}
             <span className="relative">
               – 33 év szakmai tapasztalattal

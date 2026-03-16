@@ -25,17 +25,17 @@ const Footer = () => {
               Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén.
               A Northwind Hűtéstechnika 2009 óta biztosít megbízható vállalkozói hátteret ügyfeleinek.
             </p>
-            <div className="flex flex-wrap gap-6">
-              <a href="tel:+36704099760" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
-                <Phone className="w-4 h-4" />
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
+              <a href="tel:+36704099760" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
+                <Phone className="w-4 h-4 flex-shrink-0" />
                 +36 70 409 9760
               </a>
-              <a href="mailto:northwind@northwind.hu" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
-                <Mail className="w-4 h-4" />
+              <a href="mailto:northwind@northwind.hu" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base break-all sm:break-normal">
+                <Mail className="w-4 h-4 flex-shrink-0" />
                 northwind@northwind.hu
               </a>
-              <a href="https://www.facebook.com/northwindkft/?locale=hu_HU" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors">
-                <Facebook className="w-4 h-4" />
+              <a href="https://www.facebook.com/northwindkft/?locale=hu_HU" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
+                <Facebook className="w-4 h-4 flex-shrink-0" />
                 Facebook
               </a>
             </div>

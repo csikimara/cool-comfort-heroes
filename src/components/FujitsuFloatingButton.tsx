@@ -4,7 +4,7 @@ const FujitsuFloatingButton = () => {
   return (
     <Link
       to="/fujitsu"
-      className="fixed right-0 top-1/2 -translate-y-1/2 z-50 group"
+      className="fixed right-0 top-1/2 -translate-y-1/2 z-40 group"
     >
       <div className="flex items-center bg-gradient-to-r from-red-600 to-red-700 text-white rounded-l-xl shadow-elevated overflow-hidden transition-all duration-300 hover:shadow-2xl">
         {/* Collapsed state - always visible */}

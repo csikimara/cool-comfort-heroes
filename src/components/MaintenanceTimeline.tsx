@@ -87,7 +87,7 @@ const MaintenanceTimeline = () => {
 
                   {/* Content card */}
                   <div
-                    className={`ml-16 sm:ml-0 sm:w-[calc(50%-2rem)] ${
+                    className={`ml-16 sm:ml-0 sm:w-[calc(50%-2.5rem)] ${
                       isLeft ? "sm:pr-4 sm:text-right" : "sm:pl-4"
                     }`}
                   >
