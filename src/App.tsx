@@ -8,6 +8,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Fujitsu from "./pages/Fujitsu";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import FeaturebaseLoader from "./components/FeaturebaseLoader";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <FeaturebaseLoader />
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
