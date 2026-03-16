@@ -1,6 +1,7 @@
+import { forwardRef } from "react";
 import { Link } from "react-router-dom";
 
-const FujitsuFloatingButton = () => {
+const FujitsuFloatingButton = forwardRef<HTMLAnchorElement>((_, ref) => {
   return (
     <Link
       to="/fujitsu"

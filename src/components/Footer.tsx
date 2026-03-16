@@ -1,7 +1,8 @@
+import { forwardRef } from "react";
 import { Wind, Phone, Mail, MapPin, Facebook } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="container mx-auto px-4">
