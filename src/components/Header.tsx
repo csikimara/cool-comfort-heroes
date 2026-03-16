@@ -23,13 +23,13 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo - source PNG has large transparent padding above text, so we use overflow-hidden + scale to show it bigger */}
-          <Link to="/" className="flex items-center group flex-shrink-0 mr-6 lg:mr-10 overflow-hidden h-12 sm:h-14">
+          {/* Logo */}
+          <Link to="/" className="flex items-center group flex-shrink-0 mr-6 lg:mr-10">
             <img 
               src={logo} 
               alt="Northwind Hűtéstechnika Kft. logó" 
-              className="w-[240px] sm:w-[300px] lg:w-[380px] scale-[1.8] origin-bottom-left translate-y-[15%]"
-              width={380}
+              className="h-10 sm:h-12 lg:h-14 w-auto"
+              width={320}
               height={56}
               fetchPriority="high"
             />
