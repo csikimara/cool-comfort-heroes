@@ -3,7 +3,7 @@ import { ArrowRight, Snowflake, ThermometerSnowflake, Wind } from "lucide-react"
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20 pb-32 sm:pb-36">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary-foreground/5 rounded-full blur-3xl" />
@@ -71,8 +71,8 @@ const Hero = () => {
           </p>
 
           {/* Trust badges */}
-          <div className="mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up" style={{ animationDelay: "0.4s" }}>
-            <div className="flex flex-wrap justify-center gap-8 sm:gap-12 text-primary-foreground/70">
+          <div className="mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up relative z-10" style={{ animationDelay: "0.4s" }}>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 text-primary-foreground/70">
               <div className="text-center">
                 <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">33+</div>
                 <div className="text-sm">Év tapasztalat</div>
