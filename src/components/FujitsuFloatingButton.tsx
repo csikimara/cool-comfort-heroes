@@ -28,6 +28,8 @@ const FujitsuFloatingButton = forwardRef<HTMLAnchorElement>((_, ref) => {
       </div>
     </Link>
   );
-};
+});
+
+FujitsuFloatingButton.displayName = "FujitsuFloatingButton";
 
 export default FujitsuFloatingButton;
