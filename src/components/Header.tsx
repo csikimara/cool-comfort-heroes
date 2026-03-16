@@ -28,9 +28,9 @@ const Header = () => {
             <img 
               src={logo} 
               alt="Northwind Hűtéstechnika Kft. logó" 
-              className="h-auto w-[220px] sm:w-[280px] lg:w-[340px] object-contain"
-              width={340}
-              height={50}
+              className="h-10 sm:h-12 w-[200px] sm:w-[260px] lg:w-[320px] object-contain object-left"
+              width={320}
+              height={48}
               fetchPriority="high"
             />
           </Link>
