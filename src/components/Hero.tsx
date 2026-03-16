@@ -5,16 +5,16 @@ const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20 pb-32 sm:pb-36">
       {/* Background decorations */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-foreground/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-foreground/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary-foreground/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-primary-foreground/5 rounded-full blur-3xl" />
         
-        {/* Floating snowflakes */}
-        <Snowflake className="absolute top-32 right-[20%] w-8 h-8 text-primary-foreground/20 animate-float" style={{ animationDelay: "0s" }} />
-        <Snowflake className="absolute top-48 left-[15%] w-6 h-6 text-primary-foreground/15 animate-float" style={{ animationDelay: "1s" }} />
-        <Snowflake className="absolute bottom-40 right-[30%] w-10 h-10 text-primary-foreground/10 animate-float" style={{ animationDelay: "2s" }} />
-        <ThermometerSnowflake className="absolute top-[40%] left-[8%] w-12 h-12 text-primary-foreground/10 animate-float" style={{ animationDelay: "1.5s" }} />
-        <Wind className="absolute bottom-32 left-[25%] w-8 h-8 text-primary-foreground/15 animate-float" style={{ animationDelay: "0.5s" }} />
+        {/* Floating snowflakes - hidden on very small screens */}
+        <Snowflake className="absolute top-32 right-[20%] w-6 sm:w-8 h-6 sm:h-8 text-primary-foreground/20 animate-float hidden xs:block" style={{ animationDelay: "0s" }} />
+        <Snowflake className="absolute top-48 left-[15%] w-5 sm:w-6 h-5 sm:h-6 text-primary-foreground/15 animate-float hidden sm:block" style={{ animationDelay: "1s" }} />
+        <Snowflake className="absolute bottom-40 right-[30%] w-8 sm:w-10 h-8 sm:h-10 text-primary-foreground/10 animate-float hidden sm:block" style={{ animationDelay: "2s" }} />
+        <ThermometerSnowflake className="absolute top-[40%] left-[8%] w-10 sm:w-12 h-10 sm:h-12 text-primary-foreground/10 animate-float hidden md:block" style={{ animationDelay: "1.5s" }} />
+        <Wind className="absolute bottom-32 left-[25%] w-6 sm:w-8 h-6 sm:h-8 text-primary-foreground/15 animate-float hidden sm:block" style={{ animationDelay: "0.5s" }} />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
