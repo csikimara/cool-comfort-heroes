@@ -43,7 +43,7 @@ const Footer = () => {
 
           {/* Quick links */}
           <div>
-            <h4 className="font-semibold mb-5 text-lg">Szolgáltatások</h4>
+            <h3 className="font-semibold mb-5 text-lg">Szolgáltatások</h3>
             <ul className="space-y-3">
               <li><a href="#szolgaltatasok" className="text-background/70 hover:text-background transition-colors">Klímaszerelés</a></li>
               <li><a href="#szolgaltatasok" className="text-background/70 hover:text-background transition-colors">Karbantartás</a></li>
