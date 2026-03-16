@@ -24,14 +24,16 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-5">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group flex-shrink-0 mr-6 lg:mr-10">
-            <img 
-              src={logo} 
-              alt="Northwind Hűtéstechnika Kft. logó" 
-              className="h-10 sm:h-12 lg:h-14 w-auto"
-              width={400}
-              height={70}
-            />
+          <Link to="/" className="group flex-shrink-0 mr-4 lg:mr-8 xl:mr-10">
+            <span className="relative block h-10 sm:h-11 lg:h-12 xl:h-14 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[360px] xl:w-[460px] 2xl:w-[540px] overflow-hidden">
+              <img
+                src={logo}
+                alt="Northwind Hűtéstechnika Kft. logó"
+                className="absolute left-1/2 top-1/2 w-[320px] sm:w-[400px] md:w-[500px] lg:w-[760px] xl:w-[920px] 2xl:w-[1080px] max-w-none -translate-x-1/2 -translate-y-1/2"
+                width={1536}
+                height={1024}
+              />
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
