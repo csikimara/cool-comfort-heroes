@@ -245,7 +245,6 @@ const Fujitsu = () => {
                   className="w-full h-full object-cover"
                   loading="lazy"
                   decoding="async"
-                  loading="lazy"
                   width={800}
                   height={600}
                 />
