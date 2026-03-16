@@ -64,7 +64,7 @@ const services: Service[] = [
           <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2">
             <SprayCan className="w-5 h-5 text-primary" />
             Miért szükséges a mélytisztítás?
-          </h4>
+          </h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
             Idővel a klíma belsejében gomba, baktérium és allergén halmozódik fel – ezek kellemetlen szagokat, 
             egészségügyi problémákat és hatásfokromlást okozhatnak. A zsákos mélymosás mindezt eltávolítja, 
