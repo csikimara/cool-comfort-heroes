@@ -61,10 +61,11 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Send email notification
+    // Send email notifications
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     if (resendApiKey) {
-      const emailRes = await fetch("https://api.resend.com/emails", {
+      // 1. Admin notification
+      const adminEmailRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,11 +87,60 @@ Deno.serve(async (req) => {
         }),
       });
 
-      if (!emailRes.ok) {
-        console.error("Email send error:", await emailRes.text());
+      if (!adminEmailRes.ok) {
+        console.error("Admin email send error:", await adminEmailRes.text());
+      }
+
+      // 2. Confirmation email to the user
+      const userEmailRes = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${resendApiKey}`,
+        },
+        body: JSON.stringify({
+          from: "Northwind Hűtéstechnika <onboarding@resend.dev>",
+          to: [email],
+          subject: "Köszönjük megkeresését! – Northwind Hűtéstechnika",
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+              <div style="background: linear-gradient(135deg, #1a7ab5, #2a8fc2); padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
+                <h1 style="color: white; margin: 0; font-size: 24px;">Northwind Hűtéstechnika</h1>
+                <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0;">Professzionális klíma megoldások 1993 óta</p>
+              </div>
+              <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
+                <h2 style="color: #1a7ab5; margin-top: 0;">Kedves ${name}!</h2>
+                <p style="color: #374151; line-height: 1.6;">
+                  Köszönjük, hogy felkereste a Northwind Hűtéstechnikát! Üzenetét sikeresen megkaptuk.
+                </p>
+                <p style="color: #374151; line-height: 1.6;">
+                  Munkatársunk hamarosan felveszi Önnel a kapcsolatot a megadott elérhetőségein.
+                </p>
+                <div style="background: #f0f7fc; border-left: 4px solid #1a7ab5; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+                  <p style="margin: 0 0 5px; color: #6b7280; font-size: 14px;"><strong>Az Ön üzenete:</strong></p>
+                  <p style="margin: 0; color: #374151;">${message.replace(/\n/g, "<br>")}</p>
+                </div>
+                <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
+                <p style="color: #6b7280; font-size: 14px; line-height: 1.5;">
+                  <strong>Elérhetőségeink:</strong><br>
+                  📞 +36 70 409 9760<br>
+                  📧 northwind@northwind.hu<br>
+                  📍 1118 Budapest, Torbágy u. 16.
+                </p>
+              </div>
+              <div style="text-align: center; padding: 15px; color: #9ca3af; font-size: 12px;">
+                © ${new Date().getFullYear()} Northwind Hűtéstechnika. Minden jog fenntartva.
+              </div>
+            </div>
+          `,
+        }),
+      });
+
+      if (!userEmailRes.ok) {
+        console.error("User confirmation email error:", await userEmailRes.text());
       }
     } else {
-      console.warn("RESEND_API_KEY not set, skipping email notification");
+      console.warn("RESEND_API_KEY not set, skipping email notifications");
     }
 
     return new Response(
