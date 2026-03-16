@@ -135,8 +135,6 @@ const MaintenanceTimeline = () => {
       </div>
     </section>
   );
-});
-
-MaintenanceTimeline.displayName = "MaintenanceTimeline";
+};
 
 export default MaintenanceTimeline;
