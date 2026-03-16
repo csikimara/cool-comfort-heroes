@@ -1,18 +1,21 @@
+import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import JapaneseTechnology from "@/components/JapaneseTechnology";
-import IndustrialCooling from "@/components/IndustrialCooling";
-import About from "@/components/About";
-import TransparentPricing from "@/components/TransparentPricing";
-import MaintenanceTimeline from "@/components/MaintenanceTimeline";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import GoogleMap from "@/components/GoogleMap";
-import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
 import { useScrollToHash } from "@/hooks/useScrollToHash";
+
+// Lazy load below-the-fold sections
+const Services = lazy(() => import("@/components/Services"));
+const JapaneseTechnology = lazy(() => import("@/components/JapaneseTechnology"));
+const IndustrialCooling = lazy(() => import("@/components/IndustrialCooling"));
+const About = lazy(() => import("@/components/About"));
+const TransparentPricing = lazy(() => import("@/components/TransparentPricing"));
+const MaintenanceTimeline = lazy(() => import("@/components/MaintenanceTimeline"));
+const Contact = lazy(() => import("@/components/Contact"));
+const GoogleMap = lazy(() => import("@/components/GoogleMap"));
+const Footer = lazy(() => import("@/components/Footer"));
+const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 
 const businessJsonLd = {
   "@context": "https://schema.org",
@@ -61,17 +64,21 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <Services />
-        <JapaneseTechnology />
-        <IndustrialCooling />
-        <About />
-        <TransparentPricing />
-        <MaintenanceTimeline />
-        <Contact />
-        <GoogleMap />
+        <Suspense fallback={null}>
+          <Services />
+          <JapaneseTechnology />
+          <IndustrialCooling />
+          <About />
+          <TransparentPricing />
+          <MaintenanceTimeline />
+          <Contact />
+          <GoogleMap />
+        </Suspense>
       </main>
-      <Footer />
-      <FujitsuFloatingButton />
+      <Suspense fallback={null}>
+        <Footer />
+        <FujitsuFloatingButton />
+      </Suspense>
     </div>
   );
 };
