@@ -19,17 +19,22 @@
     <script>
       window.addEventListener('load', function() {
         setTimeout(function() {
-          if (typeof window.Featurebase !== 'function') {
-            window.Featurebase = function () {
-              (window.Featurebase.q = window.Featurebase.q || []).push(arguments);
-            };
-          }
-          window.Featurebase('boot', {
-            appId: '699d9791df681b5493364ade',
-            placement: 'right',
-            primaryColor: '#DC2626'
-          });
-        }, 1000);
+          try {
+            if (typeof window.Featurebase !== 'function') {
+              window.Featurebase = function () {
+                (window.Featurebase.q = window.Featurebase.q || []).push(arguments);
+              };
+            }
+            var rootEl = document.getElementById('root');
+            if (rootEl) {
+              window.Featurebase('boot', {
+                appId: '699d9791df681b5493364ade',
+                placement: 'right',
+                primaryColor: '#DC2626'
+              });
+            }
+          } catch(e) { /* silently ignore Featurebase errors */ }
+        }, 2000);
       });
     </script>
     <meta property="og:title" content="Klímaszerelés és Ipari Hűtés Budapest | Northwind – 33 év tapasztalat">
