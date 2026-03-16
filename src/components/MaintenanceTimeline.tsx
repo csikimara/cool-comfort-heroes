@@ -34,7 +34,7 @@ const phases = [
   },
 ];
 
-const MaintenanceTimeline = () => {
+const MaintenanceTimeline = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section className="py-20 sm:py-32 bg-gradient-frost">
       <div className="container mx-auto px-4">
