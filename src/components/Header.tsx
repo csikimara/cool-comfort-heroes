@@ -24,13 +24,13 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group flex-shrink-0 mr-4">
+          <Link to="/" className="flex items-center group flex-shrink-0 mr-4 lg:mr-8">
             <img 
               src={logo} 
               alt="Northwind Hűtéstechnika Kft. logó" 
-              className="h-12 sm:h-14 w-auto max-w-[180px] sm:max-w-[220px] object-contain"
-              width={220}
-              height={56}
+              className="h-12 sm:h-14 lg:h-20 w-auto max-w-[180px] sm:max-w-[220px] lg:max-w-[320px] object-contain"
+              width={320}
+              height={80}
               fetchPriority="high"
             />
           </Link>
