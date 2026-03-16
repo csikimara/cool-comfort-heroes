@@ -136,6 +136,8 @@ const MaintenanceTimeline = forwardRef<HTMLElement>((_, ref) => {
       </div>
     </section>
   );
-};
+});
+
+MaintenanceTimeline.displayName = "MaintenanceTimeline";
 
 export default MaintenanceTimeline;
