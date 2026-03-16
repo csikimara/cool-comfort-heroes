@@ -22,13 +22,13 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
       <div className="container mx-auto px-4 sm:px-5">
-        <div className="flex items-center justify-between h-20 lg:h-24 overflow-visible">
+        <div className="flex items-center justify-between h-28 lg:h-36 overflow-visible">
           {/* Logo */}
           <Link to="/" className="flex items-center group flex-shrink-0 mr-4 lg:mr-8 self-stretch">
             <img 
               src={logo} 
               alt="Northwind Hűtéstechnika Kft. logó" 
-              className="h-[48px] sm:h-[50px] lg:h-[70px] w-auto max-w-none object-contain shrink-0"
+              className="h-[96px] sm:h-[100px] lg:h-[140px] w-auto max-w-none object-contain shrink-0"
               width={400}
               height={70}
               fetchPriority="high"
