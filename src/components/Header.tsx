@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.jpg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,15 +22,15 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20 sm:h-24">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group flex-shrink-0 mr-4 lg:mr-8 py-2">
+          <Link to="/" className="flex items-center group flex-shrink-0 mr-6 lg:mr-10">
             <img 
               src={logo} 
               alt="Northwind Hűtéstechnika Kft. logó" 
-              className="h-14 sm:h-16 lg:h-[60px] w-auto max-w-[200px] sm:max-w-[260px] lg:max-w-[360px] object-contain"
-              width={360}
-              height={60}
+              className="h-10 sm:h-12 lg:h-14 w-auto"
+              width={320}
+              height={56}
               fetchPriority="high"
             />
           </Link>
