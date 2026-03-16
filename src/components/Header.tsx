@@ -24,12 +24,12 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-5">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="group flex-shrink-0 mr-4 lg:mr-8 xl:mr-10">
-            <span className="relative block h-10 sm:h-11 lg:h-12 xl:h-14 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[360px] xl:w-[460px] 2xl:w-[540px] overflow-hidden">
+          <Link to="/" className="group flex-shrink-0 mr-4 lg:mr-8">
+            <span className="relative block h-8 sm:h-9 lg:h-10 w-[140px] sm:w-[170px] md:w-[200px] lg:w-[260px] xl:w-[300px] overflow-hidden">
               <img
                 src={logo}
                 alt="Northwind Hűtéstechnika Kft. logó"
-                className="absolute left-1/2 top-1/2 w-[320px] sm:w-[400px] md:w-[500px] lg:w-[760px] xl:w-[920px] 2xl:w-[1080px] max-w-none -translate-x-1/2 -translate-y-1/2"
+                className="absolute left-1/2 top-1/2 w-[240px] sm:w-[300px] md:w-[360px] lg:w-[480px] xl:w-[540px] max-w-none -translate-x-1/2 -translate-y-1/2"
                 width={1536}
                 height={1024}
               />
