@@ -244,6 +244,8 @@ const Fujitsu = () => {
                   alt="Professzionális Fujitsu klíma beltéri egység telepítés egy budapesti lakásban – Northwind Hűtéstechnika"
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  decoding="async"
+                  loading="lazy"
                   width={800}
                   height={600}
                 />

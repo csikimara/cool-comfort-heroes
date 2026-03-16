@@ -31,6 +31,7 @@ const Header = () => {
               className="h-10 sm:h-12 w-auto"
               width={48}
               height={48}
+              fetchPriority="high"
             />
           </Link>
 
