@@ -29,7 +29,7 @@ const ServiceDetailModal = ({
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg max-h-[85vh] overflow-y-auto">
+      <DialogContent className="sm:max-w-lg max-h-[85vh] overflow-y-auto mx-4 sm:mx-auto">
         <DialogHeader>
           <div className="flex items-center gap-4 mb-2">
             <div className="w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center">

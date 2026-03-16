@@ -150,7 +150,7 @@ const Contact = () => {
           </div>
 
           {/* Contact form */}
-          <div className="bg-gradient-card rounded-3xl p-8 sm:p-10 border border-border/50 shadow-elevated">
+          <div className="bg-gradient-card rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 border border-border/50 shadow-elevated">
             <h3 className="text-2xl font-bold text-foreground mb-6">
               Küldjön üzenetet
             </h3>
