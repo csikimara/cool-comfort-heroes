@@ -61,7 +61,7 @@ const services: Service[] = [
     extraContent: (
       <>
         <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 my-6">
-          <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+          <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2">
             <SprayCan className="w-5 h-5 text-primary" />
             Miért szükséges a mélytisztítás?
           </h4>
