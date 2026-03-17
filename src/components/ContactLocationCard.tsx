@@ -12,7 +12,7 @@ const ContactLocationCard = () => {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
             <ShieldCheck className="h-3.5 w-3.5" />
-            Stabil helyszínkártya
+            Helyszín
           </div>
           <h3 className="text-lg font-semibold text-foreground">Személyes elérhetőség</h3>
           <p className="text-muted-foreground">{NORTHWIND_ADDRESS}</p>

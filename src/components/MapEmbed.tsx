@@ -39,7 +39,7 @@ const MapEmbed = ({
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
               <ShieldCheck className="h-3.5 w-3.5" />
-              Biztonságos fallback
+              Helyszín
             </div>
             <div className="flex items-start gap-4">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-primary">
