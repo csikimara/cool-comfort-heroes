@@ -51,8 +51,7 @@ const MapEmbed = ({
               </div>
             </div>
             <p className="max-w-xl text-sm leading-relaxed text-muted-foreground">
-              A beágyazott térkép biztonsági, SSL vagy mobil webview korlátozás miatt nem töltődött be, ezért egy stabil
-              tartalék megoldást jelenítünk meg.
+              A térkép jelenleg nem elérhető. Az alábbi gombbal közvetlenül megnyithatja a helyszínt a Google Térképen.
             </p>
           </div>
 
