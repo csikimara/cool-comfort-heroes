@@ -12,12 +12,12 @@ const ContactLocationCard = () => {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
             <ShieldCheck className="h-3.5 w-3.5" />
-            Stabil helyszínkártya
+            Helyszín
           </div>
           <h3 className="text-lg font-semibold text-foreground">Személyes elérhetőség</h3>
           <p className="text-muted-foreground">{NORTHWIND_ADDRESS}</p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Itt direkt linket adunk az útvonalhoz, így a kapcsolat szekció külső beágyazás hibája esetén sem esik szét.
+            Látogasson el hozzánk személyesen, vagy kérjen útvonaltervet az alábbi gombbal!
           </p>
           <Button asChild className="w-full sm:w-fit">
             <a href={NORTHWIND_MAP_LINK} target="_blank" rel="noopener noreferrer">
