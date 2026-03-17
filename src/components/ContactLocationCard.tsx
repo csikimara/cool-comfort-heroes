@@ -17,7 +17,7 @@ const ContactLocationCard = () => {
           <h3 className="text-lg font-semibold text-foreground">Személyes elérhetőség</h3>
           <p className="text-muted-foreground">{NORTHWIND_ADDRESS}</p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Itt direkt linket adunk az útvonalhoz, így a kapcsolat szekció külső beágyazás hibája esetén sem esik szét.
+            Látogasson el hozzánk személyesen, vagy kérjen útvonaltervet az alábbi gombbal!
           </p>
           <Button asChild className="w-full sm:w-fit">
             <a href={NORTHWIND_MAP_LINK} target="_blank" rel="noopener noreferrer">
