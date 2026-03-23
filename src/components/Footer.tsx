@@ -39,6 +39,10 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                 <Facebook className="w-4 h-4 flex-shrink-0" />
                 Facebook
               </a>
+              <a href="https://www.instagram.com/northwind_hutestechnika/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
+                <Instagram className="w-4 h-4 flex-shrink-0" />
+                Instagram
+              </a>
             </div>
           </div>
 
