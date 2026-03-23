@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Wind, Phone, Mail, MapPin, Facebook } from "lucide-react";
+import { Wind, Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
@@ -38,6 +38,10 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               <a href="https://www.facebook.com/northwindkft/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
                 <Facebook className="w-4 h-4 flex-shrink-0" />
                 Facebook
+              </a>
+              <a href="https://www.instagram.com/northwind_hutestechnika/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
+                <Instagram className="w-4 h-4 flex-shrink-0" />
+                Instagram
               </a>
             </div>
           </div>
