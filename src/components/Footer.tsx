@@ -35,7 +35,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                 <Mail className="w-4 h-4 flex-shrink-0" />
                 northwind@northwind.hu
               </a>
-              <a href="https://www.facebook.com/northwindkft/?locale=hu_HU" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
+              <a href="https://www.facebook.com/northwindkft/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
                 <Facebook className="w-4 h-4 flex-shrink-0" />
                 Facebook
               </a>
