@@ -123,7 +123,7 @@ const Contact = () => {
 
             {/* Facebook CTA */}
             <a
-              href="https://www.facebook.com/northwindkft/?locale=hu_HU"
+              href="https://www.facebook.com/northwindkft/"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 flex items-center justify-center gap-3 p-4 rounded-2xl bg-gradient-card border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-0.5 group"
