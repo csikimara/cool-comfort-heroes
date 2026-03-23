@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Wind, Phone, Mail, MapPin, Facebook } from "lucide-react";
+import { Wind, Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
