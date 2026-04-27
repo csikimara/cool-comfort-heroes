@@ -19,10 +19,10 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 text-primary-foreground text-sm font-medium mb-8 animate-fade-up">
+          {/* Eyebrow label (non-interactive) */}
+          <div className="inline-flex items-center gap-2 text-primary-foreground/80 text-sm font-medium tracking-wide uppercase mb-8 animate-fade-up">
             <Snowflake className="w-4 h-4" />
-            Professzionális klíma megoldások
+            <span>Professzionális klíma megoldások</span>
           </div>
 
           {/* Main heading */}
