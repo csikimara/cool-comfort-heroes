@@ -17,8 +17,8 @@ const Reszletek = () => {
   return (
     <div className="min-h-screen">
       <SEOHead
-        title="Részletek – Japán technológia, ipari hűtés, árazás | Northwind"
-        description="Mindent egy helyen: Fujitsu japán technológia, ipari hűtéstechnika, átlátható árazás és karbantartási menetrend a Northwind Hűtéstechnikától."
+        title="Részletek – Ipari hűtés, árazás, karbantartás | Northwind"
+        description="Mindent egy helyen: ipari hűtéstechnika, átlátható árazás és karbantartási menetrend a Northwind Hűtéstechnikától."
       />
       <Header />
       <main className="pt-24">
@@ -44,7 +44,7 @@ const Reszletek = () => {
                 Minden, amit a <span className="text-gradient">szakértelmünkről</span> tudni érdemes
               </h1>
               <p className="text-lg text-muted-foreground">
-                Japán technológia, ipari hűtés, átlátható árazás és karbantartási menetrend –
+                Ipari hűtés, átlátható árazás és karbantartási menetrend –
                 mélyebb betekintés a Northwind munkájába.
               </p>
 
