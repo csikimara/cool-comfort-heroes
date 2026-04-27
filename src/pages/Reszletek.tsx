@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useScrollToHash } from "@/hooks/useScrollToHash";
 
-const JapaneseTechnology = lazy(() => import("@/components/JapaneseTechnology"));
 const IndustrialCooling = lazy(() => import("@/components/IndustrialCooling"));
 const TransparentPricing = lazy(() => import("@/components/TransparentPricing"));
 const MaintenanceTimeline = lazy(() => import("@/components/MaintenanceTimeline"));
@@ -47,19 +46,16 @@ const Reszletek = () => {
 
               {/* Quick navigation */}
               <nav className="mt-8 flex flex-wrap justify-center gap-2">
-                <a href="#rolunk" className="px-4 py-2 rounded-full bg-background border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                <a href="#rolunk" className="px-5 py-2.5 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all">
                   Rólunk
                 </a>
-                <a href="#japan" className="px-4 py-2 rounded-full bg-background border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors">
-                  Japán technológia
-                </a>
-                <a href="#ipari" className="px-4 py-2 rounded-full bg-background border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                <a href="#ipari" className="px-5 py-2.5 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all">
                   Ipari hűtés
                 </a>
-                <a href="#arazas" className="px-4 py-2 rounded-full bg-background border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                <a href="#arazas" className="px-5 py-2.5 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all">
                   Átlátható árazás
                 </a>
-                <a href="#karbantartas" className="px-4 py-2 rounded-full bg-background border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                <a href="#karbantartas" className="px-5 py-2.5 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all">
                   Karbantartás
                 </a>
               </nav>
@@ -69,9 +65,6 @@ const Reszletek = () => {
 
         <Suspense fallback={null}>
           <About />
-          <div id="japan" className="scroll-mt-24">
-            <JapaneseTechnology />
-          </div>
           <div id="ipari" className="scroll-mt-24">
             <IndustrialCooling />
           </div>

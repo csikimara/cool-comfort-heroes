@@ -166,11 +166,11 @@ const Services = () => {
             href="/reszletek"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-soft hover:shadow-elevated hover:bg-primary/90 transition-all duration-300 group text-base"
           >
-            Tovább a részletes aloldalra
+            Részletek
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <p className="text-sm text-muted-foreground mt-3">
-            Japán technológia · Ipari hűtés · Árazás · Karbantartás
+            Rólunk · Ipari hűtés · Árazás · Karbantartás
           </p>
         </div>
       </div>

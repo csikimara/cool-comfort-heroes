@@ -71,7 +71,7 @@ const About = () => {
               </Button>
               <Button variant="outline" size="lg" asChild className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                 <Link to="/reszletek">
-                  Tovább a részletes aloldalra
+                  Részletek
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
