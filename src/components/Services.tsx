@@ -9,7 +9,6 @@ import {
   Fan,
   ArrowRight,
   SearchCheck,
-  ImageIcon,
   LucideIcon
 } from "lucide-react";
 import ServiceDetailModal from "./ServiceDetailModal";
@@ -71,10 +70,20 @@ const services: Service[] = [
             míg a hagyományos karbantartás csak a felületet tisztítja.
           </p>
         </div>
-        <div className="rounded-2xl border border-border/50 bg-muted/30 h-48 flex flex-col items-center justify-center gap-3">
-          <ImageIcon className="w-10 h-10 text-muted-foreground/50" />
-          <p className="text-sm text-muted-foreground/70 font-medium">Előtte / Utána fotó helye</p>
+        <div className="rounded-2xl overflow-hidden border border-border/50 bg-black">
+          <video
+            src="https://northwind.hu/video/zsakos-mosas.mp4"
+            controls
+            playsInline
+            preload="metadata"
+            className="w-full h-auto block"
+          >
+            A böngésződ nem támogatja a videó lejátszását.
+          </video>
         </div>
+        <p className="text-xs text-muted-foreground/70 text-center mt-2">
+          Zsákos klímamosás folyamata – rövid bemutató videó
+        </p>
       </>
     ),
   },
