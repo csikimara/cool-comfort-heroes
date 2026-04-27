@@ -10,6 +10,7 @@ const JapaneseTechnology = lazy(() => import("@/components/JapaneseTechnology"))
 const IndustrialCooling = lazy(() => import("@/components/IndustrialCooling"));
 const TransparentPricing = lazy(() => import("@/components/TransparentPricing"));
 const MaintenanceTimeline = lazy(() => import("@/components/MaintenanceTimeline"));
+const About = lazy(() => import("@/components/About"));
 const Footer = lazy(() => import("@/components/Footer"));
 
 const Reszletek = () => {
@@ -46,6 +47,9 @@ const Reszletek = () => {
 
               {/* Quick navigation */}
               <nav className="mt-8 flex flex-wrap justify-center gap-2">
+                <a href="#rolunk" className="px-4 py-2 rounded-full bg-background border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors">
+                  Rólunk
+                </a>
                 <a href="#japan" className="px-4 py-2 rounded-full bg-background border border-border text-sm font-medium hover:border-primary hover:text-primary transition-colors">
                   Japán technológia
                 </a>
@@ -64,6 +68,7 @@ const Reszletek = () => {
         </section>
 
         <Suspense fallback={null}>
+          <About />
           <div id="japan" className="scroll-mt-24">
             <JapaneseTechnology />
           </div>
