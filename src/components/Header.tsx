@@ -41,7 +41,7 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full hover:bg-primary/10 hover:text-primary transition-colors duration-200"
+                className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -76,7 +76,7 @@ const Header = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
+                  className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
