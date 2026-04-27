@@ -158,7 +158,7 @@ const Fujitsu = () => {
         <section className="py-20" aria-label="Fujitsu előnyök">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-red-100 text-red-600 text-sm font-medium mb-4">
+              <span className="inline-block text-red-600 text-sm font-semibold uppercase tracking-wider mb-4">
                 Miért a Fujitsu?
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
@@ -187,7 +187,7 @@ const Fujitsu = () => {
         <section className="py-20 bg-muted/30" aria-label="Fujitsu modell összehasonlítás">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <span className="inline-block px-4 py-1.5 rounded-full bg-red-100 text-red-600 text-sm font-medium mb-4">
+              <span className="inline-block text-red-600 text-sm font-semibold uppercase tracking-wider mb-4">
                 Vásárlási útmutató
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -211,7 +211,7 @@ const Fujitsu = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <span className="inline-block px-4 py-1.5 rounded-full bg-red-100 text-red-600 text-sm font-medium mb-4">
+                <span className="inline-block text-red-600 text-sm font-semibold uppercase tracking-wider mb-4">
                   Előnyök
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-8">
