@@ -1,5 +1,6 @@
-import { CheckCircle2, ClipboardCheck, ShieldCheck, Cpu, Wrench } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, ShieldCheck, Cpu, Wrench, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -64,9 +65,17 @@ const About = () => {
               ))}
             </div>
 
-            <Button variant="hero" size="lg" asChild>
-              <a href="#kapcsolat">Kérjen ingyenes szaktanácsadást!</a>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button variant="hero" size="lg" asChild>
+                <a href="#kapcsolat">Kérjen ingyenes szaktanácsadást!</a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/reszletek">
+                  Részletek
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
 
           {/* Right content - Image */}

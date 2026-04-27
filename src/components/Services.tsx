@@ -159,6 +159,17 @@ const Services = () => {
             </a>
           ))}
         </div>
+
+        {/* CTA to details page */}
+        <div className="mt-12 text-center">
+          <a
+            href="/reszletek"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+          >
+            Tudjon meg többet a szakértelmünkről
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
+        </div>
       </div>
 
       {/* Service Detail Modal */}
