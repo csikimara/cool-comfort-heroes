@@ -74,6 +74,9 @@ const services: Service[] = [
           <video
             src="https://northwind.hu/video/zsakos-mosas.mp4"
             controls
+            autoPlay
+            muted
+            loop
             playsInline
             preload="metadata"
             className="w-full h-auto block"
@@ -82,7 +85,7 @@ const services: Service[] = [
           </video>
         </div>
         <p className="text-xs text-muted-foreground/70 text-center mt-2">
-          Zsákos klímamosás folyamata – rövid bemutató videó
+          Zsákos klímamosás folyamata – a hang bekapcsolásához kattints a hangerő ikonra
         </p>
       </>
     ),
