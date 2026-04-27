@@ -11,6 +11,7 @@ const TransparentPricing = lazy(() => import("@/components/TransparentPricing"))
 const MaintenanceTimeline = lazy(() => import("@/components/MaintenanceTimeline"));
 const About = lazy(() => import("@/components/About"));
 const Footer = lazy(() => import("@/components/Footer"));
+const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 
 const Reszletek = () => {
   useScrollToHash();
@@ -100,6 +101,7 @@ const Reszletek = () => {
       </main>
       <Suspense fallback={null}>
         <Footer />
+        <FujitsuFloatingButton />
       </Suspense>
     </div>
   );
