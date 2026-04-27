@@ -141,16 +141,16 @@ const Services = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+              <h3 className="text-xl sm:text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
                 {service.title}
               </h3>
-              <p className="text-sm leading-relaxed mb-4 text-muted-foreground">
+              <p className="text-base leading-relaxed mb-4 text-muted-foreground">
                 {service.description}
               </p>
 
-              {/* Link */}
-              <span className="inline-flex items-center gap-2 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {service.detailedDescription ? "Részletek" : "Ajánlatkérés"}
+              {/* Always-visible link affordance (mobile-friendly) */}
+              <span className="card-cta">
+                {service.detailedDescription ? "Részletek megnyitása" : "Ajánlatkérés"}
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
 
@@ -164,11 +164,14 @@ const Services = () => {
         <div className="mt-12 text-center">
           <a
             href="/reszletek"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/10 text-primary font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-soft hover:shadow-elevated hover:bg-primary/90 transition-all duration-300 group text-base"
           >
-            Tudjon meg többet a szakértelmünkről
+            Tovább a részletes aloldalra
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
+          <p className="text-sm text-muted-foreground mt-3">
+            Japán technológia · Ipari hűtés · Árazás · Karbantartás
+          </p>
         </div>
       </div>
 

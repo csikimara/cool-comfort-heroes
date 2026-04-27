@@ -69,9 +69,9 @@ const About = () => {
               <Button variant="hero" size="lg" asChild>
                 <a href="#kapcsolat">Kérjen ingyenes szaktanácsadást!</a>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" asChild className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                 <Link to="/reszletek">
-                  Részletek
+                  Tovább a részletes aloldalra
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>

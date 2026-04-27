@@ -27,19 +27,19 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               A Northwind Hűtéstechnika 2009 óta biztosít megbízható vállalkozói hátteret ügyfeleinek.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
-              <a href="tel:+36704099760" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
+              <a href="tel:+36704099760" className="flex items-center gap-2 text-background underline underline-offset-4 decoration-background/40 hover:decoration-background transition-colors text-sm sm:text-base">
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 +36 70 409 9760
               </a>
-              <a href="mailto:northwind@northwind.hu" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base break-all sm:break-normal">
+              <a href="mailto:northwind@northwind.hu" className="flex items-center gap-2 text-background underline underline-offset-4 decoration-background/40 hover:decoration-background transition-colors text-sm sm:text-base break-all sm:break-normal">
                 <Mail className="w-4 h-4 flex-shrink-0" />
                 northwind@northwind.hu
               </a>
-              <a href="https://www.facebook.com/northwindkft/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
+              <a href="https://www.facebook.com/northwindkft/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background underline underline-offset-4 decoration-background/40 hover:decoration-background transition-colors text-sm sm:text-base">
                 <Facebook className="w-4 h-4 flex-shrink-0" />
                 Facebook
               </a>
-              <a href="https://www.instagram.com/northwind_hutestechnika/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background/70 hover:text-background transition-colors text-sm sm:text-base">
+              <a href="https://www.instagram.com/northwind_hutestechnika/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-background underline underline-offset-4 decoration-background/40 hover:decoration-background transition-colors text-sm sm:text-base">
                 <Instagram className="w-4 h-4 flex-shrink-0" />
                 Instagram
               </a>
@@ -50,11 +50,11 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           <div>
             <h3 className="font-semibold mb-5 text-lg">Szolgáltatások</h3>
             <ul className="space-y-3">
-              <li><a href="#szolgaltatasok" className="text-background/70 hover:text-background transition-colors">Klímaszerelés</a></li>
-              <li><a href="#szolgaltatasok" className="text-background/70 hover:text-background transition-colors">Karbantartás</a></li>
-              <li><a href="#szolgaltatasok" className="text-background/70 hover:text-background transition-colors">Hőszivattyú</a></li>
-              <li><a href="#szolgaltatasok" className="text-background/70 hover:text-background transition-colors">Légtechnika</a></li>
-              <li><a href="#szolgaltatasok" className="text-background/70 hover:text-background transition-colors">Klímatisztítás</a></li>
+              <li><a href="#szolgaltatasok" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Klímaszerelés</a></li>
+              <li><a href="#szolgaltatasok" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Karbantartás</a></li>
+              <li><a href="#szolgaltatasok" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Hőszivattyú</a></li>
+              <li><a href="#szolgaltatasok" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Légtechnika</a></li>
+              <li><a href="#szolgaltatasok" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Klímatisztítás</a></li>
             </ul>
           </div>
 
@@ -87,8 +87,8 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
             © 2026 Northwind Hűtéstechnika Kft. Minden jog fenntartva.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link to="/adatvedelem" className="text-background/50 hover:text-background transition-colors">Adatvédelem</Link>
-            <a href="#" className="text-background/50 hover:text-background transition-colors">ÁSZF</a>
+            <Link to="/adatvedelem" className="text-background/80 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Adatvédelem</Link>
+            <a href="#" className="text-background/80 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">ÁSZF</a>
           </div>
         </div>
       </div>
