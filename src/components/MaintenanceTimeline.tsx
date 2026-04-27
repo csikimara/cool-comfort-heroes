@@ -39,7 +39,7 @@ const MaintenanceTimeline = () => {
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+          <span className="inline-block text-primary text-sm font-semibold uppercase tracking-wider mb-4">
             Karbantartási Idővonal
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
