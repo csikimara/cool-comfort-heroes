@@ -44,7 +44,7 @@ const Reszletek = () => {
                 Minden, amit a <span className="text-gradient">szakértelmünkről</span> tudni érdemes
               </h1>
               <p className="text-lg text-muted-foreground">
-                Japán technológia, ipari hűtés, átlátható árazás és karbantartási menetrend –
+                Ipari hűtés, átlátható árazás és karbantartási menetrend –
                 mélyebb betekintés a Northwind munkájába.
               </p>
 
