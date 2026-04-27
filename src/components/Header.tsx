@@ -36,12 +36,12 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200"
+                className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full hover:bg-primary/10 hover:text-primary transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -76,7 +76,7 @@ const Header = () => {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors py-2"
+                  className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
