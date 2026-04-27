@@ -30,7 +30,7 @@ const Reszletek = () => {
             <div className="max-w-3xl mx-auto mb-8">
               <Link
                 to="/"
-                className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all"
               >
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 Vissza a kezdőlapra
