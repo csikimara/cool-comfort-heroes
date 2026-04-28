@@ -65,7 +65,7 @@ const models = [
     accentClass: "from-sky-500 to-sky-600",
     badgeClass: "bg-sky-100 text-sky-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/eco-sorozat-kl",
-    catalogLabel: "KL (ECO) részletek és árak",
+    catalogLabel: "Hivatalos magyarországi árlista megnyitása",
   },
   {
     id: "km",
@@ -85,7 +85,7 @@ const models = [
     accentClass: "from-amber-500 to-orange-500",
     badgeClass: "bg-amber-100 text-amber-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/standard-sorozat-km",
-    catalogLabel: "KM (Standard) részletek és árak",
+    catalogLabel: "Hivatalos magyarországi árlista megnyitása",
   },
   {
     id: "kj",
@@ -106,7 +106,7 @@ const models = [
     accentClass: "from-red-500 to-red-600",
     badgeClass: "bg-red-100 text-red-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima",
-    catalogLabel: "KJ sorozat részletek és árak",
+    catalogLabel: "Hivatalos magyarországi árlista megnyitása",
   },
   {
     id: "kg",
@@ -126,7 +126,7 @@ const models = [
     accentClass: "from-emerald-500 to-emerald-600",
     badgeClass: "bg-emerald-100 text-emerald-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/design-sorozat-kg",
-    catalogLabel: "KG sorozat részletek és árak",
+    catalogLabel: "Hivatalos magyarországi árlista megnyitása",
   },
 ];
 
