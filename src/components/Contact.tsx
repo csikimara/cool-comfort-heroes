@@ -228,8 +228,8 @@ const Contact = () => {
                   </>
                 )}
               </Button>
-              <p className="text-xs text-muted-foreground mt-3 text-center">
-                Korrekt elszámolás: Nincsenek rejtett költségek és váratlan kiszállási díjak. Amit a felméréskor rögzítünk, az a végösszeg.
+              <p className="text-sm sm:text-sm text-foreground/80 mt-3 text-center leading-relaxed">
+                <span className="font-semibold text-foreground">Korrekt elszámolás:</span> Nincsenek rejtett költségek és váratlan kiszállási díjak. Amit a felméréskor rögzítünk, az a végösszeg.
               </p>
             </form>
           </div>
