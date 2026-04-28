@@ -59,6 +59,9 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
         >
           <a href="/#kapcsolat">Ajánlatot kérek</a>
         </Button>
+        <p className="text-xs text-muted-foreground text-center leading-relaxed px-1">
+          Tekintse meg a hivatalos magyarországi vezérképviselet naprakész árlistáját és termékkatalógusát.
+        </p>
         <Button
           size="lg"
           variant="outline"
