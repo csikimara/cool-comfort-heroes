@@ -1,4 +1,4 @@
-import { Phone, Flower2, Sun, Leaf, Snowflake } from "lucide-react";
+import { Phone, Flower2, Sun, Leaf, Snowflake, ShieldCheck, Wind, PiggyBank, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const phases = [
@@ -33,6 +33,29 @@ const phases = [
   },
 ];
 
+const benefits = [
+  {
+    icon: ShieldCheck,
+    title: "Garancia megőrzése",
+    description: "A gyártói garancia feltétele a dokumentált, rendszeres karbantartás.",
+  },
+  {
+    icon: Wind,
+    title: "Tisztább levegő",
+    description: "Tiszta szűrők és hőcserélő – egészségesebb beltéri klíma az otthonában.",
+  },
+  {
+    icon: PiggyBank,
+    title: "Alacsonyabb rezsi",
+    description: "Karbantartott klíma akár 25%-kal kevesebb áramot fogyaszt.",
+  },
+  {
+    icon: Clock,
+    title: "Hosszabb élettartam",
+    description: "A megelőző karbantartás évekkel meghosszabbítja a készülék életét.",
+  },
+];
+
 const MaintenanceTimeline = () => {
   return (
     <section className="py-20 sm:py-32 bg-gradient-frost">
@@ -55,6 +78,31 @@ const MaintenanceTimeline = () => {
             higiénikus működés alapja is. 1993 óta látjuk: aki időben lép, az
             nyugodtan pihenhet.
           </p>
+        </div>
+
+        {/* Why it matters – mini infographic */}
+        <div className="max-w-5xl mx-auto mb-16">
+          <h3 className="text-center text-sm font-semibold uppercase tracking-wider text-primary mb-6">
+            Miért fontos a rendszeres karbantartás?
+          </h3>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {benefits.map((b) => (
+              <div
+                key={b.title}
+                className="bg-card rounded-2xl p-5 border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-0.5 text-center"
+              >
+                <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center mb-3">
+                  <b.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h4 className="text-sm sm:text-base font-bold text-foreground mb-1.5">
+                  {b.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {b.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Timeline */}
