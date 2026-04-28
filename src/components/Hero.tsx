@@ -3,7 +3,7 @@ import { ArrowRight, Snowflake, ThermometerSnowflake, Wind } from "lucide-react"
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero pt-20 pb-32 sm:pb-36">
+    <section className="relative flex items-center justify-center overflow-hidden bg-gradient-hero pt-24 pb-20 sm:pb-24 min-h-[640px]">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary-foreground/5 rounded-full blur-3xl" />
@@ -20,13 +20,13 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Eyebrow label (non-interactive) */}
-          <div className="inline-flex items-center gap-2 text-primary-foreground/80 text-sm font-medium tracking-wide uppercase mb-8 animate-fade-up">
+          <div className="inline-flex items-center gap-2 text-primary-foreground/80 text-sm font-medium tracking-wide uppercase mb-5 animate-fade-up">
             <Snowflake className="w-4 h-4" />
             <span>Professzionális klíma megoldások</span>
           </div>
 
           {/* Main heading */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-4 animate-fade-up" style={{ animationDelay: "0.1s" }}>
             Klímaszerelés Budapesten és Pest vármegyében{" "}
             <span className="relative">
               – 33 év szakmai tapasztalattal
@@ -38,7 +38,7 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p
-            className="hero-subtitle-force text-lg sm:text-xl text-primary-foreground/80 dark:text-white max-w-2xl mx-auto mb-10 animate-fade-up"
+            className="hero-subtitle-force text-base sm:text-lg text-primary-foreground/80 dark:text-white max-w-2xl mx-auto mb-6 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
             Lakossági és ipari klímamegoldások Budapesten és Pest vármegyében.
@@ -60,18 +60,18 @@ const Hero = () => {
           </div>
 
           {/* Trust badges */}
-          <div className="mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up relative z-10" style={{ animationDelay: "0.4s" }}>
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 sm:gap-8 md:gap-12 text-primary-foreground/70">
+          <div className="mt-10 pt-6 border-t border-primary-foreground/20 animate-fade-up relative z-10" style={{ animationDelay: "0.4s" }}>
+            <div className="flex flex-row flex-wrap justify-center gap-6 sm:gap-10 md:gap-12 text-primary-foreground/70">
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">33+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">33+</div>
                 <div className="text-sm">Év tapasztalat</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">2000+</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">2000+</div>
                 <div className="text-sm">Elégedett ügyfél</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl sm:text-4xl font-bold text-primary-foreground">100%</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">100%</div>
                 <div className="text-sm">Garanciális munka</div>
               </div>
             </div>
