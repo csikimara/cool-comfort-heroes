@@ -41,14 +41,11 @@ const Hero = () => {
             className="hero-subtitle-force text-lg sm:text-xl text-primary-foreground/80 dark:text-white max-w-2xl mx-auto mb-10 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
-            Klímaszerelés, karbantartás, hőszivattyúk és komplex{" "}
-            <span className="hero-highlight-force dark:text-white">légtechnikai megoldások</span>{" "}
-            lakossági és ipari ügyfelek részére. A Northwind Hűtéstechnika 2009 óta biztosít stabil vállalkozói hátteret
-            a 33 éves szakmai tapasztalathoz.
+            Lakossági és ipari klímamegoldások Budapesten és Pest vármegyében.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: "0.3s" }}>
+          <div className="flex justify-center animate-fade-up" style={{ animationDelay: "0.3s" }}>
             <Button 
               variant="heroOutline" 
               size="lg" 
@@ -60,15 +57,7 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button variant="heroOutline" size="lg" asChild>
-              <a href="#szolgaltatasok">Szolgáltatásaink</a>
-            </Button>
           </div>
-
-          {/* Trust text */}
-          <p className="text-sm text-primary-foreground/70 mt-6 animate-fade-up" style={{ animationDelay: "0.35s" }}>
-            Korrekt elszámolás: Nincsenek rejtett költségek és váratlan kiszállási díjak. Amit a felméréskor rögzítünk, az a végösszeg.
-          </p>
 
           {/* Trust badges */}
           <div className="mt-16 pt-8 border-t border-primary-foreground/20 animate-fade-up relative z-10" style={{ animationDelay: "0.4s" }}>
