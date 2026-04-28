@@ -1,4 +1,4 @@
-import { CheckCircle2, ExternalLink, type LucideIcon } from "lucide-react";
+import { Check, ExternalLink, type LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export interface FujitsuModel {
@@ -41,7 +41,9 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
       <ul className="space-y-2.5 mb-6 flex-1">
         {model.highlights.map((h) => (
           <li key={h} className="flex items-start gap-2 text-sm text-foreground">
-            <CheckCircle2 className="w-4 h-4 text-green-500 shrink-0 mt-0.5" />
+            <span className="shrink-0 mt-0.5 w-5 h-5 rounded-full bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center">
+              <Check className="w-3 h-3 text-white" strokeWidth={3} />
+            </span>
             <span>{h}</span>
           </li>
         ))}
