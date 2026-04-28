@@ -178,9 +178,13 @@ const Services = () => {
               ))}
             </CarouselContent>
           </Carousel>
-          <p className="text-center text-xs text-muted-foreground mt-4">
-            ← Húzd oldalra a további szolgáltatásokért →
-          </p>
+          <div className="mt-5 flex justify-center">
+            <p className="inline-flex items-center gap-2 text-sm font-semibold text-primary bg-primary/10 border border-primary/30 rounded-full px-4 py-2 shadow-soft animate-pulse">
+              <ArrowRight className="w-4 h-4 rotate-180" />
+              Húzd oldalra a további szolgáltatásokért
+              <ArrowRight className="w-4 h-4" />
+            </p>
+          </div>
         </div>
 
         {/* Tablet & desktop: grid */}
