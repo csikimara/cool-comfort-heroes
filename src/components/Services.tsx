@@ -12,6 +12,11 @@ import {
   LucideIcon
 } from "lucide-react";
 import ServiceDetailModal from "./ServiceDetailModal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 interface Service {
   icon: LucideIcon;
@@ -119,6 +124,31 @@ const Services = () => {
     }
   };
 
+  const renderCard = (service: Service, index: number) => (
+    <a
+      key={service.title}
+      href="#kapcsolat"
+      onClick={(e) => handleCardClick(service, e)}
+      className="group relative rounded-2xl p-6 border bg-gradient-card border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 block h-full"
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+        <service.icon className="w-7 h-7 text-primary-foreground" />
+      </div>
+      <h3 className="text-xl sm:text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+        {service.title}
+      </h3>
+      <p className="text-base leading-relaxed mb-4 text-muted-foreground">
+        {service.description}
+      </p>
+      <span className="card-cta">
+        {service.detailedDescription ? "Részletek megnyitása" : "Ajánlatkérés"}
+        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+      </span>
+      <div className="absolute inset-0 rounded-2xl bg-gradient-hero opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
+    </a>
+  );
+
   return (
     <section id="szolgaltatasok" className="py-20 sm:py-32 bg-background">
       <div className="container mx-auto px-4">
@@ -137,39 +167,25 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Services grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <a
-              key={service.title}
-              href="#kapcsolat"
-              onClick={(e) => handleCardClick(service, e)}
-              className="group relative rounded-2xl p-6 border bg-gradient-card border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 block"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <service.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
+        {/* Mobile: swipeable slider */}
+        <div className="sm:hidden">
+          <Carousel opts={{ align: "start", loop: false }} className="w-full">
+            <CarouselContent className="-ml-4">
+              {services.map((service, index) => (
+                <CarouselItem key={service.title} className="pl-4 basis-[85%]">
+                  {renderCard(service, index)}
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          <p className="text-center text-xs text-muted-foreground mt-4">
+            ← Húzd oldalra a további szolgáltatásokért →
+          </p>
+        </div>
 
-              {/* Content */}
-              <h3 className="text-xl sm:text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-base leading-relaxed mb-4 text-muted-foreground">
-                {service.description}
-              </p>
-
-              {/* Always-visible link affordance (mobile-friendly) */}
-              <span className="card-cta">
-                {service.detailedDescription ? "Részletek megnyitása" : "Ajánlatkérés"}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </span>
-
-              {/* Decorative gradient */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-hero opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-            </a>
-          ))}
+        {/* Tablet & desktop: grid */}
+        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => renderCard(service, index))}
         </div>
 
         {/* CTA to details page */}
