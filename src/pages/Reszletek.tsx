@@ -5,13 +5,31 @@ import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useScrollToHash } from "@/hooks/useScrollToHash";
+import About from "@/components/About";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const IndustrialCooling = lazy(() => import("@/components/IndustrialCooling"));
 const TransparentPricing = lazy(() => import("@/components/TransparentPricing"));
 const MaintenanceTimeline = lazy(() => import("@/components/MaintenanceTimeline"));
-const About = lazy(() => import("@/components/About"));
 const Footer = lazy(() => import("@/components/Footer"));
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
+
+const SectionSkeleton = () => (
+  <div className="py-20 sm:py-32">
+    <div className="container mx-auto px-4">
+      <div className="max-w-3xl mx-auto text-center mb-12 space-y-4">
+        <Skeleton className="h-4 w-32 mx-auto" />
+        <Skeleton className="h-10 w-3/4 mx-auto" />
+        <Skeleton className="h-4 w-full max-w-xl mx-auto" />
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <Skeleton key={i} className="h-48 rounded-2xl" />
+        ))}
+      </div>
+    </div>
+  </div>
+);
 
 const Reszletek = () => {
   useScrollToHash();
@@ -42,7 +60,7 @@ const Reszletek = () => {
                 Részletek
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Minden, amit a <span className="text-gradient">szakértelmünkről</span> tudni érdemes
+                Minden, amit a Northwind klímatechnikáról és <span className="text-gradient">szakértelmünkről</span> tudni érdemes
               </h1>
               <p className="text-lg text-muted-foreground">
                 Ipari hűtés, átlátható árazás és karbantartási menetrend –
@@ -68,11 +86,34 @@ const Reszletek = () => {
           </div>
         </section>
 
-        <Suspense fallback={null}>
-          <About />
+        {/* About loaded eagerly so the top of the page renders immediately */}
+        <About />
+
+        <Suspense fallback={<SectionSkeleton />}>
           <div id="ipari" className="scroll-mt-24">
             <IndustrialCooling />
           </div>
+        </Suspense>
+
+        {/* Mid-page CTA between Industrial cooling and Pricing */}
+        <section className="py-12 sm:py-16 bg-gradient-hero">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary-foreground mb-3">
+              Ipari vagy lakossági projektje van?
+            </h2>
+            <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-6">
+              Kérjen ingyenes, kötelezettség nélküli árajánlatot – pontos elszámolással, rejtett költségek nélkül.
+            </p>
+            <Button variant="heroOutline" size="lg" asChild>
+              <Link to="/#kapcsolat">
+                Ingyenes ajánlatkérés
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </Button>
+          </div>
+        </section>
+
+        <Suspense fallback={<SectionSkeleton />}>
           <div id="arazas" className="scroll-mt-24">
             <TransparentPricing />
           </div>
