@@ -20,7 +20,7 @@ const services = [
   {
     icon: AirVent,
     title: "Klímaszerelés – Komfort és tisztaság az Ön otthonában",
-    galleryHref: "/galeria/lakossagi-split/",
+    galleryHref: "/referenciak/lakossagi-split",
     short:
       "Prémium split és multi-split rendszerek telepítése lakásokba és családi házakba.",
     paragraphs: [
@@ -31,7 +31,7 @@ const services = [
   {
     icon: ThermometerSun,
     title: "Hőszivattyús rendszerek – A jövő fűtési megoldása",
-    galleryHref: "/galeria/hoszivattyu/",
+    galleryHref: "/referenciak/hoszivattyu",
     short:
       "Környezetbarát és gazdaságos hűtés, fűtés és melegvíz-ellátás egyetlen rendszerrel.",
     paragraphs: [
@@ -42,7 +42,7 @@ const services = [
   {
     icon: Snowflake,
     title: "Rejtett légcsatornázható rendszerek – Láthatatlan elegancia",
-    galleryHref: "/galeria/legcsatornazhato/",
+    galleryHref: "/referenciak/legcsatornazhato",
     short:
       "Esztétikus klímamegoldás igényes otthonokba, ahol a technika észrevétlen marad.",
     paragraphs: [
@@ -53,7 +53,7 @@ const services = [
   {
     icon: SprayCan,
     title: "Prémium Zsákos Mélymosás – Higiénia és Egészség",
-    galleryHref: "/galeria/karbantartas/",
+    galleryHref: "/referenciak/karbantartas",
     short:
       "Átfogó vegyszeres tisztítás, amely visszaadja klímája újkori állapotát és friss illatát.",
     paragraphs: [
