@@ -21,29 +21,29 @@ const services = [
     short:
       "Professzionális split és multi-split klímaberendezések telepítése otthonokba és irodákba.",
     paragraphs: [
-      "A klímaszerelés során felmérjük a helyiségek adottságait, kiválasztjuk a megfelelő teljesítményű készüléket, majd szakszerűen telepítjük a beltéri és kültéri egységet. A csövezést, elektromos bekötést, vákuumozást és beüzemelést is elvégezzük.",
-      "A pontos telepítés biztosítja a csendes működést, az alacsony fogyasztást és a hosszú élettartamot.",
+      "A klímaszerelés során felmérjük a helyiségek adottságait, kiválasztjuk a megfelelő teljesítményű készüléket, majd szakszerűen telepítjük a beltéri és kültéri egységet. A csövezést, az elektromos bekötést, a szakszerű vákuumozást és a beüzemelést is elvégezzük, mindezt maximális odafigyeléssel és pormentes munkavégzéssel.",
+      "A precíz telepítés biztosítja a csendes működést, az alacsony energiafogyasztást és a berendezés hosszú élettartamot.",
     ],
   },
   {
     icon: ThermometerSun,
     title: "Hőszivattyú",
     short:
-      "Energiahatékony hőszivattyú rendszerek telepítése fűtéshez és hűtéshez egyaránt.",
+      "Energiahatékony hőszivattyú rendszerek telepítése fűtésre és hűtésre.",
     paragraphs: [
-      "A hőszivattyú korszerű, környezetbarát megoldás fűtésre és hűtésre egyaránt. A levegőből vagy talajból nyert energiát hasznosítja, így jelentősen csökkenti a rezsiköltségeket.",
-      "A telepítés során gondoskodunk a megfelelő méretezésről, beépítésről és beállításról, hogy a rendszer a lehető legjobb hatásfokkal működjön.",
+      "A hőszivattyú a legkorszerűbb, környezetbarát gépészeti megoldás. A külső levegőből nyert energiát hasznosítja, így – különösen a kedvezményes H-tarifa igénylésével – drasztikusan csökkentheti az ingatlan rezsiköltségeit.",
+      "A kivitelezés során gondoskodunk a hajszálpontos méretezésről, a szakszerű beépítésről és a finomhangolásról, hogy a rendszer a leghidegebb téli napokon is a legjobb hatásfokkal működjön.",
     ],
   },
   {
     icon: SprayCan,
     title: "Prémium Zsákos Klímamosás",
     short:
-      "Gyári higiénia helyreállítása: professzionális vegyszeres mélymosás, amely visszaadja a klíma eredeti tisztaságát és hatékonyságát.",
+      "Gyári higiénia helyreállítása: professzionális vegyszeres mélymosás, amely visszaadja a klíma eredeti tisztaságát, hatékonyságát és friss illatát.",
     paragraphs: [
-      "A professzionális klímatisztítás során speciális tisztítózsákot használunk, amely lehetővé teszi a beltéri egység teljes, vegyszeres átmosását anélkül, hogy a fal vagy a helyiség koszolódna. A zsákos mosás eltávolítja a hőcserélőn és a ventilátoron lerakódott port, gombát, nyálkás szennyeződéseket és baktériumokat.",
-      "A tisztítás része a kültéri egység alapos mosása is: nagy nyomású vízzel és megfelelő tisztítószerekkel eltávolítjuk a hőcserélőről a port, pollent, rovarokat és egyéb lerakódásokat. Ez javítja a hűtési-fűtési teljesítményt, csökkenti a zajszintet és növeli a kompresszor élettartamát.",
-      "A rendszeres, alapos klímatisztítás nemcsak egészségesebb levegőt biztosít, hanem jelentősen javítja a készülék hatékonyságát és megbízhatóságát is.",
+      "A tisztítás során speciális mosózsákot használunk, amely lehetővé teszi a beltéri egység teljes, nagynyomású vegyszeres átmosását anélkül, hogy a fal vagy a bútorzat koszolódna. Ez az eljárás maradéktalanul eltávolítja a hőcserélőn lerakódott port, a penészgombát, megszünteti a kellemetlen szagokat, és elpusztítja a baktériumokat.",
+      "A folyamat elengedhetetlen része a kültéri egység karbantartása is: nagynyomású vízzel szabadítjuk meg a hőcserélőt a lerakódott pollentől és szennyeződésektől. Ez javítja a hőleadást, csökkenti a zajszintet és védi a kompresszort a túlmelegedéstől.",
+      "A rendszeres mélymosás nemcsak az Ön egészségét védi, hanem garantálja a készülék üzembiztos, energiatakarékos működését is.",
     ],
   },
 ];
