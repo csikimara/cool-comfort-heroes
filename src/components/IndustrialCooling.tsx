@@ -16,14 +16,14 @@ const sections = [
   },
   {
     icon: Snowflake,
-    title: "Légcsatornázható és Félipari Split Megoldások",
+    title: "Légcsatornázható és Félipari megoldások – Kompromisszumok nélküli komfort",
     galleryHref: "/galeria/legcsatornazhato/",
-    desc: "Speciális megoldások irodákba és csarnokokba. Légcsatornázható gépek telepítése, ahol a beltéri egységet a szennyezett téren kívül helyezzük el, így garantálva a gép védelmét és a tiszta levegő befúvását.",
+    desc: "A légcsatornázható rendszerek ott nyújtanak megoldást, ahol a fali split klímák telepítése esztétikailag vagy technikailag nem előnyös. A padlástérbe vagy álmennyezetbe rejtett berendezések láthatatlanul, diszkrét rácsokon keresztül biztosítanak tökéletes légelosztást.",
     bullets: [
-      "Légcsatornázható beltéri egységek álmennyezetbe rejtve",
-      "Beltéri egység elhelyezése gépészeti helyiségben",
-      "Tiszta, szűrt levegő befúvása irodákba és munkaterekre",
-      "Huzatmentes, optimális légelosztás precíz tervezéssel",
+      "Tagolt terek kezelése: egyetlen rendszerrel több kisebb helyiség (hálószobák, tárgyalók) egyidejű hűtése és fűtése.",
+      "Ipari védelem: szennyezett üzemi környezetben a gépet a hűtött téren kívül helyezzük el, védve a portól és növelve az élettartamot.",
+      "Huzatmentes kialakítás: a befúvási pontok precíz elhelyezésével megszüntetjük a közvetlen hideg légáramot, egyenletes komfortot teremtve.",
+      "Csendes üzem: a géphang a lakótéren kívül marad, ideális hálószobákba és csendes irodai környezetbe egyaránt.",
     ],
   },
   {
