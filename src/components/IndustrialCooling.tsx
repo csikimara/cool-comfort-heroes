@@ -51,13 +51,13 @@ const IndustrialCooling = () => {
             Ipari megoldások
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Ipari folyadékhűtők (Chiller) és Fan-coil rendszerek{" "}
-            <span className="text-gradient">karbantartása</span>
+            Komplex Ipari Klíma- és{" "}
+            <span className="text-gradient">Légtechnikai Megoldások</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Az otthoni kényelem mellett évtizedes tapasztalattal rendelkezem nagy teljesítményű ipari rendszerek 
-            telepítésében és szervizelésében. Tudom, hogy egy irodaház vagy üzem esetében a hűtés kiesése komoly 
-            probléma – ezért kínálok gyors, gyakorlatias és megbízható megoldásokat <strong>1993 óta</strong>.
+            Az otthoni kényelem biztosítása mellett évtizedes tapasztalattal rendelkezünk nagy teljesítményű ipari rendszerek
+            telepítésében és szervizelésében. Tudjuk, hogy egy irodaház vagy üzem esetében a hűtés vagy szellőzés kiesése komoly
+            probléma – ezért kínálunk gyors, gyakorlatias és megbízható gépészeti megoldásokat <strong>1993 óta</strong>.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ const IndustrialCooling = () => {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="relative rounded-2xl p-8 border bg-gradient-card border-border/50 shadow-card text-center"
+              className="relative rounded-2xl p-8 border bg-gradient-card border-border/50 shadow-card text-center cursor-default"
             >
               <div className="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center mb-6 mx-auto">
                 <feature.icon className="w-8 h-8 text-primary-foreground" />
