@@ -212,7 +212,7 @@ const Services = () => {
               { href: "/reszletek#rolunk", label: "Rólunk", Icon: Info },
               { href: "/reszletek#ipari", label: "Ipari hűtés", Icon: Factory },
               { href: "/reszletek#arazas", label: "Árazás", Icon: Receipt },
-              { href: "/reszletek#karbantartas", label: "Karbantartás", Icon: Wrench },
+              { href: "/reszletek#karbantartas-idovonal", label: "Karbantartás", Icon: Wrench },
             ].map(({ href, label, Icon }) => (
               <a
                 key={href}
