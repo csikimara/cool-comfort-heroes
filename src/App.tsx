@@ -11,7 +11,6 @@ import FeaturebaseLoader from "./components/FeaturebaseLoader";
 // Lazy load non-critical routes
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Fujitsu = lazy(() => import("./pages/Fujitsu"));
-const FujitsuMegoldasok = lazy(() => import("./pages/FujitsuMegoldasok"));
 const Reszletek = lazy(() => import("./pages/Reszletek"));
 const LakossagiKlima = lazy(() => import("./pages/LakossagiKlima"));
 const Galeria = lazy(() => import("./pages/Galeria"));
@@ -38,7 +37,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/adatvedelem" element={<PrivacyPolicy />} />
             <Route path="/fujitsu" element={<Fujitsu />} />
-            <Route path="/fujitsu-megoldasok" element={<FujitsuMegoldasok />} />
+            <Route path="/fujitsu-megoldasok" element={<Navigate to="/fujitsu" replace />} />
             <Route path="/reszletek" element={<Reszletek />} />
             <Route path="/lakossagi-klima" element={<LakossagiKlima />} />
             <Route path="/referenciak/:slug" element={<Galeria />} />
