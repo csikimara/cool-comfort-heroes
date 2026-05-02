@@ -19,13 +19,13 @@ const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingBut
 const services = [
   {
     icon: AirVent,
-    title: "Klímaszerelés (Split és Multi-split)",
+    title: "Klímaszerelés – Komfort és tisztaság az Ön otthonában",
     galleryHref: "/galeria/lakossagi-split/",
     short:
-      "Professzionális split és multi-split klímaberendezések telepítése otthonokba és irodákba.",
+      "Prémium split és multi-split rendszerek telepítése lakásokba és családi házakba.",
     paragraphs: [
-      "A klímaszerelés során felmérjük a helyiségek adottságait, kiválasztjuk a megfelelő teljesítményű készüléket, majd szakszerűen telepítjük a beltéri és kültéri egységet. A csövezést, az elektromos bekötést, a szakszerű vákuumozást és a beüzemelést is elvégezzük, mindezt maximális odafigyeléssel és pormentes munkavégzéssel.",
-      "A precíz telepítés biztosítja a csendes működést, az alacsony energiafogyasztást és a berendezés hosszú élettartamot.",
+      "Egy jól kiválasztott klíma nemcsak hűt, hanem észrevétlenül gondoskodik otthona kényelméről. A szerelés során nemcsak a technikai paraméterekre figyelünk, hanem a helyiségek adottságaihoz mérten segítünk kiválasztani azt a készüléket, amely a legcsendesebben és leghatékonyabban működik.",
+      "A Northwind csapatánál a szakszerű telepítés (vákuumozás, precíz bekötés) alapkövetelmény, de nálunk a maximális tisztaság is az: ipari porszívóval, pormentesen dolgozunk, vigyázva lakása épségére. A precíz munka nálunk nemcsak halk működést, hanem alacsonyabb rezsiszámlát és hosszú élettartamot is jelent.",
     ],
   },
   {
