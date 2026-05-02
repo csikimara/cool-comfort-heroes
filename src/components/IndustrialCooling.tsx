@@ -10,7 +10,7 @@ const features = [
   {
     icon: Snowflake,
     title: "Légcsatornázható és Félipari megoldások",
-    desc: "Esztétikus, rejtett kivitelű légcsatornázható split rendszerek (Fujitsu) telepítése. Ideális megoldás tagolt terekbe, irodákba vagy tetőterekbe, ahol a hagyományos beltéri egységek elhelyezése nem esztétikus vagy nem megoldható.",
+    desc: "Esztétikus, rejtett kivitelű légcsatornázható split rendszerek telepítése. Ideális megoldás tagolt terekbe, irodákba vagy tetőterekbe, ahol a hagyományos beltéri egységek elhelyezése nem esztétikus vagy nem megoldható.",
   },
   {
     icon: Wind,

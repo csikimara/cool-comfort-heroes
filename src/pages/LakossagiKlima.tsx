@@ -9,6 +9,7 @@ import {
   AirVent,
   ThermometerSun,
   SprayCan,
+  Snowflake,
 } from "lucide-react";
 
 const Footer = lazy(() => import("@/components/Footer"));
@@ -33,6 +34,16 @@ const services = [
     paragraphs: [
       "A hőszivattyú a legkorszerűbb, környezetbarát gépészeti megoldás. A külső levegőből nyert energiát hasznosítja, így – különösen a kedvezményes H-tarifa igénylésével – drasztikusan csökkentheti az ingatlan rezsiköltségeit.",
       "A kivitelezés során gondoskodunk a hajszálpontos méretezésről, a szakszerű beépítésről és a finomhangolásról, hogy a rendszer a leghidegebb téli napokon is a legjobb hatásfokkal működjön.",
+    ],
+  },
+  {
+    icon: Snowflake,
+    title: "Légcsatornázható megoldások",
+    short:
+      "Esztétikus, rejtett kivitelű légcsatornázható split rendszerek telepítése.",
+    paragraphs: [
+      "Esztétikus, rejtett kivitelű légcsatornázható split rendszerek telepítése. Ideális megoldás tagolt terekbe, irodákba vagy tetőterekbe, ahol a hagyományos beltéri egységek elhelyezése nem esztétikus vagy nem megoldható.",
+      "Precíz mérnöki tervezéssel és szakszerű kivitelezéssel garantáljuk a huzatmentes, optimális légelosztást – a beltéri egység az álmennyezetbe rejtve, csak a diszkrét befúvó- és visszaszívó rácsok láthatók.",
     ],
   },
   {
