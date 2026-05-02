@@ -47,17 +47,12 @@ const IndustrialCooling = () => {
     <section id="ipari" className="py-20 sm:py-32 bg-secondary/50">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <span className="inline-block text-primary text-sm font-semibold uppercase tracking-wider mb-4">
-            Ipari megoldások
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Komplex Ipari Klíma- és{" "}
-            <span className="text-gradient">Légtechnikai Megoldások</span>
-          </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Az otthoni kényelem biztosítása mellett évtizedes tapasztalattal rendelkezünk nagy teljesítményű ipari rendszerek
-            telepítésében és szervizelésében. Tudjuk, hogy egy irodaház vagy üzem esetében a hűtés vagy szellőzés kiesése komoly
-            probléma – ezért kínálunk gyors, gyakorlatias és megbízható gépészeti megoldásokat <strong>1993 óta</strong>.
+            A <strong>Northwind Hűtéstechnika Kft.</strong> 1993 óta nyújt professzionális támogatást ipari és kereskedelmi
+            partnerei számára. Nem csupán berendezéseket telepítünk, hanem teljes körű gépészeti megoldásokban gondolkodunk:
+            a precíz mérnöki tervezéstől a szakszerű kivitelezésen át a folyamatos, üzembiztos karbantartásig. Tudjuk, hogy
+            az ipari szektorban a hűtés vagy szellőzés kiesése nem opció – ezért rugalmas hibaelhárítással és megelőző
+            szervizszolgáltatásokkal garantáljuk rendszerei folyamatos működését.
           </p>
         </div>
 
