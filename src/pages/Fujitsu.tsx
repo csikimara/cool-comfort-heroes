@@ -29,8 +29,8 @@ import fujitsuInstallation from "@/assets/fujitsu-installation.png";
 const features = [
   {
     icon: Shield,
-    title: "10 év garancia",
-    description: "Fujitsu klímák regisztrációjával akár 10 év kiterjesztett garancia.",
+    title: "10 év kiterjesztett garancia",
+    description: "Kizárólag Fujitsu oldalfali split klímákra – hivatalos regisztrációval és évi kétszeri Northwind karbantartással.",
   },
   {
     icon: Zap,
@@ -160,6 +160,9 @@ const solutionCategories = [
       "Human Sensor és precíz légirányítás",
       "Akár A+++ szezonális energiaosztály",
     ],
+    warrantyBadge: "10 év kiterjesztett garancia",
+    warrantyNote:
+      "Hivatalos regisztrációval és évi kétszeri Northwind karbantartással.",
     galleryHref: "/referenciak/fujitsu-lakossagi",
   },
   {
@@ -173,6 +176,8 @@ const solutionCategories = [
       "Csendes kültéri egységek lakókörnyezetbe",
       "Integrált HMV-vezérlés és okos felügyelet",
     ],
+    warrantyBadge: "3 év teljes körű gyártói garancia",
+    warrantyNote: "Gyári garancia és mérnöki szervizháttér.",
     galleryHref: "/referenciak/fujitsu-waterstage",
   },
   {
@@ -186,6 +191,8 @@ const solutionCategories = [
       "Magas statikus nyomás hosszú légcsatornákhoz",
       "Letisztult belső tér – nincs látható egység",
     ],
+    warrantyBadge: "3 év teljes körű gyártói garancia",
+    warrantyNote: "Gyári garancia és mérnöki szervizháttér.",
     galleryHref: "/referenciak/fujitsu-legcsatornazhato",
   },
   {
@@ -199,6 +206,9 @@ const solutionCategories = [
       "BMS-integráció és távoli felügyelet",
       "Hivatalos beüzemelés a gyári garanciáért",
     ],
+    warrantyBadge: "Gyári garancia és mérnöki szervizháttér",
+    warrantyNote:
+      "Projekt-specifikus gyártói garancia – részletek egyedi ajánlatban.",
     galleryHref: "/referenciak/fujitsu-vrf",
   },
 ];
@@ -274,20 +284,22 @@ const Fujitsu = () => {
                 10 év nyugalom – mérnöki garanciával
               </h2>
               <p className="text-lg sm:text-xl opacity-95 leading-relaxed mb-10 max-w-3xl mx-auto">
-                A Fujitsu lakossági klímákra a Columbus Klíma 10 éves kiterjesztett
-                garanciát biztosít. Ez a piacon egyedülálló védelem feltételekhez
-                kötött – ezeket nálunk hivatalból teljesítjük.
+                A Columbus Klíma 10 éves kiterjesztett garanciája{" "}
+                <strong>kizárólag a Fujitsu oldalfali split (lakossági) klímákra</strong>{" "}
+                érvényes. Hőszivattyúkra, légcsatornázható és ipari rendszerekre
+                a gyártó 3 év teljes körű garanciát biztosít. A 10 éves védelem
+                feltételekhez kötött – ezeket nálunk hivatalból teljesítjük.
               </p>
 
               <div className="grid sm:grid-cols-3 gap-5 text-left">
                 {[
                   {
-                    title: "Hivatalos partner telepítés",
-                    text: "A telepítést a Columbus Klíma által minősített szakember végzi – mint a Northwind csapata.",
+                    title: "Hivatalos regisztráció",
+                    text: "A telepítést követően a Columbus Klíma rendszerében hivatalosan regisztráljuk a berendezést.",
                   },
                   {
-                    title: "Éves szakszerű karbantartás",
-                    text: "Évente legalább egyszer hivatalos partner által dokumentált, teljes körű karbantartás szükséges.",
+                    title: "Évi kétszeri karbantartás",
+                    text: "Évente kétszer, hivatalos partnerként a Northwind által dokumentált, teljes körű karbantartás szükséges.",
                   },
                   {
                     title: "Eredeti alkatrészek",
@@ -357,6 +369,31 @@ const Fujitsu = () => {
                       </li>
                     ))}
                   </ul>
+                  <div
+                    className={`mb-5 rounded-xl p-3.5 border flex items-start gap-2.5 ${
+                      s.title === "Lakossági Split"
+                        ? "bg-primary/10 border-primary/30"
+                        : "bg-secondary border-border"
+                    }`}
+                  >
+                    <ShieldCheck
+                      className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                        s.title === "Lakossági Split" ? "text-primary" : "text-foreground/60"
+                      }`}
+                    />
+                    <div className="min-w-0">
+                      <p
+                        className={`text-sm font-bold leading-tight ${
+                          s.title === "Lakossági Split" ? "text-primary" : "text-foreground"
+                        }`}
+                      >
+                        {s.warrantyBadge}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                        {s.warrantyNote}
+                      </p>
+                    </div>
+                  </div>
                   <Link
                     to={s.galleryHref}
                     className="mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all self-start"
