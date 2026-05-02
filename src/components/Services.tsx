@@ -204,9 +204,30 @@ const Services = () => {
             Részletek
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
-          <p className="text-sm text-muted-foreground mt-3">
-            Rólunk · Ipari hűtés · Árazás · Karbantartás
-          </p>
+          <nav
+            aria-label="Gyors navigáció a részletek oldalra"
+            className="mt-6 max-w-2xl mx-auto grid grid-cols-2 gap-3 sm:gap-4"
+          >
+            {[
+              { href: "/reszletek#rolunk", label: "Rólunk", Icon: Info },
+              { href: "/reszletek#ipari", label: "Ipari hűtés", Icon: Factory },
+              { href: "/reszletek#arazas", label: "Árazás", Icon: Receipt },
+              { href: "/reszletek#karbantartas", label: "Karbantartás", Icon: Wrench },
+            ].map(({ href, label, Icon }) => (
+              <a
+                key={href}
+                href={href}
+                className="group inline-flex items-center justify-center gap-2 sm:gap-3 px-4 py-3 sm:px-5 sm:py-3.5 rounded-full bg-card border-2 border-primary/20 text-foreground font-semibold shadow-sm hover:border-primary hover:bg-primary/5 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+              >
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Icon className="w-4 h-4" />
+                </span>
+                <span className="text-sm sm:text-base group-hover:text-primary transition-colors">
+                  {label}
+                </span>
+              </a>
+            ))}
+          </nav>
         </div>
       </div>
 
