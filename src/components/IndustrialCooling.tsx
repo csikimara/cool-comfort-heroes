@@ -9,8 +9,8 @@ const features = [
   },
   {
     icon: Snowflake,
-    title: "Légcsatornázható és Félipari megoldások",
-    desc: "Esztétikus, rejtett kivitelű légcsatornázható split rendszerek telepítése. Ideális megoldás tagolt terekbe, irodákba vagy tetőterekbe, ahol a hagyományos beltéri egységek elhelyezése nem esztétikus vagy nem megoldható.",
+    title: "Légcsatornázható és Félipari rendszerek irodákba, csarnokokba",
+    desc: "Hatékony hűtési megoldás irodák, üzletek és ipari létesítmények számára. A légcsatornázható kialakítás lehetővé teszi, hogy a berendezést a hűtött téren kívül (pl. folyosón vagy gépészeti helyiségben) helyezzük el. Ez kritikus előny poros, szennyezettebb üzemi környezetben vagy csarnokokban, mivel a gép védve marad a közvetlen szennyeződéstől, miközben tiszta, szűrt levegőt juttat az irodai vagy munkaterületekre.",
   },
   {
     icon: Wind,
