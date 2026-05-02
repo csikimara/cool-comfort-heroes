@@ -6,7 +6,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
   return (
     <footer className="bg-foreground text-background py-16">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-5">
@@ -55,6 +55,17 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               <li><a href="#szolgaltatasok" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Hőszivattyú</a></li>
               <li><a href="#szolgaltatasok" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Légtechnika</a></li>
               <li><a href="#szolgaltatasok" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Klímatisztítás</a></li>
+            </ul>
+          </div>
+
+          {/* Gyors navigáció */}
+          <div>
+            <h3 className="font-semibold mb-5 text-lg">Gyors navigáció</h3>
+            <ul className="space-y-3">
+              <li><Link to="/reszletek#rolunk" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Rólunk</Link></li>
+              <li><Link to="/reszletek#ipari" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Ipari hűtés</Link></li>
+              <li><a href="/#arazas" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Árazás</a></li>
+              <li><a href="/#karbantartas-idovonal" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Karbantartás</a></li>
             </ul>
           </div>
 
