@@ -30,13 +30,13 @@ const services = [
   },
   {
     icon: ThermometerSun,
-    title: "Hőszivattyú",
+    title: "Hőszivattyús rendszerek – A jövő fűtési megoldása",
     galleryHref: "/galeria/hoszivattyu/",
     short:
-      "Energiahatékony hőszivattyú rendszerek telepítése fűtésre és hűtésre.",
+      "Környezetbarát és gazdaságos hűtés, fűtés és melegvíz-ellátás egyetlen rendszerrel.",
     paragraphs: [
-      "A hőszivattyú a legkorszerűbb, környezetbarát gépészeti megoldás. A külső levegőből nyert energiát hasznosítja, így – különösen a kedvezményes H-tarifa igénylésével – drasztikusan csökkentheti az ingatlan rezsiköltségeit.",
-      "A kivitelezés során gondoskodunk a hajszálpontos méretezésről, a szakszerű beépítésről és a finomhangolásról, hogy a rendszer a leghidegebb téli napokon is a legjobb hatásfokkal működjön.",
+      "A hőszivattyú a legkorszerűbb válasz a modern otthonok gépészeti kihívásaira. A külső levegő energiáját hasznosítva biztosítja háza fűtését télen, hűtését nyáron és a használati melegvizet egész évben. Ez a technológia nemcsak környezetbarát, hanem – a kedvezményes H-tarifa igénybevételével – az egyik legköltséghatékonyabb üzemeltetést teszi lehetővé, megszabadítva Önt a gázszámláktól.",
+      "A kivitelezésnél nálunk a precíz mérnöki tervezés az alap: hajszálpontos méretezéssel és finomhangolással garantáljuk, hogy rendszere a leghidegebb téli napokon is maximális üzembiztonsággal és kiemelkedő hatásfokkal működjön.",
     ],
   },
   {
