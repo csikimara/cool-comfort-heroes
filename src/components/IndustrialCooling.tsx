@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 const sections = [
   {
     icon: Droplets,
-    title: "Chiller és Folyadékhűtő Rendszerek",
+    title: "Ipari hűtés és Chiller (folyadékhűtő) rendszerek – Teljes körű mérnöki kivitelezés",
     galleryHref: "/galeria/ipari-hutes/",
-    desc: "Komplett vizes rendszerek (Chiller) és Fan-coil hálózatok tervezése és telepítése. Meglévő rendszerek hidraulikai beszabályozása, hűtőközeg-szivárgás vizsgálata és energiahatékonysági optimalizálása.",
+    desc: "Vállaljuk komplex ipari hűtési rendszerek tervezését és teljes körű, kulcsrakész kivitelezését, levéve a logisztikai és szervezési terhet az Ön válláról. A teljes folyamatot kézben tartjuk a tervezéstől az üzemeltetésig.",
     bullets: [
-      "Chiller és Fan-coil rendszerek tervezése és telepítése",
-      "Hidraulikai beszabályozás meglévő rendszereken",
-      "Hűtőközeg-szivárgás vizsgálata (517/2014/EU)",
-      "Energiahatékonysági optimalizálás és COP-növelés",
+      "Projektmenedzsment és Logisztika: hatósági ügyintézés, útfoglalási engedélyek, daruzás vezénylése és precíz helyszíni letelepítés.",
+      "Szakszerű Telepítés és Beüzemelés: chillerek hidraulikai bekötése, rendszerfeltöltés és hivatalos műszaki beüzemelés a gyári garancia megőrzésével.",
+      "Fan-coil hálózatok: teljes belső vizes hálózat kiépítése, hidraulikai beszabályozása és a végponti egységek felszerelése.",
+      "Üzemeltetési biztonság: garanciális és azon túli karbantartás, téli-nyári átállások és folyamatos energiahatékonysági optimalizálás.",
     ],
   },
   {
