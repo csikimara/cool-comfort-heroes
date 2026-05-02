@@ -178,10 +178,10 @@ const Services = () => {
   );
 
   return (
-    <section id="szolgaltatasok" className="py-20 sm:py-32 bg-background">
+    <section id="szolgaltatasok" className="py-12 sm:py-16 bg-background">
       <div className="container mx-auto px-4">
         {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="max-w-3xl mx-auto text-center mb-10">
           <span className="inline-block text-primary text-sm font-semibold uppercase tracking-wider mb-4">
             Szolgáltatásaink
           </span>
