@@ -1,43 +1,32 @@
 import { Button } from "@/components/ui/button";
+import { ShieldCheck } from "lucide-react";
 
 const FujitsuHero = () => (
-  <section className="relative pt-32 pb-20 overflow-hidden">
-    <div className="absolute inset-0 bg-gradient-to-br from-red-600 via-red-700 to-red-800" />
-    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
-
+  <section className="relative pt-32 pb-24 overflow-hidden bg-white">
+    <div className="absolute inset-x-0 top-0 h-1 bg-primary" />
     <div className="container mx-auto px-4 relative z-10">
-      <div className="max-w-4xl mx-auto text-center text-white">
-        <div className="inline-flex items-center gap-3 mb-6">
-          <span className="text-4xl sm:text-5xl font-bold tracking-tight">FUJITSU</span>
-          <span className="text-2xl sm:text-3xl font-light">KLÍMA ÚTMUTATÓ</span>
-        </div>
+      <div className="max-w-4xl mx-auto text-center">
+        <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-primary text-xs font-bold uppercase tracking-wider mb-6">
+          <ShieldCheck className="w-3.5 h-3.5" />
+          Hivatalos Fujitsu partner
+        </span>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-          Melyik Fujitsu klíma való Önnek?
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 leading-[1.1] text-foreground">
+          Northwind – Az Ön kiemelt{" "}
+          <span className="text-primary">Fujitsu</span> partnere
         </h1>
 
-        <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-          KL (ECO), KM (Standard), az új KJ prémium és a bizonyított KG sorozat – a nyári hűtéstől az egész éves prémium fűtésig.
-          Hivatalos Fujitsu partnerként 33 év tapasztalattal segítünk a választásban.
+        <p className="text-lg sm:text-xl text-muted-foreground mb-9 max-w-2xl mx-auto leading-relaxed">
+          33 év mérnöki tapasztalat és hivatalos Columbus Klíma garancia –
+          minden telepített rendszer mögött.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="bg-white text-red-600 hover:bg-white/90 hover:text-red-700 font-semibold"
-            asChild
-          >
-            <a href="/#kapcsolat">Személyre szabott ajánlat</a>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Button size="lg" asChild>
+            <a href="/#kapcsolat">Kérjen egyedi Fujitsu tervezést</a>
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-white/30 bg-white/10 text-white hover:bg-white/20 hover:border-white/50"
-            asChild
-          >
-            <a href="https://www.fujitsuklima.hu/klimak" target="_blank" rel="noopener noreferrer">
-              Fujitsu termékkatalógus
-            </a>
+          <Button size="lg" variant="outline" asChild>
+            <a href="#garancia">10 éves garancia részletei</a>
           </Button>
         </div>
       </div>
