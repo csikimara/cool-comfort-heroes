@@ -124,15 +124,13 @@ const LakossagiKlima = () => {
                     ))}
                   </div>
                   {s.galleryHref && (
-                    <a
-                      href={s.galleryHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      to={s.galleryHref}
                       className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all self-start"
                     >
                       <Images className="w-4 h-4" />
                       Referenciák megtekintése
-                    </a>
+                    </Link>
                   )}
                 </article>
               ))}
