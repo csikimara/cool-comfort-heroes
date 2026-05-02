@@ -1,4 +1,4 @@
-import { Droplets, Wind, Wrench, ClipboardCheck, Building2, Fan, AirVent } from "lucide-react";
+import { Droplets, Wind, Wrench, ClipboardCheck, Building2, Fan, AirVent, Snowflake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const features = [
@@ -25,6 +25,11 @@ const features = [
 ];
 
 const additionalSystems = [
+  {
+    icon: Snowflake,
+    title: "Légcsatornázható félipari split",
+    desc: "Esztétikus, rejtett kivitelű félipari split rendszerek irodákba, üzletekbe és tagolt terekbe, ahol a hagyományos beltéri egységek elhelyezése nem megoldható. Légcsatornás kialakítással huzatmentes, egyenletes légelosztást biztosítunk – a beltéri egység az álmennyezetbe rejtve, csak a diszkrét befúvó- és visszaszívó rácsok láthatók.",
+  },
   {
     icon: Fan,
     title: "Fan-coilok",
