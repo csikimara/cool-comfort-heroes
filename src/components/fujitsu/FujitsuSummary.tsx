@@ -12,11 +12,11 @@ const FujitsuSummary = () => (
           Szakmai konzultáció és felmérés
         </span>
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mt-3 mb-4">
-          Kérjen egyedi Fujitsu tervezést és ajánlatot a Northwind Hűtéstechnika Kft-től
+          Kérjen egyedi Fujitsu tervezést és ajánlatot a Northwind szakértőitől
         </h2>
         <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-          33 év szakmai tapasztalattal rendelkező specialistától. Helyszíni
-          felmérés és szakszerű rendszervázlat – kötelezettségek nélkül.
+          33 év hűtéstechnikai tapasztalattal rendelkező szakmai háttérrel.
+          Helyszíni felmérés és szakszerű rendszervázlat – kötelezettségek nélkül.
           Hivatalos Columbus Klíma garanciális feltételekkel: 10 év az oldalfali
           split klímákra, 3 év a hőszivattyúkra és egyéb rendszerekre.
         </p>
