@@ -65,7 +65,7 @@ const IndustrialCooling = () => {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="relative rounded-2xl p-8 border bg-gradient-card border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 text-center"
+              className="relative rounded-2xl p-8 border bg-gradient-card border-border/50 shadow-card text-center"
             >
               <div className="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center mb-6 mx-auto">
                 <feature.icon className="w-8 h-8 text-primary-foreground" />
@@ -95,7 +95,7 @@ const IndustrialCooling = () => {
             {additionalSystems.map((item) => (
               <div
                 key={item.title}
-                className="rounded-2xl p-6 sm:p-7 bg-card border-2 border-primary/15 shadow-sm hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                className="rounded-2xl p-6 sm:p-7 bg-card border-2 border-primary/15 shadow-sm"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
                   <item.icon className="w-6 h-6" />
