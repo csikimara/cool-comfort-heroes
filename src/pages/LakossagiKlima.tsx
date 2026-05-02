@@ -139,15 +139,22 @@ const LakossagiKlima = () => {
             </div>
 
             {/* Zsákos mosás videó */}
-            <div className="mt-12 max-w-3xl mx-auto">
-              <div className="rounded-2xl overflow-hidden border border-border/50 bg-black">
+            <div className="mt-16 max-w-3xl mx-auto">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+                  Tekintse meg folyamatunkat munka közben!
+                </h3>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Prémium zsákos mélymosás – élesben, az Ön otthonában is így dolgozunk.
+                </p>
+              </div>
+              <div className="rounded-2xl overflow-hidden border-2 border-primary/15 bg-black shadow-card">
                 <video
                   controls
-                  autoPlay
                   muted
-                  loop
                   playsInline
                   preload="metadata"
+                  poster="https://northwind.hu/video/zsakos-mosas-poster.jpg"
                   className="w-full h-auto block"
                 >
                   <source src="https://northwind.hu/video/zsakos-mosas.mp4" type="video/mp4" />
