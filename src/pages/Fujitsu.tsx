@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import FujitsuHero from "@/components/fujitsu/FujitsuHero";
 import FujitsuModelCard from "@/components/fujitsu/FujitsuModelCard";
 import FujitsuSummary from "@/components/fujitsu/FujitsuSummary";
+import FujitsuContactForm from "@/components/fujitsu/FujitsuContactForm";
 import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
@@ -478,6 +479,7 @@ const Fujitsu = () => {
         </section>
 
         <FujitsuSummary />
+        <FujitsuContactForm />
       </main>
       <Footer />
       <FujitsuFloatingButton />
