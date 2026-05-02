@@ -146,7 +146,7 @@ const Fujitsu = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Fujitsu Klíma Útmutató | KL, KM, KJ, KG sorozat – Northwind"
+        title="Fujitsu Klíma Útmutató | KL, KM, KJ, KG sorozat – Northwind Hűtéstechnika"
         description="Melyik Fujitsu klíma való Önnek? KL (ECO), KM (Standard), KJ és KG sorozat összehasonlítás. Hivatalos Fujitsu partner, 33 év tapasztalat, Budapest."
       />
       <JsonLd data={fujitsuJsonLd} />

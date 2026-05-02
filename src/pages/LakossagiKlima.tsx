@@ -52,7 +52,7 @@ const LakossagiKlima = () => {
   return (
     <div className="min-h-screen">
       <SEOHead
-        title="Lakossági Klíma – Klímaszerelés, hőszivattyú, klímamosás | Northwind"
+        title="Lakossági Klíma – Klímaszerelés, hőszivattyú, klímamosás | Northwind Hűtéstechnika"
         description="Lakossági klímamegoldások: split és multi-split klímaszerelés, hőszivattyú telepítés és prémium zsákos klímamosás Budapesten és Pest vármegyében."
       />
       <Header />
