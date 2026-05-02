@@ -8,6 +8,7 @@ import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
 import { Link } from "react-router-dom";
+import { useScrollToHash } from "@/hooks/useScrollToHash";
 import {
   Shield,
   Zap,
@@ -227,11 +228,12 @@ const fujitsuJsonLd = {
 };
 
 const Fujitsu = () => {
+  useScrollToHash();
   return (
     <div className="fujitsu-brand min-h-screen bg-background text-foreground">
       <SEOHead
-        title="Fujitsu Megoldások | Northwind – Hivatalos Columbus Klíma partner"
-        description="Northwind – az Ön kiemelt Fujitsu partnere. 33 év mérnöki tapasztalat, hivatalos Columbus Klíma 10 éves kiterjesztett garancia. Lakossági, hőszivattyú, légcsatornázható és ipari VRF megoldások."
+        title="Northwind Hűtéstechnika Kft. – Fujitsu Klíma és Hőszivattyú Specialisták"
+        description="Hivatalos Fujitsu partner Budapesten. 33 év szakmai tapasztalat, Columbus Klíma 10 éves kiterjesztett garancia. Lakossági split, Waterstage hőszivattyú, légcsatornázható és ipari VRF megoldások."
       />
       <JsonLd data={fujitsuJsonLd} />
       <Header />
