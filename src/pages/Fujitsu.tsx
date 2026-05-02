@@ -29,8 +29,8 @@ import fujitsuInstallation from "@/assets/fujitsu-installation.png";
 const features = [
   {
     icon: Shield,
-    title: "10 év garancia",
-    description: "Fujitsu klímák regisztrációjával akár 10 év kiterjesztett garancia.",
+    title: "10 év kiterjesztett garancia",
+    description: "Kizárólag Fujitsu oldalfali split klímákra – hivatalos regisztrációval és évi kétszeri Northwind karbantartással.",
   },
   {
     icon: Zap,
@@ -160,6 +160,9 @@ const solutionCategories = [
       "Human Sensor és precíz légirányítás",
       "Akár A+++ szezonális energiaosztály",
     ],
+    warrantyBadge: "10 év kiterjesztett garancia",
+    warrantyNote:
+      "Hivatalos regisztrációval és évi kétszeri Northwind karbantartással.",
     galleryHref: "/referenciak/fujitsu-lakossagi",
   },
   {
@@ -173,6 +176,8 @@ const solutionCategories = [
       "Csendes kültéri egységek lakókörnyezetbe",
       "Integrált HMV-vezérlés és okos felügyelet",
     ],
+    warrantyBadge: "3 év teljes körű gyártói garancia",
+    warrantyNote: "Gyári garancia és mérnöki szervizháttér.",
     galleryHref: "/referenciak/fujitsu-waterstage",
   },
   {
@@ -186,6 +191,8 @@ const solutionCategories = [
       "Magas statikus nyomás hosszú légcsatornákhoz",
       "Letisztult belső tér – nincs látható egység",
     ],
+    warrantyBadge: "3 év teljes körű gyártói garancia",
+    warrantyNote: "Gyári garancia és mérnöki szervizháttér.",
     galleryHref: "/referenciak/fujitsu-legcsatornazhato",
   },
   {
@@ -199,6 +206,9 @@ const solutionCategories = [
       "BMS-integráció és távoli felügyelet",
       "Hivatalos beüzemelés a gyári garanciáért",
     ],
+    warrantyBadge: "Gyári garancia és mérnöki szervizháttér",
+    warrantyNote:
+      "Projekt-specifikus gyártói garancia – részletek egyedi ajánlatban.",
     galleryHref: "/referenciak/fujitsu-vrf",
   },
 ];
