@@ -2,7 +2,7 @@ import { Award, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const FujitsuSummary = () => (
-  <section className="py-20 sm:py-24 bg-secondary">
+  <section id="fujitsu-contact" className="py-20 sm:py-24 bg-secondary scroll-mt-24">
     <div className="container mx-auto px-4">
       <div className="max-w-3xl mx-auto rounded-3xl bg-card border-2 border-primary/30 p-8 sm:p-12 text-center shadow-xl">
         <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-6">

@@ -23,7 +23,7 @@ const FujitsuHero = () => (
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button size="lg" asChild>
-            <a href="/#kapcsolat">Kérjen egyedi Fujitsu tervezést</a>
+            <a href="#fujitsu-contact">Kérjen egyedi Fujitsu tervezést</a>
           </Button>
           <Button size="lg" variant="outline" asChild>
             <a href="#garancia">10 éves garancia részletei</a>
