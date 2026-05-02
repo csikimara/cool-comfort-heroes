@@ -52,7 +52,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEOHead
-        title="Fujitsu klíma telepítés és javítás Budapest | Northwind – 33 év tapasztalat"
+        title="Fujitsu klíma telepítés és javítás Budapest | Northwind Hűtéstechnika – 33 év tapasztalat"
         description="Fujitsu klíma szakértő telepítése és javítása Budapesten és Pest vármegyében. Japán minőség, akár 10 év garancia, megbízhatóság, rejtett költségek nélkül. Ipari hűtés és karbantartás 1993 óta."
       />
       <JsonLd data={businessJsonLd} />

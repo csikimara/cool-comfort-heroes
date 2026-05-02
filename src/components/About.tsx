@@ -90,7 +90,7 @@ const About = () => {
                     33 év szakmai tapasztalat
                   </h3>
                   <p className="text-xs sm:text-sm text-primary-foreground/80 leading-snug">
-                    1993 óta a szakmában · Northwind Kft. 2009 óta
+                    1993 óta a szakmában · Northwind Hűtéstechnika Kft. 2009 óta
                   </p>
                 </div>
               </div>
