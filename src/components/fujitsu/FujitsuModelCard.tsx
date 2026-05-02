@@ -59,7 +59,7 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
           className={`w-full max-w-full bg-gradient-to-r ${model.accentClass} text-white hover:opacity-90 min-h-[48px] h-auto py-3 whitespace-normal text-center`}
           asChild
         >
-          <a href="/#kapcsolat" className="inline-flex items-center justify-center text-center break-words max-w-full">
+          <a href="#fujitsu-contact" className="inline-flex items-center justify-center text-center break-words max-w-full">
             Ajánlatot kérek
           </a>
         </Button>
