@@ -10,6 +10,7 @@ import {
   ThermometerSun,
   SprayCan,
   Snowflake,
+  Images,
 } from "lucide-react";
 
 const Footer = lazy(() => import("@/components/Footer"));
@@ -19,6 +20,7 @@ const services = [
   {
     icon: AirVent,
     title: "Klímaszerelés (Split és Multi-split)",
+    galleryHref: "/galeria/lakossagi-split/",
     short:
       "Professzionális split és multi-split klímaberendezések telepítése otthonokba és irodákba.",
     paragraphs: [
@@ -29,6 +31,7 @@ const services = [
   {
     icon: ThermometerSun,
     title: "Hőszivattyú",
+    galleryHref: "/galeria/hoszivattyu/",
     short:
       "Energiahatékony hőszivattyú rendszerek telepítése fűtésre és hűtésre.",
     paragraphs: [
@@ -39,6 +42,7 @@ const services = [
   {
     icon: Snowflake,
     title: "Rejtett légcsatornázható megoldások családi házakba",
+    galleryHref: "/galeria/legcsatornazhato/",
     short:
       "Esztétikus és láthatatlan klímamegoldás igényes otthonokba, családi házakba és lakásokba.",
     paragraphs: [
@@ -49,6 +53,7 @@ const services = [
   {
     icon: SprayCan,
     title: "Prémium Zsákos Klímamosás",
+    galleryHref: "/galeria/karbantartas/",
     short:
       "Gyári higiénia helyreállítása: professzionális vegyszeres mélymosás, amely visszaadja a klíma eredeti tisztaságát, hatékonyságát és friss illatát.",
     paragraphs: [
@@ -103,7 +108,7 @@ const LakossagiKlima = () => {
               {services.map((s) => (
                 <article
                   key={s.title}
-                  className="relative rounded-2xl p-6 sm:p-7 bg-card border-2 border-primary/15 shadow-sm flex flex-col cursor-default"
+                  className="relative rounded-2xl p-6 sm:p-7 bg-card border-2 border-primary/15 flex flex-col cursor-default"
                 >
                   <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5">
                     <s.icon className="w-7 h-7 text-primary-foreground" />
@@ -119,6 +124,17 @@ const LakossagiKlima = () => {
                       <p key={i}>{p}</p>
                     ))}
                   </div>
+                  {s.galleryHref && (
+                    <a
+                      href={s.galleryHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all self-start"
+                    >
+                      <Images className="w-4 h-4" />
+                      Referenciák megtekintése
+                    </a>
+                  )}
                 </article>
               ))}
             </div>
