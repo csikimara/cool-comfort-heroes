@@ -51,6 +51,30 @@ const GALLERY_META: Record<string, GalleryMeta> = {
     backHref: "/#ipari",
     backLabel: "Vissza az ipari szolgáltatásokhoz",
   },
+  "fujitsu-lakossagi": {
+    title: "Fujitsu lakossági split referenciák",
+    description: "Telepített Fujitsu split és multi-split rendszerek otthonokba.",
+    backHref: "/fujitsu-megoldasok",
+    backLabel: "Vissza a Fujitsu Megoldásokhoz",
+  },
+  "fujitsu-waterstage": {
+    title: "Fujitsu Waterstage hőszivattyú referenciák",
+    description: "Levegő-víz hőszivattyús rendszereink Fujitsu Waterstage egységekkel.",
+    backHref: "/fujitsu-megoldasok",
+    backLabel: "Vissza a Fujitsu Megoldásokhoz",
+  },
+  "fujitsu-legcsatornazhato": {
+    title: "Fujitsu légcsatornázható referenciák",
+    description: "Álmennyezetbe rejtett Fujitsu légcsatornázható megoldások.",
+    backHref: "/fujitsu-megoldasok",
+    backLabel: "Vissza a Fujitsu Megoldásokhoz",
+  },
+  "fujitsu-vrf": {
+    title: "Fujitsu VRF és folyadékhűtő referenciák",
+    description: "Ipari és kereskedelmi Fujitsu VRF rendszerek és chillerek.",
+    backHref: "/fujitsu-megoldasok",
+    backLabel: "Vissza a Fujitsu Megoldásokhoz",
+  },
 };
 
 const FALLBACK_META: GalleryMeta = {
