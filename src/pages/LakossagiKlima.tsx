@@ -38,12 +38,12 @@ const services = [
   },
   {
     icon: Snowflake,
-    title: "Légcsatornázható megoldások",
+    title: "Rejtett légcsatornázható megoldások családi házakba",
     short:
-      "Esztétikus, rejtett kivitelű légcsatornázható split rendszerek telepítése.",
+      "Esztétikus és láthatatlan klímamegoldás igényes otthonokba, családi házakba és lakásokba.",
     paragraphs: [
-      "Esztétikus, rejtett kivitelű légcsatornázható split rendszerek telepítése. Ideális megoldás tagolt terekbe, irodákba vagy tetőterekbe, ahol a hagyományos beltéri egységek elhelyezése nem esztétikus vagy nem megoldható.",
-      "Precíz mérnöki tervezéssel és szakszerű kivitelezéssel garantáljuk a huzatmentes, optimális légelosztást – a beltéri egység az álmennyezetbe rejtve, csak a diszkrét befúvó- és visszaszívó rácsok láthatók.",
+      "Esztétikus és láthatatlan klímamegoldás igényes otthonokba, családi házakba és lakásokba. Ideális választás, ha nem szeretne beltéri egységeket látni a falon, vagy ha a tagolt terek, tetőterek miatt a hagyományos split klíma nem esztétikus.",
+      "A padlástérbe vagy álmennyezetbe rejtett gép észrevétlenül, diszkrét befúvórácsokon keresztül biztosít tökéletes, huzatmentes hőmérsékletet az egész lakásban.",
     ],
   },
   {
