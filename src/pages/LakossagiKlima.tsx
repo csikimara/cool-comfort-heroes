@@ -41,13 +41,13 @@ const services = [
   },
   {
     icon: Snowflake,
-    title: "Rejtett légcsatornázható megoldások családi házakba",
+    title: "Rejtett légcsatornázható rendszerek – Láthatatlan elegancia",
     galleryHref: "/galeria/legcsatornazhato/",
     short:
-      "Esztétikus és láthatatlan klímamegoldás igényes otthonokba, családi házakba és lakásokba.",
+      "Esztétikus klímamegoldás igényes otthonokba, ahol a technika észrevétlen marad.",
     paragraphs: [
-      "Esztétikus és láthatatlan klímamegoldás igényes otthonokba, családi házakba és lakásokba. Ideális választás, ha nem szeretne beltéri egységeket látni a falon, vagy ha a tagolt terek, tetőterek miatt a hagyományos split klíma nem esztétikus.",
-      "A padlástérbe vagy álmennyezetbe rejtett gép észrevétlenül, diszkrét befúvórácsokon keresztül biztosít tökéletes, huzatmentes hőmérsékletet az egész lakásban.",
+      "A légcsatornázható rendszer a legmagasabb szintű válasz a modern lakberendezési elvárásokra. Ez a megoldás tökéletes választás, ha Ön nem szeretne beltéri egységeket látni a falakon, vagy ha a tagolt terek és tetőtéri adottságok miatt a hagyományos split klíma nem esztétikus.",
+      "A padlástérbe vagy álmennyezetbe rejtett berendezés csupán diszkrét befúvórácsokon keresztül jelzi jelenlétét. A rendszer észrevétlenül, huzatmentesen és suttogóan csendben biztosítja az ideális hőmérsékletet az egész lakásban, megőrizve otthona letisztult stílusát és nyugalmát.",
     ],
   },
   {
