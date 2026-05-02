@@ -9,6 +9,9 @@ import {
   Fan,
   ArrowRight,
   SearchCheck,
+  Info,
+  Factory,
+  Receipt,
   LucideIcon
 } from "lucide-react";
 import ServiceDetailModal from "./ServiceDetailModal";
