@@ -52,7 +52,7 @@ const Hero = () => {
               className="group w-full sm:w-auto"
               asChild
             >
-              <a href="#szolgaltatasok">
+              <a href="/lakossagi-klima">
                 Lakossági megoldások
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
