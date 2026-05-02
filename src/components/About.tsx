@@ -27,7 +27,7 @@ const features = [
 
 const About = () => {
   return (
-    <section id="rolunk" className="py-20 sm:py-32 bg-secondary/50">
+    <section id="rolunk" className="py-12 sm:py-16 bg-secondary/50">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left content */}
