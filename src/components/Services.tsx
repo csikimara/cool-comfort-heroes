@@ -7,7 +7,9 @@ import {
   SprayCan,
   Wind,
   ArrowRight,
+  Info,
   Factory,
+  Receipt,
   Home,
   LucideIcon,
 } from "lucide-react";
