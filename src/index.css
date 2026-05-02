@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== Fujitsu Megoldások — scoped CI brand override ===== */
+/* Official Fujitsu Red #ED1C24 = hsl(358 85% 52%)            */
+/* Charcoal #333333 = hsl(0 0% 20%)                           */
+.fujitsu-brand {
+  --primary: 358 85% 52%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 358 85% 52%;
+  --accent-foreground: 0 0% 100%;
+  --ring: 358 85% 52%;
+  --foreground: 0 0% 20%;
+  --card-foreground: 0 0% 20%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 20%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 38%;
+  --border: 0 0% 90%;
+  --gradient-hero: linear-gradient(135deg, hsl(358 85% 52%), hsl(358 75% 40%));
+  --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(0 0% 98%));
+}
+
 @layer base {
   :root {
     /* Cool blue design system for HVAC company */
