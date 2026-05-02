@@ -56,10 +56,12 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
       <div className="flex flex-col gap-3">
         <Button
           size="lg"
-          className={`w-full bg-gradient-to-r ${model.accentClass} text-white hover:opacity-90 min-h-[48px]`}
+          className={`w-full max-w-full bg-gradient-to-r ${model.accentClass} text-white hover:opacity-90 min-h-[48px] h-auto py-3 whitespace-normal text-center`}
           asChild
         >
-          <a href="/#kapcsolat">Ajánlatot kérek</a>
+          <a href="/#kapcsolat" className="inline-flex items-center justify-center text-center break-words max-w-full">
+            Ajánlatot kérek
+          </a>
         </Button>
         <p className="text-xs text-muted-foreground text-center leading-relaxed px-1">
           Tekintse meg a hivatalos magyarországi vezérképviselet naprakész árlistáját és termékkatalógusát.
