@@ -40,14 +40,14 @@ const sections = [
   },
   {
     icon: Wrench,
-    title: "Márkafüggetlen Ipari Szerviz és Karbantartás",
+    title: "Márkafüggetlen Ipari Szerviz és Karbantartás – Üzembiztonság felsőfokon",
     galleryHref: "/galeria/karbantartas/",
-    desc: "Gyors hibaelhárítás és precíz diagnosztika minden típusú ipari hűtőberendezéshez. Megelőző karbantartási szerződések irodaházak és ipari létesítmények részére a drága leállások elkerülése érdekében.",
+    desc: "Az ipari hűtési rendszerek zavartalan működése nem szerencse, hanem tudatos karbantartás kérdése. Szervizszolgáltatásunk a gyors reakcióidőre és a precíz, műszeres diagnosztikára épül, hogy partnereinknek ne kelljen tartaniuk a drága leállásoktól.",
     bullets: [
-      "Gyors hibaelhárítás és precíz műszeres diagnosztika",
-      "Márkafüggetlen javítás minden ipari berendezésen",
-      "Megelőző karbantartási szerződések egyedi feltételekkel",
-      "Tervezett karbantartás a váratlan leállások elkerüléséért",
+      "Márkafüggetlen javítás: 33 éves tapasztalattal szervizelünk bármilyen típusú ipari hűtő- és légkezelő berendezést gyártótól függetlenül.",
+      "Műszeres diagnosztika: modern mérőeszközökkel végzett hibafeltárás, hőkamerás ellenőrzés és elektromos paraméter-analízis a pontos javításért.",
+      "Karbantartási szerződések: egyedi igényekre szabott, ütemezett felülvizsgálatok, garantált élettartam és prioritást élvező hibaelhárítás.",
+      "Jogi megfelelőség: kötelező szivárgásvizsgálatok elvégzése és adminisztrációja a hatályos uniós és hazai szabályozások szerint.",
     ],
   },
 ];
