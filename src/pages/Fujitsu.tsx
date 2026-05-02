@@ -6,7 +6,24 @@ import FujitsuSummary from "@/components/fujitsu/FujitsuSummary";
 import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
-import { Shield, Zap, AirVent, ThermometerSun, Snowflake, Sun, Flame, Star, User, Settings } from "lucide-react";
+import { Link } from "react-router-dom";
+import {
+  Shield,
+  Zap,
+  AirVent,
+  ThermometerSun,
+  Snowflake,
+  Sun,
+  Flame,
+  Star,
+  User,
+  Settings,
+  ShieldCheck,
+  CheckCircle2,
+  Droplets,
+  Factory,
+  Images,
+} from "lucide-react";
 import fujitsuInstallation from "@/assets/fujitsu-installation.png";
 
 const features = [
@@ -131,6 +148,61 @@ const models = [
   },
 ];
 
+const solutionCategories = [
+  {
+    icon: AirVent,
+    title: "Lakossági Split",
+    tagline: "Komfort és csendes, japán precizitás.",
+    body:
+      "Fujitsu KL, KM, KJ és KG sorozatok lakásokba és családi házakba. Méretezésnél a helyiség adottságai alapján választjuk ki a leghalkabb és leghatékonyabb egységet.",
+    bullets: [
+      "Akár 19 dB(A) suttogó éjszakai üzem",
+      "Human Sensor és precíz légirányítás",
+      "Akár A+++ szezonális energiaosztály",
+    ],
+    galleryHref: "/referenciak/fujitsu-lakossagi",
+  },
+  {
+    icon: Droplets,
+    title: "Waterstage Hőszivattyúk",
+    tagline: "Hatékony fűtés, hűtés és melegvíz egyetlen rendszerből.",
+    body:
+      "Levegő-víz hőszivattyúk padlófűtéshez, radiátoros rendszerekhez és HMV-ellátáshoz. Mérnöki méretezéssel garantáljuk a stabil COP-ot a leghidegebb téli napokon is.",
+    bullets: [
+      "Magas SCOP a kedvezményes H-tarifához",
+      "Csendes kültéri egységek lakókörnyezetbe",
+      "Integrált HMV-vezérlés és okos felügyelet",
+    ],
+    galleryHref: "/referenciak/fujitsu-waterstage",
+  },
+  {
+    icon: Snowflake,
+    title: "Légcsatornázható rendszerek",
+    tagline: "Láthatatlan elegancia – a technika a háttérben marad.",
+    body:
+      "Álmennyezetbe vagy padlástérbe rejtett egységek igényes otthonokba és reprezentatív irodákba. Diszkrét befúvórácsok, egyenletes és huzatmentes komfort.",
+    bullets: [
+      "Több helyiség egyetlen rendszerről",
+      "Magas statikus nyomás hosszú légcsatornákhoz",
+      "Letisztult belső tér – nincs látható egység",
+    ],
+    galleryHref: "/referenciak/fujitsu-legcsatornazhato",
+  },
+  {
+    icon: Factory,
+    title: "Ipari VRF és Folyadékhűtők",
+    tagline: "Mérnöki precizitás kereskedelmi és ipari léptékben.",
+    body:
+      "Skálázható VRF rendszerek és folyadékhűtők irodaházakhoz, szállodákhoz és ipari létesítményekhez. Tervezéstől hivatalos beüzemelésig házon belül.",
+    bullets: [
+      "Egyidejű hűtés-fűtés (3-csöves VRF)",
+      "BMS-integráció és távoli felügyelet",
+      "Hivatalos beüzemelés a gyári garanciáért",
+    ],
+    galleryHref: "/referenciak/fujitsu-vrf",
+  },
+];
+
 const fujitsuJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -145,10 +217,10 @@ const fujitsuJsonLd = {
 
 const Fujitsu = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="fujitsu-brand min-h-screen bg-background text-foreground">
       <SEOHead
-        title="Fujitsu Klíma Útmutató | KL, KM, KJ, KG sorozat – Northwind Hűtéstechnika"
-        description="Melyik Fujitsu klíma való Önnek? KL (ECO), KM (Standard), KJ és KG sorozat összehasonlítás. Hivatalos Fujitsu partner, 33 év tapasztalat, Budapest."
+        title="Fujitsu Megoldások | Northwind – Hivatalos Columbus Klíma partner"
+        description="Northwind – az Ön kiemelt Fujitsu partnere. 33 év mérnöki tapasztalat, hivatalos Columbus Klíma 10 éves kiterjesztett garancia. Lakossági, hőszivattyú, légcsatornázható és ipari VRF megoldások."
       />
       <JsonLd data={fujitsuJsonLd} />
       <Header />
@@ -159,7 +231,7 @@ const Fujitsu = () => {
         <section className="py-20" aria-label="Fujitsu előnyök">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <span className="inline-block text-red-600 text-sm font-semibold uppercase tracking-wider mb-4">
+              <span className="inline-block text-primary text-sm font-bold uppercase tracking-wider mb-4">
                 Miért a Fujitsu?
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
@@ -171,10 +243,10 @@ const Fujitsu = () => {
               {features.map((feature) => (
                 <div
                   key={feature.title}
-                  className="group bg-gradient-card rounded-2xl p-6 border border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1"
+                  className="group bg-card rounded-2xl p-6 border-2 border-border hover:border-primary/40 transition-all duration-500 hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-7 h-7 text-white" />
+                  <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-3">{feature.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{feature.description}</p>
@@ -184,11 +256,125 @@ const Fujitsu = () => {
           </div>
         </section>
 
+        {/* 10-year Columbus Klíma warranty */}
+        <section
+          id="garancia"
+          className="py-20 sm:py-28 bg-gradient-hero text-primary-foreground relative overflow-hidden"
+          aria-label="10 éves Columbus Klíma kiterjesztett garancia"
+        >
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 mb-6">
+                <ShieldCheck className="w-10 h-10" />
+              </div>
+              <span className="text-sm font-bold uppercase tracking-wider opacity-90">
+                Columbus Klíma kiterjesztett garancia
+              </span>
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-3 mb-6 leading-tight">
+                10 év nyugalom – mérnöki garanciával
+              </h2>
+              <p className="text-lg sm:text-xl opacity-95 leading-relaxed mb-10 max-w-3xl mx-auto">
+                A Fujitsu lakossági klímákra a Columbus Klíma 10 éves kiterjesztett
+                garanciát biztosít. Ez a piacon egyedülálló védelem feltételekhez
+                kötött – ezeket nálunk hivatalból teljesítjük.
+              </p>
+
+              <div className="grid sm:grid-cols-3 gap-5 text-left">
+                {[
+                  {
+                    title: "Hivatalos partner telepítés",
+                    text: "A telepítést a Columbus Klíma által minősített szakember végzi – mint a Northwind csapata.",
+                  },
+                  {
+                    title: "Éves szakszerű karbantartás",
+                    text: "Évente legalább egyszer hivatalos partner által dokumentált, teljes körű karbantartás szükséges.",
+                  },
+                  {
+                    title: "Eredeti alkatrészek",
+                    text: "Csak gyári Fujitsu / Columbus Klíma által szállított alkatrészek a teljes garanciaidő alatt.",
+                  },
+                ].map((item) => (
+                  <div
+                    key={item.title}
+                    className="rounded-xl p-5 bg-white/10 backdrop-blur-sm border border-white/20"
+                  >
+                    <CheckCircle2 className="w-6 h-6 mb-3 opacity-90" />
+                    <h3 className="font-bold text-base mb-1.5">{item.title}</h3>
+                    <p className="text-sm opacity-90 leading-relaxed">{item.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              <p className="text-xs opacity-70 mt-8 max-w-2xl mx-auto">
+                A garancia részletes feltételeit a Columbus Klíma hivatalos
+                tájékoztatója tartalmazza. Ajánlatkéréskor minden vonatkozó
+                feltételt tételesen átadunk.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Solution categories */}
+        <section className="py-20 sm:py-24 bg-background" aria-label="Fujitsu megoldási kategóriák">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center mb-14">
+              <span className="text-primary text-sm font-bold uppercase tracking-wider">
+                Fujitsu portfólió
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold mt-3 mb-4 text-foreground">
+                Megoldások a lakástól az iparig
+              </h2>
+              <p className="text-base text-muted-foreground">
+                Minden szegmensben mérnöki gondossággal tervezünk, telepítünk és
+                üzemeltetünk – a Fujitsu teljes termékskálájáról.
+              </p>
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
+              {solutionCategories.map((s, i) => (
+                <article
+                  key={s.title}
+                  className="rounded-2xl p-7 sm:p-8 bg-card border-2 border-border hover:border-primary/40 transition-all flex flex-col"
+                >
+                  <div className="flex items-start gap-4 mb-5">
+                    <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center flex-shrink-0">
+                      <s.icon className="w-7 h-7 text-primary-foreground" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="text-xs font-mono text-primary/70">0{i + 1}</span>
+                      <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight">
+                        {s.title}
+                      </h3>
+                    </div>
+                  </div>
+                  <p className="text-sm font-semibold text-foreground/80 mb-3">{s.tagline}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5">{s.body}</p>
+                  <ul className="space-y-2 mb-6 flex-1">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-sm text-foreground/85">
+                        <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    to={s.galleryHref}
+                    className="mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all self-start"
+                  >
+                    <Images className="w-4 h-4" />
+                    Fujitsu referenciák
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Buying Guide */}
-        <section className="py-20 bg-muted/30" aria-label="Fujitsu modell összehasonlítás">
+        <section className="py-20 bg-secondary" aria-label="Fujitsu modell összehasonlítás">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
-              <span className="inline-block text-red-600 text-sm font-semibold uppercase tracking-wider mb-4">
+              <span className="inline-block text-primary text-sm font-bold uppercase tracking-wider mb-4">
                 Vásárlási útmutató
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
@@ -212,7 +398,7 @@ const Fujitsu = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <span className="inline-block text-red-600 text-sm font-semibold uppercase tracking-wider mb-4">
+                <span className="inline-block text-primary text-sm font-bold uppercase tracking-wider mb-4">
                   Előnyök
                 </span>
                 <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-8">
@@ -222,15 +408,15 @@ const Fujitsu = () => {
                 <ul className="space-y-6">
                   {sellingPoints.map((point) => (
                     <li key={point.text} className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center shrink-0 mt-0.5">
-                        <point.icon className="w-5 h-5 text-white" />
+                      <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center shrink-0 mt-0.5">
+                        <point.icon className="w-5 h-5 text-primary-foreground" />
                       </div>
                       <p className="text-foreground leading-relaxed">{point.text}</p>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-8 p-5 rounded-xl border border-border/50 bg-background">
+                <div className="mt-8 p-5 rounded-xl border-2 border-primary/20 bg-card">
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     <strong className="text-foreground">33 év szakmai tapasztalattal</strong> és hivatalos Fujitsu partnerként
                     segítünk a legmegfelelőbb modell kiválasztásában Budapesten és Pest vármegyében.
