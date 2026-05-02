@@ -4,7 +4,6 @@ import FujitsuHero from "@/components/fujitsu/FujitsuHero";
 import FujitsuModelCard from "@/components/fujitsu/FujitsuModelCard";
 import FujitsuSummary from "@/components/fujitsu/FujitsuSummary";
 import FujitsuContactForm from "@/components/fujitsu/FujitsuContactForm";
-import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
 import { Link } from "react-router-dom";
@@ -484,7 +483,6 @@ const Fujitsu = () => {
         <FujitsuContactForm />
       </main>
       <Footer />
-      <FujitsuFloatingButton />
     </div>
   );
 };
