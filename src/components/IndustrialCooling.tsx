@@ -1,30 +1,54 @@
-import { Droplets, Wind, Wrench, Snowflake, Images } from "lucide-react";
+import { Droplets, Wind, Wrench, Snowflake, Images, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const features = [
+const sections = [
   {
     icon: Droplets,
-    title: "Ipari hűtés és Chiller rendszerek",
+    title: "Chiller és Folyadékhűtő Rendszerek",
     galleryHref: "/galeria/ipari-hutes/",
-    desc: "Komplett vizes rendszerek (Chiller) és Fan-coil hálózatok tervezése, telepítése és szervizelése. Meglévő rendszerek optimalizálása a maximális energiahatékonyság érdekében.",
+    desc: "Komplett vizes rendszerek (Chiller) és Fan-coil hálózatok tervezése és telepítése. Meglévő rendszerek hidraulikai beszabályozása, hűtőközeg-szivárgás vizsgálata és energiahatékonysági optimalizálása.",
+    bullets: [
+      "Chiller és Fan-coil rendszerek tervezése és telepítése",
+      "Hidraulikai beszabályozás meglévő rendszereken",
+      "Hűtőközeg-szivárgás vizsgálata (517/2014/EU)",
+      "Energiahatékonysági optimalizálás és COP-növelés",
+    ],
   },
   {
     icon: Snowflake,
-    title: "Légcsatornázható és Félipari rendszerek irodákba, csarnokokba",
+    title: "Légcsatornázható és Félipari Split Megoldások",
     galleryHref: "/galeria/legcsatornazhato/",
-    desc: "Hatékony hűtési megoldás irodák, üzletek és ipari létesítmények számára. A légcsatornázható kialakítás lehetővé teszi, hogy a berendezést a hűtött téren kívül (pl. folyosón vagy gépészeti helyiségben) helyezzük el. Ez kritikus előny poros, szennyezettebb üzemi környezetben vagy csarnokokban, mivel a gép védve marad a közvetlen szennyeződéstől, miközben tiszta, szűrt levegőt juttat az irodai vagy munkaterületekre.",
+    desc: "Speciális megoldások irodákba és csarnokokba. Légcsatornázható gépek telepítése, ahol a beltéri egységet a szennyezett téren kívül helyezzük el, így garantálva a gép védelmét és a tiszta levegő befúvását.",
+    bullets: [
+      "Légcsatornázható beltéri egységek álmennyezetbe rejtve",
+      "Beltéri egység elhelyezése gépészeti helyiségben",
+      "Tiszta, szűrt levegő befúvása irodákba és munkaterekre",
+      "Huzatmentes, optimális légelosztás precíz tervezéssel",
+    ],
   },
   {
     icon: Wind,
-    title: "Központi Légkezelés (AHU) és Szellőzés",
+    title: "Központi Légkezelés (AHU) és Szűréstechnika",
     galleryHref: "/galeria/legtechnika/",
-    desc: "Központi légkezelő egységek telepítése, műszaki felülvizsgálata és karbantartása. Gondoskodunk a folyamatos friss levegőről, a szűrésről és az optimális páratartalomról ipari és kereskedelmi környezetben.",
+    desc: "Ipari légkezelő gépek műszaki felülvizsgálata, szűrőcseréje (G4–F9 szűrési osztályok) és hővisszanyerős szellőztető rendszerek karbantartása a folyamatos friss levegő és az előírt páratartalom biztosításához.",
+    bullets: [
+      "AHU egységek műszaki felülvizsgálata és üzembe helyezése",
+      "Szűrőcsere G4–F9 szűrési osztályokban",
+      "Hővisszanyerős szellőztető rendszerek karbantartása",
+      "Páratartalom- és hőmérséklet-szabályozás finomhangolása",
+    ],
   },
   {
     icon: Wrench,
-    title: "Szerviz és Megelőző Karbantartás",
+    title: "Márkafüggetlen Ipari Szerviz és Karbantartás",
     galleryHref: "/galeria/karbantartas/",
-    desc: "Gyors hibaelhárítás és márkafüggetlen javítás ipari berendezéseken. Megelőző karbantartási szerződéseinkkel segítünk elkerülni a váratlan leállásokat és a magas javítási költségeket.",
+    desc: "Gyors hibaelhárítás és precíz diagnosztika minden típusú ipari hűtőberendezéshez. Megelőző karbantartási szerződések irodaházak és ipari létesítmények részére a drága leállások elkerülése érdekében.",
+    bullets: [
+      "Gyors hibaelhárítás és precíz műszeres diagnosztika",
+      "Márkafüggetlen javítás minden ipari berendezésen",
+      "Megelőző karbantartási szerződések egyedi feltételekkel",
+      "Tervezett karbantartás a váratlan leállások elkerüléséért",
+    ],
   },
 ];
 
@@ -43,33 +67,46 @@ const IndustrialCooling = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="relative rounded-2xl p-8 border bg-gradient-card border-border/50 text-center cursor-default flex flex-col"
+        <div className="space-y-8 mb-12 max-w-5xl mx-auto">
+          {sections.map((s, idx) => (
+            <article
+              key={s.title}
+              className="relative rounded-2xl p-6 sm:p-10 border-2 border-primary/15 bg-gradient-card"
             >
-              <div className="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center mb-6 mx-auto">
-                <feature.icon className="w-8 h-8 text-primary-foreground" />
+              <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-start">
+                <div className="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center flex-shrink-0">
+                  <s.icon className="w-8 h-8 text-primary-foreground" />
+                </div>
+                <div>
+                  <div className="flex items-baseline gap-3 mb-3 flex-wrap">
+                    <span className="text-sm font-mono text-primary/60">0{idx + 1}</span>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+                      {s.title}
+                    </h3>
+                  </div>
+                  <p className="text-base leading-relaxed text-muted-foreground mb-6">
+                    {s.desc}
+                  </p>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-6">
+                    {s.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                        <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href={s.galleryHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+                  >
+                    <Images className="w-4 h-4" />
+                    Referenciák megtekintése
+                  </a>
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
-                {feature.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground flex-1">
-                {feature.desc}
-              </p>
-              {feature.galleryHref && (
-                <a
-                  href={feature.galleryHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all mx-auto"
-                >
-                  <Images className="w-4 h-4" />
-                  Referenciák megtekintése
-                </a>
-              )}
-            </div>
+            </article>
           ))}
         </div>
 
