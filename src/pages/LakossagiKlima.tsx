@@ -92,12 +92,12 @@ const LakossagiKlima = () => {
               {services.map((s) => (
                 <article
                   key={s.title}
-                  className="group relative rounded-2xl p-6 sm:p-7 bg-card border-2 border-primary/15 shadow-sm hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                  className="relative rounded-2xl p-6 sm:p-7 bg-card border-2 border-primary/15 shadow-sm flex flex-col cursor-default"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5">
                     <s.icon className="w-7 h-7 text-primary-foreground" />
                   </div>
-                  <h2 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                  <h2 className="text-xl font-bold text-foreground mb-3">
                     {s.title}
                   </h2>
                   <p className="text-base font-medium text-foreground/80 mb-4">
