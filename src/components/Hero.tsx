@@ -45,15 +45,26 @@ const Hero = () => {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex justify-center animate-fade-up" style={{ animationDelay: "0.3s" }}>
-            <Button 
-              variant="heroOutline" 
-              size="lg" 
-              className="group"
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-fade-up" style={{ animationDelay: "0.3s" }}>
+            <Button
+              variant="hero"
+              size="lg"
+              className="group w-full sm:w-auto"
               asChild
             >
-              <a href="#kapcsolat">
-                Ingyenes felmérés
+              <a href="#szolgaltatasok">
+                Lakossági megoldások
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </Button>
+            <Button
+              variant="heroOutline"
+              size="lg"
+              className="group w-full sm:w-auto"
+              asChild
+            >
+              <a href="/reszletek">
+                Ipari rendszerek
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
