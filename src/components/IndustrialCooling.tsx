@@ -1,49 +1,26 @@
-import { Droplets, Wind, Wrench, ClipboardCheck, Building2, Fan, AirVent, Snowflake } from "lucide-react";
+import { Droplets, Wind, Wrench, Snowflake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const features = [
   {
-    icon: ClipboardCheck,
-    title: "Műszaki tanácsadás és precíz kivitelezés",
-    desc: "Helyszíni felmérés alapján javasolunk optimális gépészeti megoldásokat irodaházak és üzemi területek részére, figyelembe véve a meglévő rendszerek adottságait.",
+    icon: Droplets,
+    title: "Ipari hűtés és Chiller rendszerek",
+    desc: "Komplett vizes rendszerek (Chiller) és Fan-coil hálózatok tervezése, telepítése és szervizelése. Meglévő rendszerek optimalizálása a maximális energiahatékonyság érdekében.",
   },
   {
-    icon: Droplets,
-    title: "Folyadékhűtők és Fan-coil rendszerek",
-    desc: "Komplett vizes rendszerek (Chiller) telepítése, beszabályozása és javítása. Meglévő hálózatok optimalizálása és szakszerű karbantartása a maximális hatékonyság érdekében.",
+    icon: Snowflake,
+    title: "Légcsatornázható és Félipari megoldások",
+    desc: "Esztétikus, rejtett kivitelű légcsatornázható split rendszerek (Fujitsu) telepítése. Ideális megoldás tagolt terekbe, irodákba vagy tetőterekbe, ahol a hagyományos beltéri egységek elhelyezése nem esztétikus vagy nem megoldható.",
   },
   {
     icon: Wind,
-    title: "Légkezelő gépek (AHU) és Szellőzés",
-    desc: "Központi légkezelő egységek karbantartása, szűrőcsere és műszaki felülvizsgálata. Gondoskodunk a folyamatos friss levegőről az irodai terekben és ipari létesítményekben.",
+    title: "Központi Légkezelés (AHU) és Szellőzés",
+    desc: "Központi légkezelő egységek telepítése, műszaki felülvizsgálata és karbantartása. Gondoskodunk a folyamatos friss levegőről, a szűrésről és az optimális páratartalomról ipari és kereskedelmi környezetben.",
   },
   {
     icon: Wrench,
-    title: "Szerviz, Javítás és Karbantartás",
-    desc: "Nem csak telepítünk: gyors hibaelhárítást vállalunk ipari berendezésekre is. Javítás és karbantartás terén márkafüggetlen szakértelemmel állunk rendelkezésre. Megelőző karbantartási szerződéseinkkel segítünk elkerülni a váratlan és drága leállásokat.",
-  },
-];
-
-const additionalSystems = [
-  {
-    icon: Snowflake,
-    title: "Légcsatornázható félipari split",
-    desc: "Esztétikus, rejtett kivitelű félipari split rendszerek irodákba, üzletekbe és tagolt terekbe, ahol a hagyományos beltéri egységek elhelyezése nem megoldható. Légcsatornás kialakítással huzatmentes, egyenletes légelosztást biztosítunk – a beltéri egység az álmennyezetbe rejtve, csak a diszkrét befúvó- és visszaszívó rácsok láthatók.",
-  },
-  {
-    icon: Fan,
-    title: "Fan-coilok",
-    desc: "Fan-coil egységek (ventilátoros konvektorok) telepítése, beszabályozása és szervize irodaházakban, üzletekben és ipari létesítményekben. Hatékony, zónánként szabályozható hűtési és fűtési megoldás a központi vizes (Chiller) rendszerekhez kapcsolva.",
-  },
-  {
-    icon: Building2,
-    title: "Irodaház hűtés",
-    desc: "Nagyméretű irodaházak hűtési rendszereinek karbantartása és javítása. A karbantartás során ellenőrizzük a hűtőköröket, tisztítjuk a hőcserélőket, beszabályozzuk a rendszert és elhárítjuk az esetleges hibákat. Célunk, hogy a hűtés a legmelegebb időszakban is megbízhatóan működjön, és az energiafelhasználás optimális maradjon.",
-  },
-  {
-    icon: AirVent,
-    title: "Légkezelők (AHU)",
-    desc: "Központi légkezelő gépek (AHU) telepítése, szűrőcseréje, hővisszanyerő blokkok karbantartása és műszaki felülvizsgálata. Gondoskodunk a folyamatos friss levegő ellátásról, a megfelelő légcseréről és a páratartalom szabályozásáról ipari és kereskedelmi környezetben.",
+    title: "Szerviz és Megelőző Karbantartás",
+    desc: "Gyors hibaelhárítás és márkafüggetlen javítás ipari berendezéseken. Megelőző karbantartási szerződéseinkkel segítünk elkerülni a váratlan leállásokat és a magas javítási költségeket.",
   },
 ];
 
@@ -62,7 +39,7 @@ const IndustrialCooling = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12 max-w-5xl mx-auto">
           {features.map((feature) => (
             <div
               key={feature.title}
@@ -79,37 +56,6 @@ const IndustrialCooling = () => {
               </p>
             </div>
           ))}
-        </div>
-
-        {/* Additional industrial systems */}
-        <div className="max-w-5xl mx-auto mb-12">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
-              További ipari és kereskedelmi rendszerek
-            </h3>
-            <p className="text-muted-foreground">
-              Komplett szolgáltatásportfólió fan-coil rendszerektől irodaházi
-              hűtésig és központi légkezelő gépekig.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {additionalSystems.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-2xl p-6 sm:p-7 bg-card border-2 border-primary/15 shadow-sm"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6" />
-                </div>
-                <h4 className="text-lg font-bold text-foreground mb-2">
-                  {item.title}
-                </h4>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="text-center">
