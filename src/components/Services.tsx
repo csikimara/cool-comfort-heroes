@@ -99,16 +99,16 @@ const Services = () => {
         </div>
 
         {/* Main Gallery CTA */}
-        <div className="mt-12 sm:mt-16 text-center">
+        <div className="mt-16 sm:mt-20 mb-4 sm:mb-8 flex justify-center px-4">
           <a
             href="/galeria/osszes"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-hero text-primary-foreground font-semibold text-base sm:text-lg shadow-elevated hover:-translate-y-0.5 hover:shadow-soft transition-all"
+            className="inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-4 sm:py-5 rounded-full bg-gradient-hero text-primary-foreground font-semibold text-base sm:text-lg shadow-elevated hover:-translate-y-0.5 hover:shadow-soft transition-all text-center max-w-full"
           >
-            <Images className="w-5 h-5" />
-            Tekintse meg összes referenciánkat
-            <ArrowRight className="w-5 h-5" />
+            <Images className="w-5 h-5 flex-shrink-0" />
+            <span>Tekintse meg összes referenciánkat</span>
+            <ArrowRight className="w-5 h-5 flex-shrink-0" />
           </a>
         </div>
       </div>
