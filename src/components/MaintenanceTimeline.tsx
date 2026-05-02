@@ -106,7 +106,7 @@ const MaintenanceTimeline = () => {
         </div>
 
         {/* Timeline */}
-        <div className="max-w-4xl mx-auto">
+        <div id="karbantartas-idovonal" className="max-w-4xl mx-auto scroll-mt-24">
           <div className="relative">
             {/* Vertical line */}
             <div className="absolute left-6 sm:left-1/2 top-0 bottom-0 w-0.5 bg-border sm:-translate-x-px" />
