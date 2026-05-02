@@ -279,7 +279,7 @@ const Fujitsu = () => {
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 mb-6">
                 <ShieldCheck className="w-10 h-10" />
               </div>
-              <span className="text-sm font-bold uppercase tracking-wider opacity-90">
+              <span className="block text-xs sm:text-sm font-bold uppercase tracking-wide sm:tracking-wider opacity-90 break-words">
                 Columbus Klíma kiterjesztett garancia
               </span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-3 mb-6 leading-tight">
