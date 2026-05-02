@@ -1,25 +1,29 @@
-import { Droplets, Wind, Wrench, Snowflake } from "lucide-react";
+import { Droplets, Wind, Wrench, Snowflake, Images } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const features = [
   {
     icon: Droplets,
     title: "Ipari hűtés és Chiller rendszerek",
+    galleryHref: "/galeria/ipari-hutes/",
     desc: "Komplett vizes rendszerek (Chiller) és Fan-coil hálózatok tervezése, telepítése és szervizelése. Meglévő rendszerek optimalizálása a maximális energiahatékonyság érdekében.",
   },
   {
     icon: Snowflake,
     title: "Légcsatornázható és Félipari rendszerek irodákba, csarnokokba",
+    galleryHref: "/galeria/legcsatornazhato/",
     desc: "Hatékony hűtési megoldás irodák, üzletek és ipari létesítmények számára. A légcsatornázható kialakítás lehetővé teszi, hogy a berendezést a hűtött téren kívül (pl. folyosón vagy gépészeti helyiségben) helyezzük el. Ez kritikus előny poros, szennyezettebb üzemi környezetben vagy csarnokokban, mivel a gép védve marad a közvetlen szennyeződéstől, miközben tiszta, szűrt levegőt juttat az irodai vagy munkaterületekre.",
   },
   {
     icon: Wind,
     title: "Központi Légkezelés (AHU) és Szellőzés",
+    galleryHref: "/galeria/legtechnika/",
     desc: "Központi légkezelő egységek telepítése, műszaki felülvizsgálata és karbantartása. Gondoskodunk a folyamatos friss levegőről, a szűrésről és az optimális páratartalomról ipari és kereskedelmi környezetben.",
   },
   {
     icon: Wrench,
     title: "Szerviz és Megelőző Karbantartás",
+    galleryHref: "/galeria/karbantartas/",
     desc: "Gyors hibaelhárítás és márkafüggetlen javítás ipari berendezéseken. Megelőző karbantartási szerződéseinkkel segítünk elkerülni a váratlan leállásokat és a magas javítási költségeket.",
   },
 ];
@@ -43,7 +47,7 @@ const IndustrialCooling = () => {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="relative rounded-2xl p-8 border bg-gradient-card border-border/50 shadow-card text-center cursor-default"
+              className="relative rounded-2xl p-8 border bg-gradient-card border-border/50 text-center cursor-default flex flex-col"
             >
               <div className="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center mb-6 mx-auto">
                 <feature.icon className="w-8 h-8 text-primary-foreground" />
@@ -51,9 +55,20 @@ const IndustrialCooling = () => {
               <h3 className="text-xl font-semibold mb-3 text-foreground">
                 {feature.title}
               </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
+              <p className="text-sm leading-relaxed text-muted-foreground flex-1">
                 {feature.desc}
               </p>
+              {feature.galleryHref && (
+                <a
+                  href={feature.galleryHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all mx-auto"
+                >
+                  <Images className="w-4 h-4" />
+                  Referenciák megtekintése
+                </a>
+              )}
             </div>
           ))}
         </div>
