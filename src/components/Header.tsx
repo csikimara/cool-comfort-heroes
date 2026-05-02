@@ -41,7 +41,7 @@ const Header = () => {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground px-4 py-2 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors duration-200"
+                className="text-sm font-medium text-white px-4 py-2 rounded-full bg-white/10 border border-white/30 backdrop-blur-sm hover:bg-white hover:text-primary hover:border-white transition-colors duration-200"
               >
                 {link.label}
               </a>
@@ -50,7 +50,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <a href="tel:+36704099760" className="hidden lg:flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors whitespace-nowrap">
+            <a href="tel:+36704099760" className="hidden lg:flex items-center gap-2 text-sm font-medium text-white hover:text-white/80 transition-colors whitespace-nowrap drop-shadow">
               <Phone className="w-4 h-4 flex-shrink-0" />
               +36 70 409 9760
             </a>
@@ -61,7 +61,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -70,7 +70,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-border/50 animate-fade-in">
+          <nav className="md:hidden py-4 border-t border-white/20 bg-background/80 backdrop-blur-lg rounded-b-xl animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
