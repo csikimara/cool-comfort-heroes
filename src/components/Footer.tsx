@@ -19,8 +19,8 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               </div>
             </div>
             <p className="text-background/70 leading-relaxed max-w-md mb-4">
-              Professzionális klíma és légtechnikai megoldások 33 év szakmai tapasztalattal.
-              Bízza ránk otthona vagy irodája komfortját!
+              A Northwind Hűtéstechnika több mint három évtizedes szakmai
+              tapasztalattal a háta mögött biztosít stabil hátteret ügyfeleinek.
             </p>
             <p className="text-background/60 text-sm leading-relaxed max-w-md mb-6">
               Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén.

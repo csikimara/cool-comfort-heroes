@@ -18,7 +18,7 @@ export interface FujitsuModel {
 }
 
 const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
-  <div className="group rounded-2xl border border-border/50 bg-gradient-card shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 flex flex-col">
+  <div className="group rounded-2xl border border-border/50 bg-gradient-card shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 flex flex-col min-w-0 overflow-hidden">
     {/* Image placeholder */}
     <div className="relative aspect-[4/3] rounded-t-2xl overflow-hidden bg-muted flex items-center justify-center">
       <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${model.accentClass} flex items-center justify-center`}>
@@ -56,10 +56,12 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
       <div className="flex flex-col gap-3">
         <Button
           size="lg"
-          className={`w-full bg-gradient-to-r ${model.accentClass} text-white hover:opacity-90 min-h-[48px]`}
+          className={`w-full max-w-full bg-gradient-to-r ${model.accentClass} text-white hover:opacity-90 min-h-[48px] h-auto py-3 whitespace-normal text-center`}
           asChild
         >
-          <a href="/#kapcsolat">Ajánlatot kérek</a>
+          <a href="/#kapcsolat" className="inline-flex items-center justify-center text-center break-words max-w-full">
+            Ajánlatot kérek
+          </a>
         </Button>
         <p className="text-xs text-muted-foreground text-center leading-relaxed px-1">
           Tekintse meg a hivatalos magyarországi vezérképviselet naprakész árlistáját és termékkatalógusát.
@@ -67,17 +69,17 @@ const FujitsuModelCard = ({ model }: { model: FujitsuModel }) => (
         <Button
           size="lg"
           variant="outline"
-          className="w-full border-border hover:bg-accent min-h-[48px]"
+          className="w-full max-w-full border-border hover:bg-accent min-h-[48px] h-auto py-3 whitespace-normal text-center"
           asChild
         >
           <a
             href={model.catalogUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2"
+            className="inline-flex items-center justify-center gap-2 flex-wrap break-words text-sm leading-snug max-w-full"
           >
-            <ExternalLink className="w-4 h-4" />
-            {model.catalogLabel || "Műszaki adatok és árak"}
+            <ExternalLink className="w-4 h-4 shrink-0" />
+            <span className="break-words">{model.catalogLabel || "Műszaki adatok és árak"}</span>
           </a>
         </Button>
       </div>
