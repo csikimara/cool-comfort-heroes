@@ -153,28 +153,29 @@ const Services = () => {
   };
 
   const renderPillar = (pillar: Pillar, index: number) => (
-    <a
+    <div
       key={pillar.title}
-      href={pillar.href}
-      onClick={(e) => handleCardClick(pillar, e)}
-      className="group relative rounded-2xl p-6 sm:p-7 border bg-gradient-card border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 block h-full"
+      className="relative rounded-2xl p-6 sm:p-7 border bg-gradient-card border-border/50 shadow-card block h-full"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+      <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5">
         <pillar.icon className="w-7 h-7 text-primary-foreground" />
       </div>
-      <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+      <h3 className="text-xl font-semibold mb-3 text-foreground">
         {pillar.title}
       </h3>
       <p className="text-base leading-relaxed mb-4 text-muted-foreground">
         {pillar.description}
       </p>
-      <span className="card-cta">
+      <a
+        href={pillar.href}
+        onClick={(e) => handleCardClick(pillar, e)}
+        className="card-cta cursor-pointer"
+      >
         {pillar.cta}
-        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-      </span>
-      <div className="absolute inset-0 rounded-2xl bg-gradient-hero opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
-    </a>
+        <ArrowRight className="w-4 h-4" />
+      </a>
+    </div>
   );
 
   return (
