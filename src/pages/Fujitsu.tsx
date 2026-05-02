@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import FujitsuHero from "@/components/fujitsu/FujitsuHero";
 import FujitsuModelCard from "@/components/fujitsu/FujitsuModelCard";
 import FujitsuSummary from "@/components/fujitsu/FujitsuSummary";
+import FujitsuFloatingButton from "@/components/FujitsuFloatingButton";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
 import { Shield, Zap, AirVent, ThermometerSun, Snowflake, Sun, Flame, Star, User, Settings } from "lucide-react";
@@ -256,6 +257,7 @@ const Fujitsu = () => {
         <FujitsuSummary />
       </main>
       <Footer />
+      <FujitsuFloatingButton />
     </div>
   );
 };
