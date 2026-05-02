@@ -1,9 +1,5 @@
 import {
-  AirVent,
   Wrench,
-  ThermometerSun,
-  Building2,
-  SprayCan,
   Wind,
   ArrowRight,
   Info,
