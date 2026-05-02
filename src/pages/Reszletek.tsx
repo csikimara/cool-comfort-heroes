@@ -57,12 +57,8 @@ const Reszletek = () => {
                 Ipari megoldások
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Ipari hűtéstechnika és <span className="text-gradient">komplex rendszerek</span>
+                Ipari és <span className="text-gradient">Félipari Hűtéstechnika</span>
               </h1>
-              <p className="text-lg text-muted-foreground">
-                Folyadékhűtők (Chiller), légkezelő egységek (AHU) és Fan-coil rendszerek –
-                tervezés, telepítés és karbantartás ipari ügyfelek számára.
-              </p>
             </div>
           </div>
         </section>

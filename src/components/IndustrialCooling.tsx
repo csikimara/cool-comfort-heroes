@@ -49,10 +49,11 @@ const IndustrialCooling = () => {
         <div className="max-w-3xl mx-auto text-center mb-16">
           <p className="text-lg text-muted-foreground leading-relaxed">
             A <strong>Northwind Hűtéstechnika Kft.</strong> 1993 óta nyújt professzionális támogatást ipari és kereskedelmi
-            partnerei számára. Nem csupán berendezéseket telepítünk, hanem teljes körű gépészeti megoldásokban gondolkodunk:
-            a precíz mérnöki tervezéstől a szakszerű kivitelezésen át a folyamatos, üzembiztos karbantartásig. Tudjuk, hogy
-            az ipari szektorban a hűtés vagy szellőzés kiesése nem opció – ezért rugalmas hibaelhárítással és megelőző
-            szervizszolgáltatásokkal garantáljuk rendszerei folyamatos működését.
+            partnerei számára. Nem csupán berendezéseket telepítünk, hanem komplex gépészeti rendszerekben gondolkodunk:
+            a folyadékhűtős rendszerektől a speciális, légcsatornázható félipari megoldásokig. Ez utóbbi különösen ideális
+            olyan irodákba vagy tagolt terekbe, ahol a hagyományos split klímák elhelyezése nem esztétikus vagy nem
+            megoldható. Precíz mérnöki tervezéssel és szakszerű kivitelezéssel garantáljuk a huzatmentes, optimális
+            légelosztást és az üzembiztos működést.
           </p>
         </div>
 
