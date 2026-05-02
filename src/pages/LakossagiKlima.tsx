@@ -52,14 +52,13 @@ const services = [
   },
   {
     icon: SprayCan,
-    title: "Prémium Zsákos Klímamosás",
+    title: "Prémium Zsákos Mélymosás – Higiénia és Egészség",
     galleryHref: "/galeria/karbantartas/",
     short:
-      "Gyári higiénia helyreállítása: professzionális vegyszeres mélymosás, amely visszaadja a klíma eredeti tisztaságát, hatékonyságát és friss illatát.",
+      "Átfogó vegyszeres tisztítás, amely visszaadja klímája újkori állapotát és friss illatát.",
     paragraphs: [
-      "A tisztítás során speciális mosózsákot használunk, amely lehetővé teszi a beltéri egység teljes, nagynyomású vegyszeres átmosását anélkül, hogy a fal vagy a bútorzat koszolódna. Ez az eljárás maradéktalanul eltávolítja a hőcserélőn lerakódott port, a penészgombát, megszünteti a kellemetlen szagokat, és elpusztítja a baktériumokat.",
-      "A folyamat elengedhetetlen része a kültéri egység karbantartása is: nagynyomású vízzel szabadítjuk meg a hőcserélőt a lerakódott pollentől és szennyeződésektől. Ez javítja a hőleadást, csökkenti a zajszintet és védi a kompresszort a túlmelegedéstől.",
-      "A rendszeres mélymosás nemcsak az Ön egészségét védi, hanem garantálja a készülék üzembiztos, energiatakarékos működését is.",
+      "A hagyományos tisztítás gyakran csak a felszínt érinti. A Northwind prémium mélymosása során speciális mosózsákot és nagynyomású technológiát alkalmazunk, amely lehetővé teszi a beltéri egység teljes átmosását anélkül, hogy egyetlen csepp víz is a falra vagy a bútorokra kerülne. Ez az eljárás gyökerestől távolítja el a lerakódott port, a penészgombát és a baktériumokat, megszüntetve a kellemetlen szagokat.",
+      "A folyamat részeként a kültéri egységet is nagynyomású vízzel szabadítjuk meg a pollentől és szennyeződésektől, ami javítja a hőleadást és kíméli a kompresszort. A rendszeres mélymosás nem csupán az Ön egészségét védi, hanem garantálja a készülék energiatakarékos és csendes működését is.",
     ],
   },
 ];
