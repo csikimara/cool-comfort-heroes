@@ -1,25 +1,19 @@
 import { useState, ReactNode } from "react";
-import { 
-  AirVent, 
-  Wrench, 
-  ThermometerSun, 
-  Building2, 
-  SprayCan, 
+import {
+  AirVent,
+  Wrench,
+  ThermometerSun,
+  SprayCan,
   Wind,
   Fan,
   ArrowRight,
-  SearchCheck,
   Info,
   Factory,
   Receipt,
-  LucideIcon
+  Home,
+  LucideIcon,
 } from "lucide-react";
 import ServiceDetailModal from "./ServiceDetailModal";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 
 interface Service {
   icon: LucideIcon;
@@ -27,6 +21,15 @@ interface Service {
   description: string;
   detailedDescription?: string;
   extraContent?: ReactNode;
+}
+
+interface Pillar {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  href: string;
+  cta: string;
+  service?: Service;
 }
 
 const services: Service[] = [
@@ -98,54 +101,77 @@ const services: Service[] = [
       </>
     ),
   },
+];
+
+const findService = (title: string) => services.find((s) => s.title === title)!;
+
+const pillars: Pillar[] = [
   {
-    icon: Fan,
-    title: "Fan-coilok",
-    description: "Fan-coil berendezések telepítése, karbantartása és javítása.",
-    detailedDescription: "A fan-coil rendszerek vízalapú hűtést és fűtést biztosítanak, ezért különösen fontos a tiszta hőcserélő és a megfelelő légáramlás. Telepítést, karbantartást és javítást is vállalunk, hogy a berendezések csendesen, hatékonyan és hosszú távon működjenek. Ideális megoldás irodákban, szállodákban és intézményekben.",
+    icon: Home,
+    title: "Lakossági Klíma és Hőszivattyú",
+    description:
+      "Professzionális split és multi-split klímaberendezések, valamint energiahatékony hőszivattyúk telepítése otthonokba és irodákba.",
+    href: "#kapcsolat",
+    cta: "Részletek megnyitása",
+    service: findService("Klímaszerelés"),
   },
   {
-    icon: AirVent,
-    title: "Légkezelők",
-    description: "Központi légkezelő egységek szerelése és szervize ipari környezetben.",
-    detailedDescription: "A légkezelők felelnek a levegő szűréséért, hőmérsékletének és páratartalmának szabályozásáért. Ipari környezetben kiemelten fontos a folyamatos, megbízható működés. A telepítés mellett rendszeres szervizt is biztosítunk, hogy a rendszer mindig tiszta, hatékony és üzembiztos legyen.",
+    icon: Factory,
+    title: "Ipari Folyadékhűtők (Chiller) és Fan-coil",
+    description:
+      "Komplex ipari hűtéstechnikai megoldások: folyadékhűtők (chillerek), fan-coil rendszerek tervezése, telepítése és szervize.",
+    href: "/reszletek#ipari",
+    cta: "Ipari megoldások",
   },
   {
-    icon: SearchCheck,
-    title: "Kötelező szivárgásvizsgálat",
-    description: "Az EU 517/2014 rendelet értelmében az 5 tonna CO₂-egyenértéket meghaladó hűtőközeget tartalmazó berendezések évente kötelező szivárgásvizsgálatra kötelezettek. Akkreditált szakembereink elvégzik a vizsgálatot és kiállítják a szükséges dokumentációt.",
+    icon: Wind,
+    title: "Légtechnika és Szellőzés (AHU)",
+    description:
+      "Komplex szellőztető és légkezelő rendszerek (AHU) tervezése és kivitelezése lakossági, kereskedelmi és ipari környezetben.",
+    href: "#kapcsolat",
+    cta: "Részletek megnyitása",
+    service: findService("Légtechnikai szerelés"),
+  },
+  {
+    icon: Wrench,
+    title: "Szerviz és Prémium Karbantartás",
+    description:
+      "Rendszeres éves felülvizsgálat, márkafüggetlen javítás és prémium zsákos klímamosás a hosszú élettartamért és optimális hatékonyságért.",
+    href: "#kapcsolat",
+    cta: "Részletek megnyitása",
+    service: findService("Karbantartás"),
   },
 ];
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState<Service | null>(null);
 
-  const handleCardClick = (service: Service, e: React.MouseEvent) => {
-    if (service.detailedDescription) {
+  const handleCardClick = (pillar: Pillar, e: React.MouseEvent) => {
+    if (pillar.service) {
       e.preventDefault();
-      setSelectedService(service);
+      setSelectedService(pillar.service);
     }
   };
 
-  const renderCard = (service: Service, index: number) => (
+  const renderPillar = (pillar: Pillar, index: number) => (
     <a
-      key={service.title}
-      href="#kapcsolat"
-      onClick={(e) => handleCardClick(service, e)}
-      className="group relative rounded-2xl p-6 border bg-gradient-card border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 block h-full"
+      key={pillar.title}
+      href={pillar.href}
+      onClick={(e) => handleCardClick(pillar, e)}
+      className="group relative rounded-2xl p-6 sm:p-7 border bg-gradient-card border-border/50 shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 block h-full"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
       <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-        <service.icon className="w-7 h-7 text-primary-foreground" />
+        <pillar.icon className="w-7 h-7 text-primary-foreground" />
       </div>
-      <h3 className="text-xl sm:text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
-        {service.title}
+      <h3 className="text-xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+        {pillar.title}
       </h3>
       <p className="text-base leading-relaxed mb-4 text-muted-foreground">
-        {service.description}
+        {pillar.description}
       </p>
       <span className="card-cta">
-        {service.detailedDescription ? "Részletek megnyitása" : "Ajánlatkérés"}
+        {pillar.cta}
         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
       </span>
       <div className="absolute inset-0 rounded-2xl bg-gradient-hero opacity-0 group-hover:opacity-5 transition-opacity duration-500" />
@@ -170,29 +196,9 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Mobile: swipeable slider */}
-        <div className="sm:hidden">
-          <Carousel opts={{ align: "start", loop: false }} className="w-full">
-            <CarouselContent className="-ml-4">
-              {services.map((service, index) => (
-                <CarouselItem key={service.title} className="pl-4 basis-[85%]">
-                  {renderCard(service, index)}
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-          <div className="mt-5 flex justify-center">
-            <p className="inline-flex items-center gap-2 text-sm font-semibold text-primary bg-primary/10 border border-primary/30 rounded-full px-4 py-2 shadow-soft animate-pulse">
-              <ArrowRight className="w-4 h-4 rotate-180" />
-              Húzd oldalra a további szolgáltatásokért
-              <ArrowRight className="w-4 h-4" />
-            </p>
-          </div>
-        </div>
-
-        {/* Tablet & desktop: grid */}
-        <div className="hidden sm:grid grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => renderCard(service, index))}
+        {/* 4 Pillar grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {pillars.map((pillar, index) => renderPillar(pillar, index))}
         </div>
 
         {/* CTA to details page */}
@@ -201,7 +207,7 @@ const Services = () => {
             href="/reszletek"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-soft hover:shadow-elevated hover:bg-primary/90 transition-all duration-300 group text-base"
           >
-            Részletek
+            Ipari Megoldások
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
           <nav
