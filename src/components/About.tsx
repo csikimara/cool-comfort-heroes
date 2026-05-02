@@ -95,10 +95,6 @@ const About = () => {
                 </div>
               </div>
             </div>
-            
-            {/* Decorative elements - hidden on mobile to prevent overflow */}
-            <div className="absolute -top-3 -right-3 w-16 h-16 bg-accent/20 rounded-2xl -z-10 hidden sm:block" />
-            <div className="absolute -bottom-3 -left-3 w-20 h-20 bg-primary/10 rounded-2xl -z-10 hidden sm:block" />
           </div>
         </div>
       </div>
