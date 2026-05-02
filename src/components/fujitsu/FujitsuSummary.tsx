@@ -22,7 +22,7 @@ const FujitsuSummary = () => (
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Button size="lg" asChild>
-            <a href="/#kapcsolat">Ajánlatkérés</a>
+            <a href="#fujitsu-contact">Ajánlatkérés</a>
           </Button>
           <Button size="lg" variant="outline" asChild>
             <a href="tel:+36704099760">
