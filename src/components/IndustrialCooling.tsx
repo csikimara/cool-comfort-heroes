@@ -28,14 +28,14 @@ const sections = [
   },
   {
     icon: Wind,
-    title: "Központi Légkezelés (AHU) és Szűréstechnika",
+    title: "Központi Légkezelés (AHU) és Szűréstechnika – Az egészséges munkakörnyezet alapja",
     galleryHref: "/galeria/legtechnika/",
-    desc: "Ipari légkezelő gépek műszaki felülvizsgálata, szűrőcseréje (G4–F9 szűrési osztályok) és hővisszanyerős szellőztető rendszerek karbantartása a folyamatos friss levegő és az előírt páratartalom biztosításához.",
+    desc: "Egy épület levegőminősége és energiahatékonysága a légkezelő rendszer (AHU) állapotán múlik. Szolgáltatásunk a teljes körű gépészeti felülvizsgálattól a precíz szűrőmenedzsmentig terjed, biztosítva az irodák és ipari csarnokok folyamatos frisslevegő-ellátását.",
     bullets: [
-      "AHU egységek műszaki felülvizsgálata és üzembe helyezése",
-      "Szűrőcsere G4–F9 szűrési osztályokban",
-      "Hővisszanyerős szellőztető rendszerek karbantartása",
-      "Páratartalom- és hőmérséklet-szabályozás finomhangolása",
+      "Szűrőmenedzsment: rendszeres csere és ellenőrzés a G4-es osztálytól egészen az F9-es finomszűrőkig a belső levegő tisztaságáért.",
+      "Hővisszanyerő blokkok: lemezes és rotációs hőcserélők tisztítása és hatásfok-ellenőrzése a rezsiköltségek minimalizálása érdekében.",
+      "Higiéniai karbantartás: csepptálcák és belső szekciók szakszerű fertőtlenítése az egészséges munkakörnyezetért.",
+      "Műszaki diagnosztika: ventilátorok, motorok és zsalumozgatók állapotfelmérése és szükség szerinti javítása.",
     ],
   },
   {
