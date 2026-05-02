@@ -369,6 +369,31 @@ const Fujitsu = () => {
                       </li>
                     ))}
                   </ul>
+                  <div
+                    className={`mb-5 rounded-xl p-3.5 border flex items-start gap-2.5 ${
+                      s.title === "Lakossági Split"
+                        ? "bg-primary/10 border-primary/30"
+                        : "bg-secondary border-border"
+                    }`}
+                  >
+                    <ShieldCheck
+                      className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
+                        s.title === "Lakossági Split" ? "text-primary" : "text-foreground/60"
+                      }`}
+                    />
+                    <div className="min-w-0">
+                      <p
+                        className={`text-sm font-bold leading-tight ${
+                          s.title === "Lakossági Split" ? "text-primary" : "text-foreground"
+                        }`}
+                      >
+                        {s.warrantyBadge}
+                      </p>
+                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                        {s.warrantyNote}
+                      </p>
+                    </div>
+                  </div>
                   <Link
                     to={s.galleryHref}
                     className="mt-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all self-start"
