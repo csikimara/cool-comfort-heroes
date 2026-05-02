@@ -2,7 +2,7 @@ import { Award, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const FujitsuSummary = () => (
-  <section id="fujitsu-contact" className="py-20 sm:py-24 bg-secondary scroll-mt-24">
+  <section className="py-20 sm:py-24 bg-secondary">
     <div className="container mx-auto px-4">
       <div className="max-w-3xl mx-auto rounded-3xl bg-card border-2 border-primary/30 p-8 sm:p-12 text-center shadow-xl">
         <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mx-auto mb-6">
@@ -22,7 +22,7 @@ const FujitsuSummary = () => (
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Button size="lg" asChild>
-            <a href="/#kapcsolat">Ajánlatkérés</a>
+            <a href="#fujitsu-contact">Ajánlatkérés</a>
           </Button>
           <Button size="lg" variant="outline" asChild>
             <a href="tel:+36704099760">
