@@ -13,6 +13,7 @@ const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const Fujitsu = lazy(() => import("./pages/Fujitsu"));
 const Reszletek = lazy(() => import("./pages/Reszletek"));
 const LakossagiKlima = lazy(() => import("./pages/LakossagiKlima"));
+const Galeria = lazy(() => import("./pages/Galeria"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/fujitsu" element={<Fujitsu />} />
             <Route path="/reszletek" element={<Reszletek />} />
             <Route path="/lakossagi-klima" element={<LakossagiKlima />} />
+            <Route path="/referenciak/:slug" element={<Galeria />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

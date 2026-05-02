@@ -1,11 +1,12 @@
 import { Droplets, Wind, Wrench, Snowflake, Images, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const sections = [
   {
     icon: Droplets,
     title: "Ipari hűtés és Chiller (folyadékhűtő) rendszerek – Teljes körű mérnöki kivitelezés",
-    galleryHref: "/galeria/ipari-hutes/",
+    galleryHref: "/referenciak/ipari-hutes",
     desc: "Vállaljuk komplex ipari hűtési rendszerek tervezését és teljes körű, kulcsrakész kivitelezését, levéve a logisztikai és szervezési terhet az Ön válláról. A teljes folyamatot kézben tartjuk a tervezéstől az üzemeltetésig.",
     bullets: [
       "Projektmenedzsment és Logisztika: hatósági ügyintézés, útfoglalási engedélyek, daruzás vezénylése és precíz helyszíni letelepítés.",
@@ -17,7 +18,7 @@ const sections = [
   {
     icon: Snowflake,
     title: "Légcsatornázható és Félipari megoldások – Kompromisszumok nélküli komfort",
-    galleryHref: "/galeria/legcsatornazhato/",
+    galleryHref: "/referenciak/legcsatornazhato",
     desc: "A légcsatornázható rendszerek ott nyújtanak megoldást, ahol a fali split klímák telepítése esztétikailag vagy technikailag nem előnyös. A padlástérbe vagy álmennyezetbe rejtett berendezések láthatatlanul, diszkrét rácsokon keresztül biztosítanak tökéletes légelosztást.",
     bullets: [
       "Tagolt terek kezelése: egyetlen rendszerrel több kisebb helyiség (hálószobák, tárgyalók) egyidejű hűtése és fűtése.",
@@ -29,7 +30,7 @@ const sections = [
   {
     icon: Wind,
     title: "Központi Légkezelés (AHU) és Szűréstechnika – Az egészséges munkakörnyezet alapja",
-    galleryHref: "/galeria/legtechnika/",
+    galleryHref: "/referenciak/legtechnika",
     desc: "Egy épület levegőminősége és energiahatékonysága a légkezelő rendszer (AHU) állapotán múlik. Szolgáltatásunk a teljes körű gépészeti felülvizsgálattól a precíz szűrőmenedzsmentig terjed, biztosítva az irodák és ipari csarnokok folyamatos frisslevegő-ellátását.",
     bullets: [
       "Szűrőmenedzsment: rendszeres csere és ellenőrzés a G4-es osztálytól egészen az F9-es finomszűrőkig a belső levegő tisztaságáért.",
@@ -41,7 +42,7 @@ const sections = [
   {
     icon: Wrench,
     title: "Márkafüggetlen Ipari Szerviz és Karbantartás – Üzembiztonság felsőfokon",
-    galleryHref: "/galeria/karbantartas/",
+    galleryHref: "/referenciak/karbantartas",
     desc: "Az ipari hűtési rendszerek zavartalan működése nem szerencse, hanem tudatos karbantartás kérdése. Szervizszolgáltatásunk a gyors reakcióidőre és a precíz, műszeres diagnosztikára épül, hogy partnereinknek ne kelljen tartaniuk a drága leállásoktól.",
     bullets: [
       "Márkafüggetlen javítás: 33 éves tapasztalattal szervizelünk bármilyen típusú ipari hűtő- és légkezelő berendezést gyártótól függetlenül.",
@@ -95,15 +96,13 @@ const IndustrialCooling = () => {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href={s.galleryHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to={s.galleryHref}
                     className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full border-2 border-primary/30 bg-primary/5 text-primary font-semibold text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                   >
                     <Images className="w-4 h-4" />
                     Referenciák megtekintése
-                  </a>
+                  </Link>
                 </div>
               </div>
             </article>
