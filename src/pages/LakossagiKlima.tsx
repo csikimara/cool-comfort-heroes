@@ -116,14 +116,15 @@ const LakossagiKlima = () => {
             <div className="mt-12 max-w-3xl mx-auto">
               <div className="rounded-2xl overflow-hidden border border-border/50 bg-black">
                 <video
-                  src="https://northwind.hu/video/zsakos-mosas.mp4"
                   controls
+                  autoPlay
                   muted
                   loop
                   playsInline
                   preload="metadata"
                   className="w-full h-auto block"
                 >
+                  <source src="https://northwind.hu/video/zsakos-mosas.mp4" type="video/mp4" />
                   A böngésződ nem támogatja a videó lejátszását.
                 </video>
               </div>
