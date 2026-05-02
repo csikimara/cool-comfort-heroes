@@ -81,15 +81,15 @@ const About = () => {
           {/* Right content - Image */}
           <div className="relative">
             <div className="relative z-10 rounded-3xl overflow-hidden shadow-elevated">
-              <div className="aspect-[4/3] bg-gradient-hero flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-24 h-24 mx-auto rounded-2xl bg-primary-foreground/20 flex items-center justify-center mb-6">
-                    <ShieldCheck className="w-12 h-12 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-primary-foreground mb-2">
+              <div className="bg-gradient-hero flex items-center gap-4 sm:gap-5 px-5 sm:px-7 py-4 sm:py-5">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 rounded-xl bg-primary-foreground/20 flex items-center justify-center">
+                  <ShieldCheck className="w-6 h-6 sm:w-7 sm:h-7 text-primary-foreground" />
+                </div>
+                <div className="text-left min-w-0">
+                  <h3 className="text-base sm:text-lg font-bold text-primary-foreground leading-tight">
                     33 év szakmai tapasztalat
                   </h3>
-                  <p className="text-primary-foreground/80">
+                  <p className="text-xs sm:text-sm text-primary-foreground/80 leading-snug">
                     1993 óta a szakmában · Northwind Kft. 2009 óta
                   </p>
                 </div>
@@ -97,8 +97,8 @@ const About = () => {
             </div>
             
             {/* Decorative elements - hidden on mobile to prevent overflow */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-2xl -z-10 hidden sm:block" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/10 rounded-2xl -z-10 hidden sm:block" />
+            <div className="absolute -top-3 -right-3 w-16 h-16 bg-accent/20 rounded-2xl -z-10 hidden sm:block" />
+            <div className="absolute -bottom-3 -left-3 w-20 h-20 bg-primary/10 rounded-2xl -z-10 hidden sm:block" />
           </div>
         </div>
       </div>
