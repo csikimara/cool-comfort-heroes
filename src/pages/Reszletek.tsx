@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Info, Factory, Wallet, Wrench } from "lucide-react";
 import { useScrollToHash } from "@/hooks/useScrollToHash";
 import About from "@/components/About";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -66,23 +66,34 @@ const Reszletek = () => {
                 Ipari hűtés, átlátható árazás és karbantartási menetrend –
                 mélyebb betekintés a Northwind munkájába.
               </p>
-
-              {/* Quick navigation */}
-              <nav className="mt-8 flex flex-wrap justify-center gap-2">
-                <a href="#rolunk" className="px-5 py-2.5 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all">
-                  Rólunk
-                </a>
-                <a href="#ipari" className="px-5 py-2.5 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all">
-                  Ipari hűtés
-                </a>
-                <a href="#arazas" className="px-5 py-2.5 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all">
-                  Átlátható árazás
-                </a>
-                <a href="#karbantartas" className="px-5 py-2.5 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold shadow-sm hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-md transition-all">
-                  Karbantartás
-                </a>
-              </nav>
             </div>
+
+            {/* Quick navigation cards */}
+            <nav aria-label="Oldal szakaszai" className="mt-10 max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { href: "#rolunk", label: "Rólunk", desc: "33 év tapasztalat", Icon: Info },
+                { href: "#ipari", label: "Ipari hűtés", desc: "Chiller, AHU, Fan-coil", Icon: Factory },
+                { href: "#arazas", label: "Átlátható árazás", desc: "Fix árak, nincs rejtett költség", Icon: Wallet },
+                { href: "#karbantartas", label: "Karbantartás", desc: "Szezonális menetrend", Icon: Wrench },
+              ].map(({ href, label, desc, Icon }) => (
+                <a
+                  key={href}
+                  href={href}
+                  className="group relative flex flex-col items-start gap-3 p-5 sm:p-6 rounded-2xl bg-card border-2 border-primary/20 shadow-sm hover:border-primary hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+                >
+                  <span className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                    <Icon className="w-6 h-6" />
+                  </span>
+                  <div>
+                    <h2 className="text-base sm:text-lg font-bold text-foreground group-hover:text-primary transition-colors">
+                      {label}
+                    </h2>
+                    <p className="text-xs sm:text-sm text-muted-foreground mt-1">{desc}</p>
+                  </div>
+                  <ArrowRight className="absolute top-5 right-5 w-4 h-4 text-primary/40 group-hover:text-primary group-hover:translate-x-1 transition-all" />
+                </a>
+              ))}
+            </nav>
           </div>
         </section>
 
