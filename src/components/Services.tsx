@@ -111,9 +111,8 @@ const pillars: Pillar[] = [
     title: "Lakossági Klíma és Hőszivattyú",
     description:
       "Professzionális split és multi-split klímaberendezések, valamint energiahatékony hőszivattyúk telepítése otthonokba és irodákba.",
-    href: "#kapcsolat",
-    cta: "Részletek megnyitása",
-    service: findService("Klímaszerelés"),
+    href: "/lakossagi-klima",
+    cta: "Lakossági megoldások",
   },
   {
     icon: Factory,
