@@ -60,11 +60,11 @@ const Reszletek = () => {
                 Részletek
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Minden, amit a Northwind klímatechnikáról és <span className="text-gradient">szakértelmünkről</span> tudni érdemes
+                Minden, amit a Northwind Hűtéstechnika klímatechnikájáról és <span className="text-gradient">szakértelmünkről</span> tudni érdemes
               </h1>
               <p className="text-lg text-muted-foreground">
                 Ipari hűtés, átlátható árazás és karbantartási menetrend –
-                mélyebb betekintés a Northwind munkájába.
+                mélyebb betekintés a Northwind Hűtéstechnika munkájába.
               </p>
             </div>
 
