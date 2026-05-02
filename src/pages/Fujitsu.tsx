@@ -284,20 +284,22 @@ const Fujitsu = () => {
                 10 év nyugalom – mérnöki garanciával
               </h2>
               <p className="text-lg sm:text-xl opacity-95 leading-relaxed mb-10 max-w-3xl mx-auto">
-                A Fujitsu lakossági klímákra a Columbus Klíma 10 éves kiterjesztett
-                garanciát biztosít. Ez a piacon egyedülálló védelem feltételekhez
-                kötött – ezeket nálunk hivatalból teljesítjük.
+                A Columbus Klíma 10 éves kiterjesztett garanciája{" "}
+                <strong>kizárólag a Fujitsu oldalfali split (lakossági) klímákra</strong>{" "}
+                érvényes. Hőszivattyúkra, légcsatornázható és ipari rendszerekre
+                a gyártó 3 év teljes körű garanciát biztosít. A 10 éves védelem
+                feltételekhez kötött – ezeket nálunk hivatalból teljesítjük.
               </p>
 
               <div className="grid sm:grid-cols-3 gap-5 text-left">
                 {[
                   {
-                    title: "Hivatalos partner telepítés",
-                    text: "A telepítést a Columbus Klíma által minősített szakember végzi – mint a Northwind csapata.",
+                    title: "Hivatalos regisztráció",
+                    text: "A telepítést követően a Columbus Klíma rendszerében hivatalosan regisztráljuk a berendezést.",
                   },
                   {
-                    title: "Éves szakszerű karbantartás",
-                    text: "Évente legalább egyszer hivatalos partner által dokumentált, teljes körű karbantartás szükséges.",
+                    title: "Évi kétszeri karbantartás",
+                    text: "Évente kétszer, hivatalos partnerként a Northwind által dokumentált, teljes körű karbantartás szükséges.",
                   },
                   {
                     title: "Eredeti alkatrészek",
