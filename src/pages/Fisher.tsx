@@ -381,7 +381,7 @@ const Fisher = () => {
                     <Button
                       className="w-full text-white hover:opacity-90 min-h-[44px]"
                       style={{ backgroundColor: "#1f3d66" }}
-                      onClick={openTidio}
+                      onClick={scrollToContactForm}
                     >
                       Ajánlatot kérek
                     </Button>
@@ -471,7 +471,7 @@ const Fisher = () => {
                         size="lg"
                         className="group text-white hover:opacity-90"
                         style={{ backgroundColor: "#1f3d66" }}
-                        onClick={openTidio}
+                        onClick={scrollToContactForm}
                       >
                         Ajánlatot kérek
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
