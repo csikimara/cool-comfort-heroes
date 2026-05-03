@@ -31,7 +31,7 @@ const pillars: Pillar[] = [
     title: "Ipari Folyadékhűtők (Chiller) és Fan-coil",
     description:
       "Komplex ipari hűtéstechnikai megoldások: folyadékhűtők (chillerek), fan-coil rendszerek tervezése, telepítése és szervize.",
-    href: "/reszletek#ipari",
+    href: "/reszletek#ipari-01",
     cta: "Ipari megoldások",
   },
   {
@@ -39,7 +39,7 @@ const pillars: Pillar[] = [
     title: "Légtechnika és Szellőzés (AHU)",
     description:
       "Komplex szellőztető és légkezelő rendszerek (AHU) tervezése és kivitelezése lakossági, kereskedelmi és ipari környezetben.",
-    href: "/reszletek#ipari",
+    href: "/reszletek#ipari-02",
     cta: "Légtechnikai megoldások",
   },
   {
@@ -47,7 +47,7 @@ const pillars: Pillar[] = [
     title: "Szerviz és Prémium Karbantartás",
     description:
       "Rendszeres éves felülvizsgálat, márkafüggetlen javítás és prémium zsákos klímamosás a hosszú élettartamért és optimális hatékonyságért.",
-    href: "/reszletek#ipari",
+    href: "/reszletek#ipari-04",
     cta: "Szerviz részletek",
   },
 ];
