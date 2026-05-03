@@ -19,6 +19,7 @@ import {
   Sparkle,
   ExternalLink,
   Phone,
+  Mail,
 } from "lucide-react";
 import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 
