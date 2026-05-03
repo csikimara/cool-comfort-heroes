@@ -380,6 +380,45 @@ const FisherHoszivattyu = () => {
           </div>
         </section>
 
+        {/* Németh Lajos trust block */}
+        <section className="py-16 sm:py-20 bg-white" aria-label="Németh Lajos ajánlása">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div
+                className="rounded-3xl border-2 shadow-elevated bg-white grid sm:grid-cols-[auto,1fr] items-center gap-6 sm:gap-10 p-6 sm:p-10"
+                style={{ borderColor: "rgba(0,126,198,0.25)" }}
+              >
+                <img
+                  src={nemethLajos}
+                  alt="Németh Lajos meteorológus a Fishert ajánlja"
+                  width={360}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-40 sm:w-52 h-auto mx-auto"
+                />
+                <div className="text-center sm:text-left">
+                  <span
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full mb-3 text-white"
+                    style={{ backgroundColor: NAVY }}
+                  >
+                    <ShieldCheck className="w-3 h-3" />
+                    Meteorológus ajánlja
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 leading-snug">
+                    „Németh Lajos meteorológus a Fishert ajánlja!"
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A Fisher e-HeatR hőszivattyúk a Columbus Klíma hivatalos
+                    garanciájával és a Northwind szakszerű telepítésével –
+                    megbízható minőség kedvező áron.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* H-Tarifa */}
         <section className="py-20 sm:py-24 bg-white" aria-label="H-tarifa">
           <div className="container mx-auto px-4">
