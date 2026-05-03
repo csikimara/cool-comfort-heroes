@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
@@ -18,6 +19,7 @@ import {
   Mail,
   ArrowRight,
   Zap,
+  ArrowLeft,
 } from "lucide-react";
 import composite from "@/assets/fisher-eheatr-composite.png";
 import controller from "@/assets/fisher-controller.png";
@@ -68,8 +70,22 @@ const FisherHoszivattyu = () => {
       </Suspense>
 
       <main>
+        {/* Back to Fisher main */}
+        <div className="bg-white pt-28 pb-2">
+          <div className="container mx-auto px-4">
+            <Link
+              to="/fisher"
+              className="inline-flex items-center gap-2 text-sm font-semibold hover:opacity-80 transition-opacity"
+              style={{ color: NAVY }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Vissza a Fisher főoldalra
+            </Link>
+          </div>
+        </div>
+
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-white overflow-hidden">
+        <section className="relative pt-6 pb-20 bg-white overflow-hidden">
           <div className="absolute inset-x-0 top-0 h-1" style={{ backgroundColor: NAVY }} />
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">

@@ -428,9 +428,11 @@ const Fisher = () => {
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <article
-                className="rounded-3xl bg-white border-2 shadow-card p-7 sm:p-10"
+              <Link
+                to="/fisher-hoszivattyu"
+                className="group block rounded-3xl bg-white border-2 shadow-card p-7 sm:p-10 transition-all duration-300 hover:shadow-elevated hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
                 style={{ borderColor: "rgba(31,61,102,0.18)" }}
+                aria-label="Fisher Osztott (Split) Hőszivattyú részletes oldala"
               >
                 <div className="grid sm:grid-cols-[auto,1fr] gap-6 items-start">
                   <div
@@ -467,35 +469,16 @@ const Fisher = () => {
                       ))}
                     </ul>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Button
-                        size="lg"
-                        className="group text-white hover:opacity-90"
-                        style={{ backgroundColor: "#1f3d66" }}
-                        onClick={scrollToContactForm}
-                      >
-                        Ajánlatot kérek
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                      <Button
-                        size="lg"
-                        variant="outline"
-                        className="bg-transparent"
-                        style={{ borderColor: "#007ec6", color: "#007ec6" }}
-                        asChild
-                      >
-                        <Link
-                          to="/fisher-hoszivattyu"
-                          className="inline-flex items-center gap-2"
-                        >
-                          <ArrowRight className="w-4 h-4" />
-                          Részletek és modellek
-                        </Link>
-                      </Button>
-                    </div>
+                    <span
+                      className="inline-flex items-center gap-2 text-base font-semibold"
+                      style={{ color: "#1f3d66" }}
+                    >
+                      Részletek és modellek
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </div>
                 </div>
-              </article>
+              </Link>
             </div>
           </div>
         </section>
