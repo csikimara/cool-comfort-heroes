@@ -147,30 +147,18 @@ const LakossagiKlima = () => {
                   Prémium zsákos mélymosás – élesben, az Ön otthonában is így dolgozunk.
                 </p>
               </div>
-              <a
-                href="https://northwind.hu/video/zsakos-mosas.mp4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative block rounded-2xl overflow-hidden border-2 border-primary/15 bg-black shadow-card"
-                aria-label="Zsákos klímamosás videó megnyitása új lapon"
-              >
-                <img
-                  src={zsakosMosasPoster}
-                  alt="Zsákos klímamosás folyamata"
+              <div className="relative rounded-2xl overflow-hidden border-2 border-primary/15 bg-black shadow-card">
+                <video
+                  src="/galeria/karbantartas/zsakos-mosas.mp4"
+                  poster={zsakosMosasPoster}
+                  controls
+                  preload="none"
+                  playsInline
                   className="w-full h-auto block"
-                  loading="lazy"
-                />
-                <span className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
-                  <span className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/90 flex items-center justify-center shadow-elevated group-hover:scale-110 transition-transform">
-                    <svg viewBox="0 0 24 24" className="w-8 h-8 sm:w-10 sm:h-10 text-primary-foreground ml-1" fill="currentColor" aria-hidden="true">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </span>
-                </span>
-              </a>
-              <p className="text-xs text-muted-foreground/70 text-center mt-2">
-                Kattintson a képre a zsákos klímamosás videó megtekintéséhez (új lapon nyílik)
-              </p>
+                >
+                  A böngészője nem támogatja a videó lejátszást.
+                </video>
+              </div>
             </div>
           </div>
         </section>
