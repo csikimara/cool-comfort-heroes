@@ -160,6 +160,14 @@
   scroll-margin-top: 5rem;
 }
 
+/* Industrial subsection anchors – clear fixed header (h-20 = 5rem) + breathing room */
+#ipari-01,
+#ipari-02,
+#ipari-03,
+#ipari-04 {
+  scroll-margin-top: 7.5rem;
+}
+
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
