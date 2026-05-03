@@ -12,7 +12,7 @@ export const useScrollToHash = () => {
       if (cancelled) return;
       const el = document.querySelector(hash) as HTMLElement | null;
       if (el) {
-        const headerOffset = 96;
+        const headerOffset = 200;
         const top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
         window.scrollTo({ top, behavior: "smooth" });
         return;
