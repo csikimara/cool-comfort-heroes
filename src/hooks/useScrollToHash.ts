@@ -10,9 +10,11 @@ export const useScrollToHash = () => {
     let attempts = 0;
     const tryScroll = () => {
       if (cancelled) return;
-      const el = document.querySelector(hash);
+      const el = document.querySelector(hash) as HTMLElement | null;
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        const headerOffset = 96;
+        const top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        window.scrollTo({ top, behavior: "smooth" });
         return;
       }
       if (attempts++ < 40) {
