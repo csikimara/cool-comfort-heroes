@@ -7,13 +7,11 @@ import { Button } from "@/components/ui/button";
 import {
   ShieldCheck,
   Wind,
-  Sparkles,
-  Wifi,
+  Award,
   ThermometerSnowflake,
   CheckCircle2,
   Sun,
   ArrowRight,
-  Award,
   Star,
   Flame,
   Droplets,
@@ -23,7 +21,6 @@ import {
   Phone,
 } from "lucide-react";
 import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
-import fisherMascot from "@/assets/fisher-mascot.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
@@ -34,18 +31,34 @@ declare global {
   }
 }
 
-const openTidio = (e: React.MouseEvent) => {
-  e.preventDefault();
+const openTidio = (e?: React.MouseEvent) => {
+  if (e) e.preventDefault();
   if (typeof window !== "undefined" && window.tidioChatApi?.open) {
     window.tidioChatApi.open();
   }
 };
 
-const benefits = [
-  { icon: Wind, title: "Extra csendes működés", text: "Halk üzem, ideális hálószobákba és nappalikba." },
-  { icon: Sparkles, title: "Plazmaszűrő", text: "Hatékony szűrés allergiásoknak – tisztább beltéri levegő." },
-  { icon: Wifi, title: "Beépített Wi-Fi", text: "Okosvezérlés telefonról, bárhonnan, bármikor." },
-  { icon: ThermometerSnowflake, title: "Fűtés -22°C-ig", text: "Stabil fűtési teljesítmény extrém hidegben is." },
+const introCards = [
+  {
+    icon: ShieldCheck,
+    title: "6 év kiterjesztett garancia",
+    text: "Regisztrációhoz és évi kétszeri Northwind karbantartáshoz kötött.",
+  },
+  {
+    icon: Award,
+    title: "Németh Lajos ajánlásával",
+    text: "6-szoros SuperBrands díjas megbízhatóság.",
+  },
+  {
+    icon: Wind,
+    title: "Extra csendes működés",
+    text: "Akár 19 dB(A) zajszint – ideális hálószobákba is.",
+  },
+  {
+    icon: ThermometerSnowflake,
+    title: "Fűtés akár -30°C-ig",
+    text: "A Nordic sorozat extrém hidegben is stabil teljesítményt nyújt.",
+  },
 ];
 
 const splitModels = [
@@ -53,103 +66,61 @@ const splitModels = [
     id: "special",
     badge: "Komfort újdonság",
     name: "Fisher SPECIAL EDITION",
-    tagline: "„Ne fújj rám” funkció & fokozatmentes ventilátor",
-    description:
-      "A Special Edition a legfinomabb komfortélményt nyújtja: a „Ne fújj rám” mód automatikusan eltereli a légáramot, fokozatmentes ventilátorszabályzással.",
-    highlights: [
-      "„Ne fújj rám” intelligens légterelés",
-      "Fokozatmentes ventilátor-szabályozás",
-      "Csendes éjszakai üzemmód",
-      "Beépített Wi-Fi vezérlés",
-    ],
+    tagline: "„Ne fújj rám” funkció, huzatmentes befúvás",
     icon: Wind,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/special-edition-sorozat",
+    catalogLabel: "Special Edition árai és paraméterei",
   },
   {
     id: "summer",
     badge: "Gazdaságos",
     name: "Fisher SUMMER",
     tagline: "Gazdaságos hűtés, fűtés -15°C-ig",
-    description:
-      "A Summer sorozat a kedvező ár-érték arány bajnoka: optimalizált hűtési teljesítmény és megbízható fűtés -15°C-os hidegig.",
-    highlights: [
-      "Energiahatékony hűtés",
-      "Fűtés stabilan -15°C-ig",
-      "Kedvező ár-érték arány",
-      "Megbízható, hosszú élettartam",
-    ],
     icon: Sun,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/summer-sorozat",
+    catalogLabel: "Summer árai és paraméterei",
   },
   {
     id: "comfort-plus",
     badge: "Csúcsmodell",
     name: "Fisher COMFORT PLUS",
-    tagline: "Zászlóshajó, fűtés -22°C-ig, 6 év garancia",
-    description:
-      "A Fisher kínálat zászlóshajója. Magas SCOP/SEER értékek, fűtés -22°C-os hidegig és 6 év kiterjesztett garancia szakszerű telepítés esetén.",
-    highlights: [
-      "Zászlóshajó modell, prémium felszereltség",
-      "Fűtés akár -22°C-ig stabilan",
-      "6 év kiterjesztett garancia",
-      "Plazmaszűrő és Wi-Fi alapfelszereltségben",
-    ],
+    tagline: "Fűtésre optimalizált (-22°C), 6 év garancia",
     icon: Star,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/comfort-plus-sorozat",
+    catalogLabel: "Comfort Plus árai és paraméterei",
   },
   {
     id: "nordic",
     badge: "Extrém hideg",
     name: "Fisher NORDIC",
-    tagline: "Fűtés -30°C-ig, A+++ hatékonyság",
-    description:
-      "Sarkvidéki teljesítmény: a Nordic sorozat -30°C-ig is megbízható fűtést biztosít, A+++ szezonális energiaosztállyal.",
-    highlights: [
-      "Extrém fűtés akár -30°C-ig",
-      "A+++ szezonális energiaosztály",
-      "Optimalizált hidegindítás",
-      "Hosszú élettartamú kompresszor",
-    ],
+    tagline: "Prémium fűtés -30°C-ig, A+++ hatékonyság",
     icon: Flame,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/nordic-sorozat",
+    catalogLabel: "Nordic árai és paraméterei",
   },
   {
     id: "black",
     badge: "Dizájn",
     name: "Fisher BLACK",
-    tagline: "Tükörfényes, elegáns megjelenés",
-    description:
-      "Tükörfényes fekete burkolat, modern, igényes belső terekbe. Letisztult formavilág, prémium dizájnérzet.",
-    highlights: [
-      "Tükörfényes fekete kivitel",
-      "Modern, elegáns dizájn",
-      "Csendes üzem",
-      "Beépített Wi-Fi vezérlés",
-    ],
+    tagline: "Tükrös fekete előlap, elegáns megjelenés",
     icon: Sparkle,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/black-sorozat",
+    catalogLabel: "Black árai és paraméterei",
   },
   {
     id: "art",
     badge: "Egyedi panel",
     name: "Fisher ART",
-    tagline: "Cserélhető mágneses panelek, 180° légterelés",
-    description:
-      "Otthonához illő egyéniség: cserélhető mágneses előlapok és 180°-os légterelés a maximális komfortért.",
-    highlights: [
-      "Cserélhető mágneses panelek",
-      "180°-os légterelés",
-      "Egyedi, dekoratív megjelenés",
-      "Csendes komfort üzem",
-    ],
+    tagline: "Cserélhető mágneses panelek, egyedi design",
     icon: Palette,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/art-sorozat",
+    catalogLabel: "Art árai és paraméterei",
   },
 ];
 
@@ -162,15 +133,15 @@ const Fisher = () => {
       "@type": "ListItem",
       position: i + 1,
       name: m.name,
-      description: m.description,
+      description: m.tagline,
     })),
   };
 
   return (
     <div className="fisher-brand min-h-screen bg-background text-foreground">
       <SEOHead
-        title="Fisher Klímaberendezések – Prémium kényelem 6 év garanciával | Northwind"
-        description="Fisher klímák Budapesten: Special Edition, Summer, Comfort Plus, Nordic, Black, Art sorozatok és osztott hőszivattyú. 6 év garancia, ingyenes felmérés a Northwind szakembereitől."
+        title="Northwind – Az Ön kiemelt Fisher partnere | Fisher Klímaberendezések"
+        description="Hivatalos Fisher partner Budapesten. 33 év tapasztalat, 6 év kiterjesztett garancia. Special Edition, Summer, Comfort Plus, Nordic, Black, Art sorozatok és osztott hőszivattyú."
       />
       <JsonLd data={fisherJsonLd} />
       <Header />
@@ -180,118 +151,133 @@ const Fisher = () => {
       </Suspense>
 
       <main>
-        {/* Hero */}
-        <section className="relative pt-32 pb-20 sm:pb-28 overflow-hidden bg-gradient-hero text-primary-foreground">
-          <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-primary-foreground/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary-foreground/5 rounded-full blur-3xl" />
-          </div>
+        {/* Hero – mirroring Fujitsu hero layout */}
+        <section className="relative pt-32 pb-24 overflow-hidden bg-white">
+          <div className="absolute inset-x-0 top-0 h-1" style={{ backgroundColor: "#1f3d66" }} />
           <div className="container mx-auto px-4 relative z-10">
-            <div className="grid lg:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
-              <div className="text-center lg:text-left">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary-foreground/15 border border-primary-foreground/30 text-xs font-bold uppercase tracking-wider mb-6">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  Hivatalos Fisher partner
-                </span>
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-5">
-                  Fisher Klímaberendezések –{" "}
-                  <span className="block sm:inline">Prémium kényelem 6 év garanciával</span>
-                </h1>
-                <p className="text-base sm:text-lg text-primary-foreground/90 max-w-xl mx-auto lg:mx-0 mb-8">
-                  A Fisher klímák a magyar piac egyik legmegbízhatóbb szereplői. Kiváló ár-érték
-                  arányuk mellett a 6 év kiterjesztett garancia (szakszerű telepítés esetén) nyugalmat
-                  biztosít minden felhasználónak.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                  <Button variant="hero" size="lg" className="group" asChild>
-                    <a href="#" onClick={openTidio}>
-                      Ingyenes felmérést kérek
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </a>
-                  </Button>
-                  <Button variant="heroOutline" size="lg" asChild>
-                    <a href="#fisher-termekek">Termékpaletta</a>
-                  </Button>
-                </div>
-              </div>
-              <div className="flex justify-center lg:justify-end">
-                <img
-                  src={fisherMascot}
-                  alt="Fisher klíma kabala – sárga esőkabátos szerelő figura"
-                  width={768}
-                  height={1024}
-                  className="w-56 sm:w-72 lg:w-80 h-auto drop-shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 120" fill="none" className="w-full">
-              <path
-                d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H0Z"
-                fill="hsl(var(--background))"
-              />
-            </svg>
-          </div>
-        </section>
+            <div className="max-w-4xl mx-auto text-center">
+              <span
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 border"
+                style={{
+                  backgroundColor: "rgba(31,61,102,0.08)",
+                  borderColor: "rgba(31,61,102,0.3)",
+                  color: "#1f3d66",
+                }}
+              >
+                <ShieldCheck className="w-3.5 h-3.5" />
+                Hivatalos Fisher partner
+              </span>
 
-        {/* Trust block – Németh Lajos */}
-        <section
-          className="py-12 sm:py-16"
-          style={{ backgroundColor: "#1f3d66" }}
-          aria-label="Németh Lajos ajánlása"
-        >
-          <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto">
-              <div className="rounded-2xl overflow-hidden shadow-elevated bg-[#1f3d66]">
-                <img
-                  src={nemethLajos}
-                  alt="Németh Lajos meteorológus a Fishert ajánlja – Superbrands 2024 díjas minőség"
-                  width={1460}
-                  height={310}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto block"
-                />
-              </div>
-              <p className="text-center text-white/90 text-sm sm:text-base mt-5 max-w-2xl mx-auto leading-relaxed">
-                <Award className="inline w-4 h-4 mr-1.5 -mt-0.5" />
-                <strong>Superbrands 2024 díjas minőség</strong> – Németh Lajos meteorológus ajánlásával.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 leading-[1.1] text-foreground">
+                Northwind – Az Ön kiemelt{" "}
+                <span style={{ color: "#1f3d66" }}>Fisher</span> partnere
+              </h1>
+
+              <p className="text-lg sm:text-xl text-muted-foreground mb-9 max-w-2xl mx-auto leading-relaxed">
+                Több mint 33 év tapasztalat és hivatalos Columbus Klíma garancia minden telepített
+                rendszer mögött.
               </p>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button
+                  size="lg"
+                  className="text-white hover:opacity-90"
+                  style={{ backgroundColor: "#1f3d66" }}
+                  onClick={openTidio}
+                >
+                  Kérjen egyedi Fisher tervezést
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent hover:text-white"
+                  style={{ borderColor: "#1f3d66", color: "#1f3d66" }}
+                  asChild
+                >
+                  <a href="#fisher-garancia">6 éves garancia részletei</a>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Benefits */}
-        <section className="py-20 bg-background" aria-label="Fisher előnyök">
+        {/* Intro cards – Miért a Fisher? */}
+        <section className="py-16 sm:py-20 bg-secondary" aria-label="Miért a Fisher?">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="inline-block text-primary text-sm font-bold uppercase tracking-wider mb-3">
+              <span
+                className="inline-block text-sm font-bold uppercase tracking-wider mb-3"
+                style={{ color: "#1f3d66" }}
+              >
                 Miért a Fisher?
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-                Komfort, tisztaság és okosság – egy készülékben
+                Megbízhatóság, csend és komfort
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              {benefits.map((b) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+              {introCards.map((c) => (
                 <div
-                  key={b.title}
-                  className="group bg-card rounded-2xl p-6 border-2 border-border hover:border-primary/40 transition-all duration-500 hover:-translate-y-1"
+                  key={c.title}
+                  className="bg-white rounded-2xl p-6 border border-border shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                    <b.icon className="w-7 h-7 text-primary-foreground" />
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                    style={{ backgroundColor: "rgba(31,61,102,0.08)" }}
+                  >
+                    <c.icon className="w-6 h-6" style={{ color: "#1f3d66" }} />
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{b.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{b.text}</p>
+                  <h3 className="text-base font-bold text-foreground mb-2 leading-tight">
+                    {c.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{c.text}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Split lineup */}
+        {/* Németh Lajos trust block */}
+        <section className="py-14 sm:py-20 bg-white" aria-label="Németh Lajos ajánlása">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto">
+              <div
+                className="rounded-3xl overflow-hidden border-2 shadow-elevated"
+                style={{ borderColor: "rgba(0,126,198,0.25)" }}
+              >
+                <div style={{ backgroundColor: "#1f3d66" }}>
+                  <img
+                    src={nemethLajos}
+                    alt="Németh Lajos meteorológus a Fishert ajánlja – Superbrands díjas minőség"
+                    width={1460}
+                    height={310}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-auto block"
+                  />
+                </div>
+                <div
+                  className="px-6 py-6 sm:px-10 sm:py-7 text-center"
+                  style={{ backgroundColor: "rgba(0,126,198,0.08)" }}
+                >
+                  <p className="text-base sm:text-lg font-semibold text-foreground leading-relaxed">
+                    „Németh Lajos meteorológus a Fishert ajánlja!"
+                  </p>
+                  <p
+                    className="text-sm sm:text-base mt-1.5"
+                    style={{ color: "#1f3d66" }}
+                  >
+                    <Award className="inline w-4 h-4 mr-1.5 -mt-0.5" />
+                    Megbízható minőség kedvező áron.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Split lineup – 3 column white cards */}
         <section
           id="fisher-termekek"
           className="py-20 sm:py-24 bg-secondary"
@@ -299,71 +285,75 @@ const Fisher = () => {
         >
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-14">
-              <span className="inline-block text-primary text-sm font-bold uppercase tracking-wider mb-3">
+              <span
+                className="inline-block text-sm font-bold uppercase tracking-wider mb-3"
+                style={{ color: "#1f3d66" }}
+              >
                 Split klíma sorozatok
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 A Fisher teljes oldalfali kínálata
               </h2>
               <p className="text-base text-muted-foreground">
-                Hat különböző sorozat – a gazdaságos hűtéstől a sarkvidéki fűtésig és az egyedi dizájnig.
+                Hat sorozat – a gazdaságos hűtéstől a sarkvidéki fűtésig és az egyedi dizájnig.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
               {splitModels.map((m) => (
                 <article
                   key={m.id}
-                  className="rounded-2xl bg-card border-2 border-border hover:border-primary/40 hover:shadow-elevated transition-all duration-500 hover:-translate-y-1 flex flex-col overflow-hidden"
+                  className="rounded-2xl bg-white border border-border shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col p-6"
                 >
-                  <div className="relative aspect-[4/3] bg-muted flex items-center justify-center">
+                  <div className="flex items-start gap-3 mb-4">
                     <div
-                      className="w-20 h-20 rounded-2xl flex items-center justify-center"
-                      style={{ background: "linear-gradient(135deg, #1f3d66 0%, #007ec6 100%)" }}
+                      className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ backgroundColor: "rgba(31,61,102,0.08)" }}
                     >
-                      <m.icon className="w-10 h-10 text-white" />
+                      <m.icon className="w-6 h-6" style={{ color: "#1f3d66" }} />
                     </div>
-                    <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20">
+                    <span
+                      className="ml-auto text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                      style={{
+                        backgroundColor: "rgba(0,126,198,0.1)",
+                        color: "#007ec6",
+                      }}
+                    >
                       {m.badge}
                     </span>
                   </div>
 
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-xl font-bold text-foreground">{m.name}</h3>
-                    <span className="block text-sm font-semibold text-accent mb-3">{m.tagline}</span>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                      {m.description}
-                    </p>
+                  <h3 className="text-lg font-bold text-foreground mb-1.5 leading-tight">
+                    {m.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                    {m.tagline}
+                  </p>
 
-                    <ul className="space-y-2.5 mb-6 flex-1">
-                      {m.highlights.map((h) => (
-                        <li key={h} className="flex items-start gap-2 text-sm text-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-col gap-3">
-                      <Button
-                        size="lg"
-                        className="w-full bg-primary text-primary-foreground hover:bg-primary/90 min-h-[48px]"
-                        onClick={openTidio}
+                  <div className="flex flex-col gap-2.5">
+                    <Button
+                      className="w-full text-white hover:opacity-90 min-h-[44px]"
+                      style={{ backgroundColor: "#1f3d66" }}
+                      onClick={openTidio}
+                    >
+                      Ajánlatot kérek
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="w-full bg-transparent min-h-[44px] text-xs sm:text-sm whitespace-normal h-auto py-2.5"
+                      style={{ borderColor: "#007ec6", color: "#007ec6" }}
+                      asChild
+                    >
+                      <a
+                        href={m.catalogUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2"
                       >
-                        Ajánlatkérés
-                      </Button>
-                      <Button size="lg" variant="outline" className="w-full min-h-[48px]" asChild>
-                        <a
-                          href={m.catalogUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center gap-2"
-                        >
-                          <ExternalLink className="w-4 h-4 shrink-0" />
-                          <span>Műszaki adatok</span>
-                        </a>
-                      </Button>
-                    </div>
+                        <ExternalLink className="w-3.5 h-3.5 shrink-0" />
+                        <span>{m.catalogLabel}</span>
+                      </a>
+                    </Button>
                   </div>
                 </article>
               ))}
@@ -372,92 +362,131 @@ const Fisher = () => {
         </section>
 
         {/* Heat pump section */}
-        <section className="py-20 sm:py-24 bg-background" aria-label="Fisher osztott hőszivattyú">
+        <section
+          className="py-20 sm:py-24 bg-white"
+          aria-label="Fisher levegő-víz hőszivattyúk"
+        >
           <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto rounded-3xl border-2 border-primary/20 bg-card p-7 sm:p-12 shadow-card">
-              <div className="grid lg:grid-cols-[auto,1fr] gap-8 items-start">
-                <div
-                  className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 mx-auto lg:mx-0"
-                  style={{ background: "linear-gradient(135deg, #1f3d66 0%, #007ec6 100%)" }}
-                >
-                  <Droplets className="w-10 h-10 text-white" />
-                </div>
-                <div>
-                  <span className="inline-block text-primary text-sm font-bold uppercase tracking-wider mb-2">
-                    Hőszivattyú megoldás
-                  </span>
-                  <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                    Fisher Osztott (Split) Hőszivattyú
-                  </h2>
-                  <p className="text-base text-muted-foreground leading-relaxed mb-6">
-                    Megbízható fűtés és melegvíz-ellátás családi házak részére.{" "}
-                    <strong className="text-foreground">35°C-os előremenő hőmérsékletre</strong>{" "}
-                    méretezett rendszer, modern <strong className="text-foreground">R32 hűtőközeg</strong>{" "}
-                    és teljes <strong className="text-foreground">H-tarifa</strong> kompatibilitás
-                    a kedvezményes áramfelhasználáshoz.
-                  </p>
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span
+                className="inline-block text-sm font-bold uppercase tracking-wider mb-3"
+                style={{ color: "#1f3d66" }}
+              >
+                Hőszivattyú megoldás
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
+                Fisher Levegő-Víz Hőszivattyúk
+              </h2>
+            </div>
 
-                  <ul className="space-y-2.5 mb-6">
-                    {[
-                      "Megbízható fűtés és HMV egyetlen rendszerből",
-                      "35°C előremenő hőmérséklet – padlófűtéshez optimális",
-                      "R32 hűtőközeg – modern és környezetbarát",
-                      "H-tarifa kompatibilitás – kedvezőbb rezsi",
-                      "3 év teljes körű gyártói garancia",
-                    ].map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm text-foreground/85">
-                        <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
+            <div className="max-w-4xl mx-auto">
+              <article
+                className="rounded-3xl bg-white border-2 shadow-card p-7 sm:p-10"
+                style={{ borderColor: "rgba(31,61,102,0.18)" }}
+              >
+                <div className="grid sm:grid-cols-[auto,1fr] gap-6 items-start">
+                  <div
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0"
+                    style={{ background: "linear-gradient(135deg, #1f3d66 0%, #007ec6 100%)" }}
+                  >
+                    <Droplets className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                      Fisher Osztott (Split) Hőszivattyú
+                    </h3>
+                    <p className="text-base text-muted-foreground leading-relaxed mb-5">
+                      Megbízható fűtés és melegvíz-ellátás családi házak részére. Modern technológia,
+                      kedvező üzemeltetési költség és a Northwind szakszerű telepítése.
+                    </p>
 
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <Button size="lg" className="group" onClick={openTidio}>
-                      Felmérést kérek
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                    <Button size="lg" variant="outline" asChild>
-                      <a
-                        href="https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu#sp-main-body"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2"
+                    <ul className="space-y-2.5 mb-6">
+                      {[
+                        "R32 hűtőközeg – modern és környezetbarát",
+                        "H-tarifa kompatibilitás – kedvezőbb rezsi",
+                        "3 év teljes körű gyártói garancia",
+                      ].map((b) => (
+                        <li
+                          key={b}
+                          className="flex items-start gap-2.5 text-sm sm:text-base text-foreground/85"
+                        >
+                          <CheckCircle2
+                            className="w-5 h-5 flex-shrink-0 mt-0.5"
+                            style={{ color: "#007ec6" }}
+                          />
+                          <span>{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button
+                        size="lg"
+                        className="group text-white hover:opacity-90"
+                        style={{ backgroundColor: "#1f3d66" }}
+                        onClick={openTidio}
                       >
-                        <ExternalLink className="w-4 h-4" />
-                        Hivatalos termékadatok
-                      </a>
-                    </Button>
+                        Ajánlatot kérek
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                      <Button
+                        size="lg"
+                        variant="outline"
+                        className="bg-transparent"
+                        style={{ borderColor: "#007ec6", color: "#007ec6" }}
+                        asChild
+                      >
+                        <a
+                          href="https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu#sp-main-body"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2"
+                        >
+                          <ExternalLink className="w-4 h-4" />
+                          Hivatalos termékadatok
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
         </section>
 
-        {/* Closing CTA */}
+        {/* 6-year warranty + closing CTA */}
         <section
-          className="py-20 sm:py-24 bg-gradient-hero text-primary-foreground"
-          aria-label="Ingyenes felmérés CTA"
+          id="fisher-garancia"
+          className="py-20 sm:py-24 text-white"
+          style={{ background: "linear-gradient(135deg, #1f3d66 0%, #007ec6 100%)" }}
+          aria-label="6 éves garancia és ingyenes felmérés"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <ShieldCheck className="w-12 h-12 mx-auto mb-5 opacity-90" />
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
-                Készen áll a tökéletes klímakomfortra?
+                6 év nyugalom – Northwind garanciával
               </h2>
-              <p className="text-base sm:text-lg opacity-90 mb-8 max-w-2xl mx-auto">
-                Vegye fel velünk a kapcsolatot – kollégáink ingyenes helyszíni felmérést és
-                személyre szabott ajánlatot készítenek a Fisher kínálatából.
+              <p className="text-base sm:text-lg opacity-95 mb-8 max-w-2xl mx-auto">
+                A 6 év kiterjesztett Fisher garancia hivatalos regisztrációhoz és évi kétszeri
+                Northwind karbantartáshoz kötött. Mindkettőt nálunk hivatalból elvégezzük.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button variant="hero" size="lg" className="group" asChild>
-                  <a href="#" onClick={openTidio}>
-                    Ingyenes felmérést kérek
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                <Button
+                  size="lg"
+                  className="bg-white hover:bg-white/90"
+                  style={{ color: "#1f3d66" }}
+                  onClick={openTidio}
+                >
+                  Ingyenes felmérést kérek
+                  <ArrowRight className="w-5 h-5" />
                 </Button>
-                <Button variant="heroOutline" size="lg" asChild>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-white/40 bg-white/10 text-white hover:bg-white/20"
+                  asChild
+                >
                   <a href="tel:+36704099760">
                     <Phone className="w-4 h-4" />
                     +36 70 409 9760
