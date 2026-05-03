@@ -129,7 +129,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 0;
   }
 
   :where([id]) {
@@ -165,7 +165,7 @@
 #ipari-02,
 #ipari-03,
 #ipari-04 {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: 7.5rem;
 }
 
 @layer utilities {
