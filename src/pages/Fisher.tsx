@@ -25,6 +25,7 @@ import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
+const FisherContactForm = lazy(() => import("@/components/fisher/FisherContactForm"));
 
 declare global {
   interface Window {
@@ -36,6 +37,15 @@ const openTidio = (e?: React.MouseEvent) => {
   if (e) e.preventDefault();
   if (typeof window !== "undefined" && window.tidioChatApi?.open) {
     window.tidioChatApi.open();
+  }
+};
+
+const scrollToContactForm = (e?: React.MouseEvent) => {
+  if (e) e.preventDefault();
+  if (typeof window === "undefined") return;
+  const el = document.getElementById("fisher-contact-form");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 };
 
