@@ -25,7 +25,11 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-5">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center group flex-shrink-0 mr-4 lg:mr-8">
+          <Link
+            to="/"
+            aria-label="Vissza a Northwind kezdőlapjára"
+            className="flex items-center group flex-shrink-0 mr-4 lg:mr-8 transition-transform duration-200 hover:scale-105 hover:opacity-90"
+          >
             <img
               src={logo}
               alt="Northwind Hűtéstechnika Kft. logó"

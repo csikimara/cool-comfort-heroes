@@ -68,16 +68,23 @@ const FisherHoszivattyu = () => {
       <Header />
       <Suspense fallback={null}>
         <FujitsuFloatingButton />
-        <FisherFloatingButton />
       </Suspense>
 
       <main>
-        {/* Back to Fisher main */}
+        {/* Back nav */}
         <div className="bg-white pt-28 pb-2">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 flex flex-wrap gap-3">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full text-white hover:opacity-90 transition-opacity shadow-sm"
+              style={{ backgroundColor: NAVY }}
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Vissza a Northwind kezdőlapjára
+            </Link>
             <Link
               to="/fisher"
-              className="inline-flex items-center gap-2 text-sm font-semibold hover:opacity-80 transition-opacity"
+              className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full border hover:opacity-80 transition-opacity"
               style={{ color: NAVY }}
             >
               <ArrowLeft className="w-4 h-4" />
