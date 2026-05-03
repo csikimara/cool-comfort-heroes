@@ -14,6 +14,7 @@ const Contact = lazy(() => import("@/components/Contact"));
 const GoogleMap = lazy(() => import("@/components/GoogleMap"));
 const Footer = lazy(() => import("@/components/Footer"));
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
+const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
 
 const businessJsonLd = {
   "@context": "https://schema.org",
@@ -74,6 +75,7 @@ const Index = () => {
       <Suspense fallback={null}>
         <Footer />
         <FujitsuFloatingButton />
+        <FisherFloatingButton />
       </Suspense>
     </div>
   );
