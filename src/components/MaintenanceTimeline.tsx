@@ -89,7 +89,7 @@ const MaintenanceTimeline = () => {
             {benefits.map((b) => (
               <div
                 key={b.title}
-                className="bg-card rounded-2xl p-5 border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-0.5 text-center"
+                className="bg-card rounded-2xl p-5 border border-border/50 shadow-card text-center cursor-default"
               >
                 <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-hero flex items-center justify-center mb-3">
                   <b.icon className="w-6 h-6 text-primary-foreground" />
@@ -140,7 +140,7 @@ const MaintenanceTimeline = () => {
                     }`}
                   >
                     <div
-                      className={`bg-card rounded-2xl p-6 border border-border/50 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-0.5 ${
+                      className={`bg-card rounded-2xl p-6 border border-border/50 shadow-card cursor-default ${
                         phase.highlight
                           ? "ring-2 ring-primary/30"
                           : ""
