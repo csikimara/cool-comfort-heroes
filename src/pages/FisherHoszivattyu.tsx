@@ -25,6 +25,8 @@ import composite from "@/assets/fisher-eheatr-composite.png";
 import controller from "@/assets/fisher-controller.png";
 import erp35 from "@/assets/fisher-erp-35.png";
 import erp55 from "@/assets/fisher-erp-55.png";
+import fisherLogo from "@/assets/fisher-logo.png";
+import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
@@ -90,6 +92,15 @@ const FisherHoszivattyu = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
               <div>
+                <img
+                  src={fisherLogo}
+                  alt="Fisher Klímaberendezések hivatalos logó"
+                  className="mb-5 h-12 sm:h-14 w-auto"
+                  width={300}
+                  height={100}
+                  loading="eager"
+                  decoding="async"
+                />
                 <span
                   className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 border"
                   style={{
@@ -365,6 +376,45 @@ const FisherHoszivattyu = () => {
                   </Button>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Németh Lajos trust block */}
+        <section className="py-16 sm:py-20 bg-white" aria-label="Németh Lajos ajánlása">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <div
+                className="rounded-3xl border-2 shadow-elevated bg-white grid sm:grid-cols-[auto,1fr] items-center gap-6 sm:gap-10 p-6 sm:p-10"
+                style={{ borderColor: "rgba(0,126,198,0.25)" }}
+              >
+                <img
+                  src={nemethLajos}
+                  alt="Németh Lajos meteorológus a Fishert ajánlja"
+                  width={360}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-40 sm:w-52 h-auto mx-auto"
+                />
+                <div className="text-center sm:text-left">
+                  <span
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full mb-3 text-white"
+                    style={{ backgroundColor: NAVY }}
+                  >
+                    <ShieldCheck className="w-3 h-3" />
+                    Meteorológus ajánlja
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 leading-snug">
+                    „Németh Lajos meteorológus a Fishert ajánlja!"
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A Fisher e-HeatR hőszivattyúk a Columbus Klíma hivatalos
+                    garanciájával és a Northwind szakszerű telepítésével –
+                    megbízható minőség kedvező áron.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

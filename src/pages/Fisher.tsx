@@ -23,6 +23,7 @@ import {
   Mail,
 } from "lucide-react";
 import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
+import fisherLogo from "@/assets/fisher-logo.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
@@ -186,6 +187,15 @@ const Fisher = () => {
           <div className="absolute inset-x-0 top-0 h-1" style={{ backgroundColor: "#1f3d66" }} />
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
+              <img
+                src={fisherLogo}
+                alt="Fisher Klímaberendezések hivatalos logó"
+                className="mx-auto mb-6 h-14 sm:h-16 w-auto"
+                width={360}
+                height={120}
+                loading="eager"
+                decoding="async"
+              />
               <span
                 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 border"
                 style={{
@@ -273,33 +283,39 @@ const Fisher = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <div
-                className="rounded-3xl overflow-hidden border-2 shadow-elevated"
+                className="rounded-3xl border-2 shadow-elevated bg-white overflow-hidden grid sm:grid-cols-[auto,1fr] items-center gap-6 sm:gap-10 p-6 sm:p-10"
                 style={{ borderColor: "rgba(0,126,198,0.25)" }}
               >
-                <div style={{ backgroundColor: "#1f3d66" }}>
-                  <img
-                    src={nemethLajos}
-                    alt="Németh Lajos meteorológus a Fishert ajánlja – Superbrands díjas minőség"
-                    width={1460}
-                    height={310}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-auto block"
-                  />
-                </div>
-                <div
-                  className="px-6 py-6 sm:px-10 sm:py-7 text-center"
-                  style={{ backgroundColor: "rgba(0,126,198,0.08)" }}
-                >
-                  <p className="text-base sm:text-lg font-semibold text-foreground leading-relaxed">
+                <img
+                  src={nemethLajos}
+                  alt="Németh Lajos meteorológus a Fishert ajánlja – Superbrands díjas minőség"
+                  width={360}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-44 sm:w-56 h-auto mx-auto"
+                />
+                <div className="text-center sm:text-left">
+                  <span
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full mb-3 text-white"
+                    style={{ backgroundColor: "#1f3d66" }}
+                  >
+                    <ShieldCheck className="w-3 h-3" />6 év garancia
+                  </span>
+                  <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 leading-snug">
                     „Németh Lajos meteorológus a Fishert ajánlja!"
-                  </p>
+                  </h3>
                   <p
-                    className="text-sm sm:text-base mt-1.5"
+                    className="text-sm sm:text-base font-semibold mb-2"
                     style={{ color: "#1f3d66" }}
                   >
                     <Award className="inline w-4 h-4 mr-1.5 -mt-0.5" />
                     Megbízható minőség kedvező áron.
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    6-szoros SuperBrands díjas megbízhatóság – a hivatalos
+                    Columbus Klíma garanciájával, a Northwind szakértői
+                    telepítésével.
                   </p>
                 </div>
               </div>
