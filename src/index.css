@@ -22,6 +22,28 @@
   --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(0 0% 98%));
 }
 
+/* ===== Fisher — scoped CI brand override =====              */
+/* Fisher Navy Blue #1f3d66 = hsl(214 53% 26%)                */
+/* Fisher Light Blue #007ec6 = hsl(202 100% 39%)              */
+/* Fisher Green #b5c334 = hsl(67 58% 49%)                     */
+.fisher-brand {
+  --primary: 214 53% 26%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 202 100% 39%;
+  --accent-foreground: 0 0% 100%;
+  --ring: 202 100% 39%;
+  --foreground: 214 35% 15%;
+  --card-foreground: 214 35% 15%;
+  --secondary: 210 30% 96%;
+  --secondary-foreground: 214 35% 15%;
+  --muted: 210 25% 94%;
+  --muted-foreground: 214 20% 38%;
+  --border: 210 25% 88%;
+  --gradient-hero: linear-gradient(135deg, hsl(214 53% 26%), hsl(202 100% 39%));
+  --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 30% 98%));
+  --fisher-green: 67 58% 49%;
+}
+
 @layer base {
   :root {
     /* Cool blue design system for HVAC company */
