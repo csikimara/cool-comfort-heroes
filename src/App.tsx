@@ -13,6 +13,7 @@ const Fujitsu = lazy(() => import("./pages/Fujitsu"));
 const Reszletek = lazy(() => import("./pages/Reszletek"));
 const LakossagiKlima = lazy(() => import("./pages/LakossagiKlima"));
 const Fisher = lazy(() => import("./pages/Fisher"));
+const FisherHoszivattyu = lazy(() => import("./pages/FisherHoszivattyu"));
 const Galeria = lazy(() => import("./pages/Galeria"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -40,6 +41,7 @@ const App = () => (
             <Route path="/reszletek" element={<Reszletek />} />
             <Route path="/lakossagi-klima" element={<LakossagiKlima />} />
             <Route path="/fisher" element={<Fisher />} />
+            <Route path="/fisher-hoszivattyu" element={<FisherHoszivattyu />} />
             <Route path="/referenciak/:slug" element={<Galeria />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
