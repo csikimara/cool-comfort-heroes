@@ -62,8 +62,8 @@ const FisherHoszivattyu = () => {
   return (
     <div className="fisher-brand min-h-screen bg-background text-foreground">
       <SEOHead
-        title="Fisher e-HeatR Hőszivattyú | Northwind Hűtéstechnika"
-        description="Fisher e-HeatR osztott (split) hőszivattyú: A++ hatékonyság, R32, fűtés -28°C-ig, érintőképernyős vezérlés. Northwind szakértői tervezés és telepítés."
+        title="Fisher e-HeatR Hőszivattyú Telepítés | Gazdaságos Fűtés | Northwind"
+        description="Akár -28°C-ig üzembiztos Fisher hőszivattyúk H-tarifával. Komplett fűtés, hűtés és melegvíz megoldások. Ingyenes helyszíni felmérés!"
       />
       <Header />
       <Suspense fallback={null}>
@@ -334,6 +334,26 @@ const FisherHoszivattyu = () => {
               </p>
             </div>
 
+            {/* Featured composite image */}
+            <div className="max-w-2xl mx-auto mb-12">
+              <div
+                className="rounded-3xl p-6 sm:p-8 border-2 shadow-elevated"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(31,61,102,0.06) 0%, rgba(0,126,198,0.08) 100%)",
+                  borderColor: "rgba(31,61,102,0.18)",
+                }}
+              >
+                <img
+                  src={composite}
+                  alt="Fisher e-HeatR hőszivattyú beltéri egység, kültéri egység és érintőképernyős vezérlő"
+                  className="w-full h-auto block mx-auto"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
               {lineup.map((m) => (
                 <article
@@ -341,25 +361,10 @@ const FisherHoszivattyu = () => {
                   className="bg-white rounded-2xl p-4 sm:p-5 border border-border shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col text-center"
                 >
                   <div
-                    className="rounded-xl p-3 mb-4"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(31,61,102,0.06) 0%, rgba(0,126,198,0.08) 100%)",
-                    }}
-                  >
-                    <img
-                      src={composite}
-                      alt={`Fisher e-HeatR ${m.kw} hőszivattyú`}
-                      className="w-full h-auto"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div
-                    className="inline-flex items-center justify-center gap-1.5 mx-auto px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 text-white"
+                    className="inline-flex items-center justify-center gap-1.5 mx-auto px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wider mb-3 text-white"
                     style={{ backgroundColor: NAVY }}
                   >
-                    <Gauge className="w-3 h-3" />
+                    <Gauge className="w-3.5 h-3.5" />
                     {m.kw}
                   </div>
                   <p className="text-xs sm:text-sm text-muted-foreground mb-4 flex-1">
