@@ -3,7 +3,7 @@ import { ArrowRight, Snowflake, ThermometerSnowflake, Wind } from "lucide-react"
 
 const Hero = () => {
   return (
-    <section className="relative flex items-center justify-center overflow-hidden bg-gradient-hero pt-24 pb-20 sm:pb-24 min-h-[640px]">
+    <section className="relative flex items-center justify-center overflow-hidden bg-gradient-hero pt-24 pb-32 sm:pb-40 min-h-[640px]">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-48 sm:w-72 h-48 sm:h-72 bg-primary-foreground/5 rounded-full blur-3xl" />
