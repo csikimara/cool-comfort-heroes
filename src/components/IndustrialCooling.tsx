@@ -1,5 +1,4 @@
 import { Droplets, Wind, Wrench, Snowflake, Images, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const sections = [
@@ -111,11 +110,6 @@ const IndustrialCooling = () => {
           ))}
         </div>
 
-        <div className="text-center">
-          <Button variant="hero" size="lg" asChild>
-            <a href="/#kapcsolat">Kérjen ipari konzultációt vagy ajánlatot!</a>
-          </Button>
-        </div>
       </div>
     </section>
   );

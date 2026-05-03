@@ -12,6 +12,7 @@ import {
   Snowflake,
   Images,
 } from "lucide-react";
+import zsakosMosasPoster from "@/assets/zsakos-mosas-poster.jpg";
 
 const Footer = lazy(() => import("@/components/Footer"));
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
@@ -152,7 +153,7 @@ const LakossagiKlima = () => {
                   muted
                   playsInline
                   preload="metadata"
-                  poster="https://northwind.hu/video/zsakos-mosas-poster.jpg"
+                  poster={zsakosMosasPoster}
                   className="w-full h-auto block"
                 >
                   <source src="https://northwind.hu/video/zsakos-mosas.mp4" type="video/mp4" />
