@@ -25,6 +25,8 @@ import composite from "@/assets/fisher-eheatr-composite.png";
 import controller from "@/assets/fisher-controller.png";
 import erp35 from "@/assets/fisher-erp-35.png";
 import erp55 from "@/assets/fisher-erp-55.png";
+import fisherLogo from "@/assets/fisher-logo.png";
+import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
@@ -90,6 +92,15 @@ const FisherHoszivattyu = () => {
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
               <div>
+                <img
+                  src={fisherLogo}
+                  alt="Fisher Klímaberendezések hivatalos logó"
+                  className="mb-5 h-12 sm:h-14 w-auto"
+                  width={300}
+                  height={100}
+                  loading="eager"
+                  decoding="async"
+                />
                 <span
                   className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 border"
                   style={{
