@@ -19,6 +19,7 @@ import {
   Sparkle,
   ExternalLink,
   Phone,
+  Mail,
 } from "lucide-react";
 import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 
@@ -532,6 +533,72 @@ const Fisher = () => {
               <p className="text-sm opacity-80 mt-10">
                 A Fisher klímák magyarországi importőre: Columbus Klímaértékesítő Kft.
               </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Szakmai konzultáció és felmérés */}
+        <section className="py-20 sm:py-24 bg-secondary" aria-label="Szakmai konzultáció és felmérés">
+          <div className="container mx-auto px-4">
+            <div
+              className="max-w-3xl mx-auto rounded-3xl bg-card border-2 p-8 sm:p-12 text-center shadow-xl"
+              style={{ borderColor: "rgba(31,61,102,0.3)" }}
+            >
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                style={{ backgroundColor: "#1f3d66" }}
+              >
+                <Award className="w-8 h-8 text-white" />
+              </div>
+              <span
+                className="text-sm font-bold uppercase tracking-wider"
+                style={{ color: "#1f3d66" }}
+              >
+                Szakmai konzultáció és felmérés
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mt-3 mb-4">
+                Kérjen egyedi Fisher tervezést és ajánlatot a Northwind szakértőitől
+              </h2>
+              <p className="text-base text-muted-foreground mb-8 leading-relaxed">
+                33 év hűtéstechnikai tapasztalattal rendelkező szakmai háttérrel.
+                Helyszíni felmérés és szakszerű rendszervázlat – kötelezettségek nélkül.
+                Hivatalos Columbus Klíma garanciális feltételekkel: 6 év az oldalfali
+                split klímákra, 3 év a hőszivattyúkra.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Button
+                  size="lg"
+                  className="text-white hover:opacity-90"
+                  style={{ backgroundColor: "#1f3d66" }}
+                  onClick={openTidio}
+                >
+                  Ajánlatkérés
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent"
+                  style={{ borderColor: "#1f3d66", color: "#1f3d66" }}
+                  asChild
+                >
+                  <a href="tel:+36704099760">
+                    <Phone className="w-4 h-4" />
+                    +36 70 409 9760
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent"
+                  style={{ borderColor: "#1f3d66", color: "#1f3d66" }}
+                  asChild
+                >
+                  <a href="mailto:northwind@northwind.hu">
+                    <Mail className="w-4 h-4" />
+                    northwind@northwind.hu
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
