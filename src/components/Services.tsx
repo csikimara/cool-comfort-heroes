@@ -39,7 +39,7 @@ const pillars: Pillar[] = [
     title: "Légtechnika és Szellőzés (AHU)",
     description:
       "Komplex szellőztető és légkezelő rendszerek (AHU) tervezése és kivitelezése lakossági, kereskedelmi és ipari környezetben.",
-    href: "/reszletek#ipari-02",
+    href: "/reszletek#ipari-03",
     cta: "Légtechnikai megoldások",
   },
   {
