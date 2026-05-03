@@ -129,11 +129,11 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 8rem;
+    scroll-padding-top: 5rem;
   }
 
   :where([id]) {
-    scroll-margin-top: 8rem;
+    scroll-margin-top: 5rem;
   }
 
   body {
@@ -146,6 +146,18 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
   }
+}
+
+/* Per-section fine-tuned anchor offsets (header height ≈ 5rem) */
+#szolgaltatasok,
+#ipari {
+  scroll-margin-top: 5rem;
+}
+#rolunk {
+  scroll-margin-top: 4rem;
+}
+#kapcsolat {
+  scroll-margin-top: 5rem;
 }
 
 @layer utilities {
