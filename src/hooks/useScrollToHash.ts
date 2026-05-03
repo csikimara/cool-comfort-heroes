@@ -5,13 +5,23 @@ export const useScrollToHash = () => {
   const { hash } = useLocation();
 
   useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 100);
+    if (!hash) return;
+    let cancelled = false;
+    let attempts = 0;
+    const tryScroll = () => {
+      if (cancelled) return;
+      const el = document.querySelector(hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
       }
-    }
+      if (attempts++ < 40) {
+        setTimeout(tryScroll, 100);
+      }
+    };
+    tryScroll();
+    return () => {
+      cancelled = true;
+    };
   }, [hash]);
 };
