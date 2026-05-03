@@ -8,15 +8,19 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const isOnHomePage = location.pathname === "/";
+  const isOnFujitsuPage = location.pathname.startsWith("/fujitsu");
+  const isOnFisherPage = location.pathname.startsWith("/fisher");
 
   const getNavHref = (hash: string) => {
     return isOnHomePage ? hash : `/${hash}`;
   };
 
-  const navLinks = [
+  const navLinks: { href: string; label: string; brand?: "fujitsu" | "fisher" }[] = [
     { href: getNavHref("#szolgaltatasok"), label: "Szolgáltatások" },
     { href: getNavHref("#rolunk"), label: "Rólunk" },
     { href: "/reszletek", label: "Ipari Megoldások" },
+    ...(!isOnFujitsuPage ? [{ href: "/fujitsu", label: "Fujitsu", brand: "fujitsu" as const }] : []),
+    ...(!isOnFisherPage ? [{ href: "/fisher", label: "Fisher", brand: "fisher" as const }] : []),
     { href: getNavHref("#kapcsolat"), label: "Kapcsolat" },
   ];
 
