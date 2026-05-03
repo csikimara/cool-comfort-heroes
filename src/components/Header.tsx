@@ -15,7 +15,7 @@ const Header = () => {
 
   const navLinks = [
     { href: getNavHref("#szolgaltatasok"), label: "Szolgáltatások" },
-    { href: "/reszletek#rolunk", label: "Rólunk" },
+    { href: getNavHref("#rolunk"), label: "Rólunk" },
     { href: "/reszletek#ipari", label: "Ipari Megoldások" },
     { href: getNavHref("#kapcsolat"), label: "Kapcsolat" },
   ];
