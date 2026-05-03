@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 
+// Fisher Navy Blue partner tab. Positioned 15px below the Fujitsu floating bar.
+// Fujitsu bar is anchored at top-1/2 with -translate-y-1/2; we add ~105px (full bar height + 15px gap).
 const FisherFloatingButton = () => {
   return (
     <Link
       to="/fisher"
-      className="fixed right-0 top-1/2 -translate-y-1/2 -mt-[120px] z-40 group"
+      className="fixed right-0 top-1/2 -translate-y-1/2 mt-[105px] z-40 group"
       aria-label="Fisher klíma partner oldal"
     >
-      <div className="flex items-center bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-l-xl shadow-elevated overflow-hidden transition-all duration-300 hover:shadow-2xl">
+      <div
+        className="flex items-center text-white rounded-l-xl shadow-elevated overflow-hidden transition-all duration-300 hover:shadow-2xl"
+        style={{ background: "linear-gradient(90deg, #1f3d66 0%, #007ec6 100%)" }}
+      >
         <div className="px-2 py-3 sm:px-3 sm:py-4 flex flex-col items-center justify-center gap-1">
           <span className="text-[10px] sm:text-xs font-bold tracking-wider [writing-mode:vertical-lr] rotate-180">
             FISHER
@@ -19,7 +24,7 @@ const FisherFloatingButton = () => {
         <div className="hidden sm:block max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-300 ease-out">
           <div className="px-4 py-3 whitespace-nowrap">
             <p className="text-sm font-semibold">Fisher Klíma</p>
-            <p className="text-xs text-primary-foreground/80">6 év garancia</p>
+            <p className="text-xs text-white/80">6 év garancia</p>
           </div>
         </div>
       </div>
