@@ -85,7 +85,7 @@ const FisherHoszivattyu = () => {
         </div>
 
         {/* Hero */}
-        <section className="relative pt-32 pb-20 bg-white overflow-hidden">
+        <section className="relative pt-6 pb-20 bg-white overflow-hidden">
           <div className="absolute inset-x-0 top-0 h-1" style={{ backgroundColor: NAVY }} />
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center max-w-6xl mx-auto">
