@@ -149,10 +149,10 @@ const LakossagiKlima = () => {
               </div>
               <div className="relative rounded-2xl overflow-hidden border-2 border-primary/15 bg-black shadow-card">
                 <video
-                  src="/galeria/karbantartas/zsakos-mosas.mp4"
+                  src="https://northwind.hu/galeria/karbantartas/zsakos-mosas.mp4"
                   poster={zsakosMosasPoster}
                   controls
-                  preload="none"
+                  preload="auto"
                   playsInline
                   className="w-full h-auto block"
                 >
