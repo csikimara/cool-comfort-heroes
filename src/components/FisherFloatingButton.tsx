@@ -4,7 +4,7 @@ const FisherFloatingButton = () => {
   return (
     <Link
       to="/fisher"
-      className="fixed right-0 top-1/2 -translate-y-1/2 mt-[140px] z-40 group"
+      className="fixed right-0 top-1/2 -translate-y-1/2 -mt-[120px] z-40 group"
       aria-label="Fisher klíma partner oldal"
     >
       <div className="flex items-center bg-gradient-to-r from-primary to-accent text-primary-foreground rounded-l-xl shadow-elevated overflow-hidden transition-all duration-300 hover:shadow-2xl">
