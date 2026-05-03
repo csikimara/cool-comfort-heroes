@@ -62,10 +62,13 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           <div>
             <h3 className="font-semibold mb-5 text-lg">Gyors navigáció</h3>
             <ul className="space-y-3">
+              <li><Link to="/" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Northwind Főoldal</Link></li>
               <li><Link to="/reszletek#rolunk" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Rólunk</Link></li>
               <li><Link to="/reszletek#ipari" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Ipari hűtés</Link></li>
               <li><a href="/#arazas" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Árazás</a></li>
               <li><a href="/#karbantartas-idovonal" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Karbantartás</a></li>
+              <li><Link to="/fujitsu" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Fujitsu megoldások</Link></li>
+              <li><Link to="/fisher" className="text-background/85 underline underline-offset-4 decoration-background/30 hover:decoration-background transition-colors">Fisher partner</Link></li>
             </ul>
           </div>
 
