@@ -124,7 +124,7 @@ const models = [
     icon: Star,
     accentClass: "from-red-500 to-red-600",
     badgeClass: "bg-red-100 text-red-700",
-    catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/design-sorozat-kj",
     catalogLabel: "KJ sorozat árai és paraméterei",
   },
   {
