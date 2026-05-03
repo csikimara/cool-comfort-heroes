@@ -7,6 +7,7 @@ import {
   Images,
   LucideIcon,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface Pillar {
   icon: LucideIcon;
@@ -53,9 +54,9 @@ const pillars: Pillar[] = [
 
 const Services = () => {
   const renderPillar = (pillar: Pillar, index: number) => (
-    <a
+    <Link
       key={pillar.title}
-      href={pillar.href}
+      to={pillar.href}
       className="group relative rounded-2xl p-6 sm:p-7 border bg-gradient-card border-border/50 shadow-card block h-full cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-elevated hover:border-primary/40"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
@@ -72,7 +73,7 @@ const Services = () => {
         {pillar.cta}
         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
       </span>
-    </a>
+    </Link>
   );
 
   return (
@@ -101,9 +102,7 @@ const Services = () => {
         {/* Main Gallery CTA */}
         <div className="mt-16 sm:mt-20 mb-4 sm:mb-8 flex justify-center px-4">
           <a
-            href="/galeria/osszes"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/referenciak/osszes"
             className="inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-4 sm:py-5 rounded-full bg-gradient-hero text-primary-foreground font-semibold text-base sm:text-lg shadow-elevated hover:-translate-y-0.5 hover:shadow-soft transition-all text-center max-w-full"
           >
             <Images className="w-5 h-5 flex-shrink-0" />
