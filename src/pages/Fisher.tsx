@@ -99,7 +99,7 @@ const Fisher = () => {
                   minden felhasználónak.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                  <Button variant="hero" size="lg" className="group" onClick={openTidio} asChild>
+                  <Button variant="hero" size="lg" className="group" asChild>
                     <a href="#" onClick={openTidio}>
                       Ingyenes felmérést kérek
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -218,7 +218,7 @@ const Fisher = () => {
                 Vegye fel velünk a kapcsolatot – kollégáink ingyenes helyszíni felmérést és személyre
                 szabott ajánlatot készítenek a Fisher kínálatából.
               </p>
-              <Button variant="hero" size="lg" className="group" onClick={openTidio} asChild>
+              <Button variant="hero" size="lg" className="group" asChild>
                 <a href="#" onClick={openTidio}>
                   Ingyenes felmérést kérek
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
