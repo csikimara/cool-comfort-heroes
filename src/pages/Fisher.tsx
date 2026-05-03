@@ -170,8 +170,8 @@ const Fisher = () => {
   return (
     <div className="fisher-brand min-h-screen bg-background text-foreground">
       <SEOHead
-        title="Northwind – Az Ön kiemelt Fisher partnere | Fisher Klímaberendezések"
-        description="Hivatalos Fisher partner Budapesten. 33 év tapasztalat, 6 év kiterjesztett garancia. Special Edition, Summer, Comfort Plus, Nordic, Black, Art sorozatok és osztott hőszivattyú."
+        title="Fisher Klíma Telepítés és Garancia | Northwind Hűtéstechnika"
+        description="Prémium Fisher split klímák 6 év garanciával, Németh Lajos ajánlásával. Szakszerű szerelés és karbantartás a Northwind szakértőitől. Kérjen ajánlatot!"
       />
       <JsonLd data={fisherJsonLd} />
       <Header />
@@ -201,7 +201,7 @@ const Fisher = () => {
             <div className="max-w-4xl mx-auto text-center">
               <img
                 src={fisherLogo}
-                alt="Fisher Klímaberendezések hivatalos logó"
+                alt="Fisher Klíma hivatalos logó - Northwind"
                 className="mx-auto mb-6 h-14 sm:h-16 w-auto"
                 width={360}
                 height={120}
@@ -300,7 +300,7 @@ const Fisher = () => {
               >
                 <img
                   src={nemethLajos}
-                  alt="Németh Lajos meteorológus a Fishert ajánlja – Superbrands díjas minőség"
+                  alt="Németh Lajos meteorológus Fisher klímát ajánl"
                   width={360}
                   height={400}
                   loading="lazy"
@@ -393,9 +393,9 @@ const Fisher = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-lg font-bold text-foreground mb-1.5 leading-tight">
+                  <h2 className="text-lg font-bold text-foreground mb-1.5 leading-tight">
                     {m.name}
-                  </h3>
+                  </h2>
                   <p
                     className="text-sm font-semibold mb-3"
                     style={{ color: "#007ec6" }}
