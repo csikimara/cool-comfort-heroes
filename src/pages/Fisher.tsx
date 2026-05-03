@@ -22,7 +22,7 @@ import {
   ExternalLink,
   Phone,
 } from "lucide-react";
-import nemethLajos from "@/assets/nemeth-lajos-placeholder.jpg";
+import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 import fisherMascot from "@/assets/fisher-mascot.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
@@ -237,35 +237,27 @@ const Fisher = () => {
 
         {/* Trust block – Németh Lajos */}
         <section
-          className="py-16 sm:py-20"
-          style={{ backgroundColor: "#b5c334" }}
+          className="py-12 sm:py-16"
+          style={{ backgroundColor: "#1f3d66" }}
           aria-label="Németh Lajos ajánlása"
         >
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto grid sm:grid-cols-[auto,1fr] gap-6 sm:gap-10 items-center">
-              <div className="flex justify-center sm:justify-start">
+            <div className="max-w-5xl mx-auto">
+              <div className="rounded-2xl overflow-hidden shadow-elevated bg-[#1f3d66]">
                 <img
                   src={nemethLajos}
-                  alt="Németh Lajos meteorológus ajánlása – placeholder"
-                  width={512}
-                  height={512}
+                  alt="Németh Lajos meteorológus a Fishert ajánlja – Superbrands 2024 díjas minőség"
+                  width={1460}
+                  height={310}
                   loading="lazy"
-                  className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover border-4 border-white shadow-elevated"
+                  decoding="async"
+                  className="w-full h-auto block"
                 />
               </div>
-              <div className="text-center sm:text-left text-white">
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 border border-white/30 text-xs font-bold uppercase tracking-wider mb-4">
-                  <Award className="w-3.5 h-3.5" />
-                  Bizalom és minőség
-                </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-3">
-                  Németh Lajos ajánlásával
-                </h2>
-                <p className="text-base sm:text-lg text-white/95 leading-relaxed">
-                  <strong>6x SuperBrands díjas minőség.</strong> A Fisher márkát a magyar fogyasztók
-                  és szakemberek évek óta a legmegbízhatóbb klímamárkák között tartják számon.
-                </p>
-              </div>
+              <p className="text-center text-white/90 text-sm sm:text-base mt-5 max-w-2xl mx-auto leading-relaxed">
+                <Award className="inline w-4 h-4 mr-1.5 -mt-0.5" />
+                <strong>Superbrands 2024 díjas minőség</strong> – Németh Lajos meteorológus ajánlásával.
+              </p>
             </div>
           </div>
         </section>
