@@ -6,7 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import ScrollToTop from "./components/ScrollToTop";
-import FeaturebaseLoader from "./components/FeaturebaseLoader";
 
 // Lazy load non-critical routes
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
@@ -29,7 +28,6 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <FeaturebaseLoader />
       <BrowserRouter>
         <ScrollToTop />
         <Suspense fallback={<PageFallback />}>
