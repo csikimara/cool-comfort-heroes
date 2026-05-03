@@ -67,60 +67,78 @@ const splitModels = [
     badge: "Komfort újdonság",
     name: "Fisher SPECIAL EDITION",
     tagline: "„Ne fújj rám” funkció, huzatmentes befúvás",
+    description:
+      "Az innovatív „Ne fújj rám” funkció segítségével elkerülhető a huzathatás. A beltéri ventilátor fokozatmentesen állítható. Az aktív tisztító funkcióval sterilizálható a hőcserélő. Wifin keresztül könnyen szabályozható beltéri egység.",
+    warranty6: false,
     icon: Wind,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/special-edition-sorozat",
-    catalogLabel: "Special Edition árai és paraméterei",
+    catalogLabel: "SPECIAL EDITION árai és paraméterei",
   },
   {
     id: "summer",
     badge: "Gazdaságos",
     name: "Fisher SUMMER",
     tagline: "Gazdaságos hűtés, fűtés -15°C-ig",
+    description:
+      "Tökéletes megoldás lakása hűtésére, de fűtésszezon indulása előtt érkező hideg napokon akár a lakás fűtésére is használhatja. Speciális szűrői segítségével gondoskodik otthona megfelelő levegőminőségéről. Gazdaságos működése révén biztosítja az energiahatékonyságot.",
+    warranty6: true,
     icon: Sun,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/summer-sorozat",
-    catalogLabel: "Summer árai és paraméterei",
+    catalogLabel: "SUMMER árai és paraméterei",
   },
   {
     id: "comfort-plus",
     badge: "Csúcsmodell",
     name: "Fisher COMFORT PLUS",
     tagline: "Fűtésre optimalizált (-22°C), 6 év garancia",
+    description:
+      "Az új Comfort Plus egész évben a kényelmet szolgálja, alacsony üzemeltetési költség és környezetbarát technológia mellett.",
+    warranty6: true,
     icon: Star,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/comfort-plus-sorozat",
-    catalogLabel: "Comfort Plus árai és paraméterei",
+    catalogLabel: "COMFORT PLUS árai és paraméterei",
   },
   {
     id: "nordic",
     badge: "Extrém hideg",
     name: "Fisher NORDIC",
     tagline: "Prémium fűtés -30°C-ig, A+++ hatékonyság",
+    description:
+      "Fűtésre optimalizált berendezés, akár -30°C-ig fűt. A+++ energiahatékonyságú, kiválthatja fűtési rendszerét akár erre a berendezésre. Sok extra kényelmi funkcióval felszerelt, hogy az Ön kényelmét maximálisan kiszolgálja.",
+    warranty6: true,
     icon: Flame,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/nordic-sorozat",
-    catalogLabel: "Nordic árai és paraméterei",
+    catalogLabel: "NORDIC árai és paraméterei",
   },
   {
     id: "black",
     badge: "Dizájn",
     name: "Fisher BLACK",
     tagline: "Tükrös fekete előlap, elegáns megjelenés",
+    description:
+      "Fekete szépség, hűvös hatás: a stílus és a minőség tökéletes harmóniája. Az esztétikus, tükrös előlappal rendelkező fekete készülék a Fisher klímáknál megszokott gazdag felszereltséggel és kiemelkedő műszaki tulajdonságokkal rendelkezik.",
+    warranty6: false,
     icon: Sparkle,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/black-sorozat",
-    catalogLabel: "Black árai és paraméterei",
+    catalogLabel: "BLACK árai és paraméterei",
   },
   {
     id: "art",
     badge: "Egyedi panel",
     name: "Fisher ART",
     tagline: "Cserélhető mágneses panelek, egyedi design",
+    description:
+      "Ez az exkluzív klímaberendezés külsejében és működésében is igazodik az egyedi igényekhez. Cserélhető mágneses design panelek segítségével bármilyen környezetben a szoba díszévé tehető. A 180°-ban állítható légterelő lapátoknak köszönhetően eddig nem látott precizitás érhető el. Aktív tisztító funkciója por- és szennyeződésmentes légteret biztosít.",
+    warranty6: true,
     icon: Palette,
     catalogUrl:
       "https://www.fisherklima.hu/termekek/kereskedelmi-klimaberendezesek/oldalfali/art-sorozat",
-    catalogLabel: "Art árai és paraméterei",
+    catalogLabel: "ART árai és paraméterei",
   },
 ];
 
@@ -299,11 +317,11 @@ const Fisher = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
               {splitModels.map((m) => (
                 <article
                   key={m.id}
-                  className="rounded-2xl bg-white border border-border shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col p-6"
+                  className="rounded-2xl bg-white border border-border shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 flex flex-col p-6 sm:p-7"
                 >
                   <div className="flex items-start gap-3 mb-4">
                     <div
@@ -312,22 +330,40 @@ const Fisher = () => {
                     >
                       <m.icon className="w-6 h-6" style={{ color: "#1f3d66" }} />
                     </div>
-                    <span
-                      className="ml-auto text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full"
-                      style={{
-                        backgroundColor: "rgba(0,126,198,0.1)",
-                        color: "#007ec6",
-                      }}
-                    >
-                      {m.badge}
-                    </span>
+                    <div className="ml-auto flex items-center gap-2 flex-wrap justify-end">
+                      {m.warranty6 && (
+                        <span
+                          className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full text-white"
+                          style={{ backgroundColor: "#1f3d66" }}
+                          title="6 év kiterjesztett garancia"
+                        >
+                          <ShieldCheck className="w-3 h-3" />
+                          6 év garancia
+                        </span>
+                      )}
+                      <span
+                        className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full"
+                        style={{
+                          backgroundColor: "rgba(0,126,198,0.1)",
+                          color: "#007ec6",
+                        }}
+                      >
+                        {m.badge}
+                      </span>
+                    </div>
                   </div>
 
                   <h3 className="text-lg font-bold text-foreground mb-1.5 leading-tight">
                     {m.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">
+                  <p
+                    className="text-sm font-semibold mb-3"
+                    style={{ color: "#007ec6" }}
+                  >
                     {m.tagline}
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+                    {m.description}
                   </p>
 
                   <div className="flex flex-col gap-2.5">
