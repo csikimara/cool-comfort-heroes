@@ -7,6 +7,9 @@ import { useScrollToHash } from "@/hooks/useScrollToHash";
 
 // Lazy load below-the-fold sections
 const Services = lazy(() => import("@/components/Services"));
+const About = lazy(() => import("@/components/About"));
+const MaintenanceTimeline = lazy(() => import("@/components/MaintenanceTimeline"));
+const TransparentPricing = lazy(() => import("@/components/TransparentPricing"));
 const Contact = lazy(() => import("@/components/Contact"));
 const GoogleMap = lazy(() => import("@/components/GoogleMap"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -61,6 +64,9 @@ const Index = () => {
         <Hero />
         <Suspense fallback={null}>
           <Services />
+          <About />
+          <MaintenanceTimeline />
+          <TransparentPricing />
           <Contact />
           <GoogleMap />
         </Suspense>

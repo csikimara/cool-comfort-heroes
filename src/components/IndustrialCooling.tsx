@@ -111,7 +111,7 @@ const IndustrialCooling = () => {
 
         <div className="text-center">
           <Button variant="hero" size="lg" asChild>
-            <a href="#kapcsolat">Kérjen ipari konzultációt vagy ajánlatot!</a>
+            <a href="/#kapcsolat">Kérjen ipari konzultációt vagy ajánlatot!</a>
           </Button>
         </div>
       </div>
