@@ -479,6 +479,36 @@ const Fisher = () => {
                   </div>
                 </div>
               </Link>
+
+              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+                <Button
+                  size="lg"
+                  className="text-white hover:opacity-90"
+                  style={{ backgroundColor: "#1f3d66" }}
+                  asChild
+                >
+                  <a href="mailto:northwind@northwind.hu">
+                    <Mail className="w-4 h-4" />
+                    Ajánlatot kérek
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-transparent"
+                  style={{ borderColor: "#007ec6", color: "#007ec6" }}
+                  asChild
+                >
+                  <a
+                    href="https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    e-HeatR hőszivattyúk árai
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
