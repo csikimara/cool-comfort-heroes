@@ -178,12 +178,25 @@ const Fisher = () => {
       <Header />
       <Suspense fallback={null}>
         <FujitsuFloatingButton />
-        <FisherFloatingButton />
       </Suspense>
 
       <main>
+        {/* Back to Northwind home */}
+        <div className="bg-white pt-28 pb-2">
+          <div className="container mx-auto px-4">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full text-white hover:opacity-90 transition-opacity shadow-sm"
+              style={{ backgroundColor: "#1f3d66" }}
+            >
+              <ArrowRight className="w-4 h-4 rotate-180" />
+              Vissza a Northwind kezdőlapjára
+            </Link>
+          </div>
+        </div>
+
         {/* Hero – mirroring Fujitsu hero layout */}
-        <section className="relative pt-32 pb-24 overflow-hidden bg-white">
+        <section className="relative pt-10 pb-24 overflow-hidden bg-white">
           <div className="absolute inset-x-0 top-0 h-1" style={{ backgroundColor: "#1f3d66" }} />
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
