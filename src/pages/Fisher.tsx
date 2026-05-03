@@ -11,7 +11,6 @@ import {
   Wifi,
   ThermometerSnowflake,
   CheckCircle2,
-  Snowflake,
   Sun,
   ArrowRight,
   Award,
@@ -22,7 +21,6 @@ import {
   Sparkle,
   ExternalLink,
   Phone,
-  Mail,
 } from "lucide-react";
 import nemethLajos from "@/assets/nemeth-lajos-placeholder.jpg";
 import fisherMascot from "@/assets/fisher-mascot.png";
