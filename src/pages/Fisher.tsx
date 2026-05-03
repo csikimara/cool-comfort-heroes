@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
@@ -483,15 +484,13 @@ const Fisher = () => {
                         style={{ borderColor: "#007ec6", color: "#007ec6" }}
                         asChild
                       >
-                        <a
-                          href="https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu#sp-main-body"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <Link
+                          to="/fisher-hoszivattyu"
                           className="inline-flex items-center gap-2"
                         >
-                          <ExternalLink className="w-4 h-4" />
-                          Hivatalos termékadatok
-                        </a>
+                          <ArrowRight className="w-4 h-4" />
+                          Részletek és modellek
+                        </Link>
                       </Button>
                     </div>
                   </div>
