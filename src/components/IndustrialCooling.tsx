@@ -73,6 +73,7 @@ const IndustrialCooling = () => {
             <article
               key={s.title}
               id={`ipari-0${idx + 1}`}
+              style={idx === 0 ? { scrollMarginTop: "120px" } : undefined}
               className="relative rounded-2xl p-6 sm:p-10 border-2 border-primary/15 bg-gradient-card"
             >
               <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-start">
