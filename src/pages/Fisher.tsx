@@ -25,6 +25,7 @@ import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
+const FisherContactForm = lazy(() => import("@/components/fisher/FisherContactForm"));
 
 declare global {
   interface Window {
@@ -36,6 +37,15 @@ const openTidio = (e?: React.MouseEvent) => {
   if (e) e.preventDefault();
   if (typeof window !== "undefined" && window.tidioChatApi?.open) {
     window.tidioChatApi.open();
+  }
+};
+
+const scrollToContactForm = (e?: React.MouseEvent) => {
+  if (e) e.preventDefault();
+  if (typeof window === "undefined") return;
+  const el = document.getElementById("fisher-contact-form");
+  if (el) {
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 };
 
@@ -371,7 +381,7 @@ const Fisher = () => {
                     <Button
                       className="w-full text-white hover:opacity-90 min-h-[44px]"
                       style={{ backgroundColor: "#1f3d66" }}
-                      onClick={openTidio}
+                      onClick={scrollToContactForm}
                     >
                       Ajánlatot kérek
                     </Button>
@@ -461,7 +471,7 @@ const Fisher = () => {
                         size="lg"
                         className="group text-white hover:opacity-90"
                         style={{ backgroundColor: "#1f3d66" }}
-                        onClick={openTidio}
+                        onClick={scrollToContactForm}
                       >
                         Ajánlatot kérek
                         <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -537,9 +547,14 @@ const Fisher = () => {
           </div>
         </section>
 
-        {/* Szakmai konzultáció és felmérés */}
-        <section className="py-20 sm:py-24 bg-secondary" aria-label="Szakmai konzultáció és felmérés">
-          <div className="container mx-auto px-4">
+        {/* Combined Contact Zone: button block + message form */}
+        <section
+          id="contact"
+          className="py-20 sm:py-24 bg-secondary scroll-mt-24"
+          aria-label="Kapcsolatfelvétel és szakmai konzultáció"
+        >
+          <div className="container mx-auto px-4 space-y-10">
+            {/* Top: button block */}
             <div
               className="max-w-3xl mx-auto rounded-3xl bg-card border-2 p-8 sm:p-12 text-center shadow-xl"
               style={{ borderColor: "rgba(31,61,102,0.3)" }}
@@ -562,44 +577,52 @@ const Fisher = () => {
               <p className="text-base text-muted-foreground mb-8 leading-relaxed">
                 33 év hűtéstechnikai tapasztalattal rendelkező szakmai háttérrel.
                 Helyszíni felmérés és szakszerű rendszervázlat – kötelezettségek nélkül.
-                Hivatalos Columbus Klíma garanciális feltételekkel: 6 év az oldalfali
-                split klímákra, 3 év a hőszivattyúkra.
+                Hivatalos Columbus Klíma garancia: 6 év az oldalfali split Fisher
+                klímákra (regisztrációval és évi kétszeri Northwind karbantartással),
+                3 év a hőszivattyúkra.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button
                   size="lg"
                   className="text-white hover:opacity-90"
                   style={{ backgroundColor: "#1f3d66" }}
-                  onClick={openTidio}
-                >
-                  Ajánlatkérés
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-transparent"
-                  style={{ borderColor: "#1f3d66", color: "#1f3d66" }}
                   asChild
                 >
                   <a href="tel:+36704099760">
                     <Phone className="w-4 h-4" />
-                    +36 70 409 9760
+                    Hívás most
                   </a>
                 </Button>
                 <Button
                   size="lg"
-                  variant="outline"
-                  className="bg-transparent"
-                  style={{ borderColor: "#1f3d66", color: "#1f3d66" }}
+                  className="text-white hover:opacity-90"
+                  style={{ backgroundColor: "#1f3d66" }}
                   asChild
                 >
                   <a href="mailto:northwind@northwind.hu">
                     <Mail className="w-4 h-4" />
-                    northwind@northwind.hu
+                    E-mail küldése
                   </a>
                 </Button>
               </div>
             </div>
+
+            {/* Elegant divider */}
+            <div className="max-w-2xl mx-auto flex items-center gap-4" aria-hidden="true">
+              <span className="h-px flex-1" style={{ background: "linear-gradient(to right, transparent, rgba(31,61,102,0.35))" }} />
+              <span
+                className="text-xs font-bold uppercase tracking-[0.25em]"
+                style={{ color: "#1f3d66" }}
+              >
+                vagy írjon nekünk
+              </span>
+              <span className="h-px flex-1" style={{ background: "linear-gradient(to left, transparent, rgba(31,61,102,0.35))" }} />
+            </div>
+
+            {/* Bottom: message form */}
+            <Suspense fallback={null}>
+              <FisherContactForm />
+            </Suspense>
           </div>
         </section>
       </main>
