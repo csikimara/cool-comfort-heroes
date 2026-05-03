@@ -26,7 +26,6 @@ import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 import fisherLogo from "@/assets/fisher-logo.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
-const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
 const FisherContactForm = lazy(() => import("@/components/fisher/FisherContactForm"));
 
 declare global {
