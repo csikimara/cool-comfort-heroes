@@ -1,5 +1,4 @@
 import { Droplets, Wind, Wrench, Snowflake, Images, CheckCircle2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const sections = [
