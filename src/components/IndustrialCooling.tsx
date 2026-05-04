@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const sections = [
   {
     icon: Droplets,
-    title: "Ipari hűtés és Chiller (folyadékhűtő) rendszerek – Teljes körű mérnöki kivitelezés",
+    title: "Ipari hűtés és Chiller (folyadékhűtő) rendszerek – Teljes körű szakmai kivitelezés",
     galleryHref: "/referenciak/ipari-hutes",
     desc: "Vállaljuk komplex ipari hűtési rendszerek tervezését és teljes körű, kulcsrakész kivitelezését, levéve a logisztikai és szervezési terhet az Ön válláról. A teljes folyamatot kézben tartjuk a tervezéstől az üzemeltetésig.",
     bullets: [
@@ -62,7 +62,7 @@ const IndustrialCooling = () => {
             partnerei számára. Nem csupán berendezéseket telepítünk, hanem komplex gépészeti rendszerekben gondolkodunk:
             a folyadékhűtős rendszerektől a speciális, légcsatornázható félipari megoldásokig. Ez utóbbi különösen ideális
             olyan irodákba vagy tagolt terekbe, ahol a hagyományos split klímák elhelyezése nem esztétikus vagy nem
-            megoldható. Precíz mérnöki tervezéssel és szakszerű kivitelezéssel garantáljuk a huzatmentes, optimális
+            megoldható. Precíz szakmai tervezéssel és szakszerű kivitelezéssel garantáljuk a huzatmentes, optimális
             légelosztást és az üzembiztos működést.
           </p>
         </div>

@@ -37,7 +37,7 @@ const services = [
       "Környezetbarát és gazdaságos hűtés, fűtés és melegvíz-ellátás egyetlen rendszerrel.",
     paragraphs: [
       "A hőszivattyú a legkorszerűbb válasz a modern otthonok gépészeti kihívásaira. A külső levegő energiáját hasznosítva biztosítja háza fűtését télen, hűtését nyáron és a használati melegvizet egész évben. Ez a technológia nemcsak környezetbarát, hanem – a kedvezményes H-tarifa igénybevételével – az egyik legköltséghatékonyabb üzemeltetést teszi lehetővé, megszabadítva Önt a gázszámláktól.",
-      "A kivitelezésnél nálunk a precíz mérnöki tervezés az alap: hajszálpontos méretezéssel és finomhangolással garantáljuk, hogy rendszere a leghidegebb téli napokon is maximális üzembiztonsággal és kiemelkedő hatásfokkal működjön.",
+      "A kivitelezésnél nálunk a precíz szakmai tervezés az alap: hajszálpontos méretezéssel és finomhangolással garantáljuk, hogy rendszere a leghidegebb téli napokon is maximális üzembiztonsággal és kiemelkedő hatásfokkal működjön.",
     ],
   },
   {
