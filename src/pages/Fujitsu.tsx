@@ -339,7 +339,7 @@ const Fujitsu = () => {
                 Megoldások a lakástól az iparig
               </h2>
               <p className="text-base text-muted-foreground">
-                Minden szegmensben mérnöki gondossággal tervezünk, telepítünk és
+                Minden szegmensben szakmai gondossággal tervezünk, telepítünk és
                 üzemeltetünk – a Fujitsu teljes termékskálájáról.
               </p>
             </div>
