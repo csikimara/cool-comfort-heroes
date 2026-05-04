@@ -393,20 +393,6 @@ const FisherHoszivattyu = () => {
           </div>
         </section>
 
-        {/* Reference gallery – Fisher heat pumps only */}
-        <Suspense fallback={null}>
-          <BrandGallery
-            slug="hoszivattyu"
-            filenamePrefix="fisher_"
-            title="Referenciáink: Fisher e-HeatR Hőszivattyúk"
-            accent="#1f3d66"
-            bgClassName="bg-white"
-            defaultAlt="Fisher e-HeatR hőszivattyú telepítés referencia – Northwind"
-            buttonOnly
-            buttonLabel="Megnézem a Fisher hőszivattyú referenciákat"
-          />
-        </Suspense>
-
         {/* Németh Lajos trust block */}
         <section className="py-16 sm:py-20 bg-white" aria-label="Németh Lajos ajánlása">
           <div className="container mx-auto px-4">
@@ -445,6 +431,20 @@ const FisherHoszivattyu = () => {
             </div>
           </div>
         </section>
+
+        {/* Reference gallery CTA – Fisher heat pumps only */}
+        <Suspense fallback={null}>
+          <BrandGallery
+            slug="hoszivattyu"
+            filenamePrefix="fisher_"
+            title="Referenciáink: Fisher e-HeatR Hőszivattyúk"
+            accent="#1f3d66"
+            bgClassName="bg-secondary"
+            defaultAlt="Fisher e-HeatR hőszivattyú telepítés referencia – Northwind"
+            buttonOnly
+            buttonLabel="Megnézem a Fisher hőszivattyú referenciákat"
+          />
+        </Suspense>
 
         {/* H-Tarifa */}
         <section className="py-20 sm:py-24 bg-white" aria-label="H-tarifa">
