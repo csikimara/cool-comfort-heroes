@@ -297,11 +297,20 @@ const BrandGallery = ({
                 {media.type === "video" ? (
                   <video
                     src={media.src}
-                    autoPlay
                     loop
                     muted
                     playsInline
                     preload="metadata"
+                    onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.pause();
+                      e.currentTarget.currentTime = 0;
+                    }}
+                    onFocus={(e) => e.currentTarget.play().catch(() => {})}
+                    onClick={(e) => {
+                      const v = e.currentTarget;
+                      if (v.paused) v.play().catch(() => {});
+                    }}
                     className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.03]"
                   />
                 ) : (
