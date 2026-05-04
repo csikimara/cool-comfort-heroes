@@ -329,7 +329,7 @@ const BrandGallery = ({
         index={openIndex < 0 ? 0 : openIndex}
         close={() => setOpenIndex(-1)}
         slides={slides}
-        plugins={[VideoPlugin]}
+        plugins={[Video]}
       />
     </section>
   );
