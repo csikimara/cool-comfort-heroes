@@ -121,6 +121,15 @@ const Galeria = () => {
   const [images, setImages] = useState<LoadedImage[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "empty" | "error">("loading");
   const [openIndex, setOpenIndex] = useState<number>(-1);
+  const [debug, setDebug] = useState<{
+    url: string;
+    httpStatus?: number;
+    contentType?: string | null;
+    rawSnippet?: string;
+    parsedFiles?: unknown;
+    finalUrls?: string[];
+    error?: string;
+  }>({ url: "" });
 
   useEffect(() => {
     let cancelled = false;
@@ -130,24 +139,34 @@ const Galeria = () => {
     const folderName = meta.folder ?? slug;
     const folder = `${BASE}/${folderName}`;
     const prefix = meta.filenamePrefix?.toLowerCase();
+    const fetchUrl = `${folder}/index.php`;
+    setDebug({ url: fetchUrl });
 
-    fetch(`${folder}/index.php`, { cache: "no-store" })
+    fetch(fetchUrl, { cache: "no-store" })
       .then(async (res) => {
         console.log(`[Galeria:${slug}] fetch status:`, res.status, res.headers.get("content-type"));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const text = await res.text();
         console.log(`[Galeria:${slug}] raw response (first 200):`, text.slice(0, 200));
+        setDebug((d) => ({
+          ...d,
+          httpStatus: res.status,
+          contentType: res.headers.get("content-type"),
+          rawSnippet: text.slice(0, 300),
+        }));
         let raw: Manifest | string[];
         try {
           raw = JSON.parse(text);
         } catch (e) {
           console.error(`[Galeria:${slug}] JSON parse FAILED — a szerver HTML-t küldött (valószínűleg az .htaccess átirányítja az index.php-t a SPA-ra).`, e);
+          setDebug((d) => ({ ...d, error: `JSON parse hiba: ${(e as Error).message}` }));
           throw e;
         }
         const data: Manifest = Array.isArray(raw)
           ? { images: raw }
           : { images: raw.images ?? raw.files ?? [] };
         console.log(`[Galeria:${slug}] parsed files:`, data.images);
+        setDebug((d) => ({ ...d, parsedFiles: data.images }));
         if (cancelled) return;
 
         const list = (data.images ?? [])
@@ -174,6 +193,7 @@ const Galeria = () => {
             return name.startsWith(prefix);
           });
         console.log(`[Galeria:${slug}] final URLs:`, list.map((i) => i.src));
+        setDebug((d) => ({ ...d, finalUrls: list.map((i) => i.src) }));
 
         if (list.length === 0) {
           setStatus("empty");
@@ -184,6 +204,7 @@ const Galeria = () => {
       })
       .catch((err) => {
         console.error(`[Galeria:${slug}] fetch FAILED:`, err?.message ?? err);
+        setDebug((d) => ({ ...d, error: err?.message ?? String(err) }));
         if (!cancelled) setStatus("empty");
       });
 
@@ -260,6 +281,29 @@ const Galeria = () => {
 
         <section className="py-12 sm:py-16 bg-background">
           <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto mb-8 p-4 rounded-xl border-2 border-yellow-400 bg-yellow-50 text-xs font-mono text-left overflow-x-auto">
+              <div className="font-bold text-yellow-900 mb-2 text-sm uppercase">🐞 Debug Doboz (ideiglenes)</div>
+              <div className="space-y-1 text-yellow-950 break-all">
+                <div><b>Slug:</b> {slug}</div>
+                <div><b>Fetch URL:</b> {debug.url}</div>
+                <div><b>HTTP státusz:</b> {debug.httpStatus ?? "—"}</div>
+                <div><b>Content-Type:</b> {debug.contentType ?? "—"}</div>
+                <div><b>Filename prefix szűrő:</b> {meta.filenamePrefix ?? "(nincs)"}</div>
+                <div><b>Nyers válasz (max 300 karakter):</b>
+                  <pre className="whitespace-pre-wrap bg-white/70 p-2 rounded mt-1">{debug.rawSnippet ?? "—"}</pre>
+                </div>
+                <div><b>Parsed fájllista:</b>
+                  <pre className="whitespace-pre-wrap bg-white/70 p-2 rounded mt-1">{debug.parsedFiles ? JSON.stringify(debug.parsedFiles, null, 2) : "—"}</pre>
+                </div>
+                <div><b>Generált végső URL-ek (img/video src):</b>
+                  <pre className="whitespace-pre-wrap bg-white/70 p-2 rounded mt-1">{debug.finalUrls ? debug.finalUrls.join("\n") : "—"}</pre>
+                </div>
+                {debug.error && (
+                  <div className="text-red-700"><b>HIBA:</b> {debug.error}</div>
+                )}
+              </div>
+            </div>
+
             {status === "loading" && (
               <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
                 <Loader2 className="w-8 h-8 animate-spin mb-3 text-primary" />
