@@ -178,7 +178,7 @@ const solutionCategories = [
       "Integrált HMV-vezérlés és okos felügyelet",
     ],
     warrantyBadge: "3 év teljes körű gyártói garancia",
-    warrantyNote: "Gyári garancia és mérnöki szervizháttér.",
+    warrantyNote: "Gyári garancia és szakmai szervizháttér.",
     galleryHref: "/referenciak/fujitsu-waterstage",
   },
   {
@@ -193,7 +193,7 @@ const solutionCategories = [
       "Letisztult belső tér – nincs látható egység",
     ],
     warrantyBadge: "3 év teljes körű gyártói garancia",
-    warrantyNote: "Gyári garancia és mérnöki szervizháttér.",
+    warrantyNote: "Gyári garancia és szakmai szervizháttér.",
     galleryHref: "/referenciak/fujitsu-legcsatornazhato",
   },
   {
@@ -207,7 +207,7 @@ const solutionCategories = [
       "BMS-integráció és távoli felügyelet",
       "Hivatalos beüzemelés a gyári garanciáért",
     ],
-    warrantyBadge: "Gyári garancia és mérnöki szervizháttér",
+    warrantyBadge: "Gyári garancia és szakmai szervizháttér",
     warrantyNote:
       "Projekt-specifikus gyártói garancia – részletek egyedi ajánlatban.",
     galleryHref: "/referenciak/fujitsu-vrf",
@@ -283,7 +283,7 @@ const Fujitsu = () => {
                 Columbus Klíma kiterjesztett garancia
               </span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-3 mb-6 leading-tight">
-                10 év nyugalom – mérnöki garanciával
+                10 év nyugalom – szakmai garanciával
               </h2>
               <p className="text-lg sm:text-xl opacity-95 leading-relaxed mb-10 max-w-3xl mx-auto">
                 A Columbus Klíma 10 éves kiterjesztett garanciája{" "}
