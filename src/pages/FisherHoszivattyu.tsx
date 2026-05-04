@@ -398,12 +398,12 @@ const FisherHoszivattyu = () => {
           <BrandGallery
             slug="hoszivattyu"
             filenamePrefix="fisher_"
-            eyebrow="Referenciák"
             title="Referenciáink: Fisher e-HeatR Hőszivattyúk"
-            description="Válogatás a Northwind által telepített Fisher e-HeatR hőszivattyús rendszerekből."
             accent="#1f3d66"
             bgClassName="bg-white"
             defaultAlt="Fisher e-HeatR hőszivattyú telepítés referencia – Northwind"
+            buttonOnly
+            buttonLabel="Megnézem a Fisher hőszivattyú referenciákat"
           />
         </Suspense>
 
