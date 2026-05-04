@@ -17,7 +17,7 @@ const FujitsuHero = () => (
         </h1>
 
         <p className="text-lg sm:text-xl text-muted-foreground mb-9 max-w-2xl mx-auto leading-relaxed">
-          33 év mérnöki tapasztalat és hivatalos Columbus Klíma garancia –
+          33 év tapasztalat és hivatalos Columbus Klíma garancia –
           minden telepített rendszer mögött.
         </p>
 
