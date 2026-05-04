@@ -84,11 +84,21 @@ const BrandGallery = ({
 
     fetch(`${folder}/index.php`, { cache: "no-store" })
       .then(async (res) => {
+        console.log(`[BrandGallery:${slug}] fetch status:`, res.status, res.headers.get("content-type"));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const raw = (await res.json()) as Manifest | string[];
+        const text = await res.text();
+        console.log(`[BrandGallery:${slug}] raw response (first 200):`, text.slice(0, 200));
+        let raw: Manifest | string[];
+        try {
+          raw = JSON.parse(text);
+        } catch (e) {
+          console.error(`[BrandGallery:${slug}] JSON parse FAILED — szerver HTML-t adott vissza JSON helyett. Az .htaccess átirányítja az index.php-t a SPA-ra.`, e);
+          throw e;
+        }
         const data: Manifest = Array.isArray(raw)
           ? { images: raw }
           : { images: raw.images ?? raw.files ?? [] };
+        console.log(`[BrandGallery:${slug}] parsed files:`, data.images);
         if (cancelled) return;
 
         const list = (data.images ?? [])
@@ -113,6 +123,7 @@ const BrandGallery = ({
             const name = getFilename(i.src).toLowerCase();
             return name.startsWith(filenamePrefix.toLowerCase());
           });
+        console.log(`[BrandGallery:${slug}] filtered by prefix "${filenamePrefix}":`, list.map((i) => i.src));
 
         if (list.length === 0) {
           setStatus("empty");
@@ -121,7 +132,8 @@ const BrandGallery = ({
           setStatus("ready");
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error(`[BrandGallery:${slug}] fetch FAILED:`, err?.message ?? err);
         if (!cancelled) setStatus("empty");
       });
 

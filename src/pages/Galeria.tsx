@@ -119,11 +119,21 @@ const Galeria = () => {
 
     fetch(`${folder}/index.php`, { cache: "no-store" })
       .then(async (res) => {
+        console.log(`[Galeria:${slug}] fetch status:`, res.status, res.headers.get("content-type"));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const raw = (await res.json()) as Manifest | string[];
+        const text = await res.text();
+        console.log(`[Galeria:${slug}] raw response (first 200):`, text.slice(0, 200));
+        let raw: Manifest | string[];
+        try {
+          raw = JSON.parse(text);
+        } catch (e) {
+          console.error(`[Galeria:${slug}] JSON parse FAILED — a szerver HTML-t küldött (valószínűleg az .htaccess átirányítja az index.php-t a SPA-ra).`, e);
+          throw e;
+        }
         const data: Manifest = Array.isArray(raw)
           ? { images: raw }
           : { images: raw.images ?? raw.files ?? [] };
+        console.log(`[Galeria:${slug}] parsed files:`, data.images);
         if (cancelled) return;
 
         const list = (data.images ?? [])
@@ -144,6 +154,7 @@ const Galeria = () => {
             } as LoadedImage;
           })
           .filter((i) => !!i.src);
+        console.log(`[Galeria:${slug}] final URLs:`, list.map((i) => i.src));
 
         if (list.length === 0) {
           setStatus("empty");
@@ -152,7 +163,8 @@ const Galeria = () => {
           setStatus("ready");
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error(`[Galeria:${slug}] fetch FAILED:`, err?.message ?? err);
         if (!cancelled) setStatus("empty");
       });
 
