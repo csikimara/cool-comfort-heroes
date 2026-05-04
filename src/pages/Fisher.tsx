@@ -551,6 +551,19 @@ const Fisher = () => {
                     e-HeatR hőszivattyúk árai
                   </a>
                 </Button>
+                <Suspense fallback={null}>
+                  <BrandGallery
+                    slug="hoszivattyu"
+                    filenamePrefix="fisher_"
+                    title="Fisher e-HeatR hőszivattyú referenciák"
+                    accent="#1f3d66"
+                    defaultAlt="Fisher e-HeatR hőszivattyú telepítés referencia – Northwind"
+                    buttonOnly
+                    inline
+                    buttonLabel="Hőszivattyú referenciák"
+                    buttonClassName="inline-flex items-center justify-center gap-2 h-11 px-6 sm:px-8 rounded-md text-white font-medium text-sm shadow hover:opacity-90 transition-opacity disabled:opacity-70 disabled:cursor-wait"
+                  />
+                </Suspense>
               </div>
             </div>
           </div>
