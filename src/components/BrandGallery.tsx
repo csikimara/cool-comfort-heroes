@@ -139,11 +139,11 @@ const BrandGallery = ({
         aria-label={buttonLabel ?? title}
       >
         {status === "loading" ? (
-          <Loader2 className="w-5 h-5 animate-spin" />
+          <Loader2 className="w-4 h-4 shrink-0 animate-spin" aria-hidden="true" />
         ) : (
-          <Images className="w-5 h-5" />
+          <Images className="w-4 h-4 shrink-0" aria-hidden="true" />
         )}
-        <span>{buttonLabel ?? title}</span>
+        <span className="leading-none">{buttonLabel ?? title}</span>
       </button>
     );
     const overlays = (
