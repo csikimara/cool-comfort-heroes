@@ -88,6 +88,7 @@ const BASE = "https://northwind.hu/galeria";
 
 type Manifest = {
   images?: Array<string | { src: string; alt?: string; caption?: string }>;
+  files?: string[];
 };
 
 type LoadedImage = { src: string; alt: string; title?: string };
@@ -108,10 +109,13 @@ const Galeria = () => {
 
     const folder = `${BASE}/${slug}`;
 
-    fetch(`${folder}/index.json`, { cache: "no-store" })
+    fetch(`${folder}/index.php`, { cache: "no-store" })
       .then(async (res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = (await res.json()) as Manifest;
+        const raw = (await res.json()) as Manifest | string[];
+        const data: Manifest = Array.isArray(raw)
+          ? { images: raw }
+          : { images: raw.images ?? raw.files ?? [] };
         if (cancelled) return;
 
         const list = (data.images ?? [])
