@@ -55,6 +55,7 @@ const BrandGallery = ({
   const [images, setImages] = useState<LoadedImage[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "empty">("loading");
   const [openIndex, setOpenIndex] = useState<number>(-1);
+  const [showEmptyNotice, setShowEmptyNotice] = useState<boolean>(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -108,18 +109,23 @@ const BrandGallery = ({
     [images]
   );
 
-  // Hide the section entirely when there's nothing to show — keeps the page clean.
-  if (status === "empty") return null;
-
   if (buttonOnly) {
+    const isEmpty = status === "empty";
+    const handleClick = () => {
+      if (isEmpty) {
+        setShowEmptyNotice(true);
+      } else {
+        setOpenIndex(0);
+      }
+    };
     return (
-      <section className={`py-12 sm:py-16 ${bgClassName}`} aria-label={title}>
+      <section className={`relative z-10 py-12 sm:py-16 ${bgClassName}`} aria-label={title}>
         <div className="container mx-auto px-4 flex justify-center">
           <button
             type="button"
-            onClick={() => setOpenIndex(0)}
-            disabled={status !== "ready"}
-            className="inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-4 sm:py-5 rounded-full text-white font-semibold text-base sm:text-lg shadow-elevated hover:-translate-y-0.5 hover:shadow-soft transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+            onClick={handleClick}
+            disabled={status === "loading"}
+            className="inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-4 sm:py-5 rounded-full text-white font-semibold text-base sm:text-lg shadow-elevated hover:-translate-y-0.5 hover:shadow-soft transition-all disabled:opacity-70 disabled:cursor-wait"
             style={{ backgroundColor: accent }}
             aria-label={buttonLabel ?? title}
           >
@@ -138,9 +144,53 @@ const BrandGallery = ({
           close={() => setOpenIndex(-1)}
           slides={slides}
         />
+
+        {showEmptyNotice && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Referenciák hamarosan"
+            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+            onClick={() => setShowEmptyNotice(false)}
+          >
+            <div
+              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+              aria-hidden="true"
+            />
+            <div
+              className="relative max-w-md w-full rounded-2xl bg-white p-8 text-center shadow-elevated"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div
+                className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center"
+                style={{ backgroundColor: `${accent}14` }}
+              >
+                <Images className="w-7 h-7" style={{ color: accent }} />
+              </div>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                Referenciáink hamarosan feltöltésre kerülnek!
+              </h3>
+              <p className="text-sm text-muted-foreground mb-6">
+                Dolgozunk a galéria frissítésén – hamarosan visszatérünk friss
+                képekkel a legutóbbi telepítéseinkről.
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowEmptyNotice(false)}
+                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+                style={{ backgroundColor: accent }}
+              >
+                Bezárás
+              </button>
+            </div>
+          </div>
+        )}
       </section>
     );
   }
+
+  // Hide the inline grid section entirely when there's nothing to show.
+  if (status === "empty") return null;
 
   return (
     <section className={`py-16 sm:py-20 ${bgClassName}`} aria-label={title}>
