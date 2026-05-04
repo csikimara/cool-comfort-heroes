@@ -523,24 +523,36 @@ const Fisher = () => {
                 </div>
               </Link>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+              {/*
+                Pixel-perfect CTA row — all three buttons share the EXACT same
+                box model (h-14, w-full, px-6, rounded-md, text-sm, leading-none,
+                gap-2, w-4 h-4 icons). The outline button uses an inset
+                box-shadow ring instead of a border so it doesn't add 2px to its
+                size. Hover/focus/active/disabled effects use opacity, ring and
+                shadow only — never width/height changes — so there is zero
+                layout shift between states.
+              */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 items-stretch">
                 <a
                   href="mailto:northwind@northwind.hu"
-                  className="inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md text-white font-medium text-sm shadow hover:opacity-90 transition-opacity"
+                  className="group inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md text-white font-medium text-sm leading-none shadow transition-opacity hover:opacity-90 active:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1f3d66] box-border"
                   style={{ backgroundColor: "#1f3d66" }}
                 >
-                  <Mail className="w-4 h-4" />
-                  <span>Ajánlatot kérek</span>
+                  <Mail className="w-4 h-4 shrink-0" aria-hidden="true" />
+                  <span className="leading-none">Ajánlatot kérek</span>
                 </a>
                 <a
                   href="https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md font-medium text-sm border-2 bg-transparent hover:bg-secondary/40 transition-colors"
-                  style={{ borderColor: "#007ec6", color: "#007ec6" }}
+                  className="group inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md font-medium text-sm leading-none bg-transparent transition-colors hover:bg-[#007ec6]/10 active:bg-[#007ec6]/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#007ec6] box-border"
+                  style={{
+                    color: "#007ec6",
+                    boxShadow: "inset 0 0 0 2px #007ec6",
+                  }}
                 >
-                  <ExternalLink className="w-4 h-4" />
-                  <span>e-HeatR hőszivattyúk árai</span>
+                  <ExternalLink className="w-4 h-4 shrink-0" aria-hidden="true" />
+                  <span className="leading-none">e-HeatR hőszivattyúk árai</span>
                 </a>
                 <Suspense fallback={null}>
                   <BrandGallery
@@ -552,7 +564,7 @@ const Fisher = () => {
                     buttonOnly
                     inline
                     buttonLabel="Hőszivattyú referenciák"
-                    buttonClassName="inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md text-white font-medium text-sm shadow hover:opacity-90 transition-opacity disabled:opacity-70 disabled:cursor-wait"
+                    buttonClassName="group inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md text-white font-medium text-sm leading-none shadow transition-opacity hover:opacity-90 active:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1f3d66] disabled:opacity-70 disabled:cursor-wait box-border"
                   />
                 </Suspense>
               </div>
