@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Images, Loader2 } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
+import Video from "yet-another-react-lightbox/plugins/video";
 import "yet-another-react-lightbox/styles.css";
 
 type Manifest = {
@@ -8,7 +9,14 @@ type Manifest = {
   files?: string[];
 };
 
-type LoadedImage = { src: string; alt: string; title?: string };
+type LoadedMedia = {
+  src: string;
+  alt: string;
+  title?: string;
+  type: "image" | "video";
+};
+
+const isVideoFile = (name: string) => /\.(mp4|webm|ogg|mov|m4v)$/i.test(name);
 
 interface BrandGalleryProps {
   /** Folder slug under https://northwind.hu/galeria/ (e.g. "lakossagi-split"). */
@@ -61,7 +69,7 @@ const BrandGallery = ({
   inline = false,
   buttonClassName,
 }: BrandGalleryProps) => {
-  const [images, setImages] = useState<LoadedImage[]>([]);
+  const [images, setImages] = useState<LoadedMedia[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "empty">("loading");
   const [openIndex, setOpenIndex] = useState<number>(-1);
   const [showEmptyNotice, setShowEmptyNotice] = useState<boolean>(false);
@@ -86,13 +94,19 @@ const BrandGallery = ({
         const list = (data.images ?? [])
           .map((item) => {
             if (typeof item === "string") {
-              return { src: `${folder}/${item}`, alt: altFallback };
+              return {
+                src: `${folder}/${item}`,
+                alt: altFallback,
+                type: isVideoFile(item) ? "video" : "image",
+              } as LoadedMedia;
             }
+            const src = item.src.startsWith("http") ? item.src : `${folder}/${item.src}`;
             return {
-              src: item.src.startsWith("http") ? item.src : `${folder}/${item.src}`,
+              src,
               alt: item.alt ?? altFallback,
               title: item.caption,
-            };
+              type: isVideoFile(src) ? "video" : "image",
+            } as LoadedMedia;
           })
           .filter((i) => {
             if (!i.src) return false;
@@ -117,7 +131,22 @@ const BrandGallery = ({
   }, [slug, filenamePrefix, defaultAlt, title]);
 
   const slides = useMemo(
-    () => images.map((i) => ({ src: i.src, alt: i.alt, title: i.title })),
+    () =>
+      images.map((i) =>
+        i.type === "video"
+          ? {
+              type: "video" as const,
+              sources: [{ src: i.src, type: "video/mp4" }],
+              autoPlay: true,
+              loop: true,
+              muted: true,
+              playsInline: true,
+              controls: true,
+              width: 1280,
+              height: 720,
+            }
+          : { src: i.src, alt: i.alt, title: i.title }
+      ),
     [images]
   );
 
@@ -156,7 +185,8 @@ const BrandGallery = ({
           open={openIndex >= 0}
           index={openIndex < 0 ? 0 : openIndex}
           close={() => setOpenIndex(-1)}
-          slides={slides}
+          slides={slides as any}
+          plugins={[Video]}
         />
         {showEmptyNotice && (
           <div
@@ -254,22 +284,34 @@ const BrandGallery = ({
           <div
             className="max-w-6xl mx-auto columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4 [column-fill:_balance]"
           >
-            {images.map((img, i) => (
+            {images.map((media, i) => (
               <button
-                key={img.src}
+                key={media.src}
                 onClick={() => setOpenIndex(i)}
                 className="group relative mb-3 sm:mb-4 block w-full overflow-hidden rounded-xl border-2 bg-secondary/40 transition-all focus:outline-none focus:ring-2"
                 style={{
                   borderColor: `${accent}26`,
                 }}
-                aria-label={`${img.alt} – nagyítás`}
+                aria-label={`${media.alt} – nagyítás`}
               >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  loading="lazy"
-                  className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.03]"
-                />
+                {media.type === "video" ? (
+                  <video
+                    src={media.src}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <img
+                    src={media.src}
+                    alt={media.alt}
+                    loading="lazy"
+                    className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                )}
                 <span
                   className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
                   style={{
@@ -287,7 +329,8 @@ const BrandGallery = ({
         open={openIndex >= 0}
         index={openIndex < 0 ? 0 : openIndex}
         close={() => setOpenIndex(-1)}
-        slides={slides}
+        slides={slides as any}
+        plugins={[Video]}
       />
     </section>
   );
