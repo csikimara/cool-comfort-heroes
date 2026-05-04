@@ -15,7 +15,6 @@ interface Pillar {
   description: string;
   href: string;
   cta: string;
-  galleries?: { label: string; href: string }[];
 }
 
 const pillars: Pillar[] = [
@@ -26,10 +25,6 @@ const pillars: Pillar[] = [
       "Professzionális split és multi-split klímaberendezések, valamint energiahatékony hőszivattyúk telepítése otthonokba és irodákba.",
     href: "/lakossagi-klima",
     cta: "Lakossági megoldások",
-    galleries: [
-      { label: "Klíma referenciák", href: "/referenciak/lakossagi-split" },
-      { label: "Hőszivattyú referenciák", href: "/referenciak/hoszivattyu" },
-    ],
   },
   {
     icon: Factory,
@@ -38,9 +33,6 @@ const pillars: Pillar[] = [
       "Komplex ipari hűtéstechnikai megoldások: folyadékhűtők (chillerek), fan-coil rendszerek tervezése, telepítése és szervize.",
     href: "/reszletek#ipari-01",
     cta: "Ipari megoldások",
-    galleries: [
-      { label: "Ipari hűtés referenciák", href: "/referenciak/ipari-hutes" },
-    ],
   },
   {
     icon: Wind,
@@ -49,9 +41,6 @@ const pillars: Pillar[] = [
       "Komplex szellőztető és légkezelő rendszerek (AHU) tervezése és kivitelezése lakossági, kereskedelmi és ipari környezetben.",
     href: "/reszletek#ipari-03",
     cta: "Légtechnikai megoldások",
-    galleries: [
-      { label: "Légtechnika referenciák", href: "/referenciak/legtechnika" },
-    ],
   },
   {
     icon: Wrench,
@@ -60,9 +49,6 @@ const pillars: Pillar[] = [
       "Rendszeres éves felülvizsgálat, márkafüggetlen javítás és prémium zsákos klímamosás a hosszú élettartamért és optimális hatékonyságért.",
     href: "/reszletek#ipari-04",
     cta: "Szerviz részletek",
-    galleries: [
-      { label: "Karbantartás referenciák", href: "/referenciak/karbantartas" },
-    ],
   },
 ];
 
@@ -88,21 +74,6 @@ const Services = () => {
           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
         </span>
       </Link>
-
-      {pillar.galleries && pillar.galleries.length > 0 && (
-        <div className="mt-5 pt-4 border-t border-border/40 flex flex-wrap gap-2">
-          {pillar.galleries.map((g) => (
-            <Link
-              key={g.href}
-              to={g.href}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-            >
-              <Images className="w-3.5 h-3.5" />
-              {g.label}
-            </Link>
-          ))}
-        </div>
-      )}
     </div>
   );
 
