@@ -15,6 +15,7 @@ interface Pillar {
   description: string;
   href: string;
   cta: string;
+  galleries?: { label: string; href: string }[];
 }
 
 const pillars: Pillar[] = [
@@ -25,6 +26,10 @@ const pillars: Pillar[] = [
       "Professzionális split és multi-split klímaberendezések, valamint energiahatékony hőszivattyúk telepítése otthonokba és irodákba.",
     href: "/lakossagi-klima",
     cta: "Lakossági megoldások",
+    galleries: [
+      { label: "Klíma referenciák", href: "/referenciak/lakossagi-split" },
+      { label: "Hőszivattyú referenciák", href: "/referenciak/hoszivattyu" },
+    ],
   },
   {
     icon: Factory,
@@ -33,6 +38,9 @@ const pillars: Pillar[] = [
       "Komplex ipari hűtéstechnikai megoldások: folyadékhűtők (chillerek), fan-coil rendszerek tervezése, telepítése és szervize.",
     href: "/reszletek#ipari-01",
     cta: "Ipari megoldások",
+    galleries: [
+      { label: "Ipari hűtés referenciák", href: "/referenciak/ipari-hutes" },
+    ],
   },
   {
     icon: Wind,
@@ -41,6 +49,9 @@ const pillars: Pillar[] = [
       "Komplex szellőztető és légkezelő rendszerek (AHU) tervezése és kivitelezése lakossági, kereskedelmi és ipari környezetben.",
     href: "/reszletek#ipari-03",
     cta: "Légtechnikai megoldások",
+    galleries: [
+      { label: "Légtechnika referenciák", href: "/referenciak/legtechnika" },
+    ],
   },
   {
     icon: Wrench,
@@ -49,31 +60,50 @@ const pillars: Pillar[] = [
       "Rendszeres éves felülvizsgálat, márkafüggetlen javítás és prémium zsákos klímamosás a hosszú élettartamért és optimális hatékonyságért.",
     href: "/reszletek#ipari-04",
     cta: "Szerviz részletek",
+    galleries: [
+      { label: "Karbantartás referenciák", href: "/referenciak/karbantartas" },
+    ],
   },
 ];
 
 const Services = () => {
   const renderPillar = (pillar: Pillar, index: number) => (
-    <Link
+    <div
       key={pillar.title}
-      to={pillar.href}
-      className="group relative rounded-2xl p-6 sm:p-7 border bg-gradient-card border-border/50 shadow-card block h-full cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:shadow-elevated hover:border-primary/40"
+      className="group relative rounded-2xl p-6 sm:p-7 border bg-gradient-card border-border/50 shadow-card flex flex-col h-full transition-all duration-200 hover:-translate-y-1 hover:shadow-elevated hover:border-primary/40"
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5">
-        <pillar.icon className="w-7 h-7 text-primary-foreground" />
-      </div>
-      <h3 className="text-xl font-semibold mb-3 text-foreground">
-        {pillar.title}
-      </h3>
-      <p className="text-base leading-relaxed mb-4 text-muted-foreground">
-        {pillar.description}
-      </p>
-      <span className="card-cta">
-        {pillar.cta}
-        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-      </span>
-    </Link>
+      <Link to={pillar.href} className="block flex-1">
+        <div className="w-14 h-14 rounded-xl bg-gradient-hero flex items-center justify-center mb-5">
+          <pillar.icon className="w-7 h-7 text-primary-foreground" />
+        </div>
+        <h3 className="text-xl font-semibold mb-3 text-foreground">
+          {pillar.title}
+        </h3>
+        <p className="text-base leading-relaxed mb-4 text-muted-foreground">
+          {pillar.description}
+        </p>
+        <span className="card-cta">
+          {pillar.cta}
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </span>
+      </Link>
+
+      {pillar.galleries && pillar.galleries.length > 0 && (
+        <div className="mt-5 pt-4 border-t border-border/40 flex flex-wrap gap-2">
+          {pillar.galleries.map((g) => (
+            <Link
+              key={g.href}
+              to={g.href}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+            >
+              <Images className="w-3.5 h-3.5" />
+              {g.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
   );
 
   return (
