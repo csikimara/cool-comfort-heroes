@@ -523,34 +523,25 @@ const Fisher = () => {
                 </div>
               </Link>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6 sm:items-stretch">
-                <Button
-                  size="lg"
-                  className="text-white hover:opacity-90 w-full sm:flex-1 sm:basis-0 sm:min-w-[200px]"
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                <a
+                  href="mailto:northwind@northwind.hu"
+                  className="inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md text-white font-medium text-sm shadow hover:opacity-90 transition-opacity"
                   style={{ backgroundColor: "#1f3d66" }}
-                  asChild
                 >
-                  <a href="mailto:northwind@northwind.hu">
-                    <Mail className="w-4 h-4" />
-                    Ajánlatot kérek
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-transparent w-full sm:flex-1 sm:basis-0 sm:min-w-[200px]"
+                  <Mail className="w-4 h-4" />
+                  <span>Ajánlatot kérek</span>
+                </a>
+                <a
+                  href="https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md font-medium text-sm border-2 bg-transparent hover:bg-secondary/40 transition-colors"
                   style={{ borderColor: "#007ec6", color: "#007ec6" }}
-                  asChild
                 >
-                  <a
-                    href="https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    e-HeatR hőszivattyúk árai
-                  </a>
-                </Button>
+                  <ExternalLink className="w-4 h-4" />
+                  <span>e-HeatR hőszivattyúk árai</span>
+                </a>
                 <Suspense fallback={null}>
                   <BrandGallery
                     slug="hoszivattyu"
@@ -561,7 +552,7 @@ const Fisher = () => {
                     buttonOnly
                     inline
                     buttonLabel="Hőszivattyú referenciák"
-                    buttonClassName="inline-flex items-center justify-center gap-2 h-11 w-full sm:flex-1 sm:basis-0 sm:min-w-[200px] px-6 rounded-md text-white font-medium text-sm shadow hover:opacity-90 transition-opacity disabled:opacity-70 disabled:cursor-wait"
+                    buttonClassName="inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md text-white font-medium text-sm shadow hover:opacity-90 transition-opacity disabled:opacity-70 disabled:cursor-wait"
                   />
                 </Suspense>
               </div>
