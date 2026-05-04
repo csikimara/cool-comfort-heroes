@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { ImageOff, Loader2 } from "lucide-react";
+import { Images, Loader2 } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
@@ -26,6 +26,10 @@ interface BrandGalleryProps {
   bgClassName?: string;
   /** Default alt text used when manifest entries omit one. */
   defaultAlt?: string;
+  /** When true, render a single centered CTA button that opens the lightbox. */
+  buttonOnly?: boolean;
+  /** Custom label for the CTA button (buttonOnly mode). */
+  buttonLabel?: string;
 }
 
 const BASE = "https://northwind.hu/galeria";
@@ -45,6 +49,8 @@ const BrandGallery = ({
   accent = "#1f3d66",
   bgClassName = "bg-white",
   defaultAlt,
+  buttonOnly = false,
+  buttonLabel,
 }: BrandGalleryProps) => {
   const [images, setImages] = useState<LoadedImage[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "empty">("loading");
@@ -104,6 +110,37 @@ const BrandGallery = ({
 
   // Hide the section entirely when there's nothing to show — keeps the page clean.
   if (status === "empty") return null;
+
+  if (buttonOnly) {
+    return (
+      <section className={`py-12 sm:py-16 ${bgClassName}`} aria-label={title}>
+        <div className="container mx-auto px-4 flex justify-center">
+          <button
+            type="button"
+            onClick={() => setOpenIndex(0)}
+            disabled={status !== "ready"}
+            className="inline-flex items-center justify-center gap-3 px-6 sm:px-10 py-4 sm:py-5 rounded-full text-white font-semibold text-base sm:text-lg shadow-elevated hover:-translate-y-0.5 hover:shadow-soft transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+            style={{ backgroundColor: accent }}
+            aria-label={buttonLabel ?? title}
+          >
+            {status === "loading" ? (
+              <Loader2 className="w-5 h-5 animate-spin" />
+            ) : (
+              <Images className="w-5 h-5" />
+            )}
+            <span>{buttonLabel ?? title}</span>
+          </button>
+        </div>
+
+        <Lightbox
+          open={openIndex >= 0}
+          index={openIndex < 0 ? 0 : openIndex}
+          close={() => setOpenIndex(-1)}
+          slides={slides}
+        />
+      </section>
+    );
+  }
 
   return (
     <section className={`py-16 sm:py-20 ${bgClassName}`} aria-label={title}>

@@ -443,12 +443,12 @@ const Fisher = () => {
           <BrandGallery
             slug="lakossagi-split"
             filenamePrefix="fisher_"
-            eyebrow="Referenciák"
             title="Referenciáink: Fisher Split Klíma Telepítések"
-            description="Válogatás a Northwind által telepített Fisher split klíma rendszerekből."
             accent="#1f3d66"
             bgClassName="bg-white"
             defaultAlt="Fisher split klíma telepítés referencia – Northwind"
+            buttonOnly
+            buttonLabel="Megnézem a Fisher klíma referenciákat"
           />
         </Suspense>
 
