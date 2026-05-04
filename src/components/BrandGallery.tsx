@@ -55,6 +55,7 @@ const BrandGallery = ({
   const [images, setImages] = useState<LoadedImage[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "empty">("loading");
   const [openIndex, setOpenIndex] = useState<number>(-1);
+  const [showEmptyNotice, setShowEmptyNotice] = useState<boolean>(false);
 
   useEffect(() => {
     let cancelled = false;
