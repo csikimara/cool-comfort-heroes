@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Images, Loader2 } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
+import Video from "yet-another-react-lightbox/plugins/video";
 import "yet-another-react-lightbox/styles.css";
 
 type Manifest = {
