@@ -523,10 +523,10 @@ const Fisher = () => {
                 </div>
               </Link>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6 sm:items-stretch">
                 <Button
                   size="lg"
-                  className="text-white hover:opacity-90"
+                  className="text-white hover:opacity-90 w-full sm:flex-1 sm:basis-0 sm:min-w-[200px]"
                   style={{ backgroundColor: "#1f3d66" }}
                   asChild
                 >
@@ -538,7 +538,7 @@ const Fisher = () => {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-transparent"
+                  className="bg-transparent w-full sm:flex-1 sm:basis-0 sm:min-w-[200px]"
                   style={{ borderColor: "#007ec6", color: "#007ec6" }}
                   asChild
                 >
@@ -561,7 +561,7 @@ const Fisher = () => {
                     buttonOnly
                     inline
                     buttonLabel="Hőszivattyú referenciák"
-                    buttonClassName="inline-flex items-center justify-center gap-2 h-11 px-6 sm:px-8 rounded-md text-white font-medium text-sm shadow hover:opacity-90 transition-opacity disabled:opacity-70 disabled:cursor-wait"
+                    buttonClassName="inline-flex items-center justify-center gap-2 h-11 w-full sm:flex-1 sm:basis-0 sm:min-w-[200px] px-6 rounded-md text-white font-medium text-sm shadow hover:opacity-90 transition-opacity disabled:opacity-70 disabled:cursor-wait"
                   />
                 </Suspense>
               </div>
