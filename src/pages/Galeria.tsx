@@ -13,6 +13,10 @@ type GalleryMeta = {
   description: string;
   backHref: string;
   backLabel: string;
+  /** Actual server folder under /galeria/. Defaults to slug. */
+  folder?: string;
+  /** Optional filename prefix filter (e.g. "fujitsu_"). */
+  filenamePrefix?: string;
 };
 
 const GALLERY_META: Record<string, GalleryMeta> = {
@@ -57,24 +61,32 @@ const GALLERY_META: Record<string, GalleryMeta> = {
     description: "Telepített Fujitsu split és multi-split rendszerek otthonokba.",
     backHref: "/fujitsu",
     backLabel: "Vissza a Fujitsu oldalra",
+    folder: "lakossagi-split",
+    filenamePrefix: "fujitsu_",
   },
   "fujitsu-waterstage": {
     title: "Fujitsu Waterstage hőszivattyú referenciák",
     description: "Levegő-víz hőszivattyús rendszereink Fujitsu Waterstage egységekkel.",
     backHref: "/fujitsu",
     backLabel: "Vissza a Fujitsu oldalra",
+    folder: "hoszivattyu",
+    filenamePrefix: "fujitsu_",
   },
   "fujitsu-legcsatornazhato": {
     title: "Fujitsu légcsatornázható referenciák",
     description: "Álmennyezetbe rejtett Fujitsu légcsatornázható megoldások.",
     backHref: "/fujitsu",
     backLabel: "Vissza a Fujitsu oldalra",
+    folder: "legcsatornazhato",
+    filenamePrefix: "fujitsu_",
   },
   "fujitsu-vrf": {
     title: "Fujitsu VRF és folyadékhűtő referenciák",
     description: "Ipari és kereskedelmi Fujitsu VRF rendszerek és chillerek.",
     backHref: "/fujitsu",
     backLabel: "Vissza a Fujitsu oldalra",
+    folder: "ipari-hutes",
+    filenamePrefix: "fujitsu_",
   },
 };
 
@@ -115,7 +127,9 @@ const Galeria = () => {
     setStatus("loading");
     setImages([]);
 
-    const folder = `${BASE}/${slug}`;
+    const folderName = meta.folder ?? slug;
+    const folder = `${BASE}/${folderName}`;
+    const prefix = meta.filenamePrefix?.toLowerCase();
 
     fetch(`${folder}/index.php`, { cache: "no-store" })
       .then(async (res) => {
@@ -153,7 +167,12 @@ const Galeria = () => {
               type: isVideoFile(src) ? "video" : "image",
             } as LoadedImage;
           })
-          .filter((i) => !!i.src);
+          .filter((i) => {
+            if (!i.src) return false;
+            if (!prefix) return true;
+            const name = i.src.split("/").pop()?.toLowerCase() ?? "";
+            return name.startsWith(prefix);
+          });
         console.log(`[Galeria:${slug}] final URLs:`, list.map((i) => i.src));
 
         if (list.length === 0) {
@@ -171,7 +190,7 @@ const Galeria = () => {
     return () => {
       cancelled = true;
     };
-  }, [slug, meta.title]);
+  }, [slug, meta.title, meta.folder, meta.filenamePrefix]);
 
   const slides = useMemo(
     () =>
