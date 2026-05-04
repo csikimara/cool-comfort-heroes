@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, ImageOff, Loader2 } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
+import Video from "yet-another-react-lightbox/plugins/video";
 import "yet-another-react-lightbox/styles.css";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
@@ -91,7 +92,14 @@ type Manifest = {
   files?: string[];
 };
 
-type LoadedImage = { src: string; alt: string; title?: string };
+type LoadedImage = {
+  src: string;
+  alt: string;
+  title?: string;
+  type: "image" | "video";
+};
+
+const isVideoFile = (name: string) => /\.(mp4|webm|ogg|mov|m4v)$/i.test(name);
 
 const Galeria = () => {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -121,13 +129,19 @@ const Galeria = () => {
         const list = (data.images ?? [])
           .map((item) => {
             if (typeof item === "string") {
-              return { src: `${folder}/${item}`, alt: meta.title };
+              return {
+                src: `${folder}/${item}`,
+                alt: meta.title,
+                type: isVideoFile(item) ? "video" : "image",
+              } as LoadedImage;
             }
+            const src = item.src.startsWith("http") ? item.src : `${folder}/${item.src}`;
             return {
-              src: item.src.startsWith("http") ? item.src : `${folder}/${item.src}`,
+              src,
               alt: item.alt ?? meta.title,
               title: item.caption,
-            };
+              type: isVideoFile(src) ? "video" : "image",
+            } as LoadedImage;
           })
           .filter((i) => !!i.src);
 
@@ -148,7 +162,22 @@ const Galeria = () => {
   }, [slug, meta.title]);
 
   const slides = useMemo(
-    () => images.map((i) => ({ src: i.src, alt: i.alt, title: i.title })),
+    () =>
+      images.map((i) =>
+        i.type === "video"
+          ? {
+              type: "video" as const,
+              sources: [{ src: i.src, type: "video/mp4" }],
+              autoPlay: true,
+              loop: true,
+              muted: true,
+              playsInline: true,
+              controls: true,
+              width: 1280,
+              height: 720,
+            }
+          : { src: i.src, alt: i.alt, title: i.title }
+      ),
     [images]
   );
 
@@ -225,18 +254,30 @@ const Galeria = () => {
 
             {status === "ready" && (
               <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-                {images.map((img, i) => (
+                {images.map((media, i) => (
                   <button
-                    key={img.src}
+                    key={media.src}
                     onClick={() => setOpenIndex(i)}
                     className="group relative aspect-square overflow-hidden rounded-xl border-2 border-primary/15 bg-secondary/40 hover:border-primary/50 transition-all focus:outline-none focus:ring-2 focus:ring-primary"
                   >
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                    {media.type === "video" ? (
+                      <video
+                        src={media.src}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    ) : (
+                      <img
+                        src={media.src}
+                        alt={media.alt}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    )}
                   </button>
                 ))}
               </div>
@@ -249,7 +290,8 @@ const Galeria = () => {
         open={openIndex >= 0}
         index={openIndex < 0 ? 0 : openIndex}
         close={() => setOpenIndex(-1)}
-        slides={slides}
+        slides={slides as any}
+        plugins={[Video]}
       />
     </div>
   );
