@@ -31,6 +31,7 @@ import nemethLajos from "@/assets/nemeth-lajos-fisher.png";
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
 const FisherContactForm = lazy(() => import("@/components/fisher/FisherContactForm"));
+const BrandGallery = lazy(() => import("@/components/BrandGallery"));
 
 const NAVY = "#1f3d66";
 const LIGHT = "#007ec6";
@@ -391,6 +392,20 @@ const FisherHoszivattyu = () => {
             </div>
           </div>
         </section>
+
+        {/* Reference gallery – Fisher heat pumps only */}
+        <Suspense fallback={null}>
+          <BrandGallery
+            slug="hoszivattyu"
+            filenamePrefix="fisher_"
+            eyebrow="Referenciák"
+            title="Referenciáink: Fisher e-HeatR Hőszivattyúk"
+            description="Válogatás a Northwind által telepített Fisher e-HeatR hőszivattyús rendszerekből."
+            accent="#1f3d66"
+            bgClassName="bg-white"
+            defaultAlt="Fisher e-HeatR hőszivattyú telepítés referencia – Northwind"
+          />
+        </Suspense>
 
         {/* Németh Lajos trust block */}
         <section className="py-16 sm:py-20 bg-white" aria-label="Németh Lajos ajánlása">

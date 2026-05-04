@@ -27,6 +27,7 @@ import fisherLogo from "@/assets/fisher-logo.png";
 
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherContactForm = lazy(() => import("@/components/fisher/FisherContactForm"));
+const BrandGallery = lazy(() => import("@/components/BrandGallery"));
 
 declare global {
   interface Window {
@@ -436,6 +437,20 @@ const Fisher = () => {
             </div>
           </div>
         </section>
+
+        {/* Reference gallery – Fisher splits only */}
+        <Suspense fallback={null}>
+          <BrandGallery
+            slug="lakossagi-split"
+            filenamePrefix="fisher_"
+            eyebrow="Referenciák"
+            title="Referenciáink: Fisher Split Klíma Telepítések"
+            description="Válogatás a Northwind által telepített Fisher split klíma rendszerekből."
+            accent="#1f3d66"
+            bgClassName="bg-white"
+            defaultAlt="Fisher split klíma telepítés referencia – Northwind"
+          />
+        </Suspense>
 
         {/* Heat pump section */}
         <section
