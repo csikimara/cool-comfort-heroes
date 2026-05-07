@@ -12,7 +12,7 @@ import {
   Snowflake,
   Images,
 } from "lucide-react";
-import zsakosMosasPoster from "@/assets/zsakos-mosas-poster.jpg";
+import zsakosMosasPoster from "@/assets/zsakos-mosas-poster.webp";
 
 const Footer = lazy(() => import("@/components/Footer"));
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));

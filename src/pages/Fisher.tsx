@@ -394,9 +394,9 @@ const Fisher = () => {
                     </div>
                   </div>
 
-                  <h2 className="text-lg font-bold text-foreground mb-1.5 leading-tight">
+                  <h3 className="text-lg font-bold text-foreground mb-1.5 leading-tight">
                     {m.name}
-                  </h2>
+                  </h3>
                   <p
                     className="text-sm font-semibold mb-3"
                     style={{ color: "#007ec6" }}
