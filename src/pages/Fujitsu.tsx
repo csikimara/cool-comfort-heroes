@@ -25,7 +25,7 @@ import {
   Factory,
   Images,
 } from "lucide-react";
-import fujitsuInstallation from "@/assets/fujitsu-installation.png";
+import fujitsuInstallation from "@/assets/fujitsu-installation.webp";
 
 const features = [
   {
