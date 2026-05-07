@@ -8,7 +8,7 @@ interface SEOHeadProps {
   noindex?: boolean;
 }
 
-const SITE_URL = "https://cool-comfort-heroes.lovable.app";
+const SITE_URL = "https://northwind.hu";
 
 const SEOHead = ({ title, description, canonical, noindex }: SEOHeadProps) => {
   const location = useLocation();
