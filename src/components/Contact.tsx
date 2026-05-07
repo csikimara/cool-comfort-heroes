@@ -3,7 +3,6 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Clock, Send, Loader2, Facebook, Instagram } from "lucide-react";
 import { useState } from "react";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import ContactLocationCard from "@/components/ContactLocationCard";
 
@@ -49,11 +48,22 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke("send-contact-email", {
-        body: formData,
+      const response = await fetch("/contact.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
-      if (error) throw error;
+      let result: { success?: boolean; error?: string } = {};
+      try {
+        result = await response.json();
+      } catch {
+        // ignore JSON parse error – kezelés a status alapján
+      }
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || `HTTP ${response.status}`);
+      }
 
       toast({
         title: "Üzenet elküldve!",
