@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://cool-comfort-heroes.lovable.app/sitemap.xml
+Sitemap: https://northwind.hu/sitemap.xml

@@ -22,7 +22,7 @@ const businessJsonLd = {
   name: "Northwind Hűtéstechnika Kft.",
   description:
     "Profi klímaszerelés, zsákos mélytisztítás és ipari hűtéstechnika Budapesten és Pest vármegyében. Japán minőség (Fujitsu KG), rejtett költségek nélkül, 1993 óta.",
-  url: "https://cool-comfort-heroes.lovable.app",
+  url: "https://northwind.hu",
   telephone: "+36704099760",
   email: "northwind@northwind.hu",
   address: {

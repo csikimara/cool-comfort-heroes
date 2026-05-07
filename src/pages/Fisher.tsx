@@ -81,7 +81,7 @@ const splitModels = [
     name: "Fisher SPECIAL EDITION",
     tagline: "„Ne fújj rám” funkció, huzatmentes befúvás",
     description:
-      "Az innovatív „Ne fújj rám” funkció segítségével elkerülhető a huzathatás. A beltéri ventilátor fokozatmentesen állítható. Az aktív tisztító funkcióval sterilizálható a hőcserélő. Wifin keresztül könnyen szabályozható beltéri egység.",
+      "Az innovatív „Ne fújj rám” funkció segítségével elkerülhető a huzathatás. A beltéri ventilátor fokozatmentesen állítható. Az aktív tisztító funkcióval sterilizálható a hőcserélő. Wi-Fi-n keresztül könnyen szabályozható beltéri egység.",
     warranty6: false,
     icon: Wind,
     catalogUrl:
