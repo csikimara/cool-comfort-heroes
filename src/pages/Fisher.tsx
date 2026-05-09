@@ -236,7 +236,7 @@ const Fisher = () => {
                   size="lg"
                   className="text-white hover:opacity-90"
                   style={{ backgroundColor: "#1f3d66" }}
-                  onClick={openTidio}
+                  onClick={scrollToContactForm}
                 >
                   Kérjen egyedi Fisher tervezést
                 </Button>
@@ -594,7 +594,7 @@ const Fisher = () => {
                   size="lg"
                   className="bg-white hover:bg-white/90"
                   style={{ color: "#1f3d66" }}
-                  onClick={openTidio}
+                  onClick={scrollToContactForm}
                 >
                   Ingyenes felmérést kérek
                   <ArrowRight className="w-5 h-5" />
