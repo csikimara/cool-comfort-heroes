@@ -29,19 +29,6 @@ const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingBut
 const FisherContactForm = lazy(() => import("@/components/fisher/FisherContactForm"));
 const BrandGallery = lazy(() => import("@/components/BrandGallery"));
 
-declare global {
-  interface Window {
-    tidioChatApi?: { open: () => void; show?: () => void };
-  }
-}
-
-const openTidio = (e?: React.MouseEvent) => {
-  if (e) e.preventDefault();
-  if (typeof window !== "undefined" && window.tidioChatApi?.open) {
-    window.tidioChatApi.open();
-  }
-};
-
 const scrollToContactForm = (e?: React.MouseEvent) => {
   if (e) e.preventDefault();
   if (typeof window === "undefined") return;
