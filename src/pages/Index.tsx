@@ -74,8 +74,10 @@ const Index = () => {
       </main>
       <Suspense fallback={null}>
         <Footer />
-        <FujitsuFloatingButton />
-        <FisherFloatingButton />
+        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-4 items-end">
+          <FujitsuFloatingButton />
+          <FisherFloatingButton />
+        </div>
       </Suspense>
     </div>
   );
