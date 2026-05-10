@@ -521,7 +521,7 @@ const Fisher = () => {
               */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 items-stretch">
                 <a
-                  href="mailto:northwind@northwind.hu"
+                  href="#fisher-contact-form"
                   className="group inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md text-white font-medium text-sm leading-none shadow transition-opacity hover:opacity-90 active:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1f3d66] box-border"
                   style={{ backgroundColor: "#1f3d66" }}
                 >
@@ -657,7 +657,7 @@ const Fisher = () => {
                   style={{ backgroundColor: "#1f3d66" }}
                   asChild
                 >
-                  <a href="mailto:northwind@northwind.hu">
+                  <a href="#fisher-contact-form">
                     <Mail className="w-4 h-4" />
                     E-mail küldése
                   </a>

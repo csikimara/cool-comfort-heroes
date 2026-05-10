@@ -17,7 +17,7 @@ const contactInfo = [
     icon: Mail,
     label: "Email",
     value: "northwind@northwind.hu",
-    href: "mailto:northwind@northwind.hu",
+    href: "#kapcsolat",
   },
   {
     icon: MapPin,

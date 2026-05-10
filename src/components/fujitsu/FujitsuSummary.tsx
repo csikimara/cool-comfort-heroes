@@ -31,7 +31,7 @@ const FujitsuSummary = () => (
             </a>
           </Button>
           <Button size="lg" variant="outline" asChild>
-            <a href="mailto:northwind@northwind.hu">
+            <a href="#fujitsu-contact">
               <Mail className="w-4 h-4" />
               northwind@northwind.hu
             </a>
