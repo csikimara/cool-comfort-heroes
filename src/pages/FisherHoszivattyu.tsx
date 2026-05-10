@@ -555,7 +555,7 @@ const FisherHoszivattyu = () => {
                   style={{ backgroundColor: NAVY }}
                   asChild
                 >
-                  <a href="mailto:northwind@northwind.hu">
+                  <a href="#fisher-contact-form">
                     <Mail className="w-4 h-4" />
                     E-mail küldése
                   </a>

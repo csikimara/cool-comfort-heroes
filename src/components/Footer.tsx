@@ -31,7 +31,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 +36 70 409 9760
               </a>
-              <a href="mailto:northwind@northwind.hu" className="flex items-center gap-2 text-background underline underline-offset-4 decoration-background/40 hover:decoration-background transition-colors text-sm sm:text-base break-all sm:break-normal">
+              <a href="/#kapcsolat" className="flex items-center gap-2 text-background underline underline-offset-4 decoration-background/40 hover:decoration-background transition-colors text-sm sm:text-base break-all sm:break-normal">
                 <Mail className="w-4 h-4 flex-shrink-0" />
                 northwind@northwind.hu
               </a>
