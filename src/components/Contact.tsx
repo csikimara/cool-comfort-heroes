@@ -36,6 +36,7 @@ const contactInfo = [
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [attachment, setAttachment] = useState<File | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -48,10 +49,18 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("message", formData.message);
+      if (attachment) {
+        payload.append("attachment", attachment);
+      }
+
       const response = await fetch("/contact.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: payload,
       });
 
       let result: { success?: boolean; error?: string } = {};
@@ -71,6 +80,7 @@ const Contact = () => {
       });
 
       setFormData({ name: "", email: "", phone: "", message: "" });
+      setAttachment(null);
     } catch (error) {
       console.error("Submit error:", error);
       toast({
@@ -172,7 +182,7 @@ const Contact = () => {
             <h3 className="text-2xl font-bold text-foreground mb-6">
               Küldjön üzenetet
             </h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5" encType="multipart/form-data">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
                   Név *
@@ -229,6 +239,35 @@ const Contact = () => {
                   rows={5}
                   className="resize-none"
                 />
+              </div>
+              <div>
+                <label htmlFor="attachment" className="block text-sm font-medium text-foreground mb-2">
+                  Alaprajz vagy kép feltöltése (opcionális)
+                </label>
+                <Input
+                  id="attachment"
+                  name="attachment"
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] ?? null;
+                    if (file && file.size > 10 * 1024 * 1024) {
+                      toast({
+                        title: "Túl nagy fájl",
+                        description: "Maximum 10 MB méretű fájl tölthető fel.",
+                        variant: "destructive",
+                      });
+                      e.target.value = "";
+                      setAttachment(null);
+                      return;
+                    }
+                    setAttachment(file);
+                  }}
+                  className="h-12 file:mr-3 file:rounded-md file:border-0 file:bg-primary file:px-3 file:py-2 file:text-primary-foreground"
+                />
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Elfogadott formátumok: PDF, JPG, JPEG, PNG (max. 10 MB).
+                </p>
               </div>
               <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? (
