@@ -25,10 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// JSON vagy form-encoded bemenet támogatása
-$raw = file_get_contents('php://input');
-$data = json_decode($raw, true);
-if (!is_array($data)) {
+// JSON, form-encoded vagy multipart bemenet támogatása
+$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+if (stripos($contentType, 'application/json') !== false) {
+    $raw = file_get_contents('php://input');
+    $data = json_decode($raw, true);
+    if (!is_array($data)) {
+        $data = [];
+    }
+} else {
     $data = $_POST;
 }
 
@@ -93,12 +98,56 @@ $bodyLines = [
 $body = implode("\r\n", $bodyLines);
 
 $fromAddress = 'northwind@northwind.hu';
+
+// Csatolmány feldolgozás
+$attachment = null;
+if (!empty($_FILES['attachment']) && is_array($_FILES['attachment']) && ($_FILES['attachment']['error'] ?? UPLOAD_ERR_NO_FILE) === UPLOAD_ERR_OK) {
+    $file = $_FILES['attachment'];
+    $maxSize = 10 * 1024 * 1024; // 10 MB
+    $allowedExt = ['pdf', 'jpg', 'jpeg', 'png'];
+    $allowedMime = ['application/pdf', 'image/jpeg', 'image/png', 'image/jpg'];
+    $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    $detectedMime = function_exists('mime_content_type') ? mime_content_type($file['tmp_name']) : ($file['type'] ?? '');
+    if ($file['size'] > $maxSize) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'A csatolt fájl mérete túl nagy (max. 10 MB).']);
+        exit;
+    }
+    if (!in_array($ext, $allowedExt, true) || !in_array($detectedMime, $allowedMime, true)) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'error' => 'Nem támogatott fájlformátum. Engedélyezett: PDF, JPG, JPEG, PNG.']);
+        exit;
+    }
+    $attachment = [
+        'name' => preg_replace('/[\r\n"]/', '', basename($file['name'])),
+        'mime' => $detectedMime,
+        'data' => file_get_contents($file['tmp_name']),
+    ];
+}
+
+$boundary = '=_NW_' . md5(uniqid('', true));
 $headers  = 'From: Northwind Weboldal <' . $fromAddress . ">\r\n";
 $headers .= 'Reply-To: ' . $safeName . ' <' . $safeEmail . ">\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-$headers .= "Content-Transfer-Encoding: 8bit\r\n";
-$headers .= 'X-Mailer: PHP/' . phpversion();
+$headers .= 'X-Mailer: PHP/' . phpversion() . "\r\n";
+
+if ($attachment) {
+    $headers .= 'Content-Type: multipart/mixed; boundary="' . $boundary . '"' . "\r\n";
+    $multipart  = "--$boundary\r\n";
+    $multipart .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $multipart .= "Content-Transfer-Encoding: 8bit\r\n\r\n";
+    $multipart .= $body . "\r\n\r\n";
+    $multipart .= "--$boundary\r\n";
+    $multipart .= 'Content-Type: ' . $attachment['mime'] . '; name="' . $attachment['name'] . '"' . "\r\n";
+    $multipart .= 'Content-Disposition: attachment; filename="' . $attachment['name'] . '"' . "\r\n";
+    $multipart .= "Content-Transfer-Encoding: base64\r\n\r\n";
+    $multipart .= chunk_split(base64_encode($attachment['data'])) . "\r\n";
+    $multipart .= "--$boundary--";
+    $body = $multipart;
+} else {
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers .= "Content-Transfer-Encoding: 8bit\r\n";
+}
 
 $sent = @mail($to, $subject, $body, $headers, '-f' . $fromAddress);
 
