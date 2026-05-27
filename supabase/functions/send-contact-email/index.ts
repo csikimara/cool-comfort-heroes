@@ -13,6 +13,14 @@ interface ContactFormData {
   message: string;
 }
 
+const escapeHtml = (s: string) =>
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -64,6 +72,10 @@ Deno.serve(async (req) => {
     // Send email notifications
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     if (resendApiKey) {
+      const safeName = escapeHtml(name);
+      const safeEmail = escapeHtml(email);
+      const safePhone = phone ? escapeHtml(phone) : "Nem adott meg";
+      const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
       // 1. Admin notification
       const adminEmailRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -74,15 +86,15 @@ Deno.serve(async (req) => {
         body: JSON.stringify({
           from: "Northwind Weboldal <onboarding@resend.dev>",
           to: ["csikimara@gmail.com"],
-          subject: `Új ajánlatkérés: ${name}`,
+          subject: `Új ajánlatkérés: ${name.replace(/[\r\n]/g, " ").slice(0, 120)}`,
           html: `
             <h2>Új üzenet érkezett a weboldalról</h2>
-            <p><strong>Név:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Telefon:</strong> ${phone || "Nem adott meg"}</p>
+            <p><strong>Név:</strong> ${safeName}</p>
+            <p><strong>Email:</strong> ${safeEmail}</p>
+            <p><strong>Telefon:</strong> ${safePhone}</p>
             <hr />
             <p><strong>Üzenet:</strong></p>
-            <p>${message.replace(/\n/g, "<br>")}</p>
+            <p>${safeMessage}</p>
           `,
         }),
       });
@@ -118,7 +130,7 @@ Deno.serve(async (req) => {
                 </p>
                 <div style="background: #f0f7fc; border-left: 4px solid #1a7ab5; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
                   <p style="margin: 0 0 5px; color: #6b7280; font-size: 14px;"><strong>Az Ön üzenete:</strong></p>
-                  <p style="margin: 0; color: #374151;">${message.replace(/\n/g, "<br>")}</p>
+                  <p style="margin: 0; color: #374151;">${safeMessage}</p>
                 </div>
                 <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
                 <p style="color: #6b7280; font-size: 14px; line-height: 1.5;">
