@@ -293,6 +293,18 @@ const Contact = () => {
                   </>
                 )}
               </Button>
+              <div className="flex items-start gap-3 pt-1">
+                <Checkbox
+                  id="gdpr-consent"
+                  checked={gdprAccepted}
+                  onCheckedChange={(checked) => setGdprAccepted(checked === true)}
+                  className="mt-1"
+                  required
+                />
+                <label htmlFor="gdpr-consent" className="text-sm text-foreground/80 leading-relaxed cursor-pointer">
+                  Elfogadom az <a href="/adatvedelmi-tajekoztato" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Kft. a hibaelhárítás érdekében kezelje a megadott adataimat és fotóimat. *
+                </label>
+              </div>
               <p className="text-sm sm:text-sm text-foreground/80 mt-3 text-center leading-relaxed">
                 <span className="font-semibold text-foreground">Korrekt elszámolás:</span> Nincsenek rejtett költségek és váratlan kiszállási díjak. Amit a felméréskor rögzítünk, az a végösszeg.
               </p>
