@@ -148,6 +148,28 @@ const models = [
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/design-sorozat-kg",
     catalogLabel: "KG sorozat árai és paraméterei",
   },
+  {
+    id: "parapet",
+    badge: "Padlóra állítható – Konzol",
+    name: "Fujitsu Parapet (Konzol) sorozat",
+    subtitle: "Padlóra állítható inverteres klíma",
+    tagline: "Prémium komfort és hatékony fűtés",
+    description:
+      "Padlóra állítható, kétirányú légkifúvású inverteres egység. Fűtésben alul és felül is fúj, radiátorszerű, kellemes hőérzetet adva már a padlószinttől. Kompakt méretének köszönhetően ablak alá, parapet falra vagy tetőtéri ferde sík alá is tökéletesen beépíthető.",
+    highlights: [
+      "Kétirányú légkifúvás – fűtésben alul és felül is fúj",
+      "Radiátorszerű, egyenletes hőérzet padlószinttől",
+      "Ideális tetőterekbe, ablak alá, parapet falra",
+      "Extrém csendes inverteres működés",
+      "Professzionális katechin szűrőrendszer az allergiamentes levegőért",
+    ],
+    icon: ArrowUpDown,
+    accentClass: "from-indigo-500 to-indigo-600",
+    badgeClass: "bg-indigo-100 text-indigo-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/padlora-allithato-klima",
+    catalogLabel: "Parapet (Konzol) árai és paraméterei",
+    note: "Ár: Kérjen egyedi árajánlatot a telepítéssel együtt!",
+  },
 ];
 
 const solutionCategories = [
