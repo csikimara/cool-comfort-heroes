@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Send, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
@@ -19,10 +20,19 @@ const FISHER_NAVY = "#1f3d66";
 const FisherContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [gdprAccepted, setGdprAccepted] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!gdprAccepted) {
+      toast({
+        title: "Adatkezelési hozzájárulás szükséges",
+        description: "Kérjük, fogadja el az adatkezelési tájékoztatót az üzenet elküldéséhez.",
+        variant: "destructive",
+      });
+      return;
+    }
     const parsed = contactSchema.safeParse(formData);
     if (!parsed.success) {
       toast({
@@ -43,6 +53,7 @@ const FisherContactForm = () => {
         description: "Köszönjük megkeresését, hamarosan felvesszük Önnel a kapcsolatot.",
       });
       setFormData({ name: "", email: "", phone: "", message: "" });
+      setGdprAccepted(false);
     } catch (err) {
       console.error("Fisher contact submit error:", err);
       toast({
@@ -125,6 +136,18 @@ const FisherContactForm = () => {
               rows={5}
               className="resize-none"
             />
+          </div>
+          <div className="flex items-start gap-3 pt-1">
+            <Checkbox
+              id="fi-gdpr"
+              checked={gdprAccepted}
+              onCheckedChange={(c) => setGdprAccepted(c === true)}
+              className="mt-1"
+              required
+            />
+            <label htmlFor="fi-gdpr" className="text-sm text-foreground/80 leading-relaxed cursor-pointer">
+              Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Kft. a hibaelhárítás érdekében kezelje a megadott adataimat és fotóimat. *
+            </label>
           </div>
           <Button
             type="submit"

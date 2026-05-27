@@ -101,7 +101,7 @@ Deno.serve(async (req) => {
         body: JSON.stringify({
           from: "Northwind Hűtéstechnika <onboarding@resend.dev>",
           to: [email],
-          subject: "Köszönjük megkeresését! – Northwind Hűtéstechnika",
+          subject: "Megkeresését megkaptuk – Northwind Hűtéstechnika Kft.",
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
               <div style="background: linear-gradient(135deg, #1a7ab5, #2a8fc2); padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
@@ -109,12 +109,12 @@ Deno.serve(async (req) => {
                 <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0;">Professzionális klíma megoldások 1993 óta</p>
               </div>
               <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
-                <h2 style="color: #1a7ab5; margin-top: 0;">Kedves ${name}!</h2>
+                <h2 style="color: #1a7ab5; margin-top: 0;">Tisztelt Ügyfelünk!</h2>
                 <p style="color: #374151; line-height: 1.6;">
-                  Köszönjük, hogy felkereste a Northwind Hűtéstechnikát! Üzenetét sikeresen megkaptuk.
+                  Megkaptuk a megkeresését és a csatolt fájlokat. Értesítjük, hogy munkatársunk hamarosan feldolgozza a megadott adatokat, és felveszi Önnel a kapcsolatot a megadott elérhetőségeken.
                 </p>
                 <p style="color: #374151; line-height: 1.6;">
-                  Munkatársunk hamarosan felveszi Önnel a kapcsolatot a megadott elérhetőségein.
+                  Üdvözlettel:<br/><strong>Northwind Hűtéstechnika Kft.</strong>
                 </p>
                 <div style="background: #f0f7fc; border-left: 4px solid #1a7ab5; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
                   <p style="margin: 0 0 5px; color: #6b7280; font-size: 14px;"><strong>Az Ön üzenete:</strong></p>

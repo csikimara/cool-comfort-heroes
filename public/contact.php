@@ -152,6 +152,28 @@ if ($attachment) {
 $sent = @mail($to, $subject, $body, $headers, '-f' . $fromAddress);
 
 if ($sent) {
+    // Visszaigazoló e-mail a feladónak
+    $ackSubject = '=?UTF-8?B?' . base64_encode('Megkeresését megkaptuk – Northwind Hűtéstechnika Kft.') . '?=';
+    $ackBody = implode("\r\n", [
+        'Tisztelt Ügyfelünk!',
+        '',
+        'Megkaptuk a megkeresését és a csatolt fájlokat. Értesítjük, hogy munkatársunk hamarosan feldolgozza a megadott adatokat, és felveszi Önnel a kapcsolatot a megadott elérhetőségeken.',
+        '',
+        'Üdvözlettel:',
+        'Northwind Hűtéstechnika Kft.',
+        '',
+        '--',
+        'Telefon: +36 70 409 9760',
+        'Email:   northwind@northwind.hu',
+        'Web:     https://northwind.hu',
+    ]);
+    $ackHeaders  = 'From: Northwind Hűtéstechnika <' . $fromAddress . ">\r\n";
+    $ackHeaders .= 'Reply-To: ' . $fromAddress . "\r\n";
+    $ackHeaders .= "MIME-Version: 1.0\r\n";
+    $ackHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $ackHeaders .= "Content-Transfer-Encoding: 8bit\r\n";
+    @mail($safeEmail, $ackSubject, $ackBody, $ackHeaders, '-f' . $fromAddress);
+
     echo json_encode(['success' => true]);
 } else {
     http_response_code(500);
