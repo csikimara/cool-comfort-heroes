@@ -25,6 +25,7 @@ import {
   Factory,
   Images,
   ArrowUpDown,
+  Sparkles,
 } from "lucide-react";
 import fujitsuInstallation from "@/assets/fujitsu-installation.webp";
 
