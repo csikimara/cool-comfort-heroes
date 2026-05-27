@@ -25,6 +25,7 @@ import {
   Factory,
   Images,
   ArrowUpDown,
+  Sparkles,
 } from "lucide-react";
 import fujitsuInstallation from "@/assets/fujitsu-installation.webp";
 
@@ -169,6 +170,28 @@ const models = [
     catalogUrl: "https://www.fujitsuklima.hu/klimak/padlora-allithato-klima",
     catalogLabel: "Parapet (Konzol) árai és paraméterei",
     note: "Ár: Kérjen egyedi árajánlatot a telepítéssel együtt!",
+  },
+  {
+    id: "nocria-x",
+    badge: "Nocria X – Csúcsmodell",
+    name: "Fujitsu Nocria X (ASYG-KXCA)",
+    subtitle: "Inverteres csúcsmodell",
+    tagline: "High-tech luxuskomfort és dizájn",
+    description:
+      "A Fujitsu zászlóshajója: Dual Blaster oldalsó kiegészítő ventilátorokkal huzatmentes, lágy légáramot biztosít. Automatikus szűrőtisztítással és Human Sensor mozgásérzékelővel a maximális higiéniáért és energiahatékonyságért.",
+    highlights: [
+      "Dual Blaster technológia – huzatmentes, lágy légáram",
+      "Automatikus szűrőtisztítás külön porgyűjtő dobozba",
+      "Human Sensor – elterel a légáram és energiát takarít meg",
+      "Prémium dizájn és kivitel",
+      "Maximális higiénia és tartós csúcshatékonyság",
+    ],
+    icon: Sparkles,
+    accentClass: "from-purple-500 to-fuchsia-600",
+    badgeClass: "bg-purple-100 text-purple-700",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/nocria-x-sorozat",
+    catalogLabel: "Nocria X árai és paraméterei",
+    note: "Ár: Kérjen egyedi árajánlatot a prémium telepítéssel együtt!",
   },
 ];
 
