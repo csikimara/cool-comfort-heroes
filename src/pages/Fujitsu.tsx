@@ -24,6 +24,7 @@ import {
   Droplets,
   Factory,
   Images,
+  ArrowUpDown,
 } from "lucide-react";
 import fujitsuInstallation from "@/assets/fujitsu-installation.webp";
 
