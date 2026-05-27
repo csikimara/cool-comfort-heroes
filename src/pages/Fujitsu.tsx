@@ -167,7 +167,7 @@ const models = [
     icon: ArrowUpDown,
     accentClass: "from-indigo-500 to-indigo-600",
     badgeClass: "bg-indigo-100 text-indigo-700",
-    catalogUrl: "https://www.fujitsuklima.hu/klimak/padlora-allithato-klima",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/padlora",
     catalogLabel: "Parapet (Konzol) árai és paraméterei",
     note: "Ár: Kérjen egyedi árajánlatot a telepítéssel együtt!",
   },
