@@ -189,7 +189,7 @@ const models = [
     icon: Sparkles,
     accentClass: "from-purple-500 to-fuchsia-600",
     badgeClass: "bg-purple-100 text-purple-700",
-    catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/nocria-x-sorozat",
+    catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/nocriax-sorozat",
     catalogLabel: "Nocria X árai és paraméterei",
     note: "Ár: Kérjen egyedi árajánlatot a prémium telepítéssel együtt!",
   },
