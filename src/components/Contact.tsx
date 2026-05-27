@@ -289,7 +289,7 @@ const Contact = () => {
                   required
                 />
                 <label htmlFor="gdpr-consent" className="text-sm text-foreground/80 leading-relaxed cursor-pointer">
-                  Elfogadom az <a href="/adatvedelmi-tajekoztato" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Kft. a hibaelhárítás érdekében kezelje a megadott adataimat és fotóimat. *
+                  Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Kft. a hibaelhárítás érdekében kezelje a megadott adataimat és fotóimat. *
                 </label>
               </div>
               <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
