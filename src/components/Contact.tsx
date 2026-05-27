@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Phone, Mail, MapPin, Clock, Send, Loader2, Facebook, Instagram } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -37,6 +38,7 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [attachment, setAttachment] = useState<File | null>(null);
+  const [gdprAccepted, setGdprAccepted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -46,6 +48,14 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!gdprAccepted) {
+      toast({
+        title: "Adatkezelési hozzájárulás szükséges",
+        description: "Kérjük, fogadja el az adatkezelési tájékoztatót az üzenet elküldéséhez.",
+        variant: "destructive",
+      });
+      return;
+    }
     setIsSubmitting(true);
 
     try {
@@ -81,6 +91,7 @@ const Contact = () => {
 
       setFormData({ name: "", email: "", phone: "", message: "" });
       setAttachment(null);
+      setGdprAccepted(false);
     } catch (error) {
       console.error("Submit error:", error);
       toast({
