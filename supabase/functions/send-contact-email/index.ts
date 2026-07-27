@@ -13,6 +13,7 @@ interface ContactFormData {
   message: string;
   source?: string;
   page_url?: string;
+  turnstileToken?: string;
   attachment?: {
     path: string;
     name: string;
@@ -37,6 +38,78 @@ const ALLOWED_MIMES = new Set([
 ]);
 const MAX_ATTACHMENT_SIZE = 10 * 1024 * 1024; // 10 MB
 
+// --- Anti-abuse configuration ---
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000; // 15 minutes
+const RATE_LIMIT_MAX = 5;
+const DUPLICATE_WINDOW_MS = 60 * 60 * 1000; // 1 hour
+
+const GENERIC_ERROR = "Az üzenet küldése sikertelen. Kérjük, próbálja újra később.";
+const GENERIC_VALIDATION = "Kérjük, ellenőrizze a megadott adatokat.";
+const GENERIC_RATE_LIMIT = "Túl sok beküldés érkezett rövid időn belül. Kérjük, próbálja újra később.";
+const GENERIC_DUPLICATE = "Ezt az üzenetet már elküldte. Kérjük, várjon a válaszunkra.";
+const GENERIC_TURNSTILE = "Nem sikerült ellenőrizni, hogy Ön nem robot. Kérjük, próbálja újra.";
+
+const jsonResponse = (status: number, payload: Record<string, unknown>) =>
+  new Response(JSON.stringify(payload), {
+    status,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+
+const bytesToHex = (bytes: Uint8Array) =>
+  Array.from(bytes).map((b) => b.toString(16).padStart(2, "0")).join("");
+
+async function hmacSha256Hex(secret: string, message: string): Promise<string> {
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw",
+    enc.encode(secret),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"],
+  );
+  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(message));
+  return bytesToHex(new Uint8Array(sig));
+}
+
+function getClientIp(req: Request): string {
+  const fwd = req.headers.get("x-forwarded-for");
+  if (fwd) return fwd.split(",")[0].trim();
+  return req.headers.get("cf-connecting-ip") ??
+    req.headers.get("x-real-ip") ??
+    "unknown";
+}
+
+async function verifyTurnstile(token: string, remoteIp: string): Promise<boolean> {
+  const secret = Deno.env.get("TURNSTILE_SECRET_KEY");
+  if (!secret) {
+    console.error("TURNSTILE_SECRET_KEY is not configured");
+    return false;
+  }
+  try {
+    const body = new URLSearchParams();
+    body.append("secret", secret);
+    body.append("response", token);
+    if (remoteIp && remoteIp !== "unknown") body.append("remoteip", remoteIp);
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      { method: "POST", body },
+    );
+    if (!res.ok) {
+      console.error(`Turnstile verify HTTP ${res.status}`);
+      return false;
+    }
+    const data = await res.json() as { success?: boolean; "error-codes"?: string[] };
+    if (!data.success) {
+      console.error("Turnstile verify failed:", data["error-codes"]);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("Turnstile verify exception:", err);
+    return false;
+  }
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -50,75 +123,110 @@ Deno.serve(async (req) => {
     const message = (body.message ?? "").trim();
     const source = (body.source ?? "").trim().slice(0, 100) || null;
     const page_url = (body.page_url ?? "").trim().slice(0, 500) || null;
+    const turnstileToken = (body.turnstileToken ?? "").trim();
     const attachment = body.attachment ?? null;
 
-    // Validate inputs
+    // ---------- Server-side input validation ----------
     if (!name || !email || !message) {
-      return new Response(
-        JSON.stringify({ error: "Név, email és üzenet megadása kötelező." }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+      console.warn("Validation failed: missing required fields");
+      return jsonResponse(400, { error: GENERIC_VALIDATION });
     }
-
     if (name.length > 100 || email.length > 255 || message.length > 5000) {
-      return new Response(
-        JSON.stringify({ error: "Túl hosszú bemenet." }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+      console.warn("Validation failed: field too long");
+      return jsonResponse(400, { error: GENERIC_VALIDATION });
     }
-
     if (phone && phone.length > 50) {
-      return new Response(
-        JSON.stringify({ error: "A telefonszám túl hosszú." }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+      console.warn("Validation failed: phone too long");
+      return jsonResponse(400, { error: GENERIC_VALIDATION });
     }
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      return new Response(
-        JSON.stringify({ error: "Érvénytelen email cím." }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+      console.warn("Validation failed: invalid email");
+      return jsonResponse(400, { error: GENERIC_VALIDATION });
     }
-
-    // Validate attachment metadata (server-side)
     if (attachment) {
       if (
         typeof attachment.path !== "string" ||
         typeof attachment.name !== "string" ||
         typeof attachment.mime !== "string" ||
-        typeof attachment.size !== "number"
+        typeof attachment.size !== "number" ||
+        attachment.path.length > 500 ||
+        attachment.name.length > 255
       ) {
-        return new Response(
-          JSON.stringify({ error: "Érvénytelen csatolmány adatok." }),
-          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
+        console.warn("Validation failed: invalid attachment metadata");
+        return jsonResponse(400, { error: GENERIC_VALIDATION });
       }
       if (!ALLOWED_MIMES.has(attachment.mime.toLowerCase())) {
-        return new Response(
-          JSON.stringify({ error: "Nem támogatott fájlformátum. Engedélyezett: PDF, JPG, JPEG, PNG." }),
-          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
+        console.warn(`Validation failed: disallowed mime ${attachment.mime}`);
+        return jsonResponse(400, { error: GENERIC_VALIDATION });
       }
       if (attachment.size <= 0 || attachment.size > MAX_ATTACHMENT_SIZE) {
-        return new Response(
-          JSON.stringify({ error: "A csatolt fájl mérete túl nagy (max. 10 MB)." }),
-          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-      if (attachment.path.length > 500 || attachment.name.length > 255) {
-        return new Response(
-          JSON.stringify({ error: "Érvénytelen csatolmány adatok." }),
-          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
+        console.warn(`Validation failed: attachment size ${attachment.size}`);
+        return jsonResponse(400, { error: GENERIC_VALIDATION });
       }
     }
 
-    // Save to database FIRST — email failures must not lose the lead.
+    // ---------- Turnstile verification (before ANY side effects) ----------
+    const clientIp = getClientIp(req);
+    if (!turnstileToken) {
+      console.warn("Turnstile token missing from request");
+      return jsonResponse(400, { error: GENERIC_TURNSTILE });
+    }
+    const turnstileOk = await verifyTurnstile(turnstileToken, clientIp);
+    if (!turnstileOk) {
+      return jsonResponse(400, { error: GENERIC_TURNSTILE });
+    }
+
+    // ---------- Build salted IP hash + content hash ----------
+    const ipSalt = Deno.env.get("IP_HASH_SALT");
+    if (!ipSalt) {
+      console.error("IP_HASH_SALT is not configured");
+      return jsonResponse(500, { error: GENERIC_ERROR });
+    }
+    const ipHash = await hmacSha256Hex(ipSalt, clientIp);
+    const contentHash = await hmacSha256Hex(
+      ipSalt,
+      `${email.toLowerCase()}|${message}`,
+    );
+
+    // ---------- Rate limit / duplicate check via service_role client ----------
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
+
+    const nowMs = Date.now();
+    const rateLimitSince = new Date(nowMs - RATE_LIMIT_WINDOW_MS).toISOString();
+    const duplicateSince = new Date(nowMs - DUPLICATE_WINDOW_MS).toISOString();
+
+    const { count: recentCount, error: rateErr } = await supabase
+      .from("contact_messages")
+      .select("id", { count: "exact", head: true })
+      .eq("ip_hash", ipHash)
+      .gte("created_at", rateLimitSince);
+    if (rateErr) {
+      console.error("Rate limit query error:", rateErr);
+      return jsonResponse(500, { error: GENERIC_ERROR });
+    }
+    if ((recentCount ?? 0) >= RATE_LIMIT_MAX) {
+      console.warn(`Rate limit hit for ip_hash ${ipHash.slice(0, 8)}…`);
+      return jsonResponse(429, { error: GENERIC_RATE_LIMIT });
+    }
+
+    const { count: dupCount, error: dupErr } = await supabase
+      .from("contact_messages")
+      .select("id", { count: "exact", head: true })
+      .eq("content_hash", contentHash)
+      .gte("created_at", duplicateSince);
+    if (dupErr) {
+      console.error("Duplicate query error:", dupErr);
+      return jsonResponse(500, { error: GENERIC_ERROR });
+    }
+    if ((dupCount ?? 0) > 0) {
+      console.warn("Duplicate submission blocked");
+      return jsonResponse(429, { error: GENERIC_DUPLICATE });
+    }
+
+    // Save to database FIRST — email failures must not lose the lead.
 
     const { error: dbError } = await supabase
       .from("contact_messages")
@@ -129,6 +237,8 @@ Deno.serve(async (req) => {
         message,
         source,
         page_url,
+        ip_hash: ipHash,
+        content_hash: contentHash,
         attachment_path: attachment?.path ?? null,
         attachment_name: attachment?.name ?? null,
         attachment_size: attachment?.size ?? null,
@@ -137,10 +247,7 @@ Deno.serve(async (req) => {
 
     if (dbError) {
       console.error("DB error:", dbError);
-      return new Response(
-        JSON.stringify({ error: "Hiba történt az üzenet mentésekor." }),
-        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+      return jsonResponse(500, { error: GENERIC_ERROR });
     }
 
     // Send email notifications
@@ -246,15 +353,9 @@ Deno.serve(async (req) => {
       emailWarning = "resend_not_configured";
     }
 
-    return new Response(
-      JSON.stringify({ success: true, emailWarning }),
-      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    return jsonResponse(200, { success: true, emailWarning });
   } catch (error) {
-    console.error("Error:", error);
-    return new Response(
-      JSON.stringify({ error: "Váratlan hiba történt." }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    console.error("Unexpected error:", error);
+    return jsonResponse(500, { error: GENERIC_ERROR });
   }
 });
