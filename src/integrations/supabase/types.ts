@@ -20,9 +20,11 @@ export type Database = {
           attachment_name: string | null
           attachment_path: string | null
           attachment_size: number | null
+          content_hash: string | null
           created_at: string
           email: string
           id: string
+          ip_hash: string | null
           message: string
           name: string
           page_url: string | null
@@ -34,9 +36,11 @@ export type Database = {
           attachment_name?: string | null
           attachment_path?: string | null
           attachment_size?: number | null
+          content_hash?: string | null
           created_at?: string
           email: string
           id?: string
+          ip_hash?: string | null
           message: string
           name: string
           page_url?: string | null
@@ -48,9 +52,11 @@ export type Database = {
           attachment_name?: string | null
           attachment_path?: string | null
           attachment_size?: number | null
+          content_hash?: string | null
           created_at?: string
           email?: string
           id?: string
+          ip_hash?: string | null
           message?: string
           name?: string
           page_url?: string | null
