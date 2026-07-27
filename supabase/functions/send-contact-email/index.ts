@@ -11,6 +11,14 @@ interface ContactFormData {
   email: string;
   phone?: string;
   message: string;
+  source?: string;
+  page_url?: string;
+  attachment?: {
+    path: string;
+    name: string;
+    size: number;
+    mime: string;
+  } | null;
 }
 
 const escapeHtml = (s: string) =>
@@ -21,13 +29,28 @@ const escapeHtml = (s: string) =>
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
 
+const ALLOWED_MIMES = new Set([
+  "application/pdf",
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+]);
+const MAX_ATTACHMENT_SIZE = 10 * 1024 * 1024; // 10 MB
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const { name, email, phone, message }: ContactFormData = await req.json();
+    const body: ContactFormData = await req.json();
+    const name = (body.name ?? "").trim();
+    const email = (body.email ?? "").trim();
+    const phone = (body.phone ?? "").trim();
+    const message = (body.message ?? "").trim();
+    const source = (body.source ?? "").trim().slice(0, 100) || null;
+    const page_url = (body.page_url ?? "").trim().slice(0, 500) || null;
+    const attachment = body.attachment ?? null;
 
     // Validate inputs
     if (!name || !email || !message) {
@@ -44,6 +67,13 @@ Deno.serve(async (req) => {
       );
     }
 
+    if (phone && phone.length > 50) {
+      return new Response(
+        JSON.stringify({ error: "A telefonszám túl hosszú." }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return new Response(
@@ -52,14 +82,58 @@ Deno.serve(async (req) => {
       );
     }
 
-    // Save to database
+    // Validate attachment metadata (server-side)
+    if (attachment) {
+      if (
+        typeof attachment.path !== "string" ||
+        typeof attachment.name !== "string" ||
+        typeof attachment.mime !== "string" ||
+        typeof attachment.size !== "number"
+      ) {
+        return new Response(
+          JSON.stringify({ error: "Érvénytelen csatolmány adatok." }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      if (!ALLOWED_MIMES.has(attachment.mime.toLowerCase())) {
+        return new Response(
+          JSON.stringify({ error: "Nem támogatott fájlformátum. Engedélyezett: PDF, JPG, JPEG, PNG." }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      if (attachment.size <= 0 || attachment.size > MAX_ATTACHMENT_SIZE) {
+        return new Response(
+          JSON.stringify({ error: "A csatolt fájl mérete túl nagy (max. 10 MB)." }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      if (attachment.path.length > 500 || attachment.name.length > 255) {
+        return new Response(
+          JSON.stringify({ error: "Érvénytelen csatolmány adatok." }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+    }
+
+    // Save to database FIRST — email failures must not lose the lead.
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     const { error: dbError } = await supabase
       .from("contact_messages")
-      .insert({ name, email, phone: phone || null, message });
+      .insert({
+        name,
+        email,
+        phone: phone || null,
+        message,
+        source,
+        page_url,
+        attachment_path: attachment?.path ?? null,
+        attachment_name: attachment?.name ?? null,
+        attachment_size: attachment?.size ?? null,
+        attachment_mime: attachment?.mime ?? null,
+      });
 
     if (dbError) {
       console.error("DB error:", dbError);
@@ -71,11 +145,19 @@ Deno.serve(async (req) => {
 
     // Send email notifications
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    let emailWarning: string | null = null;
     if (resendApiKey) {
       const safeName = escapeHtml(name);
       const safeEmail = escapeHtml(email);
       const safePhone = phone ? escapeHtml(phone) : "Nem adott meg";
       const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
+      const safeSource = source ? escapeHtml(source) : "Weboldal";
+      const safePageUrl = page_url ? escapeHtml(page_url) : "";
+      const safeAttachmentInfo = attachment
+        ? `${escapeHtml(attachment.name)} (${Math.round(attachment.size / 1024)} KB)`
+        : "Nincs";
+
+      try {
       // 1. Admin notification
       const adminEmailRes = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -89,9 +171,11 @@ Deno.serve(async (req) => {
           subject: `Új ajánlatkérés: ${name.replace(/[\r\n]/g, " ").slice(0, 120)}`,
           html: `
             <h2>Új üzenet érkezett a weboldalról</h2>
+            <p><strong>Forrás:</strong> ${safeSource}${safePageUrl ? ` (<a href="${safePageUrl}">${safePageUrl}</a>)` : ""}</p>
             <p><strong>Név:</strong> ${safeName}</p>
             <p><strong>Email:</strong> ${safeEmail}</p>
             <p><strong>Telefon:</strong> ${safePhone}</p>
+            <p><strong>Csatolmány:</strong> ${safeAttachmentInfo}</p>
             <hr />
             <p><strong>Üzenet:</strong></p>
             <p>${safeMessage}</p>
@@ -101,6 +185,7 @@ Deno.serve(async (req) => {
 
       if (!adminEmailRes.ok) {
         console.error("Admin email send error:", await adminEmailRes.text());
+        emailWarning = "admin_email_failed";
       }
 
       // 2. Confirmation email to the user
@@ -150,13 +235,19 @@ Deno.serve(async (req) => {
 
       if (!userEmailRes.ok) {
         console.error("User confirmation email error:", await userEmailRes.text());
+        emailWarning = emailWarning ?? "user_email_failed";
+      }
+      } catch (mailErr) {
+        console.error("Email send exception:", mailErr);
+        emailWarning = "email_exception";
       }
     } else {
       console.warn("RESEND_API_KEY not set, skipping email notifications");
+      emailWarning = "resend_not_configured";
     }
 
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, emailWarning }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error) {
