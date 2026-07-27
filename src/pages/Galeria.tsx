@@ -6,6 +6,7 @@ import Video from "yet-another-react-lightbox/plugins/video";
 import "yet-another-react-lightbox/styles.css";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
+import JsonLd from "@/components/JsonLd";
 import { Button } from "@/components/ui/button";
 
 type GalleryMeta = {
@@ -215,6 +216,17 @@ const Galeria = () => {
       <SEOHead
         title={`${meta.title} | Northwind Hűtéstechnika`}
         description={meta.description}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Kezdőlap", item: "https://northwind.hu/" },
+            { "@type": "ListItem", position: 2, name: "Referenciák", item: `https://northwind.hu/referenciak/${slug}` },
+            { "@type": "ListItem", position: 3, name: meta.title, item: `https://northwind.hu/referenciak/${slug}` },
+          ],
+        }}
       />
       <Header />
       <main className="pt-24">
