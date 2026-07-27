@@ -45,7 +45,11 @@ const FisherContactForm = () => {
     setIsSubmitting(true);
     try {
       const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: { ...parsed.data, source: "Fisher oldal – Northwind Hűtéstechnika Kft." },
+        body: {
+          ...parsed.data,
+          source: "Fisher oldal – Northwind Hűtéstechnika Kft.",
+          page_url: typeof window !== "undefined" ? window.location.href : undefined,
+        },
       });
       if (error) throw error;
       toast({

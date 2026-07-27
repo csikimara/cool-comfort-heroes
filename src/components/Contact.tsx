@@ -6,6 +6,18 @@ import { Phone, Mail, MapPin, Clock, Send, Loader2, Facebook, Instagram } from "
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import ContactLocationCard from "@/components/ContactLocationCard";
+import { supabase } from "@/integrations/supabase/client";
+
+const ALLOWED_MIME_TYPES = [
+  "application/pdf",
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+];
+const MAX_FILE_SIZE = 10 * 1024 * 1024;
+
+const sanitizeFileName = (name: string) =>
+  name.replace(/[^a-zA-Z0-9._-]+/g, "_").slice(-120);
 
 const contactInfo = [
   {
@@ -59,29 +71,50 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const payload = new FormData();
-      payload.append("name", formData.name);
-      payload.append("email", formData.email);
-      payload.append("phone", formData.phone);
-      payload.append("message", formData.message);
+      // 1. Attachment feltöltése privát Supabase Storage bucketbe (ha van)
+      let attachmentMeta: {
+        path: string;
+        name: string;
+        size: number;
+        mime: string;
+      } | null = null;
+
       if (attachment) {
-        payload.append("attachment", attachment);
+        if (attachment.size > MAX_FILE_SIZE) {
+          throw new Error("A csatolt fájl mérete túl nagy (max. 10 MB).");
+        }
+        if (!ALLOWED_MIME_TYPES.includes(attachment.type.toLowerCase())) {
+          throw new Error("Nem támogatott fájlformátum. Engedélyezett: PDF, JPG, JPEG, PNG.");
+        }
+        const safeName = sanitizeFileName(attachment.name);
+        const objectPath = `${crypto.randomUUID()}/${safeName}`;
+        const { error: uploadError } = await supabase.storage
+          .from("contact-attachments")
+          .upload(objectPath, attachment, {
+            contentType: attachment.type,
+            upsert: false,
+          });
+        if (uploadError) throw uploadError;
+        attachmentMeta = {
+          path: objectPath,
+          name: attachment.name.slice(0, 200),
+          size: attachment.size,
+          mime: attachment.type,
+        };
       }
 
-      const response = await fetch("/contact.php", {
-        method: "POST",
-        body: payload,
+      // 2. Adatbázisba mentés + email a szervizfüggvényen keresztül
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: {
+          ...formData,
+          source: "Főoldal – Northwind Hűtéstechnika Kft.",
+          page_url: typeof window !== "undefined" ? window.location.href : undefined,
+          attachment: attachmentMeta,
+        },
       });
-
-      let result: { success?: boolean; error?: string } = {};
-      try {
-        result = await response.json();
-      } catch {
-        // ignore JSON parse error – kezelés a status alapján
-      }
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.error || `HTTP ${response.status}`);
+      if (error) throw error;
+      if (data && (data as { error?: string }).error) {
+        throw new Error((data as { error: string }).error);
       }
 
       toast({
@@ -96,7 +129,10 @@ const Contact = () => {
       console.error("Submit error:", error);
       toast({
         title: "Hiba történt",
-        description: "Az üzenet küldése sikertelen. Kérjük, próbálja újra később.",
+        description:
+          error instanceof Error && error.message
+            ? error.message
+            : "Az üzenet küldése sikertelen. Kérjük, próbálja újra később.",
         variant: "destructive",
       });
     } finally {
