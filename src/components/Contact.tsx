@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import ContactLocationCard from "@/components/ContactLocationCard";
 import { supabase } from "@/integrations/supabase/client";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 const ALLOWED_MIME_TYPES = [
   "application/pdf",
@@ -51,6 +52,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [attachment, setAttachment] = useState<File | null>(null);
   const [gdprAccepted, setGdprAccepted] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -64,6 +66,14 @@ const Contact = () => {
       toast({
         title: "Adatkezelési hozzájárulás szükséges",
         description: "Kérjük, fogadja el az adatkezelési tájékoztatót az üzenet elküldéséhez.",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (!turnstileToken) {
+      toast({
+        title: "Ellenőrzés szükséges",
+        description: "Kérjük, várja meg a biztonsági ellenőrzés befejezését.",
         variant: "destructive",
       });
       return;
@@ -109,6 +119,7 @@ const Contact = () => {
           ...formData,
           source: "Főoldal – Northwind Hűtéstechnika Kft.",
           page_url: typeof window !== "undefined" ? window.location.href : undefined,
+          turnstileToken,
           attachment: attachmentMeta,
         },
       });
@@ -125,6 +136,10 @@ const Contact = () => {
       setFormData({ name: "", email: "", phone: "", message: "" });
       setAttachment(null);
       setGdprAccepted(false);
+      setTurnstileToken(null);
+      if (typeof window !== "undefined" && window.turnstile) {
+        try { window.turnstile.reset(); } catch { /* noop */ }
+      }
     } catch (error) {
       console.error("Submit error:", error);
       toast({
@@ -328,6 +343,7 @@ const Contact = () => {
                   Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Kft. a hibaelhárítás érdekében kezelje a megadott adataimat és fotóimat. *
                 </label>
               </div>
+              <TurnstileWidget onToken={setTurnstileToken} className="min-h-[65px]" />
               <Button type="submit" variant="hero" size="lg" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <>

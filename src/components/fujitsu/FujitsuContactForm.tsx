@@ -7,6 +7,7 @@ import { useState } from "react";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import TurnstileWidget from "@/components/TurnstileWidget";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "A név megadása kötelező").max(100),
@@ -19,6 +20,7 @@ const FujitsuContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [gdprAccepted, setGdprAccepted] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,6 +29,14 @@ const FujitsuContactForm = () => {
       toast({
         title: "Adatkezelési hozzájárulás szükséges",
         description: "Kérjük, fogadja el az adatkezelési tájékoztatót az üzenet elküldéséhez.",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (!turnstileToken) {
+      toast({
+        title: "Ellenőrzés szükséges",
+        description: "Kérjük, várja meg a biztonsági ellenőrzés befejezését.",
         variant: "destructive",
       });
       return;
@@ -48,6 +58,7 @@ const FujitsuContactForm = () => {
           ...parsed.data,
           source: "Fujitsu oldal – Northwind Hűtéstechnika Kft.",
           page_url: typeof window !== "undefined" ? window.location.href : undefined,
+          turnstileToken,
         },
       });
       if (error) throw error;
@@ -58,6 +69,10 @@ const FujitsuContactForm = () => {
       });
       setFormData({ name: "", email: "", phone: "", message: "" });
       setGdprAccepted(false);
+      setTurnstileToken(null);
+      if (typeof window !== "undefined" && window.turnstile) {
+        try { window.turnstile.reset(); } catch { /* noop */ }
+      }
     } catch (err) {
       console.error("Fujitsu contact submit error:", err);
       toast({
@@ -166,6 +181,8 @@ const FujitsuContactForm = () => {
                   Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Kft. a hibaelhárítás érdekében kezelje a megadott adataimat és fotóimat. *
                 </label>
               </div>
+
+              <TurnstileWidget onToken={setTurnstileToken} className="min-h-[65px]" />
 
               <Button
                 type="submit"
