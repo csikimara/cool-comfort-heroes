@@ -121,10 +121,13 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
       }
       return payload as T;
     } catch (error) {
-      const apiError =
-        error instanceof ApiError
-          ? error
-          : error instanceof DOMException && error.name === "AbortError"
+      const aborted = error instanceof Error && error.name === "AbortError";
+      const apiError = error instanceof ApiError
+        ? error
+        : aborted && signal?.aborted
+          // Caller-initiated cancellation — not retryable.
+          ? new ApiError("unknown", "A kérés megszakadt.", { endpoint: path, cause: error })
+          : aborted
             ? new ApiError("timeout", `A kérés időtúllépés miatt megszakadt (${timeoutMs} ms).`, { endpoint: path })
             : new ApiError("network", "Hálózati hiba a kérés közben.", { endpoint: path, cause: error });
 
