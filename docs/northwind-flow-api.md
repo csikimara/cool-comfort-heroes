@@ -69,6 +69,24 @@ Státuszkód-leképezés a kliensben: `400/422 → validation`, `401/403 →
 unauthorized`, `429 → rate_limited`, `5xx → http` (újrapróbálható),
 hálózati hiba → `network`, timeout → `timeout`.
 
+## Újrapróbálkozási szabály
+
+A kliens **alapértelmezésben csak idempotens kéréseket ismétel meg**
+(`GET`, `HEAD`, `PUT`, `DELETE`) hálózati hiba, timeout, `429` és `5xx`
+esetén, exponenciális backoff-fal. A `POST` és `PATCH` hívások
+alapértelmezetten **nem** ismétlődnek.
+
+Írási művelet újrapróbálása kétféleképpen engedélyezhető:
+
+```ts
+// Ajánlott: a backend az Idempotency-Key fejléc alapján deduplikál
+api.leads.create(input); // nincs retry
+apiPost("/leads", input, { idempotencyKey: crypto.randomUUID() }); // retry engedélyezett
+apiPost("/leads", input, { allowUnsafeRetry: true }); // kifejezett opt-in
+```
+
+A felhasználó által megszakított kérés (`options.signal`) soha nem ismétlődik.
+
 ## Végpontok
 
 | Modul | Metódus | Útvonal | Kérés / Válasz típus |
@@ -103,6 +121,7 @@ utazik az API felé. A Flow backend aláírt URL-lel tudja letölteni őket.
 2. **Idempotencia**: a POST végpontok legyenek idempotensek vagy tűrjék az
    ismételt beküldést, mert a kliens hálózati/5xx hiba esetén újrapróbál.
 3. **Rate limit**: 429 esetén a kliens automatikusan újrapróbál backoff-fal.
+   Írási végpontnál ez csak `Idempotency-Key` mellett történik meg.
 4. **Verziózás**: törésmentes bővítés az `/api/v1` alatt, breaking change
    esetén `/api/v2` és a `VITE_FLOW_API_VERSION` átállítása.
 5. **Titkos kulcs**: böngészőbe csak publikus kulcs kerülhet; minden érzékeny

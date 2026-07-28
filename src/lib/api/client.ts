@@ -11,10 +11,21 @@ export interface RequestOptions {
   timeoutMs?: number;
   /** Override the global retry count for this call. */
   retries?: number;
+  /**
+   * Opt-in retry for non-idempotent methods (POST/PATCH/PUT/DELETE).
+   * Only set this when the endpoint is safe to repeat — typically together
+   * with `idempotencyKey`, which lets the backend de-duplicate replays.
+   */
+  allowUnsafeRetry?: boolean;
+  /** Sent as `Idempotency-Key`; enables safe retry of write operations. */
+  idempotencyKey?: string;
   signal?: AbortSignal;
 }
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** HTTP methods that are safe to repeat without side effects. */
+const IDEMPOTENT_METHODS = new Set(["GET", "HEAD", "PUT", "DELETE"]);
 
 const withQuery = (url: string, query?: RequestOptions["query"]): string => {
   if (!query) return url;
@@ -61,13 +72,20 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
     headers = {},
     timeoutMs = API_CONFIG.timeoutMs,
     retries = API_CONFIG.retries,
+    allowUnsafeRetry = false,
+    idempotencyKey,
     signal,
   } = options;
 
   const url = withQuery(buildUrl(path), query);
+  // Never replay a non-idempotent write unless the caller explicitly opts in
+  // or supplies an idempotency key the backend can de-duplicate on.
+  const retryAllowed =
+    IDEMPOTENT_METHODS.has(method) || allowUnsafeRetry || Boolean(idempotencyKey);
+  const maxRetries = retryAllowed ? Math.max(0, retries) : 0;
   let lastError: ApiError | null = null;
 
-  for (let attempt = 0; attempt <= retries; attempt += 1) {
+  for (let attempt = 0; attempt <= maxRetries; attempt += 1) {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
     const onExternalAbort = () => controller.abort();
@@ -81,6 +99,7 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
           Accept: "application/json",
           ...(body !== undefined ? { "Content-Type": "application/json" } : {}),
           ...(API_CONFIG.clientKey ? { "X-Api-Key": API_CONFIG.clientKey } : {}),
+          ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
           ...headers,
         },
         body: body !== undefined ? JSON.stringify(body) : undefined,
@@ -102,15 +121,18 @@ export async function apiRequest<T>(path: string, options: RequestOptions = {}):
       }
       return payload as T;
     } catch (error) {
-      const apiError =
-        error instanceof ApiError
-          ? error
-          : error instanceof DOMException && error.name === "AbortError"
+      const aborted = error instanceof Error && error.name === "AbortError";
+      const apiError = error instanceof ApiError
+        ? error
+        : aborted && signal?.aborted
+          // Caller-initiated cancellation — not retryable.
+          ? new ApiError("unknown", "A kérés megszakadt.", { endpoint: path, cause: error })
+          : aborted
             ? new ApiError("timeout", `A kérés időtúllépés miatt megszakadt (${timeoutMs} ms).`, { endpoint: path })
             : new ApiError("network", "Hálózati hiba a kérés közben.", { endpoint: path, cause: error });
 
       lastError = apiError;
-      if (!apiError.isRetryable || attempt === retries) throw apiError;
+      if (!apiError.isRetryable || attempt === maxRetries) throw apiError;
       await sleep(API_CONFIG.retryDelayMs * 2 ** attempt);
     } finally {
       clearTimeout(timeoutId);
