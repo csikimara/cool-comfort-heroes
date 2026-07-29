@@ -15,6 +15,8 @@ const LakossagiKlima = lazy(() => import("./pages/LakossagiKlima"));
 const Fisher = lazy(() => import("./pages/Fisher"));
 const FisherHoszivattyu = lazy(() => import("./pages/FisherHoszivattyu"));
 const Galeria = lazy(() => import("./pages/Galeria"));
+const Auth = lazy(() => import("./pages/Auth"));
+const Admin = lazy(() => import("./pages/Admin"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -43,6 +45,8 @@ const App = () => (
             <Route path="/fisher" element={<Fisher />} />
             <Route path="/fisher-hoszivattyu" element={<FisherHoszivattyu />} />
             <Route path="/referenciak/:slug" element={<Galeria />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/admin" element={<Admin />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
