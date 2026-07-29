@@ -10,6 +10,7 @@ const Services = lazy(() => import("@/components/Services"));
 const About = lazy(() => import("@/components/About"));
 const MaintenanceTimeline = lazy(() => import("@/components/MaintenanceTimeline"));
 const TransparentPricing = lazy(() => import("@/components/TransparentPricing"));
+const Promotions = lazy(() => import("@/components/Promotions"));
 const Contact = lazy(() => import("@/components/Contact"));
 const GoogleMap = lazy(() => import("@/components/GoogleMap"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -68,6 +69,7 @@ const Index = () => {
           <About />
           <MaintenanceTimeline />
           <TransparentPricing />
+          <Promotions />
           <Contact />
           <GoogleMap />
         </Suspense>
