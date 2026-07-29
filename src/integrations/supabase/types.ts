@@ -65,6 +65,51 @@ export type Database = {
         }
         Relationships: []
       }
+      promotions: {
+        Row: {
+          button_label: string | null
+          button_url: string | null
+          created_at: string
+          description: string | null
+          ends_at: string | null
+          id: string
+          image_path: string | null
+          is_active: boolean
+          sort_order: number
+          starts_at: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          button_label?: string | null
+          button_url?: string | null
+          created_at?: string
+          description?: string | null
+          ends_at?: string | null
+          id?: string
+          image_path?: string | null
+          is_active?: boolean
+          sort_order?: number
+          starts_at?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          button_label?: string | null
+          button_url?: string | null
+          created_at?: string
+          description?: string | null
+          ends_at?: string | null
+          id?: string
+          image_path?: string | null
+          is_active?: boolean
+          sort_order?: number
+          starts_at?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
