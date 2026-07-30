@@ -19,11 +19,11 @@ const Promotions = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
           {promotions.map((promo) => (
             <article
               key={promo.id}
-              className="flex flex-col rounded-3xl overflow-hidden border border-border/50 bg-gradient-card shadow-elevated"
+              className="flex flex-col w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-md rounded-3xl overflow-hidden border border-border/50 bg-gradient-card shadow-elevated"
             >
               {images[promo.id] ? (
                 <img
