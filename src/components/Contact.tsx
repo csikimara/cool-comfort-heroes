@@ -340,7 +340,7 @@ const Contact = () => {
                   required
                 />
                 <label htmlFor="gdpr-consent" className="text-sm text-foreground/80 leading-relaxed cursor-pointer">
-                  Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Kft. a hibaelhárítás érdekében kezelje a megadott adataimat és fotóimat. *
+                  Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Hűtéstechnika Kft. a megkeresésem megválaszolása, ajánlatadás, illetve a szolgáltatás előkészítése (pl. felmérés, hibafelvétel) céljából kezelje a megadott adataimat és a feltöltött fájlokat. *
                 </label>
               </div>
               <TurnstileWidget onToken={setTurnstileToken} className="min-h-[65px]" />
