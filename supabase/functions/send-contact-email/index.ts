@@ -1,4 +1,11 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import {
+  detectFileType,
+  extensionFor,
+  normalizeMime,
+  sanitizeFileName,
+  signatureMatchesDeclared,
+} from "../_shared/file-signature.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -14,12 +21,6 @@ interface ContactFormData {
   source?: string;
   page_url?: string;
   turnstileToken?: string;
-  attachment?: {
-    path: string;
-    name: string;
-    size: number;
-    mime: string;
-  } | null;
 }
 
 const escapeHtml = (s: string) =>
@@ -47,6 +48,7 @@ const GENERIC_ERROR = "Az üzenet küldése sikertelen. Kérjük, próbálja új
 const GENERIC_VALIDATION = "Kérjük, ellenőrizze a megadott adatokat.";
 const GENERIC_RATE_LIMIT = "Túl sok beküldés érkezett rövid időn belül. Kérjük, próbálja újra később.";
 const GENERIC_DUPLICATE = "Ezt az üzenetet már elküldte. Kérjük, várjon a válaszunkra.";
+const GENERIC_ATTACHMENT = "A csatolt fájl nem felel meg a követelményeknek (max. 10 MB, PDF/JPG/PNG).";
 const GENERIC_TURNSTILE = "Nem sikerült ellenőrizni, hogy Ön nem robot. Kérjük, próbálja újra.";
 
 const jsonResponse = (status: number, payload: Record<string, unknown>) =>
@@ -116,7 +118,32 @@ Deno.serve(async (req) => {
   }
 
   try {
-    const body: ContactFormData = await req.json();
+    // ---------- Request parsing: multipart/form-data OR JSON ----------
+    const contentType = req.headers.get("content-type") ?? "";
+    let body: ContactFormData;
+    let uploadFile: File | null = null;
+
+    if (contentType.includes("multipart/form-data")) {
+      const form = await req.formData();
+      const str = (k: string) => {
+        const v = form.get(k);
+        return typeof v === "string" ? v : "";
+      };
+      body = {
+        name: str("name"),
+        email: str("email"),
+        phone: str("phone"),
+        message: str("message"),
+        source: str("source"),
+        page_url: str("page_url"),
+        turnstileToken: str("turnstileToken"),
+      };
+      const f = form.get("attachment");
+      if (f instanceof File && f.size > 0) uploadFile = f;
+    } else {
+      body = await req.json();
+    }
+
     const name = (body.name ?? "").trim();
     const email = (body.email ?? "").trim();
     const phone = (body.phone ?? "").trim();
@@ -124,7 +151,6 @@ Deno.serve(async (req) => {
     const source = (body.source ?? "").trim().slice(0, 100) || null;
     const page_url = (body.page_url ?? "").trim().slice(0, 500) || null;
     const turnstileToken = (body.turnstileToken ?? "").trim();
-    const attachment = body.attachment ?? null;
 
     // ---------- Server-side input validation ----------
     if (!name || !email || !message) {
@@ -144,25 +170,16 @@ Deno.serve(async (req) => {
       console.warn("Validation failed: invalid email");
       return jsonResponse(400, { error: GENERIC_VALIDATION });
     }
-    if (attachment) {
-      if (
-        typeof attachment.path !== "string" ||
-        typeof attachment.name !== "string" ||
-        typeof attachment.mime !== "string" ||
-        typeof attachment.size !== "number" ||
-        attachment.path.length > 500 ||
-        attachment.name.length > 255
-      ) {
-        console.warn("Validation failed: invalid attachment metadata");
-        return jsonResponse(400, { error: GENERIC_VALIDATION });
+    // Cheap pre-checks on the real upload (full validation happens after
+    // Turnstile + rate limiting, right before the Storage upload).
+    if (uploadFile) {
+      if (uploadFile.size > MAX_ATTACHMENT_SIZE) {
+        console.warn(`Validation failed: attachment size ${uploadFile.size}`);
+        return jsonResponse(400, { error: GENERIC_ATTACHMENT });
       }
-      if (!ALLOWED_MIMES.has(attachment.mime.toLowerCase())) {
-        console.warn(`Validation failed: disallowed mime ${attachment.mime}`);
-        return jsonResponse(400, { error: GENERIC_VALIDATION });
-      }
-      if (attachment.size <= 0 || attachment.size > MAX_ATTACHMENT_SIZE) {
-        console.warn(`Validation failed: attachment size ${attachment.size}`);
-        return jsonResponse(400, { error: GENERIC_VALIDATION });
+      if (!ALLOWED_MIMES.has(normalizeMime(uploadFile.type))) {
+        console.warn(`Validation failed: disallowed mime ${uploadFile.type}`);
+        return jsonResponse(400, { error: GENERIC_ATTACHMENT });
       }
     }
 
@@ -226,6 +243,36 @@ Deno.serve(async (req) => {
       return jsonResponse(429, { error: GENERIC_DUPLICATE });
     }
 
+    // ---------- Attachment verification + upload (only after all checks) ----------
+    let attachment: { path: string; name: string; size: number; mime: string } | null = null;
+    if (uploadFile) {
+      const buf = new Uint8Array(await uploadFile.arrayBuffer());
+      if (buf.byteLength === 0 || buf.byteLength > MAX_ATTACHMENT_SIZE) {
+        console.warn(`Attachment rejected: byte length ${buf.byteLength}`);
+        return jsonResponse(400, { error: GENERIC_ATTACHMENT });
+      }
+      const detected = detectFileType(buf);
+      if (!detected || !signatureMatchesDeclared(buf, uploadFile.type)) {
+        console.warn("Attachment rejected: file signature mismatch");
+        return jsonResponse(400, { error: GENERIC_ATTACHMENT });
+      }
+      const safeName = sanitizeFileName(uploadFile.name);
+      const objectPath = `${crypto.randomUUID()}/${safeName.toLowerCase().endsWith(`.${extensionFor(detected)}`) ? safeName : `${safeName}.${extensionFor(detected)}`}`;
+      const { error: uploadError } = await supabase.storage
+        .from("contact-attachments")
+        .upload(objectPath, buf, { contentType: detected, upsert: false });
+      if (uploadError) {
+        console.error("Attachment upload error:", uploadError);
+        return jsonResponse(500, { error: GENERIC_ERROR });
+      }
+      attachment = {
+        path: objectPath,
+        name: safeName.slice(0, 200),
+        size: buf.byteLength,
+        mime: detected,
+      };
+    }
+
     // Save to database FIRST — email failures must not lose the lead.
 
     const { error: dbError } = await supabase
@@ -247,6 +294,14 @@ Deno.serve(async (req) => {
 
     if (dbError) {
       console.error("DB error:", dbError);
+      if (attachment) {
+        const { error: removeError } = await supabase.storage
+          .from("contact-attachments")
+          .remove([attachment.path]);
+        if (removeError) {
+          console.error("Orphan attachment cleanup failed:", removeError);
+        }
+      }
       return jsonResponse(500, { error: GENERIC_ERROR });
     }
 
