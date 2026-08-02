@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Anyone can upload contact attachments" ON storage.objects;

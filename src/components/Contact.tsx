@@ -17,9 +17,6 @@ const ALLOWED_MIME_TYPES = [
 ];
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 
-const sanitizeFileName = (name: string) =>
-  name.replace(/[^a-zA-Z0-9._-]+/g, "_").slice(-120);
-
 const contactInfo = [
   {
     icon: Phone,
@@ -81,14 +78,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // 1. Attachment feltöltése privát Supabase Storage bucketbe (ha van)
-      let attachmentMeta: {
-        path: string;
-        name: string;
-        size: number;
-        mime: string;
-      } | null = null;
-
+      // Kliensoldali előellenőrzés (a végleges ellenőrzés szerveroldalon történik)
       if (attachment) {
         if (attachment.size > MAX_FILE_SIZE) {
           throw new Error("A csatolt fájl mérete túl nagy (max. 10 MB).");
@@ -96,32 +86,22 @@ const Contact = () => {
         if (!ALLOWED_MIME_TYPES.includes(attachment.type.toLowerCase())) {
           throw new Error("Nem támogatott fájlformátum. Engedélyezett: PDF, JPG, JPEG, PNG.");
         }
-        const safeName = sanitizeFileName(attachment.name);
-        const objectPath = `${crypto.randomUUID()}/${safeName}`;
-        const { error: uploadError } = await supabase.storage
-          .from("contact-attachments")
-          .upload(objectPath, attachment, {
-            contentType: attachment.type,
-            upsert: false,
-          });
-        if (uploadError) throw uploadError;
-        attachmentMeta = {
-          path: objectPath,
-          name: attachment.name.slice(0, 200),
-          size: attachment.size,
-          mime: attachment.type,
-        };
       }
 
-      // 2. Adatbázisba mentés + email a szervizfüggvényen keresztül
+      // Minden adat EGY kérésben megy az Edge Functionnek (multipart/form-data).
+      // A böngésző soha nem tölt fel közvetlenül a Storage bucketbe.
+      const payload = new FormData();
+      payload.append("name", formData.name);
+      payload.append("email", formData.email);
+      payload.append("phone", formData.phone);
+      payload.append("message", formData.message);
+      payload.append("source", "Főoldal – Northwind Hűtéstechnika Kft.");
+      payload.append("page_url", typeof window !== "undefined" ? window.location.href : "");
+      payload.append("turnstileToken", turnstileToken);
+      if (attachment) payload.append("attachment", attachment, attachment.name);
+
       const { data, error } = await supabase.functions.invoke("send-contact-email", {
-        body: {
-          ...formData,
-          source: "Főoldal – Northwind Hűtéstechnika Kft.",
-          page_url: typeof window !== "undefined" ? window.location.href : undefined,
-          turnstileToken,
-          attachment: attachmentMeta,
-        },
+        body: payload,
       });
       if (error) throw error;
       if (data && (data as { error?: string }).error) {
