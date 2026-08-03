@@ -51,6 +51,13 @@ const GENERIC_DUPLICATE = "Ezt az üzenetet már elküldte. Kérjük, várjon a 
 const GENERIC_ATTACHMENT = "A csatolt fájl nem felel meg a követelményeknek (max. 10 MB, PDF/JPG/PNG).";
 const GENERIC_TURNSTILE = "Nem sikerült ellenőrizni, hogy Ön nem robot. Kérjük, próbálja újra.";
 
+// Csak ezekről a hostokról fogadunk el Turnstile tokent.
+const ALLOWED_TURNSTILE_HOSTNAMES = new Set([
+  "cool-comfort-heroes.lovable.app",
+  "northwind.hu",
+  "www.northwind.hu",
+]);
+
 const jsonResponse = (status: number, payload: Record<string, unknown>) =>
   new Response(JSON.stringify(payload), {
     status,
@@ -100,9 +107,18 @@ async function verifyTurnstile(token: string, remoteIp: string): Promise<boolean
       console.error(`Turnstile verify HTTP ${res.status}`);
       return false;
     }
-    const data = await res.json() as { success?: boolean; "error-codes"?: string[] };
+    const data = await res.json() as {
+      success?: boolean;
+      hostname?: string;
+      "error-codes"?: string[];
+    };
     if (!data.success) {
       console.error("Turnstile verify failed:", data["error-codes"]);
+      return false;
+    }
+    const hostname = (data.hostname ?? "").toLowerCase();
+    if (!ALLOWED_TURNSTILE_HOSTNAMES.has(hostname)) {
+      console.error(`Turnstile hostname not allowed: ${hostname || "(empty)"}`);
       return false;
     }
     return true;

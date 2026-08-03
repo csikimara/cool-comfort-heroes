@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
@@ -23,9 +23,10 @@ declare global {
 const TURNSTILE_SCRIPT_ID = "cf-turnstile-script";
 const TURNSTILE_SRC =
   "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
-// Cloudflare test key that always passes — replaced at build time by the real
-// site key when VITE_TURNSTILE_SITE_KEY is set.
-const FALLBACK_SITE_KEY = "1x00000000000000000000AA";
+// Nincs fallback kulcs: élesben kizárólag a valódi, buildkor beállított
+// VITE_TURNSTILE_SITE_KEY használható.
+const GENERIC_WIDGET_ERROR =
+  "A robotellenőrzés jelenleg nem elérhető. Kérjük, töltse újra az oldalt, vagy keressen minket telefonon: +36 70 409 9760.";
 
 function loadTurnstileScript(): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -60,12 +61,19 @@ interface TurnstileWidgetProps {
 const TurnstileWidget = ({ onToken, className }: TurnstileWidgetProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | null>(null);
-  const siteKey =
-    (import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined) ??
-    FALLBACK_SITE_KEY;
+  const [hasError, setHasError] = useState(false);
+  const siteKey = (
+    (import.meta.env.VITE_TURNSTILE_SITE_KEY as string | undefined) ?? ""
+  ).trim();
 
   useEffect(() => {
+    if (!siteKey) {
+      setHasError(true);
+      onToken(null);
+      return;
+    }
     let cancelled = false;
+    setHasError(false);
     loadTurnstileScript()
       .then(() => {
         if (cancelled || !containerRef.current || !window.turnstile) return;
@@ -73,13 +81,19 @@ const TurnstileWidget = ({ onToken, className }: TurnstileWidgetProps) => {
           sitekey: siteKey,
           theme: "auto",
           size: "flexible",
-          callback: (token: string) => onToken(token),
-          "error-callback": () => onToken(null),
+          callback: (token: string) => {
+            setHasError(false);
+            onToken(token);
+          },
+          "error-callback": () => {
+            setHasError(true);
+            onToken(null);
+          },
           "expired-callback": () => onToken(null),
         });
       })
-      .catch((err) => {
-        console.error("Turnstile script load error:", err);
+      .catch(() => {
+        setHasError(true);
         onToken(null);
       });
     return () => {
@@ -95,7 +109,14 @@ const TurnstileWidget = ({ onToken, className }: TurnstileWidgetProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [siteKey]);
 
-  return <div ref={containerRef} className={className} />;
+  return (
+    <div className={className}>
+      <div ref={containerRef} />
+      {hasError && (
+        <p className="mt-2 text-sm text-destructive">{GENERIC_WIDGET_ERROR}</p>
+      )}
+    </div>
+  );
 };
 
 export default TurnstileWidget;
