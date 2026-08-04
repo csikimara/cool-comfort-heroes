@@ -119,6 +119,23 @@ async function verifyTurnstile(token: string, remoteIp: string): Promise<boolean
 }
 
 Deno.serve(async (req) => {
+  // ---------- Strict CORS / origin check (before ANY processing) ----------
+  const cors = resolveCors(
+    req.headers.get("origin"),
+    isLocalhostAllowed({ ALLOW_LOCALHOST_CORS: Deno.env.get("ALLOW_LOCALHOST_CORS") ?? undefined }),
+  );
+  const corsHeaders = cors.headers;
+  const jsonResponse = (status: number, payload: Record<string, unknown>) =>
+    new Response(JSON.stringify(payload), {
+      status,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+
+  if (!cors.allowed) {
+    console.warn("Blocked request from disallowed origin");
+    return jsonResponse(403, { error: GENERIC_ORIGIN });
+  }
+
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
