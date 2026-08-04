@@ -10,7 +10,6 @@ import SEOHead from "@/components/SEOHead";
 const Auth = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -29,18 +28,8 @@ const Auth = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      if (mode === "signin") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-      } else {
-        const { error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${window.location.origin}/admin` },
-        });
-        if (error) throw error;
-        toast({ title: "Fiók létrehozva", description: "Ellenőrizd az e-mail-fiókodat a megerősítéshez." });
-      }
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
     } catch (err) {
       toast({
         title: "Sikertelen bejelentkezés",
@@ -56,9 +45,7 @@ const Auth = () => {
     <main className="min-h-screen flex items-center justify-center px-4 py-16 bg-secondary/50">
       <SEOHead title="Bejelentkezés | Northwind" description="Admin bejelentkezés a Northwind adminfelületre." noindex />
       <div className="w-full max-w-md rounded-3xl border border-border/50 bg-gradient-card shadow-elevated p-8">
-        <h1 className="text-2xl font-bold text-foreground mb-6 text-center">
-          {mode === "signin" ? "Admin bejelentkezés" : "Fiók létrehozása"}
-        </h1>
+        <h1 className="text-2xl font-bold text-foreground mb-6 text-center">Admin bejelentkezés</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="email">E-mail</Label>
@@ -68,20 +55,16 @@ const Auth = () => {
           <div className="space-y-2">
             <Label htmlFor="password">Jelszó</Label>
             <Input id="password" type="password" value={password} required minLength={8}
-              autoComplete={mode === "signin" ? "current-password" : "new-password"}
+              autoComplete="current-password"
               onChange={(e) => setPassword(e.target.value)} />
           </div>
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading ? "Folyamatban…" : mode === "signin" ? "Bejelentkezés" : "Regisztráció"}
+            {loading ? "Folyamatban…" : "Bejelentkezés"}
           </Button>
         </form>
-        <button
-          type="button"
-          className="mt-6 w-full text-sm text-muted-foreground hover:text-primary transition-colors"
-          onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
-        >
-          {mode === "signin" ? "Nincs még fiókod? Regisztráció" : "Van már fiókod? Bejelentkezés"}
-        </button>
+        <p className="mt-6 text-center text-sm text-muted-foreground">
+          Ez a felület kizárólag a Northwind adminisztrátorai számára készült. Új fiók regisztrációja nem lehetséges.
+        </p>
       </div>
     </main>
   );
