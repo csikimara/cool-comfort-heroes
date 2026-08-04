@@ -1,4 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { isLocalhostAllowed, resolveCors } from "../_shared/cors.ts";
 import {
   detectFileType,
   extensionFor,
@@ -6,12 +7,6 @@ import {
   sanitizeFileName,
   signatureMatchesDeclared,
 } from "../_shared/file-signature.ts";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
 
 interface ContactFormData {
   name: string;
@@ -50,6 +45,7 @@ const GENERIC_RATE_LIMIT = "Túl sok beküldés érkezett rövid időn belül. K
 const GENERIC_DUPLICATE = "Ezt az üzenetet már elküldte. Kérjük, várjon a válaszunkra.";
 const GENERIC_ATTACHMENT = "A csatolt fájl nem felel meg a követelményeknek (max. 10 MB, PDF/JPG/PNG).";
 const GENERIC_TURNSTILE = "Nem sikerült ellenőrizni, hogy Ön nem robot. Kérjük, próbálja újra.";
+const GENERIC_ORIGIN = "A kérés forrása nem engedélyezett.";
 
 // Csak ezekről a hostokról fogadunk el Turnstile tokent.
 const ALLOWED_TURNSTILE_HOSTNAMES = new Set([
@@ -57,12 +53,6 @@ const ALLOWED_TURNSTILE_HOSTNAMES = new Set([
   "northwind.hu",
   "www.northwind.hu",
 ]);
-
-const jsonResponse = (status: number, payload: Record<string, unknown>) =>
-  new Response(JSON.stringify(payload), {
-    status,
-    headers: { ...corsHeaders, "Content-Type": "application/json" },
-  });
 
 const bytesToHex = (bytes: Uint8Array) =>
   Array.from(bytes).map((b) => b.toString(16).padStart(2, "0")).join("");
