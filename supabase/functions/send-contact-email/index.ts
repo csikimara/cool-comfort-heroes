@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { isLocalhostAllowed, resolveCors } from "../_shared/cors.ts";
+import { buildAdminEmail, buildUserEmail } from "../_shared/contact-emails.ts";
 import {
   detectFileType,
   extensionFor,
@@ -17,14 +18,6 @@ interface ContactFormData {
   page_url?: string;
   turnstileToken?: string;
 }
-
-const escapeHtml = (s: string) =>
-  s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 
 const ALLOWED_MIMES = new Set([
   "application/pdf",
@@ -332,96 +325,35 @@ Deno.serve(async (req) => {
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     let emailWarning: string | null = null;
     if (resendApiKey) {
-      const safeName = escapeHtml(name);
-      const safeEmail = escapeHtml(email);
-      const safePhone = phone ? escapeHtml(phone) : "Nem adott meg";
-      const safeMessage = escapeHtml(message).replace(/\n/g, "<br>");
-      const safeSource = source ? escapeHtml(source) : "Weboldal";
-      const safePageUrl = page_url ? escapeHtml(page_url) : "";
-      const safeAttachmentInfo = attachment
-        ? `${escapeHtml(attachment.name)} (${Math.round(attachment.size / 1024)} KB)`
-        : "Nincs";
+      const emailInput = {
+        name, email, phone, message, source, page_url, attachment,
+      };
+      const sendResend = (payload: Record<string, unknown>) =>
+        fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${resendApiKey}`,
+          },
+          body: JSON.stringify(payload),
+        });
 
       try {
-      // 1. Admin notification
-      const adminEmailRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${resendApiKey}`,
-        },
-        body: JSON.stringify({
-          from: "Northwind Weboldal <onboarding@resend.dev>",
-          to: ["csikimara@gmail.com"],
-          subject: `Új ajánlatkérés: ${name.replace(/[\r\n]/g, " ").slice(0, 120)}`,
-          html: `
-            <h2>Új üzenet érkezett a weboldalról</h2>
-            <p><strong>Forrás:</strong> ${safeSource}${safePageUrl ? ` (<a href="${safePageUrl}">${safePageUrl}</a>)` : ""}</p>
-            <p><strong>Név:</strong> ${safeName}</p>
-            <p><strong>Email:</strong> ${safeEmail}</p>
-            <p><strong>Telefon:</strong> ${safePhone}</p>
-            <p><strong>Csatolmány:</strong> ${safeAttachmentInfo}</p>
-            <hr />
-            <p><strong>Üzenet:</strong></p>
-            <p>${safeMessage}</p>
-          `,
-        }),
-      });
+        // 1. Admin notification (Reply-To = validated customer address)
+        const adminEmailRes = await sendResend(
+          buildAdminEmail(emailInput, "csikimara@gmail.com"),
+        );
+        if (!adminEmailRes.ok) {
+          console.error("Admin email send error:", await adminEmailRes.text());
+          emailWarning = "admin_email_failed";
+        }
 
-      if (!adminEmailRes.ok) {
-        console.error("Admin email send error:", await adminEmailRes.text());
-        emailWarning = "admin_email_failed";
-      }
-
-      // 2. Confirmation email to the user
-      const userEmailRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${resendApiKey}`,
-        },
-        body: JSON.stringify({
-          from: "Northwind Hűtéstechnika <onboarding@resend.dev>",
-          to: [email],
-          subject: "Megkeresését megkaptuk – Northwind Hűtéstechnika Kft.",
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <div style="background: linear-gradient(135deg, #1a7ab5, #2a8fc2); padding: 30px; border-radius: 12px 12px 0 0; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 24px;">Northwind Hűtéstechnika</h1>
-                <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0;">Professzionális klíma megoldások 1993 óta</p>
-              </div>
-              <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
-                <h2 style="color: #1a7ab5; margin-top: 0;">Tisztelt Ügyfelünk!</h2>
-                <p style="color: #374151; line-height: 1.6;">
-                  Megkaptuk a megkeresését és a csatolt fájlokat. Értesítjük, hogy munkatársunk hamarosan feldolgozza a megadott adatokat, és felveszi Önnel a kapcsolatot a megadott elérhetőségeken.
-                </p>
-                <p style="color: #374151; line-height: 1.6;">
-                  Üdvözlettel:<br/><strong>Northwind Hűtéstechnika Kft.</strong>
-                </p>
-                <div style="background: #f0f7fc; border-left: 4px solid #1a7ab5; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
-                  <p style="margin: 0 0 5px; color: #6b7280; font-size: 14px;"><strong>Az Ön üzenete:</strong></p>
-                  <p style="margin: 0; color: #374151;">${safeMessage}</p>
-                </div>
-                <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
-                <p style="color: #6b7280; font-size: 14px; line-height: 1.5;">
-                  <strong>Elérhetőségeink:</strong><br>
-                  📞 +36 70 409 9760<br>
-                  📧 northwind@northwind.hu<br>
-                  📍 1118 Budapest, Torbágy u. 16.
-                </p>
-              </div>
-              <div style="text-align: center; padding: 15px; color: #9ca3af; font-size: 12px;">
-                © ${new Date().getFullYear()} Northwind Hűtéstechnika. Minden jog fenntartva.
-              </div>
-            </div>
-          `,
-        }),
-      });
-
-      if (!userEmailRes.ok) {
-        console.error("User confirmation email error:", await userEmailRes.text());
-        emailWarning = emailWarning ?? "user_email_failed";
-      }
+        // 2. Confirmation email to the user (Reply-To = northwind@northwind.hu)
+        const userEmailRes = await sendResend(buildUserEmail(emailInput));
+        if (!userEmailRes.ok) {
+          console.error("User confirmation email error:", await userEmailRes.text());
+          emailWarning = emailWarning ?? "user_email_failed";
+        }
       } catch (mailErr) {
         console.error("Email send exception:", mailErr);
         emailWarning = "email_exception";
