@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { isLocalhostAllowed, resolveCors } from "../_shared/cors.ts";
+import { buildAdminEmail, buildUserEmail } from "../_shared/contact-emails.ts";
 import {
   detectFileType,
   extensionFor,
@@ -17,14 +18,6 @@ interface ContactFormData {
   page_url?: string;
   turnstileToken?: string;
 }
-
-const escapeHtml = (s: string) =>
-  s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 
 const ALLOWED_MIMES = new Set([
   "application/pdf",
