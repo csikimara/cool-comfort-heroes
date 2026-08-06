@@ -10,6 +10,8 @@ import { useToast } from "@/hooks/use-toast";
 import SEOHead from "@/components/SEOHead";
 import { Loader2, LogOut, Plus, Trash2, Pencil, Eye } from "lucide-react";
 import { getPromoImageUrl, PROMO_BUCKET, type Promotion } from "@/hooks/usePromotions";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ContactMessages from "@/components/admin/ContactMessages";
 
 type FormState = {
   id?: string;
@@ -206,12 +208,25 @@ const Admin = () => {
       <SEOHead title="Akciók kezelése | Northwind" description="Adminfelület az akciók és bannerek kezeléséhez." noindex />
       <div className="container mx-auto max-w-5xl">
         <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
-          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Akciók és bannerek</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Adminfelület</h1>
           <Button variant="outline" size="sm" onClick={() => supabase.auth.signOut()}>
             <LogOut className="w-4 h-4 mr-2" /> Kijelentkezés
           </Button>
         </div>
 
+        <Tabs
+          defaultValue={
+            new URLSearchParams(window.location.search).has("megkereses")
+              ? "megkeresesek"
+              : "akciok"
+          }
+        >
+          <TabsList className="mb-6">
+            <TabsTrigger value="akciok">Akciók és bannerek</TabsTrigger>
+            <TabsTrigger value="megkeresesek">Megkeresések</TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="akciok" className="space-y-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Editor */}
           <section className="rounded-2xl border border-border/50 bg-card p-6 space-y-4">
@@ -309,7 +324,7 @@ const Admin = () => {
         </div>
 
         {/* List */}
-        <section className="mt-8 rounded-2xl border border-border/50 bg-card p-6">
+        <section className="rounded-2xl border border-border/50 bg-card p-6">
           <h2 className="font-semibold text-foreground mb-4">Meglévő akciók ({items.length})</h2>
           {items.length === 0 ? (
             <p className="text-muted-foreground text-sm">Még nincs rögzített akció.</p>
@@ -339,6 +354,12 @@ const Admin = () => {
             </ul>
           )}
         </section>
+          </TabsContent>
+
+          <TabsContent value="megkeresesek">
+            <ContactMessages />
+          </TabsContent>
+        </Tabs>
       </div>
     </main>
   );
