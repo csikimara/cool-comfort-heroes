@@ -79,7 +79,7 @@ describe("attachment access hardening", () => {
     expect(moduleSrc).toContain("if (!message.attachment_path) return;");
     expect(moduleSrc).toContain("createAttachmentSignedUrl(message.attachment_path)");
     // the only URL parameter read is the record UUID used for the deep link
-    const params = [...moduleSrc.matchAll(/searchParams\)\.get\("([^"]+)"\)/g)].map((m) => m[1]);
+    const params = [...moduleSrc.matchAll(/\.get\("([^"]+)"\)/g)].map((m) => m[1]);
     expect(params).toEqual(["megkereses"]);
     expect(moduleSrc).not.toMatch(/createSignedUrl\((?!path,)/);
   });
