@@ -6,6 +6,21 @@
 export const FROM_ADDRESS = "Northwind Klíma <northwind@northwind.hu>";
 export const NORTHWIND_EMAIL = "northwind@northwind.hu";
 
+/**
+ * Fixed, allow-listed production base URL for the admin deep link.
+ * Never derived from request Origin or any user input.
+ */
+export const ADMIN_BASE_URL = "https://cool-comfort-heroes.lovable.app";
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/** Builds the admin deep link. Only a validated UUID is ever appended. */
+export const buildAdminMessageLink = (id?: string | null): string | null => {
+  const candidate = (id ?? "").trim();
+  if (!UUID_RE.test(candidate)) return null;
+  return `${ADMIN_BASE_URL}/admin?megkereses=${candidate}`;
+};
+
 export interface AttachmentInfo {
   path: string;
   name: string;
@@ -21,6 +36,8 @@ export interface ContactEmailInput {
   source?: string | null;
   page_url?: string | null;
   attachment?: AttachmentInfo | null;
+  /** contact_messages record UUID — used only for the admin deep link. */
+  messageId?: string | null;
 }
 
 export interface ResendPayload {
@@ -61,6 +78,7 @@ export const buildAdminEmail = (
   const phone = (input.phone ?? "").trim();
   const source = (input.source ?? "").trim() || "Weboldal";
   const pageUrl = (input.page_url ?? "").trim();
+  const adminLink = buildAdminMessageLink(input.messageId);
 
   const attachmentBlockHtml = hasFile
     ? `<p><strong>Csatolmány:</strong> ${escapeHtml(input.attachment!.name)} (${kb(input.attachment!.size)})<br />
@@ -77,6 +95,7 @@ export const buildAdminEmail = (
     <hr />
     <p><strong>Üzenet:</strong></p>
     <p>${escapeHtml(input.message).replace(/\n/g, "<br>")}</p>
+    ${adminLink ? `<hr /><p><a href="${adminLink}">Megkeresés megnyitása az adminfelületen</a></p>` : ""}
   `;
 
   const text = [
@@ -94,6 +113,7 @@ export const buildAdminEmail = (
     "",
     "Üzenet:",
     input.message,
+    ...(adminLink ? ["", `Megkeresés megnyitása az adminfelületen: ${adminLink}`] : []),
   ].join("\n");
 
   return {

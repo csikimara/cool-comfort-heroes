@@ -291,7 +291,7 @@ Deno.serve(async (req) => {
 
     // Save to database FIRST — email failures must not lose the lead.
 
-    const { error: dbError } = await supabase
+    const { data: inserted, error: dbError } = await supabase
       .from("contact_messages")
       .insert({
         name,
@@ -306,7 +306,9 @@ Deno.serve(async (req) => {
         attachment_name: attachment?.name ?? null,
         attachment_size: attachment?.size ?? null,
         attachment_mime: attachment?.mime ?? null,
-      });
+      })
+      .select("id")
+      .single();
 
     if (dbError) {
       console.error("DB error:", dbError);
@@ -327,6 +329,7 @@ Deno.serve(async (req) => {
     if (resendApiKey) {
       const emailInput = {
         name, email, phone, message, source, page_url, attachment,
+        messageId: (inserted as { id?: string } | null)?.id ?? null,
       };
       const sendResend = (payload: Record<string, unknown>) =>
         fetch("https://api.resend.com/emails", {
