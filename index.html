@@ -73,7 +73,9 @@
       // northwind.hu in search results. Runs ONLY on that exact hostname, so the
       // production site and Lovable previews are never affected.
       (function () {
-        if (window.location.hostname === "cool-comfort-heroes.lovable.app") {
+        var p = window.location.pathname;
+        var isAdminArea = p.indexOf("/admin") === 0 || p.indexOf("/auth") === 0;
+        if (window.location.hostname === "cool-comfort-heroes.lovable.app" && !isAdminArea) {
           window.location.replace(
             "https://northwind.hu" + window.location.pathname + window.location.search + window.location.hash
           );
