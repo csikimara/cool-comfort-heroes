@@ -1,6 +1,17 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Force HTTPS (301, path + query preserved)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^(.*)$ https://northwind.hu/$1 [R=301,L,QSA]
+
+  # Force non-www canonical host (301, path + query preserved)
+  RewriteCond %{HTTP_HOST} ^www\.northwind\.hu$ [NC]
+  RewriteRule ^(.*)$ https://northwind.hu/$1 [R=301,L,QSA]
+
+  # SPA fallback
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
