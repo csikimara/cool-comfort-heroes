@@ -168,6 +168,7 @@ const FisherContactForm = () => {
               Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Hűtéstechnika Kft. a megkeresésem megválaszolása, ajánlatadás, illetve a szolgáltatás előkészítése (pl. felmérés, hibafelvétel) céljából kezelje a megadott adataimat és a feltöltött fájlokat. *
             </label>
           </div>
+          <TurnstileWidget onToken={setTurnstileToken} className="min-h-[65px]" />
           <Button
             type="submit"
             size="lg"
