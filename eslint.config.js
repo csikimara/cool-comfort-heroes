@@ -4,6 +4,22 @@ import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import tseslint from "typescript-eslint";
 
+// These modules intentionally co-locate reusable UI helpers with React components.
+// Keep the exception list explicit so new mixed exports still fail lint.
+const fastRefreshAllowedExports = [
+  "badgeVariants",
+  "buttonVariants",
+  "useFormField",
+  "navigationMenuTriggerStyle",
+  "useSidebar",
+  "toast",
+  "toggleVariants",
+  "formatHungarianDate",
+  "formatFileSize",
+  "hasAttachment",
+  "createAttachmentSignedUrl",
+];
+
 export default tseslint.config(
   { ignores: ["dist"] },
   {
@@ -19,7 +35,10 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+      "react-refresh/only-export-components": [
+        "error",
+        { allowConstantExport: true, allowExportNames: fastRefreshAllowedExports },
+      ],
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
