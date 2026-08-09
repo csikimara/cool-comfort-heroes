@@ -1,0 +1,59 @@
+name: Refresh Bun lockfile
+
+on:
+  push:
+    branches:
+      - codex/dependency-lock-security-20260809
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-lock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out the work branch
+        uses: actions/checkout@v4
+        with:
+          ref: codex/dependency-lock-security-20260809
+
+      - name: Set up pinned Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.14
+
+      - name: Regenerate the canonical lockfile
+        run: |
+          rm bun.lock
+          bun install --save-text-lockfile
+
+      - name: Verify reproducible install
+        run: bun install --frozen-lockfile
+
+      - name: Audit dependencies
+        run: bun audit --audit-level=moderate
+
+      - name: TypeScript check
+        run: bun run typecheck
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Test
+        run: bun run test
+
+      - name: Build
+        run: bun run build
+
+      - name: Commit the verified lockfile
+        run: |
+          if git diff --quiet -- bun.lock; then
+            echo "bun.lock is already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add bun.lock
+          git commit -m "chore: regenerate verified Bun lockfile"
+          git push
