@@ -69,13 +69,37 @@
   <body>
     <div id="root"></div>
     <script>
-      // Canonical-host guard: the published Lovable domain must not compete with
-      // northwind.hu in search results. Runs ONLY on that exact hostname, so the
-      // production site and Lovable previews are never affected.
+      // Canonical-host guard: normal visits on the published Lovable hostname
+      // continue to northwind.hu. A deliberate ?teszt=1 visit enables a
+      // tab-scoped test session so the freshly published Lovable build can be
+      // checked without changing the public or search-engine behavior.
       (function () {
         var p = window.location.pathname;
-        var isAdminArea = p.indexOf("/admin") === 0 || p.indexOf("/auth") === 0;
-        if (window.location.hostname === "cool-comfort-heroes.lovable.app" && !isAdminArea) {
+        var isAdminArea =
+          p === "/admin" ||
+          p.indexOf("/admin/") === 0 ||
+          p === "/auth" ||
+          p.indexOf("/auth/") === 0;
+        var isLovableHost = window.location.hostname === "cool-comfort-heroes.lovable.app";
+
+        if (!isLovableHost || isAdminArea) {
+          return;
+        }
+
+        var requestedTestMode = new URLSearchParams(window.location.search).get("teszt") === "1";
+        var testMode = requestedTestMode;
+
+        try {
+          if (requestedTestMode) {
+            window.sessionStorage.setItem("northwind-lovable-test-mode", "1");
+          } else {
+            testMode = window.sessionStorage.getItem("northwind-lovable-test-mode") === "1";
+          }
+        } catch (_error) {
+          // If session storage is unavailable, the explicit ?teszt=1 URL still works.
+        }
+
+        if (!testMode) {
           window.location.replace(
             "https://northwind.hu" + window.location.pathname + window.location.search + window.location.hash
           );
