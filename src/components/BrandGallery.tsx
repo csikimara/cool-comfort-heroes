@@ -186,7 +186,7 @@ const BrandGallery = ({
           open={openIndex >= 0}
           index={openIndex < 0 ? 0 : openIndex}
           close={() => setOpenIndex(-1)}
-          slides={slides as any}
+          slides={slides}
           plugins={[Video]}
         />
         {showEmptyNotice && (
@@ -339,7 +339,7 @@ const BrandGallery = ({
         open={openIndex >= 0}
         index={openIndex < 0 ? 0 : openIndex}
         close={() => setOpenIndex(-1)}
-        slides={slides as any}
+        slides={slides}
         plugins={[Video]}
       />
     </section>
