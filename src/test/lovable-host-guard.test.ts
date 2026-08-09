@@ -1,8 +1,9 @@
 import { readFileSync } from "node:fs";
+import { resolve } from "node:path";
 import vm from "node:vm";
 import { describe, expect, it, vi } from "vitest";
 
-const html = readFileSync(new URL("../../index.html", import.meta.url), "utf8");
+const html = readFileSync(resolve(process.cwd(), "index.html"), "utf8");
 const guardScript = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)]
   .map((match) => match[1])
   .find((script) => script.includes("Canonical-host guard"));
