@@ -532,7 +532,7 @@ const FisherHoszivattyu = () => {
                 Kérjen egyedi Fisher e-HeatR tervezést a Northwind szakértőitől
               </h2>
               <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-                33 év hűtéstechnikai tapasztalattal rendelkező szakmai
+                1993 óta gyűjtött hűtéstechnikai szakmai
                 háttérrel. Helyszíni felmérés és szakszerű rendszervázlat –
                 kötelezettségek nélkül. Hivatalos Columbus Klíma garancia a
                 Fisher hőszivattyúkra.

@@ -76,7 +76,7 @@ const Reszletek = () => {
               Készen áll egy személyre szabott ajánlatra?
             </h2>
             <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-              33 év szakmai tapasztalattal segítünk megtalálni az Ön igényeihez legjobban illő megoldást.
+              1993 óta gyűjtött szakmai tapasztalattal segítünk megtalálni az Ön igényeihez legjobban illő megoldást.
             </p>
             <Button variant="heroOutline" size="lg" asChild>
               <Link to="/#kapcsolat">

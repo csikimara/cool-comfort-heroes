@@ -151,7 +151,7 @@ const Contact = () => {
             Vegye fel velünk a kapcsolatot telefonon, emailben vagy az alábbi űrlap kitöltésével!
           </p>
           <p className="text-sm text-muted-foreground/80">
-            Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén – 1993 óta.
+            Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén – szakmai tapasztalattal 1993 óta.
           </p>
         </div>
 

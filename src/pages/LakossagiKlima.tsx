@@ -95,7 +95,7 @@ const LakossagiKlima = () => {
               </h1>
               <p className="text-lg text-muted-foreground">
                 Klímaszerelés, hőszivattyú telepítés és prémium zsákos klímamosás –
-                otthonokba és kisebb irodákba, 33 év szakmai tapasztalattal.
+                otthonokba és kisebb irodákba, 1993 óta gyűjtött szakmai tapasztalattal.
               </p>
             </div>
           </div>
@@ -170,7 +170,7 @@ const LakossagiKlima = () => {
               Kérjen ingyenes ajánlatot otthoni klímájára!
             </h2>
             <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
-              33 év szakmai tapasztalattal segítünk megtalálni az Ön igényeihez
+              1993 óta gyűjtött szakmai tapasztalattal segítünk megtalálni az Ön igényeihez
               legjobban illő lakossági megoldást.
             </p>
             <Button variant="heroOutline" size="lg" asChild>

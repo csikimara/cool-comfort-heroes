@@ -214,7 +214,7 @@ const Fisher = () => {
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground mb-9 max-w-2xl mx-auto leading-relaxed">
-                Több mint 33 év tapasztalat és hivatalos Columbus Klíma garancia minden telepített
+                Szakmai tapasztalat 1993 óta és hivatalos Columbus Klíma garancia minden telepített
                 rendszer mögött.
               </p>
 
@@ -633,7 +633,7 @@ const Fisher = () => {
                 Kérjen egyedi Fisher tervezést és ajánlatot a Northwind szakértőitől
               </h2>
               <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-                33 év hűtéstechnikai tapasztalattal rendelkező szakmai háttérrel.
+                1993 óta gyűjtött hűtéstechnikai szakmai tapasztalattal.
                 Helyszíni felmérés és szakszerű rendszervázlat – kötelezettségek nélkül.
                 Hivatalos Columbus Klíma garancia: 6 év az oldalfali split Fisher
                 klímákra (regisztrációval és évi kétszeri Northwind karbantartással),

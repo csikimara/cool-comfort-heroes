@@ -75,7 +75,7 @@ const MaintenanceTimeline = () => {
           <p className="text-lg text-muted-foreground leading-relaxed">
             Ne várja meg a kánikulát vagy az első fagyokat! A rendszeres
             felülvizsgálat nem csak a garancia feltétele, hanem a gazdaságos és
-            higiénikus működés alapja is. 1993 óta látjuk: aki időben lép, az
+            higiénikus működés alapja is. Az 1993 óta gyűjtött tapasztalatunk szerint aki időben lép, az
             nyugodtan pihenhet.
           </p>
         </div>
