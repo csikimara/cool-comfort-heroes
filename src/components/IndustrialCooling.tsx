@@ -44,7 +44,7 @@ const sections = [
     galleryHref: "/referenciak/karbantartas",
     desc: "Az ipari hűtési rendszerek zavartalan működése nem szerencse, hanem tudatos karbantartás kérdése. Szervizszolgáltatásunk a gyors reakcióidőre és a precíz, műszeres diagnosztikára épül, hogy partnereinknek ne kelljen tartaniuk a drága leállásoktól.",
     bullets: [
-      "Márkafüggetlen javítás: 33 éves tapasztalattal szervizelünk bármilyen típusú ipari hűtő- és légkezelő berendezést gyártótól függetlenül.",
+      "Márkafüggetlen javítás: 1993 óta gyűjtött tapasztalattal szervizelünk bármilyen típusú ipari hűtő- és légkezelő berendezést gyártótól függetlenül.",
       "Műszeres diagnosztika: modern mérőeszközökkel végzett hibafeltárás, hőkamerás ellenőrzés és elektromos paraméter-analízis a pontos javításért.",
       "Karbantartási szerződések: egyedi igényekre szabott, ütemezett felülvizsgálatok, garantált élettartam és prioritást élvező hibaelhárítás.",
       "Jogi megfelelőség: kötelező szivárgásvizsgálatok elvégzése és adminisztrációja a hatályos uniós és hazai szabályozások szerint.",
@@ -58,8 +58,8 @@ const IndustrialCooling = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <p className="text-lg text-muted-foreground leading-relaxed">
-            A <strong>Northwind Hűtéstechnika Kft.</strong> 1993 óta nyújt professzionális támogatást ipari és kereskedelmi
-            partnerei számára. Nem csupán berendezéseket telepítünk, hanem komplex gépészeti rendszerekben gondolkodunk:
+            Szakmai múltunk 1993-ig nyúlik vissza, <strong>Northwind</strong> néven pedig 2003 óta támogatjuk ipari és kereskedelmi
+            partnereinket. Nem csupán berendezéseket telepítünk, hanem komplex gépészeti rendszerekben gondolkodunk:
             a folyadékhűtős rendszerektől a speciális, légcsatornázható félipari megoldásokig. Ez utóbbi különösen ideális
             olyan irodákba vagy tagolt terekbe, ahol a hagyományos split klímák elhelyezése nem esztétikus vagy nem
             megoldható. Precíz szakmai tervezéssel és szakszerű kivitelezéssel garantáljuk a huzatmentes, optimális

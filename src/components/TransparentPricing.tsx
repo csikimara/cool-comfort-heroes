@@ -25,7 +25,7 @@ const TransparentPricing = () => {
                   Nálunk az árajánlat nem csak egy becslés, hanem ígéret. Az ingyenes helyszíni felmérés során pontosan 
                   rögzítjük a szükséges anyagokat és munkafolyamatokat, így a végösszeg pontosan annyi lesz, amennyiben 
                   megállapodtunk. Nincs 'kiszállási díj' a munka végén, nincsenek váratlan felárak – csak tiszta és 
-                  becsületes elszámolás, ahogy azt <strong>1993 óta</strong> minden ügyfelünknek garantáljuk.
+                  becsületes elszámolás, amelyhez minden munkánknál következetesen ragaszkodunk.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">

@@ -10,7 +10,7 @@ const features = [
   {
     icon: ShieldCheck,
     title: "Valódi garanciális biztonság",
-    desc: "1993 óta vagyunk jelen a piacon – ez a garancia arra, hogy a telepítés után is elérhetőek maradunk és felelősséget vállalunk munkánkért.",
+    desc: "Szakmai múltunk 1993-ig nyúlik vissza, Northwind néven pedig 2003 óta dolgozunk – ez is biztosíték arra, hogy a telepítés után is elérhetőek maradunk és felelősséget vállalunk munkánkért.",
   },
   {
     icon: Cpu,
@@ -20,7 +20,7 @@ const features = [
   {
     icon: Wrench,
     title: "Mérnöki precizitás és tisztaság",
-    desc: "30+ év rutinnal nincs váratlan technikai akadály. A pormentes munkavégzés nálunk alapkövetelmény.",
+    desc: "Az 1993 óta gyűjtött rutinnal nincs váratlan technikai akadály. A pormentes munkavégzés nálunk alapkövetelmény.",
   },
 ];
 
@@ -35,19 +35,18 @@ const About = () => {
               Rólunk
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              Csapatunk 33 év szakmai tapasztalatával a prémium klímatechnika{" "}
+              Szakmai tapasztalat 1993 óta a prémium klímatechnika{" "}
               <span className="text-gradient">világában</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Csapatunk 33 év szakmai tapasztalatával a prémium klímatechnika világában nyújtunk kiemelkedő szolgáltatást.
-              1993 óta foglalkozunk klíma- és légtechnikával, így az elmúlt három évtizedben a piac összes 
-              jelentős márkáját megismertük. A <strong>Northwind Hűtéstechnika Kft.</strong> 2009 óta biztosít stabil 
-              vállalkozói hátteret ehhez a szakértelemhez. Számunkra a munka nem a telepítésnél ér véget, hanem a sokéves, 
+              Szakmai múltunk 1993-ig nyúlik vissza, Northwind néven pedig 2003 óta dolgozunk.
+              Az elmúlt több mint három évtizedben a piac összes jelentős márkáját megismertük.
+              Ez a folyamatosan épülő tapasztalat biztosít stabil szakmai hátteret minden munkánkhoz. Számunkra a munka nem a telepítésnél ér véget, hanem a sokéves,
               zavartalan üzemeltetésnél kezdődik. A legmagasabb minőségű japán rendszerekre 
               specializálódtunk, és az elmúlt évek tapasztalatai alapján kiemelt bizalmat szavazunk a <strong>Fujitsu</strong> megoldásainak. 
               Ez a technológia teremti meg a legjobb egyensúlyt a precizitás, a csend és a hosszú távú megbízhatóság között. 
               Bár elsősorban a japán Fujitsu mérnöki megoldásait ajánljuk, egyedi igény esetén egyéb prémium japán márkák telepítését is vállaljuk. 
-              Javítás és karbantartás terén márkafüggetlen szakértelemmel állunk rendelkezésre: legyen szó bármilyen típusról, 33 év rutinnal orvosoljuk a hibákat. 
+              Javítás és karbantartás terén márkafüggetlen szakértelemmel állunk rendelkezésre: legyen szó bármilyen típusról, az 1993 óta gyűjtött rutinnal orvosoljuk a hibákat.
               Nálunk nem egy névtelen alvállalkozó, hanem több évtizedes csapatrutin érkezik a helyszínre.
             </p>
 
@@ -80,10 +79,10 @@ const About = () => {
                 </div>
                 <div className="text-left min-w-0">
                   <h3 className="text-base sm:text-lg font-bold text-primary-foreground leading-tight">
-                    33 év szakmai tapasztalat
+                    Szakmai tapasztalat 1993 óta
                   </h3>
                   <p className="text-xs sm:text-sm text-primary-foreground/80 leading-snug">
-                    1993 óta a szakmában · Northwind Hűtéstechnika Kft. 2009 óta
+                    Northwind néven 2003 óta
                   </p>
                 </div>
               </div>

@@ -29,7 +29,7 @@ const Hero = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground leading-tight mb-4 animate-fade-up" style={{ animationDelay: "0.1s" }}>
             Klímaszerelés Budapesten és Pest vármegyében{" "}
             <span className="relative">
-              – 33 év szakmai tapasztalattal
+              – szakmai tapasztalattal 1993 óta
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 300 12" fill="none">
                 <path d="M2 10C50 2 100 2 150 6C200 10 250 8 298 4" stroke="currentColor" strokeWidth="3" strokeLinecap="round" className="text-primary-foreground/40" />
               </svg>
@@ -74,8 +74,8 @@ const Hero = () => {
           <div className="mt-10 pt-6 border-t border-primary-foreground/20 animate-fade-up relative z-10" style={{ animationDelay: "0.4s" }}>
             <div className="flex flex-row flex-wrap justify-center gap-6 sm:gap-10 md:gap-12 text-primary-foreground/70">
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">33+</div>
-                <div className="text-sm">Év tapasztalat</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">1993</div>
+                <div className="text-sm">Óta a szakmában</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">2000+</div>

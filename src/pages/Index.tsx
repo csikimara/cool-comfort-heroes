@@ -22,7 +22,7 @@ const businessJsonLd = {
   "@type": "HVACBusiness",
   name: "Northwind Hűtéstechnika Kft.",
   description:
-    "Profi klímaszerelés, zsákos mélytisztítás és ipari hűtéstechnika Budapesten és Pest vármegyében. Japán minőség (Fujitsu KG), rejtett költségek nélkül, 1993 óta.",
+    "Profi klímaszerelés, zsákos mélytisztítás és ipari hűtéstechnika Budapesten és Pest vármegyében. Japán minőség (Fujitsu KG), rejtett költségek nélkül, 1993 óta gyűjtött szakmai tapasztalattal.",
   url: "https://northwind.hu",
   telephone: "+36704099760",
   email: "northwind@northwind.hu",
@@ -48,7 +48,6 @@ const businessJsonLd = {
     "@type": "State",
     name: "Budapest és Pest vármegye",
   },
-  foundingDate: "1993",
   priceRange: "$$",
 };
 
@@ -57,8 +56,8 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <SEOHead
-        title="Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – 33 év tapasztalat"
-        description="33 év tapasztalat (1993 óta): Fujitsu klímaszerelés, hőszivattyú telepítés, prémium zsákos klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében – fix árak, valódi garancia."
+        title="Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – szakmai tapasztalat 1993 óta"
+        description="Szakmai tapasztalat 1993 óta: Fujitsu klímaszerelés, hőszivattyú telepítés, prémium zsákos klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében – fix árak, valódi garancia."
       />
       <JsonLd data={businessJsonLd} />
       <Header />

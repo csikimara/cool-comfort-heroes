@@ -278,7 +278,7 @@ const Fujitsu = () => {
     <div className="fujitsu-brand min-h-screen bg-background text-foreground">
       <SEOHead
         title="Northwind Hűtéstechnika Kft. – Fujitsu Klíma és Hőszivattyú Specialisták"
-        description="Hivatalos Fujitsu partner Budapesten. 33 év szakmai tapasztalat, Columbus Klíma 10 éves kiterjesztett garancia. Lakossági split, Waterstage hőszivattyú, légcsatornázható és ipari VRF megoldások."
+        description="Hivatalos Fujitsu partner Budapesten. Szakmai tapasztalat 1993 óta, Columbus Klíma 10 éves kiterjesztett garancia. Lakossági split, Waterstage hőszivattyú, légcsatornázható és ipari VRF megoldások."
       />
       <JsonLd data={fujitsuJsonLd} />
       <Header />
@@ -503,9 +503,9 @@ const Fujitsu = () => {
 
                 <div className="mt-8 p-5 rounded-xl border-2 border-primary/20 bg-card">
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    <strong className="text-foreground">33 év szakmai tapasztalattal</strong> és hivatalos Fujitsu partnerként
+                    <strong className="text-foreground">1993 óta gyűjtött szakmai tapasztalattal</strong> és hivatalos Fujitsu partnerként
                     segítünk a legmegfelelőbb modell kiválasztásában Budapesten és Pest vármegyében.
-                    A Northwind Hűtéstechnika 2009 óta biztosít stabil vállalkozói hátteret ehhez a tudáshoz.
+                    Northwind néven 2003 óta biztosítunk stabil szakmai hátteret ehhez a tudáshoz.
                   </p>
                 </div>
               </div>

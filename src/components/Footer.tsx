@@ -19,12 +19,12 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
               </div>
             </div>
             <p className="text-background/70 leading-relaxed max-w-md mb-4">
-              A Northwind Hűtéstechnika több mint három évtizedes szakmai
-              tapasztalattal a háta mögött biztosít stabil hátteret ügyfeleinek.
+              Több mint három évtizedes szakmai tapasztalatunkkal biztosítunk
+              stabil hátteret ügyfeleinknek.
             </p>
             <p className="text-background/60 text-sm leading-relaxed max-w-md mb-6">
               Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén.
-              A Northwind Hűtéstechnika 2009 óta biztosít megbízható vállalkozói hátteret ügyfeleinek.
+              Northwind néven 2003 óta dolgozunk ügyfeleink megbízható szakmai partnereként.
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
               <a href="tel:+36704099760" className="flex items-center gap-2 text-background underline underline-offset-4 decoration-background/40 hover:decoration-background transition-colors text-sm sm:text-base">
