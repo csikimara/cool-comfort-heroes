@@ -4,52 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – szakmai tapasztalat 1993 óta</title>
-    <meta name="description" content="Szakmai tapasztalat 1993 óta: Fujitsu klímaszerelés, hőszivattyú telepítés, prémium zsákos klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében – fix árak, valódi garancia.">
+    <meta name="description" content="Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta; tételes ajánlat helyszíni felmérés után.">
     <meta name="author" content="Northwind Hűtéstechnika Kft." />
 
     <link rel="canonical" href="https://northwind.hu/" />
     <meta property="og:url" content="https://northwind.hu/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://northwind.hu/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Northwind Hűtéstechnika – klíma, hőszivattyú és ipari hűtés">
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@northwind_hu" />
     <meta name="twitter:image" content="https://northwind.hu/og-image.png">
+    <meta name="twitter:image:alt" content="Northwind Hűtéstechnika – klíma, hőszivattyú és ipari hűtés">
     <meta property="og:title" content="Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – szakmai tapasztalat 1993 óta">
     <meta name="twitter:title" content="Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – szakmai tapasztalat 1993 óta">
-    <meta property="og:description" content="Szakmai tapasztalat 1993 óta: Fujitsu klímaszerelés, hőszivattyú telepítés, prémium zsákos klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében – fix árak, valódi garancia.">
-    <meta name="twitter:description" content="Szakmai tapasztalat 1993 óta: Fujitsu klímaszerelés, hőszivattyú telepítés, prémium zsákos klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében – fix árak, valódi garancia.">
+    <meta property="og:description" content="Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta; tételes ajánlat helyszíni felmérés után.">
+    <meta name="twitter:description" content="Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta; tételes ajánlat helyszíni felmérés után.">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "HVACBusiness",
+      "@type": "Organization",
       "@id": "https://northwind.hu/#business",
       "name": "Northwind Hűtéstechnika Kft.",
       "url": "https://northwind.hu/",
       "image": "https://northwind.hu/og-image.png",
-      "logo": "https://northwind.hu/og-image.png",
+      "logo": "https://northwind.hu/northwind-logo.png",
       "telephone": "+36 70 409 9760",
       "email": "northwind@northwind.hu",
-      "priceRange": "$$",
       "description": "Klímaszerelés, Fujitsu klímaberendezések, levegő-víz hőszivattyúk telepítése, prémium zsákos klímamosás és ipari hűtéstechnika – 1993 óta gyűjtött szakmai tapasztalattal.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "HU",
-        "addressRegion": "Pest",
-        "addressLocality": "Budapest"
-      },
       "areaServed": [
         { "@type": "AdministrativeArea", "name": "Budapest" },
         { "@type": "AdministrativeArea", "name": "Pest vármegye" }
       ],
-      "sameAs": [],
-      "openingHoursSpecification": [{
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "08:00",
-        "closes": "17:00"
-      }]
+      "sameAs": [
+        "https://www.facebook.com/northwindkft/",
+        "https://www.instagram.com/northwind_hutestechnika/"
+      ]
     }
     </script>
     <script type="application/ld+json">
@@ -67,44 +61,7 @@
 
   <body>
     <div id="root"></div>
-    <script>
-      // Canonical-host guard: normal visits on the published Lovable hostname
-      // continue to northwind.hu. A deliberate ?teszt=1 visit enables a
-      // tab-scoped test session so the freshly published Lovable build can be
-      // checked without changing the public or search-engine behavior.
-      (function () {
-        var p = window.location.pathname;
-        var isAdminArea =
-          p === "/admin" ||
-          p.indexOf("/admin/") === 0 ||
-          p === "/auth" ||
-          p.indexOf("/auth/") === 0;
-        var isLovableHost = window.location.hostname === "cool-comfort-heroes.lovable.app";
-
-        if (!isLovableHost || isAdminArea) {
-          return;
-        }
-
-        var requestedTestMode = new URLSearchParams(window.location.search).get("teszt") === "1";
-        var testMode = requestedTestMode;
-
-        try {
-          if (requestedTestMode) {
-            window.sessionStorage.setItem("northwind-lovable-test-mode", "1");
-          } else {
-            testMode = window.sessionStorage.getItem("northwind-lovable-test-mode") === "1";
-          }
-        } catch (_error) {
-          // If session storage is unavailable, the explicit ?teszt=1 URL still works.
-        }
-
-        if (!testMode) {
-          window.location.replace(
-            "https://northwind.hu" + window.location.pathname + window.location.search + window.location.hash
-          );
-        }
-      })();
-    </script>
+    <script src="/canonical-host-guard.js"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
@@ -6,6 +6,7 @@ import logo from "@/assets/logo.webp";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const location = useLocation();
   const isOnHomePage = location.pathname === "/";
   const isOnFujitsuPage = location.pathname.startsWith("/fujitsu");
@@ -23,6 +24,17 @@ const Header = () => {
     ...(!isOnFisherPage ? [{ href: "/fisher", label: "Fisher", brand: "fisher" as const }] : []),
     { href: getNavHref("#kapcsolat"), label: "Kapcsolat" },
   ];
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      setIsMenuOpen(false);
+      window.requestAnimationFrame(() => menuButtonRef.current?.focus());
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [isMenuOpen]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm border-b border-border/50">
@@ -44,7 +56,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav aria-label="Fő navigáció" className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -76,8 +88,13 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
+            ref={menuButtonRef}
+            type="button"
             className="md:hidden p-2 text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Mobilmenü bezárása" : "Mobilmenü megnyitása"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobil-navigacio"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -85,7 +102,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden py-4 border-t border-white/20 bg-background/80 backdrop-blur-lg rounded-b-xl animate-fade-in">
+          <nav id="mobil-navigacio" aria-label="Mobil navigáció" className="md:hidden py-4 border-t border-white/20 bg-background/80 backdrop-blur-lg rounded-b-xl animate-fade-in">
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a

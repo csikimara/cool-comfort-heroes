@@ -15,15 +15,29 @@ export type Promotion = {
 };
 
 export const PROMO_BUCKET = "promo-images";
+export const PROMO_SIGNED_URL_TTL_SECONDS = 60 * 60;
 
 export async function getPromoImageUrl(path: string | null): Promise<string | null> {
   if (!path) return null;
-  const { data } = await supabase.storage.from(PROMO_BUCKET).createSignedUrl(path, 60 * 60 * 24);
+  const { data } = await supabase.storage
+    .from(PROMO_BUCKET)
+    .createSignedUrl(path, PROMO_SIGNED_URL_TTL_SECONDS);
   return data?.signedUrl ?? null;
 }
 
+const getBudapestCalendarDate = (date = new Date()) => {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Europe/Budapest",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${values.year}-${values.month}-${values.day}`;
+};
+
 const isCurrent = (p: Promotion) => {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = getBudapestCalendarDate();
   if (p.starts_at && p.starts_at > today) return false;
   if (p.ends_at && p.ends_at < today) return false;
   return p.is_active;

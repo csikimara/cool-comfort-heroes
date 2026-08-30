@@ -26,20 +26,20 @@ const contactInfo = [
   },
   {
     icon: Mail,
-    label: "Email",
+    label: "E-mail",
     value: "northwind@northwind.hu",
-    href: "#kapcsolat",
+    href: "mailto:northwind@northwind.hu",
   },
   {
     icon: MapPin,
-    label: "Cím",
-    value: "1118 Budapest, Torbágy u. 16.",
-    href: "https://maps.google.com/?q=1118+Budapest+Torbágy+u.+16.",
+    label: "Szolgáltatási terület",
+    value: "Budapest és Pest vármegye",
+    href: "",
   },
   {
     icon: Clock,
     label: "Nyitvatartás",
-    value: "H-P: 8:00 - 17:00",
+    value: "H–P: 8:00–17:00",
     href: "",
   },
 ];
@@ -48,7 +48,7 @@ const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [attachment, setAttachment] = useState<File | null>(null);
-  const [gdprAccepted, setGdprAccepted] = useState(false);
+  const [privacyAcknowledged, setPrivacyAcknowledged] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -59,10 +59,10 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!gdprAccepted) {
+    if (!privacyAcknowledged) {
       toast({
-        title: "Adatkezelési hozzájárulás szükséges",
-        description: "Kérjük, fogadja el az adatkezelési tájékoztatót az üzenet elküldéséhez.",
+        title: "Adatkezelési tájékoztató",
+        description: "Kérjük, jelezze, hogy megismerte az adatkezelési tájékoztatót.",
         variant: "destructive",
       });
       return;
@@ -75,18 +75,27 @@ const Contact = () => {
       });
       return;
     }
+    // Kliensoldali előellenőrzés (a végleges ellenőrzés szerveroldalon történik).
+    if (attachment && attachment.size > MAX_FILE_SIZE) {
+      toast({
+        title: "Túl nagy fájl",
+        description: "Legfeljebb 10 MB méretű fájl tölthető fel.",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (attachment && !ALLOWED_MIME_TYPES.includes(attachment.type.toLowerCase())) {
+      toast({
+        title: "Nem támogatott fájlformátum",
+        description: "Engedélyezett formátumok: PDF, JPG, JPEG és PNG.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Kliensoldali előellenőrzés (a végleges ellenőrzés szerveroldalon történik)
-      if (attachment) {
-        if (attachment.size > MAX_FILE_SIZE) {
-          throw new Error("A csatolt fájl mérete túl nagy (max. 10 MB).");
-        }
-        if (!ALLOWED_MIME_TYPES.includes(attachment.type.toLowerCase())) {
-          throw new Error("Nem támogatott fájlformátum. Engedélyezett: PDF, JPG, JPEG, PNG.");
-        }
-      }
 
       // Minden adat EGY kérésben megy az Edge Functionnek (multipart/form-data).
       // A böngésző soha nem tölt fel közvetlenül a Storage bucketbe.
@@ -115,19 +124,21 @@ const Contact = () => {
 
       setFormData({ name: "", email: "", phone: "", message: "" });
       setAttachment(null);
-      setGdprAccepted(false);
+      setPrivacyAcknowledged(false);
       setTurnstileToken(null);
       if (typeof window !== "undefined" && window.turnstile) {
         try { window.turnstile.reset(); } catch { /* noop */ }
       }
-    } catch (error) {
-      console.error("Submit error:", error);
+    } catch {
+      // Turnstile tokens are single-use. If a later server step fails after
+      // verification, force a fresh challenge before the user retries.
+      setTurnstileToken(null);
+      if (typeof window !== "undefined" && window.turnstile) {
+        try { window.turnstile.reset(); } catch { /* noop */ }
+      }
       toast({
         title: "Hiba történt",
-        description:
-          error instanceof Error && error.message
-            ? error.message
-            : "Az üzenet küldése sikertelen. Kérjük, próbálja újra később.",
+        description: "Az üzenet küldése sikertelen. Kérjük, próbálja újra később.",
         variant: "destructive",
       });
     } finally {
@@ -144,13 +155,13 @@ const Contact = () => {
             Kapcsolat
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-            Kérjen{" "}
-            <span className="text-gradient">ingyenes árajánlatot</span>
+            Egyeztessen{" "}
+            <span className="text-gradient">helyszíni felmérést</span>
           </h2>
           <p className="text-lg text-muted-foreground mb-2">
             Vegye fel velünk a kapcsolatot telefonon, emailben vagy az alábbi űrlap kitöltésével!
           </p>
-          <p className="text-sm text-muted-foreground/80">
+          <p className="text-sm text-muted-foreground">
             Klímaszerelés, karbantartás és ipari hűtéstechnika Budapesten és Pest vármegye egész területén – szakmai tapasztalattal 1993 óta.
           </p>
         </div>
@@ -231,26 +242,32 @@ const Contact = () => {
                 </label>
                 <Input
                   id="name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
                   placeholder="Az Ön neve"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
+                  maxLength={100}
                   className="h-12"
                 />
               </div>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email *
+                    E-mail *
                   </label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
+                    autoComplete="email"
                     placeholder="pelda@email.hu"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
+                    maxLength={255}
                     className="h-12"
                   />
                 </div>
@@ -260,10 +277,13 @@ const Contact = () => {
                   </label>
                   <Input
                     id="phone"
+                    name="phone"
                     type="tel"
+                    autoComplete="tel"
                     placeholder="+36 30 123 4567"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    maxLength={50}
                     className="h-12"
                   />
                 </div>
@@ -274,10 +294,13 @@ const Contact = () => {
                 </label>
                 <Textarea
                   id="message"
+                  name="message"
+                  autoComplete="off"
                   placeholder="Írja le, miben segíthetünk..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   required
+                  maxLength={5000}
                   rows={5}
                   className="resize-none"
                 />
@@ -296,7 +319,7 @@ const Contact = () => {
                     if (file && file.size > 10 * 1024 * 1024) {
                       toast({
                         title: "Túl nagy fájl",
-                        description: "Maximum 10 MB méretű fájl tölthető fel.",
+                        description: "Legfeljebb 10 MB méretű fájl tölthető fel.",
                         variant: "destructive",
                       });
                       e.target.value = "";
@@ -313,14 +336,14 @@ const Contact = () => {
               </div>
               <div className="flex items-start gap-3 pt-1">
                 <Checkbox
-                  id="gdpr-consent"
-                  checked={gdprAccepted}
-                  onCheckedChange={(checked) => setGdprAccepted(checked === true)}
+                  id="privacy-acknowledgement"
+                  checked={privacyAcknowledged}
+                  onCheckedChange={(checked) => setPrivacyAcknowledged(checked === true)}
                   className="mt-1"
                   required
                 />
-                <label htmlFor="gdpr-consent" className="text-sm text-foreground/80 leading-relaxed cursor-pointer">
-                  Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Hűtéstechnika Kft. a megkeresésem megválaszolása, ajánlatadás, illetve a szolgáltatás előkészítése (pl. felmérés, hibafelvétel) céljából kezelje a megadott adataimat és a feltöltött fájlokat. *
+                <label htmlFor="privacy-acknowledgement" className="text-sm text-foreground/80 leading-relaxed cursor-pointer">
+                  Megismertem az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót (új lapon nyílik)</a>. Tudomásul veszem, hogy az adataimat a megkeresésem megválaszolásához, valamint az általam kért felmérés vagy ajánlat előkészítéséhez kezelik. *
                 </label>
               </div>
               <TurnstileWidget onToken={setTurnstileToken} className="min-h-[65px]" />
@@ -338,7 +361,7 @@ const Contact = () => {
                 )}
               </Button>
               <p className="text-sm sm:text-sm text-foreground/80 mt-3 text-center leading-relaxed">
-                <span className="font-semibold text-foreground">Korrekt elszámolás:</span> Nincsenek rejtett költségek és váratlan kiszállási díjak. Amit a felméréskor rögzítünk, az a végösszeg.
+                <span className="font-semibold text-foreground">Korrekt elszámolás:</span> Tételes ajánlatot adunk; az esetleges, előre nem látható eltéréseket a munka folytatása előtt egyeztetjük.
               </p>
             </form>
           </div>

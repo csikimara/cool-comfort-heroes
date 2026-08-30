@@ -34,7 +34,7 @@ const FisherContactForm = lazy(() => import("@/components/fisher/FisherContactFo
 const BrandGallery = lazy(() => import("@/components/BrandGallery"));
 
 const NAVY = "#1f3d66";
-const LIGHT = "#007ec6";
+const LIGHT = "#0077bd";
 const FISHER_HP_URL =
   "https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu#sp-main-body";
 
@@ -63,15 +63,15 @@ const FisherHoszivattyu = () => {
   return (
     <div className="fisher-brand min-h-screen bg-background text-foreground">
       <SEOHead
-        title="Fisher e-HeatR Hőszivattyú Telepítés | Gazdaságos Fűtés | Northwind"
-        description="Akár -28°C-ig üzembiztos Fisher hőszivattyúk H-tarifával. Komplett fűtés, hűtés és melegvíz megoldások. Ingyenes helyszíni felmérés!"
+        title="Fisher e-HeatR Hőszivattyú Telepítés | Fűtés és melegvíz | Northwind"
+        description="Fisher e-HeatR levegő-víz hőszivattyúk fűtéshez, hűtéshez és melegvízhez. Modellspecifikus műszaki adatok, H árszabási feltételek és helyszíni felmérés."
       />
       <Header />
       <Suspense fallback={null}>
         <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 sm:gap-4 items-end"><FujitsuFloatingButton /></div>
       </Suspense>
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {/* Back nav */}
         <div className="bg-white pt-28 pb-2">
           <div className="container mx-auto px-4 flex flex-wrap gap-3">
@@ -118,7 +118,7 @@ const FisherHoszivattyu = () => {
                   }}
                 >
                   <ShieldCheck className="w-3.5 h-3.5" />
-                  Fisher hivatalos partner
+                  Fisher hőszivattyús megoldások
                 </span>
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] text-foreground mb-5">
                   Fisher{" "}
@@ -192,7 +192,7 @@ const FisherHoszivattyu = () => {
                 Hatékonyság és teljesítmény
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Maximális hatékonyság minden rendszerhez
+                Hatékonyság a rendszer adottságaihoz méretezve
               </h2>
               <p className="text-base text-muted-foreground">
                 A++ besorolás padlófűtéshez (35°C) és radiátoros rendszerekhez
@@ -202,8 +202,8 @@ const FisherHoszivattyu = () => {
 
             <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-8">
               {[
-                { img: erp35, title: "Padlófűtés", temp: "35°C előremenő hőmérséklet", desc: "Ideális új építésű, alacsony hőmérsékletű rendszerekhez." },
-                { img: erp55, title: "Radiátoros rendszer", temp: "55°C előremenő hőmérséklet", desc: "Meglévő radiátoros fűtéshez is kiváló választás." },
+                { img: erp35, title: "Padlófűtés", temp: "35°C előremenő hőmérséklet", desc: "Alacsony előremenő hőmérsékletű rendszerekhez méretezhető." },
+                { img: erp55, title: "Radiátoros rendszer", temp: "55°C előremenő hőmérséklet", desc: "Meglévő radiátoros rendszerhez a hőleadók és a hőveszteség ellenőrzése után javasolható." },
               ].map((b) => (
                 <div
                   key={b.title}
@@ -212,6 +212,8 @@ const FisherHoszivattyu = () => {
                   <img
                     src={b.img}
                     alt={`A++ energiaosztály – Erp ${b.temp}`}
+                    width={1406}
+                    height={1112}
                     className="w-32 h-auto mx-auto mb-5"
                     loading="lazy"
                     decoding="async"
@@ -239,8 +241,9 @@ const FisherHoszivattyu = () => {
                 style={{ color: NAVY }}
               />
               <p className="text-sm sm:text-base text-foreground/90 font-medium leading-relaxed">
-                Megbízható fűtés akár <strong>-28°C-os</strong> külső
-                hőmérséklet mellett is.
+                Egyes e-HeatR split modellek gyártói működési tartománya fűtésben
+                akár <strong>-28°C</strong>-ig terjed; a kiválasztott modell tényleges
+                teljesítményét mindig a műszaki adatlap és a tervezési hőmérséklet alapján ellenőrizzük.
               </p>
             </div>
           </div>
@@ -299,13 +302,15 @@ const FisherHoszivattyu = () => {
                   className="rounded-3xl p-8 sm:p-10 border-2 shadow-elevated flex items-center justify-center"
                   style={{
                     background:
-                      "linear-gradient(135deg, #1f3d66 0%, #007ec6 100%)",
+                      "linear-gradient(135deg, #1f3d66 0%, #0077bd 100%)",
                     borderColor: "rgba(31,61,102,0.2)",
                   }}
                 >
                   <img
                     src={controller}
                     alt="Fisher e-HeatR érintőképernyős hőszivattyú vezérlő"
+                    width={500}
+                    height={500}
                     className="w-full max-w-xs h-auto"
                     loading="lazy"
                     decoding="async"
@@ -330,8 +335,8 @@ const FisherHoszivattyu = () => {
                 Fisher e-HeatR teljesítményszintek
               </h2>
               <p className="text-base text-muted-foreground">
-                Minden otthonhoz a megfelelő méretű hőszivattyú – válassza ki a
-                fűtési igényének megfelelő modellt.
+                Több teljesítményszint közül, hőveszteség-számítás és helyszíni
+                adottságok alapján választjuk ki a megfelelő modellt.
               </p>
             </div>
 
@@ -348,6 +353,8 @@ const FisherHoszivattyu = () => {
                 <img
                   src={composite}
                   alt="Fisher e-HeatR hőszivattyú beltéri egység, kültéri egység és érintőképernyős vezérlő"
+                  width={500}
+                  height={500}
                   className="w-full h-auto block mx-auto"
                   loading="lazy"
                   decoding="async"
@@ -419,12 +426,21 @@ const FisherHoszivattyu = () => {
                     Meteorológus ajánlja
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 leading-snug">
-                    „Németh Lajos meteorológus a Fishert ajánlja!"
+                    Németh Lajos meteorológus a Fishert ajánlja
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    A Fisher e-HeatR hőszivattyúk a Columbus Klíma hivatalos
-                    garanciájával és a Northwind szakszerű telepítésével –
-                    megbízható minőség kedvező áron.
+                    Fisher e-HeatR hőszivattyúk a kiválasztott termékre vonatkozó
+                    Columbus Klíma garanciafeltételekkel és a Northwind szakszerű
+                    telepítésével. Az ajánlás a Fisher{" "}
+                    <a
+                      href="https://www.fisherklima.hu/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 hover:text-foreground"
+                    >
+                      hivatalos oldalán
+                    </a>{" "}
+                    is ellenőrizhető.
                   </p>
                 </div>
               </div>
@@ -460,7 +476,7 @@ const FisherHoszivattyu = () => {
               <div className="grid sm:grid-cols-[auto,1fr] gap-6 items-start">
                 <div
                   className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0"
-                  style={{ background: "linear-gradient(135deg, #1f3d66 0%, #007ec6 100%)" }}
+                  style={{ background: "linear-gradient(135deg, #1f3d66 0%, #0077bd 100%)" }}
                 >
                   <Zap className="w-8 h-8 text-white" />
                 </div>
@@ -469,23 +485,23 @@ const FisherHoszivattyu = () => {
                     className="inline-block text-sm font-bold uppercase tracking-wider mb-2"
                     style={{ color: NAVY }}
                   >
-                    Költséghatékony üzemeltetés
+                    Kedvezményes árszabás lehetősége
                   </span>
                   <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
                     H-tarifa: kedvezményes áram a fűtési szezonban
                   </h2>
                   <p className="text-base text-muted-foreground leading-relaxed mb-5">
-                    A Fisher e-HeatR hőszivattyú kompatibilis a kedvezményes
-                    H-tarifával, amely <strong>október 15. és április 15.</strong>{" "}
-                    között jelentősen csökkenti a fűtés üzemeltetési költségét.
-                    Saját, külön mért áramkörön keresztül a hőszivattyú a
-                    legkedvezőbb áramdíjjal működtethető.
+                    A feltételeknek megfelelő hőszivattyúhoz külön mért áramkörön
+                    H árszabás igényelhető. A kedvezményes elszámolás a fűtési idényben,
+                    <strong> október 15. és április 15.</strong> között alkalmazható.
+                    A jogosultságot és a mérőhely kialakítását az illetékes szolgáltató
+                    bírálja el; a megtakarítás mértéke a fogyasztástól és az aktuális díjaktól függ.
                   </p>
                   <ul className="space-y-2.5">
                     {[
                       "Kedvezményes elektromos energia a fűtési időszakban",
-                      "Külön mérőóra – átlátható, alacsony rezsi",
-                      "A Northwind szakértői segítenek a rendszer beüzemelésében",
+                      "Külön mért áramkör és szolgáltatói jóváhagyás szükséges",
+                      "A műszaki adatlap és a szolgáltatói feltételek alapján ellenőrizzük a jogosultságot",
                     ].map((b) => (
                       <li
                         key={b}
@@ -499,6 +515,16 @@ const FisherHoszivattyu = () => {
                       </li>
                     ))}
                   </ul>
+                  <a
+                    href="https://www.mvmnext.hu/ee/egyetemes-szolgaltatas/szolgaltatasok/villamos-energia/villamos-energia-tarifak/h"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 mt-5 text-sm font-semibold underline underline-offset-2"
+                    style={{ color: NAVY }}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Aktuális H árszabási feltételek az MVM-nél
+                  </a>
                 </div>
               </div>
             </div>
@@ -534,8 +560,8 @@ const FisherHoszivattyu = () => {
               <p className="text-base text-muted-foreground mb-8 leading-relaxed">
                 1993 óta gyűjtött hűtéstechnikai szakmai
                 háttérrel. Helyszíni felmérés és szakszerű rendszervázlat –
-                kötelezettségek nélkül. Hivatalos Columbus Klíma garancia a
-                Fisher hőszivattyúkra.
+                kötelezettségek nélkül. A Fisher hőszivattyúk garanciájára az adott
+                termék és ajánlat hivatalos Columbus Klíma feltételei vonatkoznak.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button

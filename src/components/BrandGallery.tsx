@@ -3,6 +3,21 @@ import { Images, Loader2 } from "lucide-react";
 import Lightbox from "yet-another-react-lightbox";
 import Video from "yet-another-react-lightbox/plugins/video";
 import "yet-another-react-lightbox/styles.css";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  GALLERY_BASE_URL,
+  isGalleryVideoUrl,
+  MAX_GALLERY_ITEMS_PER_MANIFEST,
+  readGalleryManifestText,
+  safeGalleryMediaUrl,
+} from "@/lib/gallery-media-url";
 
 type Manifest = {
   images?: Array<string | { src: string; alt?: string; caption?: string }>;
@@ -15,8 +30,6 @@ type LoadedMedia = {
   title?: string;
   type: "image" | "video";
 };
-
-const isVideoFile = (name: string) => /\.(mp4|webm|ogg|mov|m4v)$/i.test(name);
 
 interface BrandGalleryProps {
   /** Folder slug under https://northwind.hu/galeria/ (e.g. "lakossagi-split"). */
@@ -47,7 +60,7 @@ interface BrandGalleryProps {
   buttonClassName?: string;
 }
 
-const BASE = "https://northwind.hu/galeria";
+const GALLERY_FETCH_TIMEOUT_MS = 10_000;
 
 const getFilename = (src: string) => {
   const cleaned = src.split("?")[0].split("#")[0];
@@ -79,36 +92,68 @@ const BrandGallery = ({
     setStatus("loading");
     setImages([]);
 
-    const folder = `${BASE}/${slug}`;
-    const altFallback = defaultAlt ?? title;
+    if (!/^[a-z0-9-]{1,80}$/i.test(slug)) {
+      setStatus("empty");
+      return () => {
+        cancelled = true;
+      };
+    }
 
-    fetch(`${folder}/index.php`, { cache: "no-store" })
+    const folder = `${GALLERY_BASE_URL}/${slug}`;
+    const altFallback = defaultAlt ?? title;
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(
+      () => controller.abort(),
+      GALLERY_FETCH_TIMEOUT_MS,
+    );
+
+    fetch(`${folder}/index.php`, {
+      cache: "no-store",
+      credentials: "omit",
+      referrerPolicy: "no-referrer",
+      signal: controller.signal,
+    })
       .then(async (res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const text = await res.text();
+        const text = await readGalleryManifestText(res);
         const raw: Manifest | string[] = JSON.parse(text);
+        if (!Array.isArray(raw) && (raw === null || typeof raw !== "object")) {
+          throw new Error("Invalid gallery manifest");
+        }
         const data: Manifest = Array.isArray(raw)
           ? { images: raw }
           : { images: raw.images ?? raw.files ?? [] };
+        if (!Array.isArray(data.images)) {
+          throw new Error("Invalid gallery manifest items");
+        }
         if (cancelled) return;
 
-        const list = (data.images ?? [])
+        const list = data.images
+          .slice(0, MAX_GALLERY_ITEMS_PER_MANIFEST)
           .map((item) => {
-            if (typeof item === "string") {
-              return {
-                src: `${folder}/${item}`,
-                alt: altFallback,
-                type: isVideoFile(item) ? "video" : "image",
-              } as LoadedMedia;
+            if (
+              typeof item !== "string" &&
+              (item === null || typeof item !== "object" || typeof item.src !== "string")
+            ) {
+              return null;
             }
-            const src = item.src.startsWith("http") ? item.src : `${folder}/${item.src}`;
+            const source = typeof item === "string" ? item : item.src;
+            const src = safeGalleryMediaUrl(slug, source);
+            if (!src) return null;
             return {
               src,
-              alt: item.alt ?? altFallback,
-              title: item.caption,
-              type: isVideoFile(src) ? "video" : "image",
+              alt:
+                typeof item !== "string" && typeof item.alt === "string"
+                  ? item.alt.slice(0, 300)
+                  : altFallback,
+              title:
+                typeof item !== "string" && typeof item.caption === "string"
+                  ? item.caption.slice(0, 500)
+                  : undefined,
+              type: isGalleryVideoUrl(src) ? "video" : "image",
             } as LoadedMedia;
           })
+          .filter((item): item is LoadedMedia => item !== null)
           .filter((i) => {
             if (!i.src) return false;
             const name = getFilename(i.src).toLowerCase();
@@ -124,10 +169,15 @@ const BrandGallery = ({
       })
       .catch(() => {
         if (!cancelled) setStatus("empty");
+      })
+      .finally(() => {
+        window.clearTimeout(timeoutId);
       });
 
     return () => {
       cancelled = true;
+      controller.abort();
+      window.clearTimeout(timeoutId);
     };
   }, [slug, filenamePrefix, defaultAlt, title]);
 
@@ -189,46 +239,32 @@ const BrandGallery = ({
           slides={slides}
           plugins={[Video]}
         />
-        {showEmptyNotice && (
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label="Referenciák hamarosan"
-            className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
-            onClick={() => setShowEmptyNotice(false)}
-          >
-            <div
-              className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-              aria-hidden="true"
-            />
-            <div
-              className="relative max-w-md w-full rounded-2xl bg-white p-8 text-center shadow-elevated"
-              onClick={(e) => e.stopPropagation()}
-            >
+        <Dialog open={showEmptyNotice} onOpenChange={setShowEmptyNotice}>
+          <DialogContent className="max-w-md rounded-2xl p-8 text-center shadow-elevated">
+            <DialogHeader className="items-center text-center sm:text-center">
               <div
                 className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center"
                 style={{ backgroundColor: `${accent}14` }}
               >
-                <Images className="w-7 h-7" style={{ color: accent }} />
+                <Images className="w-7 h-7" style={{ color: accent }} aria-hidden="true" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
+              <DialogTitle className="text-xl font-bold text-foreground">
                 Referenciáink hamarosan feltöltésre kerülnek!
-              </h3>
-              <p className="text-sm text-muted-foreground mb-6">
+              </DialogTitle>
+              <DialogDescription className="text-sm text-muted-foreground">
                 Dolgozunk a galéria frissítésén – hamarosan visszatérünk friss
                 képekkel a legutóbbi telepítéseinkről.
-              </p>
-              <button
+              </DialogDescription>
+            </DialogHeader>
+              <DialogClose
                 type="button"
-                onClick={() => setShowEmptyNotice(false)}
                 className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-white font-semibold text-sm hover:opacity-90 transition-opacity"
                 style={{ backgroundColor: accent }}
               >
                 Bezárás
-              </button>
-            </div>
-          </div>
-        )}
+              </DialogClose>
+          </DialogContent>
+        </Dialog>
       </>
     );
 
@@ -288,6 +324,7 @@ const BrandGallery = ({
             {images.map((media, i) => (
               <button
                 key={media.src}
+                type="button"
                 onClick={() => setOpenIndex(i)}
                 className="group relative mb-3 sm:mb-4 block w-full overflow-hidden rounded-xl border-2 bg-secondary/40 transition-all focus:outline-none focus:ring-2"
                 style={{
@@ -302,6 +339,8 @@ const BrandGallery = ({
                     muted
                     playsInline
                     preload="metadata"
+                    aria-hidden="true"
+                    tabIndex={-1}
                     onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
                     onMouseLeave={(e) => {
                       e.currentTarget.pause();

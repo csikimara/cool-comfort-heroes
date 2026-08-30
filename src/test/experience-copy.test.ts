@@ -33,25 +33,25 @@ const allCopy = Object.values(sources).join("\n");
 const canonicalExperienceTitle =
   "Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – szakmai tapasztalat 1993 óta";
 const canonicalExperienceDescription =
-  "Szakmai tapasztalat 1993 óta: Fujitsu klímaszerelés, hőszivattyú telepítés, prémium zsákos klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében – fix árak, valódi garancia.";
+  "Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta; tételes ajánlat helyszíni felmérés után.";
 
 describe("professional-history copy", () => {
   it("does not use a hard-coded experience counter that becomes stale", () => {
     expect(allCopy).not.toMatch(/\b33(?:\+|\s+év(?:es)?)/iu);
   });
 
-  it("does not claim an unverified legal-company founding year", () => {
-    expect(allCopy).not.toMatch(/\b2009\s+óta\b/iu);
+  it("does not claim the unsupported 2003 Northwind date", () => {
+    expect(allCopy).not.toMatch(/Northwind(?:\s+néven)?[^\n]{0,40}\b2003\b/iu);
     expect(allCopy).not.toContain("foundingDate");
     expect(allCopy).not.toMatch(/Northwind Hűtéstechnika Kft\.?\s+1993 óta/iu);
   });
 
-  it("states professional experience and the Northwind name separately", () => {
+  it("states professional experience and the legal company history separately", () => {
     expect(sources["src/components/About.tsx"]).toContain(
-      "Szakmai múltunk 1993-ig nyúlik vissza, Northwind néven pedig 2003 óta dolgozunk.",
+      "Szakmai múltunk 1993-ig nyúlik vissza, a Northwind Hűtéstechnika Kft. pedig 2009 óta működik.",
     );
     expect(allCopy).toContain("Szakmai tapasztalat 1993 óta");
-    expect(allCopy).toContain("Northwind néven 2003 óta");
+    expect(allCopy).toContain("A Northwind Hűtéstechnika Kft. 2009 óta");
   });
 
   it("keeps static and client-side SEO titles identical", () => {

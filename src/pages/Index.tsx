@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SEOHead from "@/components/SEOHead";
-import JsonLd from "@/components/JsonLd";
 import { useScrollToHash } from "@/hooks/useScrollToHash";
 
 // Lazy load below-the-fold sections
@@ -12,44 +11,9 @@ const MaintenanceTimeline = lazy(() => import("@/components/MaintenanceTimeline"
 const TransparentPricing = lazy(() => import("@/components/TransparentPricing"));
 const Promotions = lazy(() => import("@/components/Promotions"));
 const Contact = lazy(() => import("@/components/Contact"));
-const GoogleMap = lazy(() => import("@/components/GoogleMap"));
 const Footer = lazy(() => import("@/components/Footer"));
 const FujitsuFloatingButton = lazy(() => import("@/components/FujitsuFloatingButton"));
 const FisherFloatingButton = lazy(() => import("@/components/FisherFloatingButton"));
-
-const businessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "HVACBusiness",
-  name: "Northwind Hűtéstechnika Kft.",
-  description:
-    "Profi klímaszerelés, zsákos mélytisztítás és ipari hűtéstechnika Budapesten és Pest vármegyében. Japán minőség (Fujitsu KG), rejtett költségek nélkül, 1993 óta gyűjtött szakmai tapasztalattal.",
-  url: "https://northwind.hu",
-  telephone: "+36704099760",
-  email: "northwind@northwind.hu",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Torbágy u. 16.",
-    addressLocality: "Budapest",
-    postalCode: "1118",
-    addressCountry: "HU",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 47.4634,
-    longitude: 19.0234,
-  },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    opens: "08:00",
-    closes: "17:00",
-  },
-  areaServed: {
-    "@type": "State",
-    name: "Budapest és Pest vármegye",
-  },
-  priceRange: "$$",
-};
 
 const Index = () => {
   useScrollToHash();
@@ -57,11 +21,10 @@ const Index = () => {
     <div className="min-h-screen">
       <SEOHead
         title="Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – szakmai tapasztalat 1993 óta"
-        description="Szakmai tapasztalat 1993 óta: Fujitsu klímaszerelés, hőszivattyú telepítés, prémium zsákos klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében – fix árak, valódi garancia."
+        description="Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta; tételes ajánlat helyszíni felmérés után."
       />
-      <JsonLd data={businessJsonLd} />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <Suspense fallback={null}>
           <Services />
@@ -70,7 +33,6 @@ const Index = () => {
           <TransparentPricing />
           <Promotions />
           <Contact />
-          <GoogleMap />
         </Suspense>
       </main>
       <Suspense fallback={null}>

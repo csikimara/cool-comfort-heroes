@@ -25,6 +25,8 @@ export type Database = {
           email: string
           id: string
           ip_hash: string | null
+          is_consumer_complaint: boolean
+          legal_hold_until: string | null
           message: string
           name: string
           page_url: string | null
@@ -41,6 +43,8 @@ export type Database = {
           email: string
           id?: string
           ip_hash?: string | null
+          is_consumer_complaint?: boolean
+          legal_hold_until?: string | null
           message: string
           name: string
           page_url?: string | null
@@ -57,6 +61,8 @@ export type Database = {
           email?: string
           id?: string
           ip_hash?: string | null
+          is_consumer_complaint?: boolean
+          legal_hold_until?: string | null
           message?: string
           name?: string
           page_url?: string | null
@@ -142,6 +148,13 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      set_contact_message_complaint_status: {
+        Args: {
+          p_id: string
+          p_is_complaint: boolean
+        }
+        Returns: undefined
       }
     }
     Enums: {

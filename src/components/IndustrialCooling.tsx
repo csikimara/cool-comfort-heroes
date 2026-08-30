@@ -4,66 +4,66 @@ import { Link } from "react-router-dom";
 const sections = [
   {
     icon: Droplets,
-    title: "Ipari hűtés és Chiller (folyadékhűtő) rendszerek – Teljes körű szakmai kivitelezés",
+    title: "Ipari hűtés és Chiller (folyadékhűtő) rendszerek – Projektalapú szakmai kivitelezés",
     galleryHref: "/referenciak/ipari-hutes",
-    desc: "Vállaljuk komplex ipari hűtési rendszerek tervezését és teljes körű, kulcsrakész kivitelezését, levéve a logisztikai és szervezési terhet az Ön válláról. A teljes folyamatot kézben tartjuk a tervezéstől az üzemeltetésig.",
+    desc: "Komplex ipari hűtési rendszerek tervezését és kivitelezését a felmérés után egyeztetett műszaki tartalom és felelősségi kör szerint vállaljuk. A projektben rögzített feladatokat a tervezéstől az átadásig összehangoljuk.",
     bullets: [
-      "Projektmenedzsment és Logisztika: hatósági ügyintézés, útfoglalási engedélyek, daruzás vezénylése és precíz helyszíni letelepítés.",
-      "Szakszerű Telepítés és Beüzemelés: chillerek hidraulikai bekötése, rendszerfeltöltés és hivatalos műszaki beüzemelés a gyári garancia megőrzésével.",
+      "Projektmenedzsment és logisztika: az ajánlatban rögzített körben engedélyezési egyeztetés, daruzás és helyszíni letelepítés szervezése.",
+      "Szakszerű telepítés és beüzemelés: chillerek hidraulikai bekötése, rendszerfeltöltés és a gyártói előírások szerinti műszaki beüzemelés a garanciafeltételek figyelembevételével.",
       "Fan-coil hálózatok: teljes belső vizes hálózat kiépítése, hidraulikai beszabályozása és a végponti egységek felszerelése.",
-      "Üzemeltetési biztonság: garanciális és azon túli karbantartás, téli-nyári átállások és folyamatos energiahatékonysági optimalizálás.",
+      "Üzemeltetési támogatás: a vállalási és gyártói feltételek szerinti garanciális, illetve azon túli karbantartás, téli-nyári átállás és időszakos működési felülvizsgálat.",
     ],
   },
   {
     icon: Snowflake,
-    title: "Légcsatornázható és Félipari megoldások – Kompromisszumok nélküli komfort",
+    title: "Légcsatornázható és félipari megoldások – Tervezett komfort",
     galleryHref: "/referenciak/legcsatornazhato",
-    desc: "A légcsatornázható rendszerek ott nyújtanak megoldást, ahol a fali split klímák telepítése esztétikailag vagy technikailag nem előnyös. A padlástérbe vagy álmennyezetbe rejtett berendezések láthatatlanul, diszkrét rácsokon keresztül biztosítanak tökéletes légelosztást.",
+    desc: "A légcsatornázható rendszerek ott nyújtanak megoldást, ahol a fali split klímák telepítése esztétikailag vagy technikailag nem előnyös. A padlástérbe vagy álmennyezetbe rejtett berendezések diszkrét rácsokon keresztül, tervezett légelosztással működnek.",
     bullets: [
       "Tagolt terek kezelése: egyetlen rendszerrel több kisebb helyiség (hálószobák, tárgyalók) egyidejű hűtése és fűtése.",
-      "Ipari védelem: szennyezett üzemi környezetben a gépet a hűtött téren kívül helyezzük el, védve a portól és növelve az élettartamot.",
-      "Huzatmentes kialakítás: a befúvási pontok precíz elhelyezésével megszüntetjük a közvetlen hideg légáramot, egyenletes komfortot teremtve.",
-      "Csendes üzem: a géphang a lakótéren kívül marad, ideális hálószobákba és csendes irodai környezetbe egyaránt.",
+      "Ipari védelem: ahol a műszaki feltételek engedik, szennyezett üzemi környezetben a gép a kezelt téren kívül helyezhető el a porterhelés mérséklésére.",
+      "Közvetlen huzathatást mérséklő kialakítás: a befúvási pontok tervezett elhelyezésével csökkenthető a közvetlen hideg légáram.",
+      "Csendesebb beltéri környezet: megfelelő gépelhelyezéssel a géphang jelentős része a kezelt téren kívül tartható.",
     ],
   },
   {
     icon: Wind,
-    title: "Központi Légkezelés (AHU) és Szűréstechnika – Az egészséges munkakörnyezet alapja",
+    title: "Központi légkezelés (AHU) és szűréstechnika – A megfelelő levegőminőség támogatása",
     galleryHref: "/referenciak/legtechnika",
-    desc: "Egy épület levegőminősége és energiahatékonysága a légkezelő rendszer (AHU) állapotán múlik. Szolgáltatásunk a teljes körű gépészeti felülvizsgálattól a precíz szűrőmenedzsmentig terjed, biztosítva az irodák és ipari csarnokok folyamatos frisslevegő-ellátását.",
+    desc: "Egy épület levegőminőségét és energiahatékonyságát jelentősen befolyásolja a légkezelő rendszer (AHU) állapota. Szolgáltatásunk a gépészeti felülvizsgálattól a szűrőmenedzsmentig terjed, támogatva az irodák és ipari csarnokok tervezett frisslevegő-ellátását.",
     bullets: [
       "Szűrőmenedzsment: rendszeres csere és ellenőrzés a G4-es osztálytól egészen az F9-es finomszűrőkig a belső levegő tisztaságáért.",
-      "Hővisszanyerő blokkok: lemezes és rotációs hőcserélők tisztítása és hatásfok-ellenőrzése a rezsiköltségek minimalizálása érdekében.",
-      "Higiéniai karbantartás: csepptálcák és belső szekciók szakszerű fertőtlenítése az egészséges munkakörnyezetért.",
+      "Hővisszanyerő blokkok: lemezes és rotációs hőcserélők tisztítása és hatásfok-ellenőrzése az energiahatékony működés támogatására.",
+      "Higiéniai karbantartás: csepptálcák és belső szekciók tisztítása, szükség esetén szakszerű fertőtlenítése.",
       "Műszaki diagnosztika: ventilátorok, motorok és zsalumozgatók állapotfelmérése és szükség szerinti javítása.",
     ],
   },
   {
     icon: Wrench,
-    title: "Márkafüggetlen Ipari Szerviz és Karbantartás – Üzembiztonság felsőfokon",
+    title: "Márkafüggetlen ipari szerviz és karbantartás",
     galleryHref: "/referenciak/karbantartas",
-    desc: "Az ipari hűtési rendszerek zavartalan működése nem szerencse, hanem tudatos karbantartás kérdése. Szervizszolgáltatásunk a gyors reakcióidőre és a precíz, műszeres diagnosztikára épül, hogy partnereinknek ne kelljen tartaniuk a drága leállásoktól.",
+    desc: "Az ipari hűtési rendszerek üzembiztonságát a tudatos karbantartás is támogatja. Szervizszolgáltatásunk a gyors reakcióra és a műszeres diagnosztikára épül, hogy csökkenthető legyen a váratlan, költséges leállások kockázata.",
     bullets: [
-      "Márkafüggetlen javítás: 1993 óta gyűjtött tapasztalattal szervizelünk bármilyen típusú ipari hűtő- és légkezelő berendezést gyártótól függetlenül.",
+      "Márkafüggetlen hibafeltárás: számos ipari hűtő- és légkezelő berendezést vizsgálunk; a javíthatóság a konkrét típus, dokumentáció és alkatrészellátás függvénye.",
       "Műszeres diagnosztika: modern mérőeszközökkel végzett hibafeltárás, hőkamerás ellenőrzés és elektromos paraméter-analízis a pontos javításért.",
-      "Karbantartási szerződések: egyedi igényekre szabott, ütemezett felülvizsgálatok, garantált élettartam és prioritást élvező hibaelhárítás.",
-      "Jogi megfelelőség: kötelező szivárgásvizsgálatok elvégzése és adminisztrációja a hatályos uniós és hazai szabályozások szerint.",
+      "Karbantartási szerződések: egyedi igényekre szabott, ütemezett felülvizsgálatok az üzembiztonság és a tervezhető hibaelhárítás támogatására.",
+      "Klímagáz-adminisztráció: az érintett berendezéseknél szükséges szivárgásvizsgálatok és nyilvántartási feladatok elvégzése a mindenkor hatályos szabályok szerint.",
     ],
   },
 ];
 
 const IndustrialCooling = () => {
   return (
-    <section id="ipari" className="py-20 sm:py-32 bg-secondary/50">
+    <section id="ipari" className="scroll-mt-24 py-20 sm:py-32 bg-secondary/50">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Szakmai múltunk 1993-ig nyúlik vissza, <strong>Northwind</strong> néven pedig 2003 óta támogatjuk ipari és kereskedelmi
+            Szakmai múltunk 1993-ig nyúlik vissza, a <strong>Northwind Hűtéstechnika Kft.</strong> pedig 2009 óta támogat ipari és kereskedelmi
             partnereinket. Nem csupán berendezéseket telepítünk, hanem komplex gépészeti rendszerekben gondolkodunk:
-            a folyadékhűtős rendszerektől a speciális, légcsatornázható félipari megoldásokig. Ez utóbbi különösen ideális
+            a folyadékhűtős rendszerektől a speciális, légcsatornázható félipari megoldásokig. Ez utóbbi megfelelő választás lehet
             olyan irodákba vagy tagolt terekbe, ahol a hagyományos split klímák elhelyezése nem esztétikus vagy nem
-            megoldható. Precíz szakmai tervezéssel és szakszerű kivitelezéssel garantáljuk a huzatmentes, optimális
-            légelosztást és az üzembiztos működést.
+            megoldható. Precíz szakmai tervezéssel és szakszerű kivitelezéssel törekszünk az egyenletes,
+            közvetlen huzathatást kerülő légelosztásra és az üzembiztos működésre.
           </p>
         </div>
 
@@ -72,8 +72,7 @@ const IndustrialCooling = () => {
             <article
               key={s.title}
               id={`ipari-0${idx + 1}`}
-              style={idx === 0 ? { scrollMarginTop: "120px" } : undefined}
-              className="relative rounded-2xl p-6 sm:p-10 border-2 border-primary/15 bg-gradient-card"
+              className="relative scroll-mt-28 rounded-2xl p-6 sm:p-10 border-2 border-primary/15 bg-gradient-card"
             >
               <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 md:gap-8 items-start">
                 <div className="w-16 h-16 rounded-xl bg-gradient-hero flex items-center justify-center flex-shrink-0">
@@ -82,9 +81,9 @@ const IndustrialCooling = () => {
                 <div>
                   <div className="flex items-baseline gap-3 mb-3 flex-wrap">
                     <span className="text-sm font-mono text-primary/60">0{idx + 1}</span>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground">
+                    <h2 className="text-2xl sm:text-3xl font-bold text-foreground">
                       {s.title}
-                    </h3>
+                    </h2>
                   </div>
                   <p className="text-base leading-relaxed text-muted-foreground mb-6">
                     {s.desc}

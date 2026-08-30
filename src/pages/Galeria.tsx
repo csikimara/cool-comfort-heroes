@@ -7,7 +7,16 @@ import "yet-another-react-lightbox/styles.css";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
+import NotFound from "@/pages/NotFound";
 import { Button } from "@/components/ui/button";
+import {
+  GALLERY_BASE_URL,
+  isGalleryVideoUrl,
+  MAX_GALLERY_ITEMS_PER_MANIFEST,
+  MAX_GALLERY_ITEMS_TOTAL,
+  readGalleryManifestText,
+  safeGalleryMediaUrl,
+} from "@/lib/gallery-media-url";
 
 type GalleryMeta = {
   title: string;
@@ -20,7 +29,13 @@ type GalleryMeta = {
   filenamePrefix?: string;
 };
 
-const GALLERY_META: Record<string, GalleryMeta> = {
+export const GALLERY_META: Record<string, GalleryMeta> = {
+  osszes: {
+    title: "Összes referenciamunkánk",
+    description: "Válogatás lakossági, hőszivattyús, légtechnikai és ipari munkáinkból.",
+    backHref: "/",
+    backLabel: "Vissza a kezdőlapra",
+  },
   "lakossagi-split": {
     title: "Lakossági split és multi-split referenciák",
     description: "Otthoni klímaszerelési munkáink – split és multi-split rendszerek.",
@@ -41,7 +56,7 @@ const GALLERY_META: Record<string, GalleryMeta> = {
   },
   karbantartas: {
     title: "Karbantartás és prémium zsákos klímamosás",
-    description: "Higiénikus, pormentes klímamosás és rendszeres karbantartás referenciái.",
+    description: "Alapos klímamosási és rendszeres karbantartási referenciáink.",
     backHref: "/lakossagi-klima",
     backLabel: "Vissza a lakossági szolgáltatásokhoz",
   },
@@ -98,7 +113,23 @@ const FALLBACK_META: GalleryMeta = {
   backLabel: "Vissza a kezdőlapra",
 };
 
-const BASE = "https://northwind.hu/galeria";
+export const galleryJsonLd = (slug: string, title: string) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Kezdőlap", item: "https://northwind.hu/" },
+    { "@type": "ListItem", position: 2, name: title, item: `https://northwind.hu/referenciak/${slug}` },
+  ],
+});
+
+const ALL_GALLERY_FOLDERS = [
+  "lakossagi-split",
+  "hoszivattyu",
+  "legcsatornazhato",
+  "karbantartas",
+  "ipari-hutes",
+  "legtechnika",
+] as const;
 
 type Manifest = {
   images?: Array<string | { src: string; alt?: string; caption?: string }>;
@@ -112,12 +143,13 @@ type LoadedImage = {
   type: "image" | "video";
 };
 
-const isVideoFile = (name: string) => /\.(mp4|webm|ogg|mov|m4v)$/i.test(name);
+const GALLERY_FETCH_TIMEOUT_MS = 10_000;
 
 const Galeria = () => {
   const { slug = "" } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const meta = GALLERY_META[slug] ?? FALLBACK_META;
+  const knownMeta = GALLERY_META[slug];
+  const meta = knownMeta ?? FALLBACK_META;
 
   const [images, setImages] = useState<LoadedImage[]>([]);
   const [status, setStatus] = useState<"loading" | "ready" | "empty" | "error">("loading");
@@ -128,45 +160,88 @@ const Galeria = () => {
     setStatus("loading");
     setImages([]);
 
-    const folderName = meta.folder ?? slug;
-    const folder = `${BASE}/${folderName}`;
+    // Only the explicitly published galleries may trigger manifest requests.
+    // Unknown route segments render the 404 page and perform no fetch.
+    if (!knownMeta) {
+      setStatus("empty");
+      return () => {
+        cancelled = true;
+      };
+    }
+
     const prefix = meta.filenamePrefix?.toLowerCase();
-    const fetchUrl = `${folder}/index.php`;
+    const folderNames = slug === "osszes"
+      ? [...ALL_GALLERY_FOLDERS]
+      : [meta.folder ?? slug];
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(
+      () => controller.abort(),
+      GALLERY_FETCH_TIMEOUT_MS,
+    );
 
-    fetch(fetchUrl, { cache: "no-store" })
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const text = await res.text();
-        const raw: Manifest | string[] = JSON.parse(text);
-        const data: Manifest = Array.isArray(raw)
-          ? { images: raw }
-          : { images: raw.images ?? raw.files ?? [] };
+    const loadFolder = async (folderName: string): Promise<LoadedImage[]> => {
+      const folder = `${GALLERY_BASE_URL}/${folderName}`;
+      const res = await fetch(`${folder}/index.php`, {
+        cache: "no-store",
+        credentials: "omit",
+        referrerPolicy: "no-referrer",
+        signal: controller.signal,
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await readGalleryManifestText(res);
+      const raw: Manifest | string[] = JSON.parse(text);
+      if (!Array.isArray(raw) && (raw === null || typeof raw !== "object")) {
+        throw new Error("Invalid gallery manifest");
+      }
+      const data: Manifest = Array.isArray(raw)
+        ? { images: raw }
+        : { images: raw.images ?? raw.files ?? [] };
+      if (!Array.isArray(data.images)) {
+        throw new Error("Invalid gallery manifest items");
+      }
+      return data.images
+        .slice(0, MAX_GALLERY_ITEMS_PER_MANIFEST)
+        .map((item) => {
+          if (
+            typeof item !== "string" &&
+            (item === null || typeof item !== "object" || typeof item.src !== "string")
+          ) {
+            return null;
+          }
+          const source = typeof item === "string" ? item : item.src;
+          const src = safeGalleryMediaUrl(folderName, source);
+          if (!src) return null;
+          return {
+            src,
+            alt:
+              typeof item !== "string" && typeof item.alt === "string"
+                ? item.alt.slice(0, 300)
+                : meta.title,
+            title:
+              typeof item !== "string" && typeof item.caption === "string"
+                ? item.caption.slice(0, 500)
+                : undefined,
+            type: isGalleryVideoUrl(src) ? "video" : "image",
+          } as LoadedImage;
+        })
+        .filter((item): item is LoadedImage => item !== null)
+        .filter((i) => {
+          if (!i.src) return false;
+          if (!prefix) return true;
+          const name = i.src.split("/").pop()?.toLowerCase() ?? "";
+          return name.startsWith(prefix);
+        });
+    };
+
+    Promise.all(folderNames.map((folder) => loadFolder(folder).catch(() => [])))
+      .then((lists) => {
         if (cancelled) return;
-
-        const list = (data.images ?? [])
-          .map((item) => {
-            if (typeof item === "string") {
-              return {
-                src: `${folder}/${item}`,
-                alt: meta.title,
-                type: isVideoFile(item) ? "video" : "image",
-              } as LoadedImage;
-            }
-            const src = item.src.startsWith("http") ? item.src : `${folder}/${item.src}`;
-            return {
-              src,
-              alt: item.alt ?? meta.title,
-              title: item.caption,
-              type: isVideoFile(src) ? "video" : "image",
-            } as LoadedImage;
-          })
-          .filter((i) => {
-            if (!i.src) return false;
-            if (!prefix) return true;
-            const name = i.src.split("/").pop()?.toLowerCase() ?? "";
-            return name.startsWith(prefix);
-          });
-
+        const seen = new Set<string>();
+        const list = lists.flat().filter((item) => {
+          if (seen.has(item.src)) return false;
+          seen.add(item.src);
+          return true;
+        }).slice(0, MAX_GALLERY_ITEMS_TOTAL);
         if (list.length === 0) {
           setStatus("empty");
         } else {
@@ -176,12 +251,17 @@ const Galeria = () => {
       })
       .catch(() => {
         if (!cancelled) setStatus("empty");
+      })
+      .finally(() => {
+        window.clearTimeout(timeoutId);
       });
 
     return () => {
       cancelled = true;
+      controller.abort();
+      window.clearTimeout(timeoutId);
     };
-  }, [slug, meta.title, meta.folder, meta.filenamePrefix]);
+  }, [slug, knownMeta, meta.title, meta.folder, meta.filenamePrefix]);
 
   const slides = useMemo(
     () =>
@@ -211,29 +291,22 @@ const Galeria = () => {
     }
   };
 
+  if (!knownMeta) return <NotFound />;
+
   return (
     <div className="min-h-screen">
       <SEOHead
         title={`${meta.title} | Northwind Hűtéstechnika`}
         description={meta.description}
       />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Kezdőlap", item: "https://northwind.hu/" },
-            { "@type": "ListItem", position: 2, name: "Referenciák", item: `https://northwind.hu/referenciak/${slug}` },
-            { "@type": "ListItem", position: 3, name: meta.title, item: `https://northwind.hu/referenciak/${slug}` },
-          ],
-        }}
-      />
+      {knownMeta && <JsonLd data={galleryJsonLd(slug, knownMeta.title)} />}
       <Header />
-      <main className="pt-24">
+      <main id="main-content" tabIndex={-1} className="pt-24">
         <section className="py-10 sm:py-14 bg-secondary/30 border-b border-border/50">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto mb-6 flex flex-wrap gap-3">
               <button
+                type="button"
                 onClick={handleBack}
                 className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border-2 border-primary/30 text-primary text-sm font-semibold hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
               >
@@ -290,6 +363,8 @@ const Galeria = () => {
                 {images.map((media, i) => (
                   <button
                     key={media.src}
+                    type="button"
+                    aria-label={`${media.alt} megnyitása`}
                     onClick={() => setOpenIndex(i)}
                     className="group relative aspect-square overflow-hidden rounded-xl border-2 border-primary/15 bg-secondary/40 hover:border-primary/50 transition-all focus:outline-none focus:ring-2 focus:ring-primary"
                   >
@@ -300,6 +375,8 @@ const Galeria = () => {
                         muted
                         playsInline
                         preload="metadata"
+                        aria-hidden="true"
+                        tabIndex={-1}
                         onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
                         onMouseLeave={(e) => {
                           e.currentTarget.pause();

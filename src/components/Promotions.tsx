@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Tag } from "lucide-react";
 import { usePublicPromotions } from "@/hooks/usePromotions";
+import { safePromotionUrl } from "@/lib/promotion-url";
 
 const Promotions = () => {
   const { promotions, images, loading } = usePublicPromotions();
@@ -20,15 +21,19 @@ const Promotions = () => {
         </div>
 
         <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
-          {promotions.map((promo) => (
-            <article
-              key={promo.id}
-              className="flex flex-col w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-md rounded-3xl overflow-hidden border border-border/50 bg-gradient-card shadow-elevated"
-            >
+          {promotions.map((promo) => {
+            const buttonUrl = safePromotionUrl(promo.button_url);
+            return (
+              <article
+                key={promo.id}
+                className="flex flex-col w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] max-w-md rounded-3xl overflow-hidden border border-border/50 bg-gradient-card shadow-elevated"
+              >
               {images[promo.id] ? (
                 <img
                   src={images[promo.id]}
                   alt={promo.title}
+                  width={1200}
+                  height={600}
                   loading="lazy"
                   className="w-full h-48 object-cover"
                 />
@@ -44,14 +49,15 @@ const Promotions = () => {
                     {promo.description}
                   </p>
                 )}
-                {promo.button_label && promo.button_url && (
+                {promo.button_label && buttonUrl && (
                   <Button asChild className="mt-auto w-full">
-                    <a href={promo.button_url}>{promo.button_label}</a>
+                    <a href={buttonUrl}>{promo.button_label}</a>
                   </Button>
                 )}
               </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

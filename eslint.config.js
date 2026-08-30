@@ -17,7 +17,12 @@ const fastRefreshAllowedExports = [
   "formatHungarianDate",
   "formatFileSize",
   "hasAttachment",
+  "safeAttachmentDownloadName",
   "createAttachmentSignedUrl",
+  "fisherJsonLd",
+  "fujitsuJsonLd",
+  "GALLERY_META",
+  "galleryJsonLd",
 ];
 
 export default tseslint.config(

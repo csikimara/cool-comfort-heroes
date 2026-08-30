@@ -4,12 +4,13 @@ import vm from "node:vm";
 import { describe, expect, it, vi } from "vitest";
 
 const html = readFileSync(resolve(process.cwd(), "index.html"), "utf8");
-const guardScript = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)]
-  .map((match) => match[1])
-  .find((script) => script.includes("Canonical-host guard"));
+const guardScript = readFileSync(
+  resolve(process.cwd(), "public/canonical-host-guard.js"),
+  "utf8",
+);
 
-if (!guardScript) {
-  throw new Error("Canonical-host guard script not found in index.html");
+if (!html.includes('<script src="/canonical-host-guard.js"></script>')) {
+  throw new Error("Canonical-host guard script reference not found in index.html");
 }
 
 type GuardOptions = {
@@ -84,10 +85,11 @@ describe("Lovable canonical-host guard", () => {
     expect(replace).not.toHaveBeenCalled();
   });
 
-  it("never redirects the admin and authentication routes", () => {
-    expect(runGuard({ pathname: "/admin" }).replace).not.toHaveBeenCalled();
-    expect(runGuard({ pathname: "/admin/messages" }).replace).not.toHaveBeenCalled();
-    expect(runGuard({ pathname: "/auth" }).replace).not.toHaveBeenCalled();
+  it("always redirects admin and authentication routes to the production host", () => {
+    for (const pathname of ["/admin", "/admin/messages", "/auth"]) {
+      const { replace } = runGuard({ pathname, search: "?teszt=1" });
+      expect(replace).toHaveBeenCalledWith(`https://northwind.hu${pathname}?teszt=1`);
+    }
   });
 
   it("matches only the exact published Lovable hostname", () => {

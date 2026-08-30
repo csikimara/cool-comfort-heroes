@@ -20,7 +20,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Eyebrow label (non-interactive) */}
-          <div className="inline-flex items-center gap-2 text-primary-foreground/80 text-sm font-medium tracking-wide uppercase mb-5 animate-fade-up">
+          <div className="inline-flex items-center gap-2 text-primary-foreground text-sm font-medium tracking-wide uppercase mb-5 animate-fade-up">
             <Snowflake className="w-4 h-4" />
             <span>Professzionális klíma megoldások</span>
           </div>
@@ -38,7 +38,7 @@ const Hero = () => {
 
           {/* Subtitle */}
           <p
-            className="hero-subtitle-force text-base sm:text-lg text-primary-foreground/80 dark:text-white max-w-2xl mx-auto mb-6 animate-fade-up"
+            className="hero-subtitle-force text-base sm:text-lg text-primary-foreground max-w-2xl mx-auto mb-6 animate-fade-up"
             style={{ animationDelay: "0.2s" }}
           >
             Lakossági és ipari klímamegoldások Budapesten és Pest vármegyében.
@@ -72,18 +72,18 @@ const Hero = () => {
 
           {/* Trust badges */}
           <div className="mt-10 pt-6 border-t border-primary-foreground/20 animate-fade-up relative z-10" style={{ animationDelay: "0.4s" }}>
-            <div className="flex flex-row flex-wrap justify-center gap-6 sm:gap-10 md:gap-12 text-primary-foreground/70">
+            <div className="flex flex-row flex-wrap justify-center gap-6 sm:gap-10 md:gap-12 text-primary-foreground">
               <div className="text-center">
                 <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">1993</div>
                 <div className="text-sm">Óta a szakmában</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">2000+</div>
-                <div className="text-sm">Elégedett ügyfél</div>
+                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">2009</div>
+                <div className="text-sm">A Kft. alapítása</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-primary-foreground">100%</div>
-                <div className="text-sm">Garanciális munka</div>
+                <div className="text-xl sm:text-2xl font-bold text-primary-foreground">Fujitsu · Fisher</div>
+                <div className="text-sm">Kiemelt márkáink</div>
               </div>
             </div>
           </div>

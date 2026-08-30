@@ -5,6 +5,13 @@ weboldal API-rétegéhez (`src/lib/api/`). A jelenlegi kapcsolatfelvételi
 működés változatlan; a Flow integráció addig inaktív, amíg a
 `VITE_FLOW_API_BASE_URL` nincs beállítva.
 
+> **Élesítési kapu:** a változót az éles buildben üresen kell hagyni mindaddig,
+> amíg a Flow szolgáltató/adatfeldolgozó szerepe, adatáramlása, jogalapja,
+> megőrzése, adatfeldolgozási szerződése, hozzáférés-védelme és incidenskezelése
+> nincs dokumentálva, a nyilvános adatkezelési tájékoztató nincs frissítve, és
+> a CSP/CORS/azonosítás/rate-limit végpontok nincsenek külön tesztelve. A
+> jelenlegi CSP szándékosan nem enged Flow-kapcsolatot.
+
 ## Felépítés
 
 ```text
@@ -110,9 +117,12 @@ szerződés forrása a Flow backend számára.
 
 ## Csatolmányok
 
-A fájlok továbbra is a privát `contact-attachments` Supabase Storage bucketbe
-kerülnek, és a hivatkozás (`AttachmentRef`: `path`, `name`, `size`, `mime`)
-utazik az API felé. A Flow backend aláírt URL-lel tudja letölteni őket.
+A jelenlegi élesre szánt űrlapfolyamban a fájl és az űrlapmezők egyetlen kérésben
+a `send-contact-email` Edge Functionhöz kerülnek; a böngésző nem tölt közvetlenül
+Storage-ba. Az `AttachmentRef` típus csak jövőbeli szerver–szerver integrációs
+szerződés. Privát objektum útvonala vagy aláírt URL-je addig nem küldhető a Flow
+felé, amíg a Flow jogosultság-, lejárat-, naplózás- és adatvédelmi modelljét külön
+nem hagyták jóvá.
 
 ## Követelmények a Flow backend felé
 
@@ -129,10 +139,16 @@ utazik az API felé. A Flow backend aláírt URL-lel tudja letölteni őket.
 
 ## Átállás lépései (később)
 
-1. `VITE_FLOW_API_BASE_URL` beállítása a build környezetben.
-2. Flow oldalon a `/api/v1/leads` végpont implementálása a fenti szerződéssel.
-3. `src/lib/api/modules/contact.ts` `submit` függvényében a Supabase hívás
-   lecserélése `leadsApi.create()`-re – az űrlap komponensek változatlanok
-   maradnak.
-4. Fokozatos bekapcsolás modulonként (waitlist, customers, work orders,
+1. Adatvédelmi és biztonsági hatásvizsgálat, szerződéses ellenőrzés, adatáramlási
+   dokumentáció és a tájékoztató frissítése.
+2. Flow oldalon a `/api/v1/leads` végpont implementálása a fenti szerződéssel,
+   szerveroldali azonosítással, bemenet-ellenőrzéssel, rate limittel és
+   naplóminimalizálással.
+3. Előnyben részesítendő a Supabase Edge Functionből indított szerver–szerver
+   továbbítás; személyes adatot pusztán publikus böngészőkulccsal védett Flow
+   végpontra küldeni tilos.
+4. CSP/CORS/hibaágak és adatmegőrzés tesztelése elkülönített, fiktív adatokkal.
+5. Csak ezután állítható be a `VITE_FLOW_API_BASE_URL`, és csak a jóváhagyott
+   kódmódosítással kapcsolható át az űrlap.
+6. Fokozatos bekapcsolás modulonként (waitlist, customers, work orders,
    calendar, status).

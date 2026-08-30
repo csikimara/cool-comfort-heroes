@@ -3,6 +3,8 @@ import {
   resolveCors,
   allowedOrigins,
   isLocalhostAllowed,
+  isLovablePreviewAllowed,
+  LOVABLE_PREVIEW_ORIGIN,
   PRODUCTION_ALLOWED_ORIGINS,
 } from "../../supabase/functions/_shared/cors";
 
@@ -51,6 +53,13 @@ describe("edge function CORS", () => {
     expect(isLocalhostAllowed({})).toBe(false);
     expect(isLocalhostAllowed({ ALLOW_LOCALHOST_CORS: "true" })).toBe(true);
     expect(isLocalhostAllowed({ ALLOW_LOCALHOST_CORS: "false" })).toBe(false);
-    expect(allowedOrigins(false)).toHaveLength(3);
+    expect(allowedOrigins(false)).toHaveLength(2);
+  });
+
+  it("keeps the Lovable form origin disabled unless preview submission is explicit", () => {
+    expect(resolveCors(LOVABLE_PREVIEW_ORIGIN).allowed).toBe(false);
+    expect(resolveCors(LOVABLE_PREVIEW_ORIGIN, false, true).allowed).toBe(true);
+    expect(isLovablePreviewAllowed({})).toBe(false);
+    expect(isLovablePreviewAllowed({ ALLOW_LOVABLE_PREVIEW: "true" })).toBe(true);
   });
 });

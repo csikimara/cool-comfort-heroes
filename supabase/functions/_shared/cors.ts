@@ -9,10 +9,10 @@
 // - CORS never prevents direct HTTP calls; it only constrains browsers.
 
 export const PRODUCTION_ALLOWED_ORIGINS = [
-  "https://cool-comfort-heroes.lovable.app",
   "https://northwind.hu",
   "https://www.northwind.hu",
 ] as const;
+export const LOVABLE_PREVIEW_ORIGIN = "https://cool-comfort-heroes.lovable.app";
 
 const DEV_ALLOWED_ORIGINS = [
   "http://localhost:8080",
@@ -24,16 +24,27 @@ const DEV_ALLOWED_ORIGINS = [
 export const ALLOWED_HEADERS =
   "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version";
 
-export function allowedOrigins(allowLocalhost: boolean): string[] {
-  return allowLocalhost
-    ? [...PRODUCTION_ALLOWED_ORIGINS, ...DEV_ALLOWED_ORIGINS]
-    : [...PRODUCTION_ALLOWED_ORIGINS];
+export function allowedOrigins(
+  allowLocalhost: boolean,
+  allowLovablePreview = false,
+): string[] {
+  return [
+    ...PRODUCTION_ALLOWED_ORIGINS,
+    ...(allowLovablePreview ? [LOVABLE_PREVIEW_ORIGIN] : []),
+    ...(allowLocalhost ? DEV_ALLOWED_ORIGINS : []),
+  ];
 }
 
 export function isLocalhostAllowed(env: {
   ALLOW_LOCALHOST_CORS?: string;
 }): boolean {
   return (env.ALLOW_LOCALHOST_CORS ?? "").toLowerCase() === "true";
+}
+
+export function isLovablePreviewAllowed(env: {
+  ALLOW_LOVABLE_PREVIEW?: string;
+}): boolean {
+  return (env.ALLOW_LOVABLE_PREVIEW ?? "").toLowerCase() === "true";
 }
 
 export interface CorsDecision {
@@ -50,6 +61,7 @@ export interface CorsDecision {
 export function resolveCors(
   origin: string | null,
   allowLocalhost = false,
+  allowLovablePreview = false,
 ): CorsDecision {
   const base: Record<string, string> = {
     "Vary": "Origin",
@@ -61,7 +73,7 @@ export function resolveCors(
   // No Origin header: not a browser CORS request. Allowed, no ACAO header.
   if (!origin) return { allowed: true, headers: base };
 
-  if (allowedOrigins(allowLocalhost).includes(origin)) {
+  if (allowedOrigins(allowLocalhost, allowLovablePreview).includes(origin)) {
     return {
       allowed: true,
       headers: { ...base, "Access-Control-Allow-Origin": origin },

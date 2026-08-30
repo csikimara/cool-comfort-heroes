@@ -28,7 +28,7 @@ import FisherContactForm from "@/components/fisher/FisherContactForm";
 
 const fill = () => {
   fireEvent.change(screen.getByLabelText(/Név/i), { target: { value: "Teszt Elek" } });
-  fireEvent.change(screen.getByLabelText(/^Email/i), { target: { value: "teszt@example.com" } });
+  fireEvent.change(screen.getByLabelText(/^E-mail/i), { target: { value: "teszt@example.com" } });
   fireEvent.change(screen.getByLabelText(/Üzenet/i), { target: { value: "Kérek ajánlatot." } });
   fireEvent.click(screen.getByRole("checkbox"));
 };
@@ -40,7 +40,7 @@ describe("FisherContactForm", () => {
     toastMock.mockReset();
   });
 
-  it("renderel a Turnstile widget helye a GDPR jelölő és a küldés gomb között", () => {
+  it("a Turnstile widget az adatkezelési visszaigazolás és a küldés gomb között jelenik meg", () => {
     render(<FisherContactForm />);
     const widget = screen.getByTestId("turnstile-widget");
     const checkbox = screen.getByRole("checkbox");
@@ -78,5 +78,18 @@ describe("FisherContactForm", () => {
     fireEvent.click(screen.getByRole("button", { name: /Üzenet küldése/i }));
     await waitFor(() => expect(toastMock).toHaveBeenCalled());
     expect(invokeMock).not.toHaveBeenCalled();
+  });
+
+  it("szerverhiba után új Turnstile-ellenőrzést kér az ismételt küldéshez", async () => {
+    invokeMock.mockResolvedValueOnce({ error: new Error("server error") });
+    render(<FisherContactForm />);
+    fill();
+    fireEvent.click(screen.getByText("mock-verify"));
+    fireEvent.click(screen.getByRole("button", { name: /Üzenet küldése/i }));
+    await waitFor(() => expect(invokeMock).toHaveBeenCalledTimes(1));
+
+    fireEvent.click(screen.getByRole("button", { name: /Üzenet küldése/i }));
+    await waitFor(() => expect(toastMock).toHaveBeenCalled());
+    expect(invokeMock).toHaveBeenCalledTimes(1);
   });
 });

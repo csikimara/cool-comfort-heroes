@@ -41,34 +41,34 @@ const scrollToContactForm = (e?: React.MouseEvent) => {
 const introCards = [
   {
     icon: ShieldCheck,
-    title: "6 év kiterjesztett garancia",
-    text: "Regisztrációhoz és évi kétszeri Northwind karbantartáshoz kötött.",
+    title: "Akár 6 év kiterjesztett garancia",
+    text: "Jogosult lakossági oldalfali modellekre, regisztrációval és dokumentált karbantartással.",
   },
   {
     icon: Award,
     title: "Németh Lajos ajánlásával",
-    text: "6-szoros SuperBrands díjas megbízhatóság.",
+    text: "Többszörös Business Superbrands díjas márka.",
   },
   {
     icon: Wind,
-    title: "Extra csendes működés",
-    text: "Akár 19 dB(A) zajszint – ideális hálószobákba is.",
+    title: "Egyes modelleknél 19 dB(A)-tól",
+    text: "A legalacsonyabb megadott beltéri zajszint modelltől és ventilátorfokozattól függ.",
   },
   {
     icon: ThermometerSnowflake,
     title: "Fűtés akár -30°C-ig",
-    text: "A Nordic sorozat extrém hidegben is stabil teljesítményt nyújt.",
+    text: "A Nordic sorozat egyes modelljei műszaki adatlapjuk szerint akár -30°C-os külső hőmérsékletig használhatók fűtésre.",
   },
 ];
 
 const splitModels = [
   {
     id: "special",
-    badge: "Komfort újdonság",
+    badge: "Komfort funkciók",
     name: "Fisher SPECIAL EDITION",
-    tagline: "„Ne fújj rám” funkció, huzatmentes befúvás",
+    tagline: "„Ne fújj rám” funkció a közvetlen huzatérzet mérséklésére",
     description:
-      "Az innovatív „Ne fújj rám” funkció segítségével elkerülhető a huzathatás. A beltéri ventilátor fokozatmentesen állítható. Az aktív tisztító funkcióval sterilizálható a hőcserélő. Wi-Fi-n keresztül könnyen szabályozható beltéri egység.",
+      "Az innovatív „Ne fújj rám” funkció segítségével mérsékelhető a közvetlen huzathatás. A beltéri ventilátor fokozatmentesen állítható. Az aktív tisztító funkció támogatja a hőcserélő tisztán tartását. Wi-Fi-n keresztül könnyen szabályozható beltéri egység.",
     warranty6: false,
     icon: Wind,
     catalogUrl:
@@ -81,7 +81,7 @@ const splitModels = [
     name: "Fisher SUMMER",
     tagline: "Gazdaságos hűtés, fűtés -15°C-ig",
     description:
-      "Tökéletes megoldás lakása hűtésére, de fűtésszezon indulása előtt érkező hideg napokon akár a lakás fűtésére is használhatja. Speciális szűrői segítségével gondoskodik otthona megfelelő levegőminőségéről. Gazdaságos működése révén biztosítja az energiahatékonyságot.",
+      "Elsősorban lakások hűtésére, valamint a modell műszaki határain belül átmeneti időszaki fűtésre használható. Szűrői támogatják a levegő szűrését; a tényleges fogyasztás a beállítástól, a méretezéstől és az épület adottságaitól függ.",
     warranty6: true,
     icon: Sun,
     catalogUrl:
@@ -90,11 +90,11 @@ const splitModels = [
   },
   {
     id: "comfort-plus",
-    badge: "Csúcsmodell",
+    badge: "Prémium modell",
     name: "Fisher COMFORT PLUS",
-    tagline: "Fűtésre optimalizált (-22°C), 6 év garancia",
+    tagline: "Fűtésre optimalizált (-22°C), feltételekkel akár 6 év garancia",
     description:
-      "Az új Comfort Plus egész évben a kényelmet szolgálja, alacsony üzemeltetési költség és környezetbarát technológia mellett.",
+      "A Comfort Plus hűtésre és fűtésre is használható. Az energiaosztályt, a működési hőmérséklet-tartományt és a várható fogyasztást a kiválasztott modell adatlapja alapján ellenőrizzük.",
     warranty6: true,
     icon: Star,
     catalogUrl:
@@ -107,7 +107,7 @@ const splitModels = [
     name: "Fisher NORDIC",
     tagline: "Prémium fűtés -30°C-ig, A+++ hatékonyság",
     description:
-      "Fűtésre optimalizált berendezés, akár -30°C-ig fűt. A+++ energiahatékonyságú, kiválthatja fűtési rendszerét akár erre a berendezésre. Sok extra kényelmi funkcióval felszerelt, hogy az Ön kényelmét maximálisan kiszolgálja.",
+      "Fűtésre optimalizált sorozat; egyes modelljei műszaki adatlapjuk szerint akár -30°C-os külső hőmérsékletig használhatók fűtésre, és A+++ energiaosztályt is elérhetnek. Önálló vagy kiegészítő fűtésre csak hőveszteség-számítás és modellspecifikus méretezés után javasolható.",
     warranty6: true,
     icon: Flame,
     catalogUrl:
@@ -120,7 +120,7 @@ const splitModels = [
     name: "Fisher BLACK",
     tagline: "Tükrös fekete előlap, elegáns megjelenés",
     description:
-      "Fekete szépség, hűvös hatás: a stílus és a minőség tökéletes harmóniája. Az esztétikus, tükrös előlappal rendelkező fekete készülék a Fisher klímáknál megszokott gazdag felszereltséggel és kiemelkedő műszaki tulajdonságokkal rendelkezik.",
+      "Az esztétikus, tükrös előlappal rendelkező fekete készülék a Fisher sorozatokra jellemző kényelmi funkciókkal érhető el. A pontos felszereltség és műszaki paraméterek modellenként eltérhetnek.",
     warranty6: false,
     icon: Sparkle,
     catalogUrl:
@@ -133,7 +133,7 @@ const splitModels = [
     name: "Fisher ART",
     tagline: "Cserélhető mágneses panelek, egyedi design",
     description:
-      "Ez az exkluzív klímaberendezés külsejében és működésében is igazodik az egyedi igényekhez. Cserélhető mágneses design panelek segítségével bármilyen környezetben a szoba díszévé tehető. A 180°-ban állítható légterelő lapátoknak köszönhetően eddig nem látott precizitás érhető el. Aktív tisztító funkciója por- és szennyeződésmentes légteret biztosít.",
+      "Ez az exkluzív klímaberendezés külsejében és működésében is igazodik az egyedi igényekhez. Cserélhető mágneses design panelek segítségével a belső térhez alakítható. A 180°-ban állítható légterelő lapátok pontos légirányítást tesznek lehetővé. Aktív tisztító funkciója támogatja a hőcserélő tisztán tartását.",
     warranty6: true,
     icon: Palette,
     catalogUrl:
@@ -142,24 +142,25 @@ const splitModels = [
   },
 ];
 
+export const fisherJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Fisher klíma modellek – Northwind Hűtéstechnika",
+  itemListElement: splitModels.map((m, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: m.name,
+    description: m.tagline,
+  })),
+};
+
 const Fisher = () => {
-  const fisherJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Fisher klíma modellek – Northwind Hűtéstechnika",
-    itemListElement: splitModels.map((m, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      name: m.name,
-      description: m.tagline,
-    })),
-  };
 
   return (
     <div className="fisher-brand min-h-screen bg-background text-foreground">
       <SEOHead
         title="Fisher Klíma Telepítés és Garancia | Northwind Hűtéstechnika"
-        description="Prémium Fisher split klímák 6 év garanciával, Németh Lajos ajánlásával. Szakszerű szerelés és karbantartás a Northwind szakértőitől. Kérjen ajánlatot!"
+        description="Fisher split klímák: egyes lakossági oldalfali modellekre, feltételekkel akár 6 év kiterjesztett garancia. Szakszerű szerelés és karbantartás."
       />
       <JsonLd data={fisherJsonLd} />
       <Header />
@@ -167,7 +168,7 @@ const Fisher = () => {
         <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 sm:gap-4 items-end"><FujitsuFloatingButton /></div>
       </Suspense>
 
-      <main>
+      <main id="main-content" tabIndex={-1}>
         {/* Back to Northwind home */}
         <div className="bg-white pt-28 pb-2">
           <div className="container mx-auto px-4">
@@ -205,17 +206,16 @@ const Fisher = () => {
                 }}
               >
                 <ShieldCheck className="w-3.5 h-3.5" />
-                Hivatalos Fisher partner
+                Fisher klímamegoldások
               </span>
 
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-5 leading-[1.1] text-foreground">
-                Northwind – Az Ön kiemelt{" "}
-                <span style={{ color: "#1f3d66" }}>Fisher</span> partnere
+                Northwind – <span style={{ color: "#1f3d66" }}>Fisher</span> megoldások
               </h1>
 
               <p className="text-lg sm:text-xl text-muted-foreground mb-9 max-w-2xl mx-auto leading-relaxed">
-                Szakmai tapasztalat 1993 óta és hivatalos Columbus Klíma garancia minden telepített
-                rendszer mögött.
+                Szakmai tapasztalat 1993 óta, hivatalos importőri háttérrel és az adott termékre
+                vonatkozó garanciafeltételekkel.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -234,7 +234,7 @@ const Fisher = () => {
                   style={{ borderColor: "#1f3d66", color: "#1f3d66" }}
                   asChild
                 >
-                  <a href="#fisher-garancia">6 éves garancia részletei</a>
+                  <a href="#fisher-garancia">Az akár 6 éves garancia részletei</a>
                 </Button>
               </div>
             </div>
@@ -300,10 +300,10 @@ const Fisher = () => {
                     className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full mb-3 text-white"
                     style={{ backgroundColor: "#1f3d66" }}
                   >
-                    <ShieldCheck className="w-3 h-3" />6 év garancia
+                    <ShieldCheck className="w-3 h-3" />Akár 6 év
                   </span>
                   <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 leading-snug">
-                    „Németh Lajos meteorológus a Fishert ajánlja!"
+                    Németh Lajos meteorológus a Fishert ajánlja
                   </h3>
                   <p
                     className="text-sm sm:text-base font-semibold mb-2"
@@ -313,9 +313,17 @@ const Fisher = () => {
                     Megbízható minőség kedvező áron.
                   </p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    6-szoros SuperBrands díjas megbízhatóság – a hivatalos
-                    Columbus Klíma garanciájával, a Northwind szakértői
-                    telepítésével.
+                    Többszörös Business Superbrands díjas márka – a Fisher{" "}
+                    <a
+                      href="https://www.fisherklima.hu/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-4 hover:text-foreground"
+                    >
+                      aktuális hivatalos oldala
+                    </a>{" "}
+                    szerint, az adott termék garanciafeltételeivel és a Northwind
+                    szakszerű telepítésével.
                   </p>
                 </div>
               </div>
@@ -338,10 +346,10 @@ const Fisher = () => {
                 Split klíma sorozatok
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                A Fisher teljes oldalfali kínálata
+                Válogatott Fisher oldalfali sorozatok
               </h2>
               <p className="text-base text-muted-foreground">
-                Hat sorozat – a gazdaságos hűtéstől a sarkvidéki fűtésig és az egyedi dizájnig.
+                Hat bemutatott sorozat – a hűtési célú modellektől a fűtésre optimalizált és egyedi megjelenésű változatokig.
               </p>
             </div>
 
@@ -363,17 +371,17 @@ const Fisher = () => {
                         <span
                           className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full text-white"
                           style={{ backgroundColor: "#1f3d66" }}
-                          title="6 év kiterjesztett garancia"
+                          title="Feltételekkel akár 6 év kiterjesztett garancia"
                         >
                           <ShieldCheck className="w-3 h-3" />
-                          6 év garancia
+                          Akár 6 év
                         </span>
                       )}
                       <span
                         className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full"
                         style={{
                           backgroundColor: "rgba(0,126,198,0.1)",
-                          color: "#007ec6",
+                          color: "#1f3d66",
                         }}
                       >
                         {m.badge}
@@ -386,7 +394,7 @@ const Fisher = () => {
                   </h3>
                   <p
                     className="text-sm font-semibold mb-3"
-                    style={{ color: "#007ec6" }}
+                    style={{ color: "#0077bd" }}
                   >
                     {m.tagline}
                   </p>
@@ -405,7 +413,7 @@ const Fisher = () => {
                     <Button
                       variant="outline"
                       className="w-full bg-transparent min-h-[44px] text-xs sm:text-sm whitespace-normal h-auto py-2.5"
-                      style={{ borderColor: "#007ec6", color: "#007ec6" }}
+                      style={{ borderColor: "#0077bd", color: "#0077bd" }}
                       asChild
                     >
                       <a
@@ -467,7 +475,7 @@ const Fisher = () => {
                 <div className="grid sm:grid-cols-[auto,1fr] gap-6 items-start">
                   <div
                     className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0"
-                    style={{ background: "linear-gradient(135deg, #1f3d66 0%, #007ec6 100%)" }}
+                    style={{ background: "linear-gradient(135deg, #1f3d66 0%, #0077bd 100%)" }}
                   >
                     <Droplets className="w-8 h-8 text-white" />
                   </div>
@@ -476,15 +484,15 @@ const Fisher = () => {
                       Fisher Osztott (Split) Hőszivattyú
                     </h3>
                     <p className="text-base text-muted-foreground leading-relaxed mb-5">
-                      Megbízható fűtés és melegvíz-ellátás családi házak részére. Modern technológia,
-                      kedvező üzemeltetési költség és a Northwind szakszerű telepítése.
+                      Fűtési és melegvíz-ellátási megoldás családi házakhoz. A várható
+                      teljesítményt és üzemeltetési költséget helyszíni felmérés és méretezés alapján vizsgáljuk.
                     </p>
 
                     <ul className="space-y-2.5 mb-6">
                       {[
-                        "R32 hűtőközeg – modern és környezetbarát",
-                        "H-tarifa kompatibilitás – kedvezőbb rezsi",
-                        "3 év teljes körű gyártói garancia",
+                        "R32 hűtőközeg – a pontos környezeti adatok a termékdokumentációban",
+                        "A H árszabási jogosultság műszaki feltételeinek ellenőrzése",
+                        "Garancia az adott modell és szerződés feltételei szerint",
                       ].map((b) => (
                         <li
                           key={b}
@@ -492,7 +500,7 @@ const Fisher = () => {
                         >
                           <CheckCircle2
                             className="w-5 h-5 flex-shrink-0 mt-0.5"
-                            style={{ color: "#007ec6" }}
+                            style={{ color: "#0077bd" }}
                           />
                           <span>{b}</span>
                         </li>
@@ -532,10 +540,10 @@ const Fisher = () => {
                   href="https://www.fisherklima.hu/termekek/hoszivattyu-berendezesek/osztott-split-hoszivattyu"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md font-medium text-sm leading-none bg-transparent transition-colors hover:bg-[#007ec6]/10 active:bg-[#007ec6]/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#007ec6] box-border"
+                  className="group inline-flex items-center justify-center gap-2 h-14 w-full px-6 rounded-md font-medium text-sm leading-none bg-transparent transition-colors hover:bg-[#0077bd]/10 active:bg-[#0077bd]/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#0077bd] box-border"
                   style={{
-                    color: "#007ec6",
-                    boxShadow: "inset 0 0 0 2px #007ec6",
+                    color: "#0077bd",
+                    boxShadow: "inset 0 0 0 2px #0077bd",
                   }}
                 >
                   <ExternalLink className="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -563,18 +571,22 @@ const Fisher = () => {
         <section
           id="fisher-garancia"
           className="py-20 sm:py-24 text-white"
-          style={{ background: "linear-gradient(135deg, #1f3d66 0%, #007ec6 100%)" }}
-          aria-label="6 éves garancia és ingyenes felmérés"
+          style={{ background: "linear-gradient(135deg, #1f3d66 0%, #0077bd 100%)" }}
+          aria-label="Fisher kiterjesztett garancia és felmérés"
         >
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <ShieldCheck className="w-12 h-12 mx-auto mb-5 opacity-90" />
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
-                6 év nyugalom – Northwind garanciával
+                Akár 6 év kiterjesztett Fisher garancia
               </h2>
-              <p className="text-base sm:text-lg opacity-95 mb-8 max-w-2xl mx-auto">
-                A 6 év kiterjesztett Fisher garancia hivatalos regisztrációhoz és évi kétszeri
-                Northwind karbantartáshoz kötött. Mindkettőt nálunk hivatalból elvégezzük.
+              <p className="text-base sm:text-lg mb-8 max-w-2xl mx-auto">
+                A Columbus Klíma kiterjesztett garanciája a feltételeknek megfelelő, lakossági
+                komfortcélra használt Fisher oldalfali mono és multi split készülékekre érhető el.
+                A készüléket az üzembe helyezéstől számított 90 napon belül regisztrálni kell,
+                és a használat, valamint a környezet alapján meghatározott gyakoriságú karbantartást
+                számlával vagy munkalappal igazolni kell. A karbantartást bármely megfelelő
+                képesítéssel és érvényes F-gáz jogosultsággal rendelkező szakember elvégezheti.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button
@@ -583,13 +595,13 @@ const Fisher = () => {
                   style={{ color: "#1f3d66" }}
                   onClick={scrollToContactForm}
                 >
-                  Ingyenes felmérést kérek
+                  Felmérést kérek
                   <ArrowRight className="w-5 h-5" />
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white/40 bg-white/10 text-white hover:bg-white/20"
+                  className="border-white/60 bg-black/10 text-white hover:bg-black/20"
                   asChild
                 >
                   <a href="tel:+36704099760">
@@ -598,8 +610,18 @@ const Fisher = () => {
                   </a>
                 </Button>
               </div>
-              <p className="text-sm opacity-80 mt-10">
-                A Fisher klímák magyarországi importőre: Columbus Klímaértékesítő Kft.
+              <p className="text-sm mt-10">
+                A Fisher klímák magyarországi importőre: Columbus Klímaértékesítő Kft.{" "}
+                <a
+                  href="https://www.fisherklima.hu/tamogatas/kiterjesztett-garancia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2"
+                >
+                  Hivatalos garanciafeltételek
+                </a>.
+                A kiterjesztett gyártói/importőri garancia nem korlátozza a fogyasztó
+                jogszabályon alapuló szavatossági és kötelező jótállási jogait.
               </p>
             </div>
           </div>
@@ -635,9 +657,9 @@ const Fisher = () => {
               <p className="text-base text-muted-foreground mb-8 leading-relaxed">
                 1993 óta gyűjtött hűtéstechnikai szakmai tapasztalattal.
                 Helyszíni felmérés és szakszerű rendszervázlat – kötelezettségek nélkül.
-                Hivatalos Columbus Klíma garancia: 6 év az oldalfali split Fisher
-                klímákra (regisztrációval és évi kétszeri Northwind karbantartással),
-                3 év a hőszivattyúkra.
+                Egyes lakossági oldalfali split Fisher klímákra a hivatalos feltételek
+                teljesítésével akár 6 év kiterjesztett garancia érhető el. Más termékek
+                jótállási és garanciális feltételeit az adott ajánlat és gyártói dokumentáció tartalmazza.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button

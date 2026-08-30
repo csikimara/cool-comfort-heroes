@@ -46,7 +46,7 @@ const pillars: Pillar[] = [
     icon: Wrench,
     title: "Szerviz és Prémium Karbantartás",
     description:
-      "Rendszeres éves felülvizsgálat, márkafüggetlen javítás és prémium zsákos klímamosás a hosszú élettartamért és optimális hatékonyságért.",
+      "Rendszeres felülvizsgálat, több márkára kiterjedő hibafeltárás és zsákos klímamosás az üzembiztonság és a hatékony működés támogatására.",
     href: "/reszletek#ipari-04",
     cta: "Szerviz részletek",
   },
@@ -91,7 +91,7 @@ const Services = () => {
           </h2>
           <p className="text-lg text-muted-foreground">
             Legyen szó otthoni klímaszerelésről vagy komplex ipari légtechnikai rendszerekről, 
-            tapasztalt szakembereink minden igényt kielégítenek.
+            tapasztalt szakembereink az ingatlan és a műszaki feladat adottságaihoz illeszkedő megoldást terveznek.
           </p>
         </div>
 
