@@ -10,7 +10,19 @@ export const NORTHWIND_EMAIL = "northwind@northwind.hu";
  * Fixed, allow-listed production base URL for the admin deep link.
  * Never derived from request Origin or any user input.
  */
-export const ADMIN_BASE_URL = "https://cool-comfort-heroes.lovable.app";
+export const ADMIN_BASE_URL = "https://northwind.hu";
+
+const CONTACT_SOURCES = new Set([
+  "Főoldal – Northwind Hűtéstechnika Kft.",
+  "Fisher oldal – Northwind Hűtéstechnika Kft.",
+  "Fujitsu oldal – Northwind Hűtéstechnika Kft.",
+]);
+
+/** Accepts only the three source labels emitted by the production forms. */
+export const safeContactSource = (value?: string | null): string | null => {
+  const candidate = (value ?? "").trim();
+  return CONTACT_SOURCES.has(candidate) ? candidate : null;
+};
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -60,12 +72,82 @@ export const escapeHtml = (s: string) =>
 /** Strips CR/LF so user data can never inject e-mail headers. */
 const headerSafe = (s: string) => s.replace(/[\r\n]+/g, " ").trim();
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const EMAIL_RE = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/i;
+
+/** Detects ASCII control characters, optionally permitting selected code points. */
+export const hasAsciiControlCharacter = (
+  value: string,
+  allowedCodePoints: readonly number[] = [],
+): boolean => Array.from(value).some((character) => {
+  const codePoint = character.codePointAt(0);
+  return codePoint !== undefined
+    && (codePoint <= 0x1f || codePoint === 0x7f)
+    && !allowedCodePoints.includes(codePoint);
+});
+
+export const isValidEmail = (email: string): boolean => {
+  const candidate = headerSafe(email);
+  const at = candidate.indexOf("@");
+  const local = at >= 0 ? candidate.slice(0, at) : "";
+  return candidate.length <= 255
+    && local.length >= 1
+    && local.length <= 64
+    && !local.startsWith(".")
+    && !local.endsWith(".")
+    && !local.includes("..")
+    && EMAIL_RE.test(candidate);
+};
+
+/** Accepts common phone formatting while rejecting control characters/text. */
+export const isValidPhone = (phone: string): boolean => {
+  const candidate = phone.trim();
+  if (!candidate) return true;
+  if (candidate.length > 50 || hasAsciiControlCharacter(candidate)) return false;
+  if (!/^\+?[0-9][0-9 ()/.-]*$/.test(candidate)) return false;
+  const digitCount = (candidate.match(/[0-9]/g) ?? []).length;
+  return digitCount >= 6 && digitCount <= 20;
+};
+
+const ALLOWED_PAGE_HOSTNAMES = new Set([
+  "northwind.hu",
+  "www.northwind.hu",
+  "cool-comfort-heroes.lovable.app",
+]);
+const CONTACT_FORM_PATHS = new Set(["/", "/fisher", "/fujitsu"]);
+
+/**
+ * Allows only HTTPS page URLs belonging to a known Northwind frontend.
+ * This prevents user-controlled schemes such as javascript: from becoming
+ * clickable links in the internal notification e-mail.
+ */
+export const safePageUrl = (value?: string | null): string | null => {
+  const candidate = (value ?? "").trim();
+  if (!candidate || candidate.length > 500) return null;
+  try {
+    const url = new URL(candidate);
+    if (url.protocol !== "https:" || !ALLOWED_PAGE_HOSTNAMES.has(url.hostname.toLowerCase())) {
+      return null;
+    }
+    if (url.username || url.password || url.port) return null;
+    const normalizedPath = url.pathname === "/"
+      ? "/"
+      : url.pathname.replace(/\/+$/, "");
+    if (!CONTACT_FORM_PATHS.has(normalizedPath)) return null;
+    url.pathname = normalizedPath;
+    // Query parameters and fragments are unnecessary for identifying the
+    // contact-form page and may contain campaign IDs or other incidental data.
+    url.search = "";
+    url.hash = "";
+    return url.toString();
+  } catch {
+    return null;
+  }
+};
 
 /** Only a server-validated, header-safe address may be used in Reply-To. */
 export const safeReplyTo = (email: string, fallback = NORTHWIND_EMAIL): string => {
   const candidate = headerSafe(email);
-  return EMAIL_RE.test(candidate) ? candidate : fallback;
+  return isValidEmail(candidate) ? candidate : fallback;
 };
 
 const kb = (size: number) => `${Math.max(1, Math.round(size / 1024))} KB`;
@@ -77,12 +159,11 @@ export const buildAdminEmail = (
   const hasFile = !!input.attachment;
   const phone = (input.phone ?? "").trim();
   const source = (input.source ?? "").trim() || "Weboldal";
-  const pageUrl = (input.page_url ?? "").trim();
+  const pageUrl = safePageUrl(input.page_url);
   const adminLink = buildAdminMessageLink(input.messageId);
 
   const attachmentBlockHtml = hasFile
-    ? `<p><strong>Csatolmány:</strong> ${escapeHtml(input.attachment!.name)} (${kb(input.attachment!.size)})<br />
-       <span style="color:#6b7280;font-size:13px;">Elérési út a privát tárolóban: ${escapeHtml(input.attachment!.path)}</span></p>`
+    ? `<p><strong>Csatolmány:</strong> ${escapeHtml(input.attachment!.name)} (${kb(input.attachment!.size)})</p>`
     : "";
 
   const html = `
@@ -107,7 +188,6 @@ export const buildAdminEmail = (
     ...(hasFile
       ? [
           `Csatolmány: ${input.attachment!.name} (${kb(input.attachment!.size)})`,
-          `Elérési út a privát tárolóban: ${input.attachment!.path}`,
         ]
       : []),
     "",
@@ -127,10 +207,7 @@ export const buildAdminEmail = (
 };
 
 export const buildUserEmail = (input: ContactEmailInput): ResendPayload => {
-  const hasFile = !!input.attachment;
   const intro = "Köszönjük megkeresését! Üzenetét sikeresen megkaptuk, és hamarosan felvesszük Önnel a kapcsolatot.";
-  const attachmentSentence = hasFile ? "A beküldött csatolmányt is megkaptuk." : "";
-  const safeMessage = escapeHtml(input.message).replace(/\n/g, "<br>");
   const year = new Date().getFullYear();
 
   const html = `
@@ -142,18 +219,13 @@ export const buildUserEmail = (input: ContactEmailInput): ResendPayload => {
       <div style="background: #ffffff; padding: 30px; border: 1px solid #e5e7eb; border-top: none;">
         <h2 style="color: #1a7ab5; margin-top: 0;">Tisztelt Ügyfelünk!</h2>
         <p style="color: #374151; line-height: 1.6;">${intro}</p>
-        ${attachmentSentence ? `<p style="color: #374151; line-height: 1.6;">${attachmentSentence}</p>` : ""}
         <p style="color: #374151; line-height: 1.6;">Üdvözlettel:<br/><strong>Northwind Hűtéstechnika Kft.</strong></p>
-        <div style="background: #f0f7fc; border-left: 4px solid #1a7ab5; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
-          <p style="margin: 0 0 5px; color: #6b7280; font-size: 14px;"><strong>Az Ön üzenete:</strong></p>
-          <p style="margin: 0; color: #374151;">${safeMessage}</p>
-        </div>
         <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
         <p style="color: #6b7280; font-size: 14px; line-height: 1.5;">
           <strong>Elérhetőségeink:</strong><br>
           +36 70 409 9760<br>
           northwind@northwind.hu<br>
-          1118 Budapest, Torbágy u. 16.
+          1118 Budapest, Torbágy utca 16. 2. em. 6. ajtó
         </p>
       </div>
       <div style="text-align: center; padding: 15px; color: #9ca3af; font-size: 12px;">
@@ -166,14 +238,10 @@ export const buildUserEmail = (input: ContactEmailInput): ResendPayload => {
     "Tisztelt Ügyfelünk!",
     "",
     intro,
-    ...(attachmentSentence ? [attachmentSentence] : []),
-    "",
-    "Az Ön üzenete:",
-    input.message,
     "",
     "Üdvözlettel: Northwind Hűtéstechnika Kft.",
     "+36 70 409 9760 | northwind@northwind.hu",
-    "1118 Budapest, Torbágy u. 16.",
+    "1118 Budapest, Torbágy utca 16. 2. em. 6. ajtó",
   ].join("\n");
 
   return {

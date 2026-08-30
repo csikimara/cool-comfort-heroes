@@ -4,18 +4,18 @@ import { Button } from "@/components/ui/button";
 const pillars = [
   {
     icon: Thermometer,
-    title: "Valódi fűtésre optimalizálva (Fujitsu KG sorozat)",
-    desc: "A legtöbb olcsó klíma csak hűtésre jó igazán. A nálunk elérhető japán modellek akár -25°C-os külső hőmérséklet mellett is stabil, gazdaságos fűtést biztosítanak, kiváltva akár a gázfűtést is.",
+    title: "Fűtésre tervezett modellek (Fujitsu KG sorozat)",
+    desc: "Az erre tervezett Fujitsu modellek műszaki adatlapjuk szerint akár -25°C-os külső hőmérsékletig használhatók fűtésre. A tényleges teljesítmény és fogyasztás a modelltől, a méretezéstől és az épület adottságaitól függ.",
   },
   {
     icon: Volume2,
-    title: "Extrém csendes működés",
-    desc: "A hálószobában a legfontosabb a nyugalom. A Fujitsu beltéri egységei olyan halkan dolgoznak, hogy észre sem veszi a működésüket, míg a kültéri egységek nem zavarják a szomszédokat sem.",
+    title: "Alacsony zajszintű működés",
+    desc: "Egyes Fujitsu beltéri egységek alacsony ventilátorfokozaton 19 dB(A)-tól üzemelnek. A kültéri elhelyezést mindig a helyi zajvédelmi és építési adottságokhoz igazítjuk.",
   },
   {
     icon: Settings,
-    title: "Hosszú távú alkatrészellátás",
-    desc: "Míg az olcsó kínai márkáknál pár év után sokszor nincs alkatrész, a Fujitsu esetében évtizedekig biztosított a szervizháttér. Ez a valódi fenntarthatóság.",
+    title: "Hazai importőri és szervizháttér",
+    desc: "A modellválasztásnál az energiahatékonyság mellett a hazai importőri és szervizhátteret, valamint az aktuális alkatrészellátást is figyelembe vesszük.",
   },
 ];
 
@@ -29,11 +29,12 @@ const JapaneseTechnology = () => {
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Miért a Fujitsu KG sorozat{" "}
-            <span className="text-gradient">a legjobb választás fűtésre?</span>
+            <span className="text-gradient">fűtésre optimalizált megoldás?</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Egy klíma nem csak egy-két szezonra szól. Mi a <strong>Fujitsu</strong> rendszereivel 
-            olyan megoldást kínálunk, amely 15-20 év múlva is ugyanolyan csendesen és hatékonyan működik, mint az első napon.
+            Egy klíma hosszú távú döntés. A megfelelő méretezés, a dokumentált telepítés és a
+            rendszeres karbantartás együtt segíti a <strong>Fujitsu</strong> rendszerek tartós,
+            hatékony üzemét.
           </p>
         </div>
 
@@ -60,7 +61,7 @@ const JapaneseTechnology = () => {
         {/* CTA */}
         <div className="text-center">
           <Button variant="hero" size="lg" asChild>
-            <a href="#kapcsolat">Kérjen ingyenes helyszíni felmérést!</a>
+            <a href="#kapcsolat">Kérjen helyszíni felmérést!</a>
           </Button>
         </div>
       </div>

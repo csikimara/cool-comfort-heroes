@@ -32,38 +32,38 @@ import fujitsuInstallation from "@/assets/fujitsu-installation.webp";
 const features = [
   {
     icon: Shield,
-    title: "10 év kiterjesztett garancia",
-    description: "Kizárólag Fujitsu oldalfali split klímákra – hivatalos regisztrációval és évi kétszeri Northwind karbantartással.",
+    title: "Akár 10 év kiterjesztett garancia",
+    description: "Jogosult lakossági oldalfali modellekre, regisztrációval és dokumentált, előírás szerinti karbantartással.",
   },
   {
     icon: Zap,
     title: "A+++ energiaosztály",
-    description: "Az új KJ sorozat A+++ besorolású hűtésben és fűtésben egyaránt.",
+    description: "A KJ sorozat egyes változatai A+++ besorolásúak hűtésben és fűtésben egyaránt; a pontos érték modellenként ellenőrizendő.",
   },
   {
     icon: AirVent,
     title: "Csendes működés",
-    description: "Piacvezető zajszint már 19 dB(A)-tól – ideális hálószobákba.",
+    description: "Egyes modellek alacsony ventilátorfokozaton 19 dB(A)-tól üzemelnek.",
   },
   {
     icon: ThermometerSun,
     title: "Fűtés akár -25°C-ig",
-    description: "A KJ sorozat extrém hidegben is stabil, gazdaságos fűtést biztosít.",
+    description: "A KJ sorozat egyes modelljei műszaki adatlapjuk szerint akár -25°C-os külső hőmérsékletig használhatók fűtésre.",
   },
 ];
 
 const sellingPoints = [
   {
     icon: AirVent,
-    text: "Halk működés hálószobába – már 19 dB(A)-tól, ami halkabb, mint a suttogás.",
+    text: "Halk működés hálószobába – egyes modelleknél, alacsony ventilátorfokozaton már 19 dB(A)-tól.",
   },
   {
     icon: User,
-    text: "Human Sensor technológia – automatikusan csökkenti a fogyasztást, ha nincs senki a szobában.",
+    text: "Human Sensor technológia – az erre képes modellek távollét érzékelésekor takarékosabb üzemre válthatnak.",
   },
   {
     icon: Settings,
-    text: "Hosszú távú megbízhatóság – évtizedekig garantált alkatrészellátás és szervizháttér.",
+    text: "Szervizháttér – hazai importőri támogatással; az alkatrészelérhetőséget mindig az adott modellnél ellenőrizzük.",
   },
 ];
 
@@ -75,76 +75,76 @@ const models = [
     subtitle: "A racionális belépő modell",
     tagline: "Hűtés A++ / Fűtés A+",
     description:
-      "Elsősorban megbízható nyári hűtésre. Japán minőség, hosszú élettartam és garantált alkatrészellátás – felesleges extrák nélkül.",
+      "Elsősorban megbízható nyári hűtésre. Japán fejlesztés, csendes működés és hazai importőri háttér – felesleges extrák nélkül.",
     highlights: [
       "Hűtés A++ / Fűtés A+ energiaosztály",
       "Japán megbízhatóság elérhető áron",
       "Csendes működés lakásokba",
-      "Hosszú élettartam, évtizedes szervizháttér",
+      "Hazai importőri és szervizháttér",
     ],
     icon: Snowflake,
-    accentClass: "from-sky-500 to-sky-600",
+    accentClass: "from-sky-700 to-sky-800",
     badgeClass: "bg-sky-100 text-sky-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/eco-sorozat-kl",
     catalogLabel: "KL sorozat árai és paraméterei",
   },
   {
     id: "km",
-    badge: "Standard – Legjobb ár-érték",
+    badge: "Standard – Kiegyensúlyozott kivitel",
     name: "Fujitsu KM sorozat (Standard)",
-    subtitle: "A sokoldalú közönségkedvenc",
+    subtitle: "Sokoldalú standard modell",
     tagline: "Hűtés A++ / Fűtés A++ – Fekete kivitelben is",
     description:
-      "Hűtésre és fűtésre egyaránt kiváló. Évek óta a legkeresettebb Fujitsu modell – most már elegáns fekete kivitelben is, prémium megjelenés standard áron.",
+      "Hűtésre és fűtésre is használható standard sorozat, egyes változatoknál elegáns fekete kivitelben. A pontos felszereltség és energiaosztály modellenként ellenőrizendő.",
     highlights: [
       "Hűtés A++ / Fűtés A++ energiaosztály",
       "Elérhető modern fekete (Black) dizájnban",
-      "Évek óta a legkelendőbb Fujitsu modell",
-      "Kiváló ár-érték arány",
+      "Hűtésre és fűtésre is használható kivitel",
+      "Hazai importőri és szervizháttér",
     ],
     icon: Sun,
-    accentClass: "from-amber-500 to-orange-500",
+    accentClass: "from-amber-800 to-orange-800",
     badgeClass: "bg-amber-100 text-amber-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/standard-sorozat-km",
     catalogLabel: "KM sorozat árai és paraméterei",
   },
   {
     id: "kj",
-    badge: "Új prémium csúcsmodell",
+    badge: "Prémium design sorozat",
     name: "Fujitsu KJ sorozat",
-    subtitle: "Az új prémium modell",
+    subtitle: "Prémium megjelenés és hatékonyság",
     tagline: "Hűtés A+++ / Fűtés A+++ – Prémium megjelenés",
     description:
-      "A legújabb Fujitsu csúcsmodell, a legmagasabb hatékonysággal. Akár -25°C-os extrém hidegben is stabil, gazdaságos teljesítmény – elegáns fekete kivitelben is elérhető.",
+      "Prémium Fujitsu sorozat A+++ energiaosztályú változatokkal. Egyes modelljei műszaki adatlapjuk szerint akár -25°C-os külső hőmérsékletig használhatók fűtésre; fekete kivitelben is elérhető.",
     highlights: [
       "A+++ / A+++ energiaosztály hűtésben és fűtésben",
       "Elérhető modern fekete (Black) dizájnban",
-      "Stabil fűtés akár -25°C-ig",
-      "Human Sensor – automatikus energiamegtakarítás",
-      "19 dB(A) suttogó üzemmód",
+      "Egyes modellek használhatók fűtésre akár -25°C-ig",
+      "Human Sensor – távollétkor takarékosabb üzemre válthat",
+      "Egyes modelleknél 19 dB(A)-tól, alacsony fokozaton",
     ],
     icon: Star,
-    accentClass: "from-red-500 to-red-600",
+    accentClass: "from-red-700 to-red-800",
     badgeClass: "bg-red-100 text-red-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/design-sorozat-kj",
     catalogLabel: "KJ sorozat árai és paraméterei",
   },
   {
     id: "kg",
-    badge: "Bizonyított fűtésbajnok",
+    badge: "Fűtésre is választható",
     name: "Fujitsu KG sorozat",
-    subtitle: "A bizonyított fűtésbajnok",
+    subtitle: "Fűtésre optimalizált sorozat",
     tagline: "A++ / A+++ hatékonyság",
     description:
-      "Évek óta bizonyított, megbízható fűtési megoldás. Extrém hidegben is stabil teljesítmény – továbbra is elérhető kínálatunkban.",
+      "Fűtésre is tervezett sorozat; a használható külső hőmérséklet, a leadott teljesítmény és a fogyasztás a kiválasztott modelltől és a méretezéstől függ.",
     highlights: [
-      "A+++ energiaosztály, minimális rezsiköltség",
-      "Stabil fűtés akár -25°C-ig",
+      "Egyes modelleknél A+++ fűtési energiaosztály",
+      "A működési hőmérséklet-tartomány modellenként ellenőrizendő",
       "Human Sensor technológia",
-      "Évek óta bizonyított megbízhatóság",
+      "Hazai importőri és szervizháttér",
     ],
     icon: Flame,
-    accentClass: "from-emerald-500 to-emerald-600",
+    accentClass: "from-emerald-700 to-emerald-800",
     badgeClass: "bg-emerald-100 text-emerald-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/design-sorozat-kg",
     catalogLabel: "KG sorozat árai és paraméterei",
@@ -156,16 +156,16 @@ const models = [
     subtitle: "Padlóra állítható inverteres klíma",
     tagline: "Prémium komfort és hatékony fűtés",
     description:
-      "Padlóra állítható, kétirányú légkifúvású inverteres egység. Fűtésben alul és felül is fúj, radiátorszerű, kellemes hőérzetet adva már a padlószinttől. Kompakt méretének köszönhetően ablak alá, parapet falra vagy tetőtéri ferde sík alá is tökéletesen beépíthető.",
+      "Padlóra állítható, kétirányú légkifúvású inverteres egység. Fűtésben alul és felül is fúj, radiátorszerű hőérzetet támogatva már a padlószinttől. Megfelelő hely és szerelési távolságok esetén ablak alá, parapet falra vagy tetőtéri ferde sík alá is elhelyezhető.",
     highlights: [
       "Kétirányú légkifúvás – fűtésben alul és felül is fúj",
       "Radiátorszerű, egyenletes hőérzet padlószinttől",
-      "Ideális tetőterekbe, ablak alá, parapet falra",
-      "Extrém csendes inverteres működés",
-      "Professzionális katechin szűrőrendszer az allergiamentes levegőért",
+      "Megfelelő szerelési feltételeknél tetőtérbe vagy ablak alá is elhelyezhető",
+      "Csendes inverteres működés a modelladatok szerint",
+      "Katechin szűrő a levegőszűrés támogatására",
     ],
     icon: ArrowUpDown,
-    accentClass: "from-indigo-500 to-indigo-600",
+    accentClass: "from-indigo-700 to-indigo-800",
     badgeClass: "bg-indigo-100 text-indigo-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/padlora",
     catalogLabel: "Parapet (Konzol) árai és paraméterei",
@@ -173,21 +173,21 @@ const models = [
   },
   {
     id: "nocria-x",
-    badge: "Nocria X – Csúcsmodell",
+    badge: "Nocria X – Prémium modell",
     name: "Fujitsu Nocria X (ASYG-KXCA)",
-    subtitle: "Inverteres csúcsmodell",
+    subtitle: "Prémium inverteres modell",
     tagline: "High-tech luxuskomfort és dizájn",
     description:
-      "A Fujitsu zászlóshajója: Dual Blaster oldalsó kiegészítő ventilátorokkal huzatmentes, lágy légáramot biztosít. Automatikus szűrőtisztítással és Human Sensor mozgásérzékelővel a maximális higiéniáért és energiahatékonyságért.",
+      "A Nocria X Dual Blaster oldalsó kiegészítő ventilátorai segítenek mérsékelni a közvetlen huzatérzetet. Automatikus szűrőtisztítással és Human Sensor mozgásérzékelővel rendelkezik; a pontos funkciókat a modell adatlapja tartalmazza.",
     highlights: [
-      "Dual Blaster technológia – huzatmentes, lágy légáram",
+      "Dual Blaster technológia – közvetlen huzatérzetet mérséklő légáram",
       "Automatikus szűrőtisztítás külön porgyűjtő dobozba",
-      "Human Sensor – elterel a légáram és energiát takarít meg",
+      "Human Sensor – a beállítástól függően módosíthatja a légáramot és az üzemet",
       "Prémium dizájn és kivitel",
-      "Maximális higiénia és tartós csúcshatékonyság",
+      "Automatikus szűrőtisztítás a karbantartás támogatására",
     ],
     icon: Sparkles,
-    accentClass: "from-purple-500 to-fuchsia-600",
+    accentClass: "from-purple-700 to-fuchsia-800",
     badgeClass: "bg-purple-100 text-purple-700",
     catalogUrl: "https://www.fujitsuklima.hu/klimak/oldalfali-klima/nocriax-sorozat",
     catalogLabel: "Nocria X árai és paraméterei",
@@ -201,15 +201,15 @@ const solutionCategories = [
     title: "Lakossági Split",
     tagline: "Komfort és csendes, japán precizitás.",
     body:
-      "Fujitsu KL, KM, KJ és KG sorozatok lakásokba és családi házakba. Méretezésnél a helyiség adottságai alapján választjuk ki a leghalkabb és leghatékonyabb egységet.",
+      "Fujitsu KL, KM, KJ és KG sorozatok lakásokba és családi házakba. Méretezésnél a helyiség adottságai alapján választunk megfelelő teljesítményű, zajszintű és energiahatékonyságú egységet.",
     bullets: [
       "Akár 19 dB(A) suttogó éjszakai üzem",
       "Human Sensor és precíz légirányítás",
       "Akár A+++ szezonális energiaosztály",
     ],
-    warrantyBadge: "10 év kiterjesztett garancia",
+    warrantyBadge: "Akár 10 év kiterjesztett garancia",
     warrantyNote:
-      "Hivatalos regisztrációval és évi kétszeri Northwind karbantartással.",
+      "A hivatalos regisztrációs, felhasználási és dokumentált karbantartási feltételek teljesítésével.",
     galleryHref: "/referenciak/fujitsu-lakossagi",
   },
   {
@@ -217,14 +217,14 @@ const solutionCategories = [
     title: "Waterstage Hőszivattyúk",
     tagline: "Hatékony fűtés, hűtés és melegvíz egyetlen rendszerből.",
     body:
-      "Levegő-víz hőszivattyúk padlófűtéshez, radiátoros rendszerekhez és HMV-ellátáshoz. Mérnöki méretezéssel garantáljuk a stabil COP-ot a leghidegebb téli napokon is.",
+      "Levegő-víz hőszivattyúk padlófűtéshez, radiátoros rendszerekhez és HMV-ellátáshoz. A várható teljesítményt és COP-ot a kiválasztott modell adatai, a külső hőmérséklet és az előremenő vízhőmérséklet alapján méretezzük.",
     bullets: [
-      "Magas SCOP a kedvezményes H-tarifához",
+      "SCOP- és műszaki feltételek ellenőrzése a H árszabási igényhez",
       "Csendes kültéri egységek lakókörnyezetbe",
       "Integrált HMV-vezérlés és okos felügyelet",
     ],
-    warrantyBadge: "3 év teljes körű gyártói garancia",
-    warrantyNote: "Gyári garancia és szakmai szervizháttér.",
+    warrantyBadge: "Termékspecifikus garancia",
+    warrantyNote: "Az adott modell és ajánlat hivatalos feltételei szerint.",
     galleryHref: "/referenciak/fujitsu-waterstage",
   },
   {
@@ -232,14 +232,14 @@ const solutionCategories = [
     title: "Légcsatornázható rendszerek",
     tagline: "Láthatatlan elegancia – a technika a háttérben marad.",
     body:
-      "Álmennyezetbe vagy padlástérbe rejtett egységek igényes otthonokba és reprezentatív irodákba. Diszkrét befúvórácsok, egyenletes és huzatmentes komfort.",
+      "Álmennyezetbe vagy padlástérbe rejtett egységek igényes otthonokba és reprezentatív irodákba. Diszkrét befúvórácsok, tervezett légelosztás és a közvetlen huzathatás mérséklésének lehetősége.",
     bullets: [
       "Több helyiség egyetlen rendszerről",
       "Magas statikus nyomás hosszú légcsatornákhoz",
       "Letisztult belső tér – nincs látható egység",
     ],
-    warrantyBadge: "3 év teljes körű gyártói garancia",
-    warrantyNote: "Gyári garancia és szakmai szervizháttér.",
+    warrantyBadge: "Termékspecifikus garancia",
+    warrantyNote: "Az adott modell és ajánlat hivatalos feltételei szerint.",
     galleryHref: "/referenciak/fujitsu-legcsatornazhato",
   },
   {
@@ -247,11 +247,11 @@ const solutionCategories = [
     title: "Ipari VRF és Folyadékhűtők",
     tagline: "Mérnöki precizitás kereskedelmi és ipari léptékben.",
     body:
-      "Skálázható VRF rendszerek és folyadékhűtők irodaházakhoz, szállodákhoz és ipari létesítményekhez. Tervezéstől hivatalos beüzemelésig házon belül.",
+      "Skálázható VRF rendszerek és folyadékhűtők irodaházakhoz, szállodákhoz és ipari létesítményekhez. A tervezési és beüzemelési feladatokat az adott projekt és gyártói előírások szerint egyeztetjük.",
     bullets: [
       "Egyidejű hűtés-fűtés (3-csöves VRF)",
       "BMS-integráció és távoli felügyelet",
-      "Hivatalos beüzemelés a gyári garanciáért",
+      "Gyártói előírások szerinti beüzemelés és dokumentálás",
     ],
     warrantyBadge: "Gyári garancia és szakmai szervizháttér",
     warrantyNote:
@@ -260,7 +260,7 @@ const solutionCategories = [
   },
 ];
 
-const fujitsuJsonLd = {
+export const fujitsuJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   name: "Fujitsu klíma modellek – Northwind Hűtéstechnika",
@@ -278,11 +278,11 @@ const Fujitsu = () => {
     <div className="fujitsu-brand min-h-screen bg-background text-foreground">
       <SEOHead
         title="Northwind Hűtéstechnika Kft. – Fujitsu Klíma és Hőszivattyú Specialisták"
-        description="Hivatalos Fujitsu partner Budapesten. Szakmai tapasztalat 1993 óta, Columbus Klíma 10 éves kiterjesztett garancia. Lakossági split, Waterstage hőszivattyú, légcsatornázható és ipari VRF megoldások."
+        description="A Fujitsu hivatalos partnerlistáján szereplő budapesti kivitelező. Egyes lakossági oldalfali modellekre, feltételekkel akár 10 év kiterjesztett garancia."
       />
       <JsonLd data={fujitsuJsonLd} />
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <FujitsuHero />
 
         {/* Features section */}
@@ -318,25 +318,25 @@ const Fujitsu = () => {
         <section
           id="garancia"
           className="py-20 sm:py-28 bg-gradient-hero text-primary-foreground relative overflow-hidden"
-          aria-label="10 éves Columbus Klíma kiterjesztett garancia"
+          aria-label="Fujitsu kiterjesztett garancia feltételei"
         >
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
               <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/15 backdrop-blur-sm border border-white/20 mb-6">
                 <ShieldCheck className="w-10 h-10" />
               </div>
-              <span className="block text-xs sm:text-sm font-bold uppercase tracking-wide sm:tracking-wider opacity-90 break-words">
+              <span className="block text-xs sm:text-sm font-bold uppercase tracking-wide sm:tracking-wider break-words">
                 Columbus Klíma kiterjesztett garancia
               </span>
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mt-3 mb-6 leading-tight">
-                10 év nyugalom – szakmai garanciával
+                Akár 10 év kiterjesztett garancia
               </h2>
-              <p className="text-lg sm:text-xl opacity-95 leading-relaxed mb-10 max-w-3xl mx-auto">
-                A Columbus Klíma 10 éves kiterjesztett garanciája{" "}
-                <strong>kizárólag a Fujitsu oldalfali split (lakossági) klímákra</strong>{" "}
-                érvényes. Hőszivattyúkra, légcsatornázható és ipari rendszerekre
-                a gyártó 3 év teljes körű garanciát biztosít. A 10 éves védelem
-                feltételekhez kötött – ezeket nálunk hivatalból teljesítjük.
+              <p className="text-lg sm:text-xl leading-relaxed mb-10 max-w-3xl mx-auto">
+                A Columbus Klíma kiterjesztett garanciája a feltételeknek megfelelő,
+                lakossági komfortcélra használt Fujitsu oldalfali mono és multi split
+                készülékekre érhető el. A jogosultság a hivatalos regisztrációhoz,
+                a szükséges bizonylatok megőrzéséhez és az előírás szerinti, dokumentált
+                karbantartáshoz kötött; a részleteket mindig az aktuális gyártói feltételek határozzák meg.
               </p>
 
               <div className="grid sm:grid-cols-3 gap-5 text-left">
@@ -346,29 +346,37 @@ const Fujitsu = () => {
                     text: "A telepítést követően a Columbus Klíma rendszerében hivatalosan regisztráljuk a berendezést.",
                   },
                   {
-                    title: "Évi kétszeri karbantartás",
-                    text: "Évente kétszer, hivatalos partnerként a Northwind által dokumentált, teljes körű karbantartás szükséges.",
+                    title: "Dokumentált karbantartás",
+                    text: "A gyakoriságot a használat és a környezet határozza meg; az elvégzést számlával vagy munkalappal kell igazolni.",
                   },
                   {
-                    title: "Eredeti alkatrészek",
-                    text: "Csak gyári Fujitsu / Columbus Klíma által szállított alkatrészek a teljes garanciaidő alatt.",
+                    title: "Megőrzött dokumentumok",
+                    text: "A számla, a beüzemelési jegyzőkönyv, a regisztráció és a karbantartási bizonylatok szükségesek.",
                   },
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="rounded-xl p-5 bg-white/10 backdrop-blur-sm border border-white/20"
+                    className="rounded-xl p-5 bg-black/10 backdrop-blur-sm border border-white/30"
                   >
                     <CheckCircle2 className="w-6 h-6 mb-3 opacity-90" />
                     <h3 className="font-bold text-base mb-1.5">{item.title}</h3>
-                    <p className="text-sm opacity-90 leading-relaxed">{item.text}</p>
+                    <p className="text-sm leading-relaxed">{item.text}</p>
                   </div>
                 ))}
               </div>
 
-              <p className="text-xs opacity-70 mt-8 max-w-2xl mx-auto">
-                A garancia részletes feltételeit a Columbus Klíma hivatalos
-                tájékoztatója tartalmazza. Ajánlatkéréskor minden vonatkozó
-                feltételt tételesen átadunk.
+              <p className="text-xs mt-8 max-w-2xl mx-auto">
+                <a
+                  href="https://www.fujitsuklima.hu/termektamogatas/kiterjesztett-garancia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2"
+                >
+                  A Columbus Klíma aktuális, hivatalos garanciafeltételei
+                </a>{" "}
+                az irányadók; ajánlatkéréskor a kiválasztott modellre vonatkozó feltételeket is átadjuk.
+                A kiterjesztett gyártói/importőri garancia nem korlátozza a fogyasztó
+                jogszabályon alapuló szavatossági és kötelező jótállási jogait.
               </p>
             </div>
           </div>
@@ -385,8 +393,8 @@ const Fujitsu = () => {
                 Megoldások a lakástól az iparig
               </h2>
               <p className="text-base text-muted-foreground">
-                Minden szegmensben szakmai gondossággal tervezünk, telepítünk és
-                üzemeltetünk – a Fujitsu teljes termékskálájáról.
+                Lakossági és projektmegoldásoknál szakmai gondossággal tervezünk,
+                telepítünk és üzemeltetünk a bemutatott Fujitsu termékkörből.
               </p>
             </div>
 
@@ -466,7 +474,7 @@ const Fujitsu = () => {
                 Melyik Fujitsu modell illik Önhöz?
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Négy sorozat, négy különböző igényre szabva – a nyári hűtéstől az egész éves prémium fűtésig.
+                Több eltérő kialakítás és felhasználási cél – a nyári hűtéstől a fűtésre is méretezhető megoldásokig.
               </p>
             </div>
 
@@ -503,9 +511,9 @@ const Fujitsu = () => {
 
                 <div className="mt-8 p-5 rounded-xl border-2 border-primary/20 bg-card">
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    <strong className="text-foreground">1993 óta gyűjtött szakmai tapasztalattal</strong> és hivatalos Fujitsu partnerként
-                    segítünk a legmegfelelőbb modell kiválasztásában Budapesten és Pest vármegyében.
-                    Northwind néven 2003 óta biztosítunk stabil szakmai hátteret ehhez a tudáshoz.
+                    <strong className="text-foreground">1993 óta gyűjtött szakmai tapasztalattal</strong> és a Fujitsu hivatalos partnerlistáján szereplő kivitelezőként
+                    segítünk a megfelelő modell kiválasztásában Budapesten és Pest vármegyében.
+                    A Northwind Hűtéstechnika Kft. 2009 óta biztosít stabil szakmai hátteret ehhez a tudáshoz.
                   </p>
                 </div>
               </div>

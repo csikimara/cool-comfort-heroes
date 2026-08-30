@@ -7,7 +7,7 @@ const phases = [
     period: "Március - Április",
     title: "Tavaszi felkészítés",
     description:
-      "A legideálisabb időszak. Ilyenkor még rugalmasabb az időpontfoglalás, és felkészülten várhatja az első forró napokat. A pollenszezon előtt tiszta szűrőkkel indíthatja a szezont.",
+      "Jellemzően kedvező időszak. Ilyenkor még rugalmasabb lehet az időpontfoglalás, és felkészülten várhatja az első forró napokat. A pollenszezon előtt tiszta szűrőkkel indíthatja a szezont.",
     highlight: true,
   },
   {
@@ -15,14 +15,14 @@ const phases = [
     period: "Május - Augusztus",
     title: "Nyári csúcsüzem",
     description:
-      "Ebben az időszakban a klíma folyamatosan dolgozik. Ha elmaradt a tavaszi tisztítás, ilyenkor is javasolt a felülvizsgálat, hogy elkerülje a váratlan leállást a legnagyobb hőségben.",
+      "Ebben az időszakban a klíma sokat dolgozhat. Ha elmaradt a tavaszi tisztítás, ilyenkor is javasolt a felülvizsgálat, hogy csökkenjen a váratlan leállás kockázata a nagy hőségben.",
   },
   {
     icon: Leaf,
     period: "Szeptember - Október",
     title: "Őszi fűtési szezon",
     description:
-      "Ha klímával is fűt (például a kiemelkedő hatékonyságú Fujitsu KG sorozattal), az őszi karbantartás elengedhetetlen. A tiszta hőcserélővel és a japán inverteres technológiával jelentősen csökkentheti a fűtési költségeit.",
+      "Ha klímával is fűt, az őszi karbantartás különösen fontos. A tiszta hőcserélő és szűrő támogatja a készülék gyártói paraméterekhez közeli, hatékony működését.",
   },
   {
     icon: Snowflake,
@@ -37,22 +37,22 @@ const benefits = [
   {
     icon: ShieldCheck,
     title: "Garancia megőrzése",
-    description: "A gyártói garancia feltétele a dokumentált, rendszeres karbantartás.",
+    description: "A dokumentált, előírás szerinti karbantartás a gyártói vagy kiterjesztett garancia feltétele lehet.",
   },
   {
     icon: Wind,
-    title: "Tisztább levegő",
-    description: "Tiszta szűrők és hőcserélő – egészségesebb beltéri klíma az otthonában.",
+    title: "Levegőminőség támogatása",
+    description: "A tiszta szűrők és hőcserélő támogatják a megfelelő beltéri levegőminőséget.",
   },
   {
     icon: PiggyBank,
-    title: "Alacsonyabb rezsi",
-    description: "Karbantartott klíma akár 25%-kal kevesebb áramot fogyaszt.",
+    title: "Hatékony működés támogatása",
+    description: "A tiszta hőcserélő és szűrő segíti a hatékony, gazdaságos működést.",
   },
   {
     icon: Clock,
-    title: "Hosszabb élettartam",
-    description: "A megelőző karbantartás évekkel meghosszabbítja a készülék életét.",
+    title: "Meghibásodási kockázat mérséklése",
+    description: "A megelőző karbantartás csökkentheti az idő előtti meghibásodás kockázatát.",
   },
 ];
 
@@ -70,13 +70,13 @@ const MaintenanceTimeline = () => {
             <span className="text-gradient">klímakarbantartást</span> kérni?
           </h2>
           <p className="text-sm font-semibold text-primary mb-4">
-            Március-Április: Tavaszi felkészítés | Szeptember-Október: Fűtési szezon előtti tisztítás (Fujitsu KG modellekhez elengedhetetlen).
+            Március–április: tavaszi felkészítés | Szeptember–október: fűtési szezon előtti tisztítás, különösen fűtésre használt készülékeknél.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
             Ne várja meg a kánikulát vagy az első fagyokat! A rendszeres
-            felülvizsgálat nem csak a garancia feltétele, hanem a gazdaságos és
-            higiénikus működés alapja is. Az 1993 óta gyűjtött tapasztalatunk szerint aki időben lép, az
-            nyugodtan pihenhet.
+            felülvizsgálat segíti a hatékony, higiénikus működést, és egyes garanciák
+            feltétele is lehet. Az előírt gyakoriságot mindig az adott készülék dokumentációja,
+            használata és környezete alapján kell meghatározni.
           </p>
         </div>
 
@@ -157,7 +157,7 @@ const MaintenanceTimeline = () => {
                       </p>
                       {phase.highlight && (
                         <span className="inline-block mt-3 text-xs font-semibold text-primary">
-                          ★ Legjobb időszak
+                          ★ Javasolt időszak
                         </span>
                       )}
                     </div>

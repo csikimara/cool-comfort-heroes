@@ -25,19 +25,19 @@ const services = [
     short:
       "Prémium split és multi-split rendszerek telepítése lakásokba és családi házakba.",
     paragraphs: [
-      "Egy jól kiválasztott klíma nemcsak hűt, hanem észrevétlenül gondoskodik otthona kényelméről. A szerelés során nemcsak a technikai paraméterekre figyelünk, hanem a helyiségek adottságaihoz mérten segítünk kiválasztani azt a készüléket, amely a legcsendesebben és leghatékonyabban működik.",
-      "A Northwind csapatánál a szakszerű telepítés (vákuumozás, precíz bekötés) alapkövetelmény, de nálunk a maximális tisztaság is az: ipari porszívóval, pormentesen dolgozunk, vigyázva lakása épségére. A precíz munka nálunk nemcsak halk működést, hanem alacsonyabb rezsiszámlát és hosszú élettartamot is jelent.",
+      "Egy jól kiválasztott klíma nemcsak hűt, hanem otthona kényelmét is szolgálja. A szerelés során a technikai paraméterek és a helyiségek adottságai alapján segítünk megfelelő zajszintű és energiahatékonyságú készüléket választani.",
+      "A Northwind csapatánál a szakszerű telepítés (vákuumozás, precíz bekötés) alapkövetelmény. Ipari porszívót és munkaterület-védelmet használunk, a készüléket pedig a gyártói előírások szerint helyezzük üzembe.",
     ],
   },
   {
     icon: ThermometerSun,
-    title: "Hőszivattyús rendszerek – A jövő fűtési megoldása",
+    title: "Hőszivattyús rendszerek – Korszerű fűtési megoldás",
     galleryHref: "/referenciak/hoszivattyu",
     short:
-      "Környezetbarát és gazdaságos hűtés, fűtés és melegvíz-ellátás egyetlen rendszerrel.",
+      "Megfelelő méretezéssel energiahatékony hűtés, fűtés és melegvíz-ellátás egy rendszerrel.",
     paragraphs: [
-      "A hőszivattyú a legkorszerűbb válasz a modern otthonok gépészeti kihívásaira. A külső levegő energiáját hasznosítva biztosítja háza fűtését télen, hűtését nyáron és a használati melegvizet egész évben. Ez a technológia nemcsak környezetbarát, hanem – a kedvezményes H-tarifa igénybevételével – az egyik legköltséghatékonyabb üzemeltetést teszi lehetővé, megszabadítva Önt a gázszámláktól.",
-      "A kivitelezésnél nálunk a precíz szakmai tervezés az alap: hajszálpontos méretezéssel és finomhangolással garantáljuk, hogy rendszere a leghidegebb téli napokon is maximális üzembiztonsággal és kiemelkedő hatásfokkal működjön.",
+      "A hőszivattyú a külső levegő energiáját hasznosítva biztosíthat fűtést, hűtést és használati melegvizet. A feltételeknek megfelelő berendezés külön mért áramkörrel a fűtési idényben H árszabásra is jogosult lehet; az igénybevételt az áramszolgáltató bírálja el.",
+      "A kivitelezés alapja a hőveszteség, a hőleadók és az elektromos hálózat felmérése. A várható teljesítményt és fogyasztást a kiválasztott modell műszaki adatai és az épület adottságai alapján adjuk meg.",
     ],
   },
   {
@@ -47,19 +47,19 @@ const services = [
     short:
       "Esztétikus klímamegoldás igényes otthonokba, ahol a technika észrevétlen marad.",
     paragraphs: [
-      "A légcsatornázható rendszer a legmagasabb szintű válasz a modern lakberendezési elvárásokra. Ez a megoldás tökéletes választás, ha Ön nem szeretne beltéri egységeket látni a falakon, vagy ha a tagolt terek és tetőtéri adottságok miatt a hagyományos split klíma nem esztétikus.",
-      "A padlástérbe vagy álmennyezetbe rejtett berendezés csupán diszkrét befúvórácsokon keresztül jelzi jelenlétét. A rendszer észrevétlenül, huzatmentesen és suttogóan csendben biztosítja az ideális hőmérsékletet az egész lakásban, megőrizve otthona letisztult stílusát és nyugalmát.",
+      "A légcsatornázható rendszer esztétikus megoldás lehet, ha Ön nem szeretne beltéri egységeket látni a falakon, vagy ha a tagolt terek és tetőtéri adottságok miatt a hagyományos split klíma nem előnyös.",
+      "A padlástérbe vagy álmennyezetbe rejtett berendezés diszkrét befúvórácsokon keresztül kezeli a helyiségek levegőjét. A megfelelő tervezés mérsékelheti a közvetlen huzatérzetet és a lakótérbe jutó géphangot; az elérhető komfort mindig az épület és a kialakítás adottságaitól függ.",
     ],
   },
   {
     icon: SprayCan,
-    title: "Prémium Zsákos Mélymosás – Higiénia és Egészség",
+    title: "Prémium zsákos mélymosás – Alapos tisztítás",
     galleryHref: "/referenciak/karbantartas",
     short:
-      "Átfogó vegyszeres tisztítás, amely visszaadja klímája újkori állapotát és friss illatát.",
+      "Átfogó tisztítás, amely segít eltávolítani a beltéri egységben felgyűlt szennyeződést.",
     paragraphs: [
-      "A hagyományos tisztítás gyakran csak a felszínt érinti. A Northwind prémium mélymosása során speciális mosózsákot és nagynyomású technológiát alkalmazunk, amely lehetővé teszi a beltéri egység teljes átmosását anélkül, hogy egyetlen csepp víz is a falra vagy a bútorokra kerülne. Ez az eljárás gyökerestől távolítja el a lerakódott port, a penészgombát és a baktériumokat, megszüntetve a kellemetlen szagokat.",
-      "A folyamat részeként a kültéri egységet is nagynyomású vízzel szabadítjuk meg a pollentől és szennyeződésektől, ami javítja a hőleadást és kíméli a kompresszort. A rendszeres mélymosás nem csupán az Ön egészségét védi, hanem garantálja a készülék energiatakarékos és csendes működését is.",
+      "A hagyományos tisztítás gyakran csak a könnyen elérhető felületeket érinti. A Northwind mélymosása során speciális mosózsákot és erre alkalmas mosóberendezést használunk; a munkaterületet letakarjuk és védjük. Az eljárás segít eltávolítani a hozzáférhető felületeken lerakódott port és szennyeződést, valamint mérsékelheti a szennyeződésből eredő kellemetlen szagokat.",
+      "A folyamat részeként szükség szerint a kültéri egységet is megtisztítjuk a pollentől és más szennyeződésektől. A rendszeres, szakszerű tisztítás segíti a megfelelő hőcserét és a készülék gyártói paraméterekhez közeli működését.",
     ],
   },
 ];
@@ -72,7 +72,7 @@ const LakossagiKlima = () => {
         description="Lakossági klímamegoldások: split és multi-split klímaszerelés, hőszivattyú telepítés és prémium zsákos klímamosás Budapesten és Pest vármegyében."
       />
       <Header />
-      <main className="pt-24">
+      <main id="main-content" tabIndex={-1} className="pt-24">
         {/* Page intro */}
         <section className="py-12 sm:py-16 bg-secondary/30 border-b border-border/50">
           <div className="container mx-auto px-4">
@@ -152,8 +152,9 @@ const LakossagiKlima = () => {
                   src="https://northwind.hu/galeria/karbantartas/zsakos-mosas.mp4"
                   poster={zsakosMosasPoster}
                   controls
-                  preload="auto"
+                  preload="metadata"
                   playsInline
+                  aria-label="Prémium zsákos klímamosás bemutató videó"
                   className="w-full h-auto block"
                 >
                   A böngészője nem támogatja a videó lejátszást.
@@ -167,15 +168,15 @@ const LakossagiKlima = () => {
         <section className="py-16 sm:py-20 bg-gradient-hero">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
-              Kérjen ingyenes ajánlatot otthoni klímájára!
+              Kérjen személyre szabott ajánlatot otthoni klímájára!
             </h2>
-            <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+            <p className="text-primary-foreground max-w-2xl mx-auto mb-8">
               1993 óta gyűjtött szakmai tapasztalattal segítünk megtalálni az Ön igényeihez
               legjobban illő lakossági megoldást.
             </p>
             <Button variant="heroOutline" size="lg" asChild>
               <Link to="/#kapcsolat">
-                Ingyenes ajánlatkérés
+                Ajánlatkérés
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>

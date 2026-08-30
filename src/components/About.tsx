@@ -4,23 +4,23 @@ import { Button } from "@/components/ui/button";
 const features = [
   {
     icon: ClipboardCheck,
-    title: "Ingyenes helyszíni felmérés",
-    desc: "Személyesen mérjük fel ingatlana adottságait, hogy az Ön igényeihez legoptimálisabb Fujitsu rendszert javasoljuk.",
+    title: "Helyszíni felmérés",
+    desc: "Személyesen mérjük fel ingatlana adottságait, hogy az Ön igényeihez megfelelő rendszert javasoljunk.",
   },
   {
     icon: ShieldCheck,
-    title: "Valódi garanciális biztonság",
-    desc: "Szakmai múltunk 1993-ig nyúlik vissza, Northwind néven pedig 2003 óta dolgozunk – ez is biztosíték arra, hogy a telepítés után is elérhetőek maradunk és felelősséget vállalunk munkánkért.",
+    title: "Garanciális és szervizháttér",
+    desc: "Szakmai múltunk 1993-ig nyúlik vissza, a Northwind Hűtéstechnika Kft. pedig 2009 óta működik. Célunk, hogy a telepítés után is elérhető szakmai partner maradjunk, és felelősséget vállaljunk munkánkért.",
   },
   {
     icon: Cpu,
     title: "Válogatott japán technológia",
-    desc: "Kizárólag prémium márkákat telepítünk, amelyek évtizedekig megbízhatóan és halkan szolgálják az Ön kényelmét.",
+    desc: "Bevált japán rendszereket ajánlunk, az adott helyiség igényeihez és a gyártói műszaki adatokhoz igazítva.",
   },
   {
     icon: Wrench,
     title: "Mérnöki precizitás és tisztaság",
-    desc: "Az 1993 óta gyűjtött rutinnal nincs váratlan technikai akadály. A pormentes munkavégzés nálunk alapkövetelmény.",
+    desc: "Az 1993 óta gyűjtött szakmai tapasztalatra építünk, és ipari porszívóval, a munkaterület védelmével dolgozunk.",
   },
 ];
 
@@ -39,15 +39,14 @@ const About = () => {
               <span className="text-gradient">világában</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Szakmai múltunk 1993-ig nyúlik vissza, Northwind néven pedig 2003 óta dolgozunk.
-              Az elmúlt több mint három évtizedben a piac összes jelentős márkáját megismertük.
-              Ez a folyamatosan épülő tapasztalat biztosít stabil szakmai hátteret minden munkánkhoz. Számunkra a munka nem a telepítésnél ér véget, hanem a sokéves,
-              zavartalan üzemeltetésnél kezdődik. A legmagasabb minőségű japán rendszerekre 
+              Szakmai múltunk 1993-ig nyúlik vissza, a Northwind Hűtéstechnika Kft. pedig 2009 óta működik.
+              Az elmúlt több mint három évtizedben számos jelentős márkával dolgoztunk.
+              Ez a folyamatosan épülő tapasztalat ad szakmai hátteret a munkáinkhoz. Számunkra a munka nem a telepítésnél ér véget: a későbbi karbantartásban és szervizben is számíthat ránk. Minőségi japán rendszerekre
               specializálódtunk, és az elmúlt évek tapasztalatai alapján kiemelt bizalmat szavazunk a <strong>Fujitsu</strong> megoldásainak. 
-              Ez a technológia teremti meg a legjobb egyensúlyt a precizitás, a csend és a hosszú távú megbízhatóság között. 
+              Tapasztalataink alapján ez a technológia kedvező egyensúlyt kínál a precizitás, a csend és a hosszú távú szervizelhetőség között.
               Bár elsősorban a japán Fujitsu mérnöki megoldásait ajánljuk, egyedi igény esetén egyéb prémium japán márkák telepítését is vállaljuk. 
-              Javítás és karbantartás terén márkafüggetlen szakértelemmel állunk rendelkezésre: legyen szó bármilyen típusról, az 1993 óta gyűjtött rutinnal orvosoljuk a hibákat.
-              Nálunk nem egy névtelen alvállalkozó, hanem több évtizedes csapatrutin érkezik a helyszínre.
+              Javítás és karbantartás terén számos elterjedt márkával dolgozunk; a javíthatóságot mindig a konkrét típus, a műszaki dokumentáció és az alkatrészellátás alapján állapítjuk meg.
+              A helyszíni feladatot a munkához szükséges képesítéssel rendelkező szakember végzi.
             </p>
 
             {/* Features list */}
@@ -65,7 +64,7 @@ const About = () => {
 
             <div>
               <Button variant="hero" size="lg" asChild>
-                <a href="#kapcsolat">Kérjen ingyenes szaktanácsadást!</a>
+                <a href="#kapcsolat">Kérjen szakmai konzultációt!</a>
               </Button>
             </div>
           </div>
@@ -81,8 +80,8 @@ const About = () => {
                   <h3 className="text-base sm:text-lg font-bold text-primary-foreground leading-tight">
                     Szakmai tapasztalat 1993 óta
                   </h3>
-                  <p className="text-xs sm:text-sm text-primary-foreground/80 leading-snug">
-                    Northwind néven 2003 óta
+                  <p className="text-xs sm:text-sm text-primary-foreground leading-snug">
+                    A Kft. 2009 óta
                   </p>
                 </div>
               </div>

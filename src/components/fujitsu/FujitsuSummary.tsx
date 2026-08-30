@@ -17,8 +17,10 @@ const FujitsuSummary = () => (
         <p className="text-base text-muted-foreground mb-8 leading-relaxed">
           1993 óta gyűjtött hűtéstechnikai szakmai tapasztalattal.
           Helyszíni felmérés és szakszerű rendszervázlat – kötelezettségek nélkül.
-          Hivatalos Columbus Klíma garanciális feltételekkel: 10 év az oldalfali
-          split klímákra, 3 év a hőszivattyúkra és egyéb rendszerekre.
+          Egyes lakossági oldalfali split modellekre a hivatalos regisztrációs,
+          felhasználási és karbantartási feltételek teljesítésével akár 10 év
+          kiterjesztett garancia érhető el. Más rendszereknél az adott termék és
+          ajánlat garanciafeltételei az irányadók.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Button size="lg" asChild>

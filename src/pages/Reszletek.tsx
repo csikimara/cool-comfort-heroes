@@ -37,7 +37,7 @@ const Reszletek = () => {
         description="Ipari hűtéstechnika a Northwind Hűtéstechnikától: folyadékhűtők (Chiller), légkezelő egységek (AHU) és Fan-coil rendszerek tervezése, telepítése és karbantartása."
       />
       <Header />
-      <main className="pt-24">
+      <main id="main-content" tabIndex={-1} className="pt-24">
         {/* Page intro */}
         <section className="py-12 sm:py-16 bg-secondary/30 border-b border-border/50">
           <div className="container mx-auto px-4">
@@ -64,7 +64,7 @@ const Reszletek = () => {
         </section>
 
         <Suspense fallback={<SectionSkeleton />}>
-          <div id="ipari" className="scroll-mt-24">
+          <div>
             <IndustrialCooling />
           </div>
         </Suspense>
@@ -75,12 +75,12 @@ const Reszletek = () => {
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-foreground mb-4">
               Készen áll egy személyre szabott ajánlatra?
             </h2>
-            <p className="text-primary-foreground/80 max-w-2xl mx-auto mb-8">
+            <p className="text-primary-foreground max-w-2xl mx-auto mb-8">
               1993 óta gyűjtött szakmai tapasztalattal segítünk megtalálni az Ön igényeihez legjobban illő megoldást.
             </p>
             <Button variant="heroOutline" size="lg" asChild>
               <Link to="/#kapcsolat">
-                Ingyenes ajánlatkérés
+                Ajánlatkérés
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </Button>

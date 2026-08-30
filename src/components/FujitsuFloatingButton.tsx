@@ -7,6 +7,7 @@ const FujitsuFloatingButton = forwardRef<HTMLAnchorElement>((_, ref) => {
       ref={ref}
       to="/fujitsu"
       className="group block"
+      aria-label="Fujitsu klímamegoldások és garanciafeltételek"
     >
       <div className="flex items-center bg-gradient-to-r from-red-600 to-red-700 text-white rounded-l-xl shadow-elevated overflow-hidden transition-all duration-300 hover:shadow-2xl">
         {/* Collapsed state - always visible */}
@@ -23,7 +24,7 @@ const FujitsuFloatingButton = forwardRef<HTMLAnchorElement>((_, ref) => {
         <div className="hidden sm:block max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-300 ease-out">
           <div className="px-4 py-3 whitespace-nowrap">
             <p className="text-sm font-semibold">Fujitsu Klíma</p>
-            <p className="text-xs text-white/80">10 év garancia</p>
+            <p className="text-xs text-white">Akár 10 év</p>
           </div>
         </div>
       </div>

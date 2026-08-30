@@ -3,14 +3,15 @@
 @tailwind utilities;
 
 /* ===== Fujitsu Megoldások — scoped CI brand override ===== */
-/* Official Fujitsu Red #ED1C24 = hsl(358 85% 52%)            */
+/* Official Fujitsu Red reference: #ED1C24.                    */
+/* UI red is slightly darker so normal white text reaches AA. */
 /* Charcoal #333333 = hsl(0 0% 20%)                           */
 .fujitsu-brand {
-  --primary: 358 85% 52%;
+  --primary: 358 85% 48%;
   --primary-foreground: 0 0% 100%;
-  --accent: 358 85% 52%;
+  --accent: 358 85% 48%;
   --accent-foreground: 0 0% 100%;
-  --ring: 358 85% 52%;
+  --ring: 358 85% 48%;
   --foreground: 0 0% 20%;
   --card-foreground: 0 0% 20%;
   --secondary: 0 0% 96%;
@@ -18,20 +19,21 @@
   --muted: 0 0% 95%;
   --muted-foreground: 0 0% 38%;
   --border: 0 0% 90%;
-  --gradient-hero: linear-gradient(135deg, hsl(358 85% 52%), hsl(358 75% 40%));
+  --gradient-hero: linear-gradient(135deg, hsl(358 85% 48%), hsl(358 75% 40%));
   --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(0 0% 98%));
 }
 
 /* ===== Fisher — scoped CI brand override =====              */
 /* Fisher Navy Blue #1f3d66 = hsl(214 53% 26%)                */
-/* Fisher Light Blue #007ec6 = hsl(202 100% 39%)              */
+/* Fisher Light Blue reference: #007ec6.                       */
+/* UI blue is slightly darker so normal white text reaches AA. */
 /* Fisher Green #b5c334 = hsl(67 58% 49%)                     */
 .fisher-brand {
   --primary: 214 53% 26%;
   --primary-foreground: 0 0% 100%;
-  --accent: 202 100% 39%;
+  --accent: 202 100% 37%;
   --accent-foreground: 0 0% 100%;
-  --ring: 202 100% 39%;
+  --ring: 202 100% 37%;
   --foreground: 214 35% 15%;
   --card-foreground: 214 35% 15%;
   --secondary: 210 30% 96%;
@@ -39,7 +41,7 @@
   --muted: 210 25% 94%;
   --muted-foreground: 214 20% 38%;
   --border: 210 25% 88%;
-  --gradient-hero: linear-gradient(135deg, hsl(214 53% 26%), hsl(202 100% 39%));
+  --gradient-hero: linear-gradient(135deg, hsl(214 53% 26%), hsl(202 100% 37%));
   --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 30% 98%));
   --fisher-green: 67 58% 49%;
 }
@@ -65,13 +67,13 @@
     --secondary-foreground: 215 35% 20%;
 
     --muted: 210 25% 92%;
-    --muted-foreground: 215 20% 45%;
+    --muted-foreground: 215 20% 42%;
 
     /* Accent: Teal ice */
-    --accent: 185 60% 45%;
+    --accent: 185 70% 31%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 210 25% 88%;
@@ -83,8 +85,8 @@
     --font-display: "Trebuchet MS", "Segoe UI", sans-serif;
 
     /* Custom tokens */
-    --gradient-hero: linear-gradient(135deg, hsl(205 85% 40%) 0%, hsl(195 75% 35%) 50%, hsl(185 60% 45%) 100%);
-    --gradient-text: linear-gradient(135deg, hsl(205 85% 40%) 0%, hsl(195 75% 35%) 50%, hsl(185 60% 45%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(205 85% 40%) 0%, hsl(195 75% 35%) 50%, hsl(185 70% 31%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(205 85% 40%) 0%, hsl(195 75% 35%) 50%, hsl(185 70% 31%) 100%);
     --gradient-frost: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(200 30% 94%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(200 30% 97%) 100%);
     --gradient-fujitsu: linear-gradient(135deg, hsl(0 85% 45%) 0%, hsl(0 75% 40%) 100%);
@@ -131,6 +133,7 @@
     --input: 215 30% 20%;
     --ring: 200 80% 55%;
 
+    --gradient-hero: linear-gradient(135deg, hsl(200 80% 55%) 0%, hsl(190 65% 52%) 50%, hsl(185 55% 50%) 100%);
     --gradient-text: linear-gradient(135deg, hsl(195 90% 70%) 0%, hsl(185 80% 65%) 50%, hsl(175 70% 60%) 100%);
 
     --sidebar-background: 240 5.9% 10%;
@@ -167,6 +170,11 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+  }
+
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 3px solid hsl(var(--ring));
+    outline-offset: 3px;
   }
 }
 
@@ -295,5 +303,20 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

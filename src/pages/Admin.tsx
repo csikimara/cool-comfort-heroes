@@ -12,6 +12,14 @@ import { Loader2, LogOut, Plus, Trash2, Pencil, Eye } from "lucide-react";
 import { getPromoImageUrl, PROMO_BUCKET, type Promotion } from "@/hooks/usePromotions";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ContactMessages from "@/components/admin/ContactMessages";
+import { safePromotionUrl } from "@/lib/promotion-url";
+import {
+  ADMIN_IDLE_TIMEOUT_MS,
+  clearAdminActivity,
+  isAdminSessionIdle,
+  readAdminLastActivity,
+  recordAdminActivity,
+} from "@/lib/admin-session";
 
 type FormState = {
   id?: string;
@@ -40,6 +48,11 @@ const emptyForm: FormState = {
 
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+const IMAGE_EXTENSIONS: Record<string, string> = {
+  "image/jpeg": "jpg",
+  "image/png": "png",
+  "image/webp": "webp",
+};
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -51,6 +64,12 @@ const Admin = () => {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+
+  const signOutAdmin = useCallback(async () => {
+    clearAdminActivity();
+    await supabase.auth.signOut();
+    navigate("/auth", { replace: true });
+  }, [navigate]);
 
   const load = useCallback(async () => {
     const { data, error } = await supabase
@@ -80,19 +99,110 @@ const Admin = () => {
         .eq("role", "admin")
         .maybeSingle();
       if (!active) return;
-      setIsAdmin(!!roles);
+      if (!roles) {
+        setIsAdmin(false);
+        setChecking(false);
+        return;
+      }
+
+      const { data: assurance, error: assuranceError } =
+        await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+      if (!active) return;
+      if (assuranceError || assurance?.currentLevel !== "aal2") {
+        navigate("/auth?mfa=required", { replace: true });
+        return;
+      }
+
+      if (isAdminSessionIdle()) {
+        clearAdminActivity();
+        await supabase.auth.signOut();
+        navigate("/auth?reason=idle", { replace: true });
+        return;
+      }
+
+      recordAdminActivity();
+      setIsAdmin(true);
       setChecking(false);
-      if (roles) load();
+      load();
     };
     check();
     const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
-      if (!session) navigate("/auth", { replace: true });
+      if (!session) {
+        clearAdminActivity();
+        navigate("/auth", { replace: true });
+      }
     });
     return () => {
       active = false;
       sub.subscription.unsubscribe();
     };
   }, [navigate, load]);
+
+  useEffect(() => {
+    if (!isAdmin) return;
+
+    let lastActivityAt = readAdminLastActivity() ?? Date.now();
+    let timeoutId: number | undefined;
+    let expiring = false;
+
+    const expireSession = () => {
+      if (expiring) return;
+      expiring = true;
+      window.clearTimeout(timeoutId);
+      clearAdminActivity();
+      void supabase.auth.signOut().finally(() => {
+        navigate("/auth?reason=idle", { replace: true });
+      });
+    };
+
+    const scheduleCheck = () => {
+      window.clearTimeout(timeoutId);
+      const remaining = Math.max(
+        0,
+        ADMIN_IDLE_TIMEOUT_MS - (Date.now() - lastActivityAt),
+      );
+      timeoutId = window.setTimeout(() => {
+        if (Date.now() - lastActivityAt >= ADMIN_IDLE_TIMEOUT_MS) {
+          expireSession();
+          return;
+        }
+        scheduleCheck();
+      }, remaining);
+    };
+
+    const recordActivity = () => {
+      const now = Date.now();
+      if (now - lastActivityAt >= ADMIN_IDLE_TIMEOUT_MS) {
+        expireSession();
+        return;
+      }
+      lastActivityAt = now;
+      recordAdminActivity(lastActivityAt);
+      scheduleCheck();
+    };
+    const checkAfterVisibilityChange = () => {
+      if (document.visibilityState !== "visible") return;
+      if (Date.now() - lastActivityAt >= ADMIN_IDLE_TIMEOUT_MS) {
+        expireSession();
+        return;
+      }
+      scheduleCheck();
+    };
+
+    for (const event of ["pointerdown", "keydown", "touchstart"] as const) {
+      window.addEventListener(event, recordActivity, { passive: true });
+    }
+    document.addEventListener("visibilitychange", checkAfterVisibilityChange);
+    scheduleCheck();
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      for (const event of ["pointerdown", "keydown", "touchstart"] as const) {
+        window.removeEventListener(event, recordActivity);
+      }
+      document.removeEventListener("visibilitychange", checkAfterVisibilityChange);
+    };
+  }, [isAdmin, navigate]);
 
   useEffect(() => {
     let cancelled = false;
@@ -114,7 +224,7 @@ const Admin = () => {
       return;
     }
     setUploading(true);
-    const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
+    const ext = IMAGE_EXTENSIONS[file.type];
     const path = `${crypto.randomUUID()}.${ext}`;
     const { error } = await supabase.storage.from(PROMO_BUCKET).upload(path, file, {
       cacheControl: "3600",
@@ -133,12 +243,37 @@ const Admin = () => {
       toast({ title: "Hiányzó cím", description: "Az akció címe kötelező.", variant: "destructive" });
       return;
     }
+    const buttonUrl = form.button_url.trim();
+    if (buttonUrl && !safePromotionUrl(buttonUrl)) {
+      toast({
+        title: "Érvénytelen célhivatkozás",
+        description: "Belső /útvonal, #szakasz, biztonságos https://, tel: vagy mailto: hivatkozás adható meg.",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (!!form.button_label.trim() !== !!buttonUrl) {
+      toast({
+        title: "Hiányos gombadatok",
+        description: "A gombfeliratot és a célhivatkozást együtt kell megadni.",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (form.starts_at && form.ends_at && form.starts_at > form.ends_at) {
+      toast({
+        title: "Érvénytelen időszak",
+        description: "A befejező dátum nem lehet korábbi a kezdő dátumnál.",
+        variant: "destructive",
+      });
+      return;
+    }
     setSaving(true);
     const payload = {
       title: form.title.trim(),
       description: form.description.trim() || null,
       button_label: form.button_label.trim() || null,
-      button_url: form.button_url.trim() || null,
+      button_url: safePromotionUrl(buttonUrl),
       image_path: form.image_path,
       starts_at: form.starts_at || null,
       ends_at: form.ends_at || null,
@@ -158,13 +293,27 @@ const Admin = () => {
     load();
   };
 
-  const remove = async (id: string) => {
-    const { error } = await supabase.from("promotions").delete().eq("id", id);
+  const remove = async (promotion: Promotion) => {
+    if (!window.confirm(`Biztosan törli ezt az akciót: „${promotion.title}”?`)) return;
+
+    const { error } = await supabase.from("promotions").delete().eq("id", promotion.id);
     if (error) {
       toast({ title: "Törlés sikertelen", description: error.message, variant: "destructive" });
       return;
     }
-    if (form.id === id) setForm(emptyForm);
+    if (promotion.image_path) {
+      const { error: imageError } = await supabase.storage
+        .from(PROMO_BUCKET)
+        .remove([promotion.image_path]);
+      if (imageError) {
+        toast({
+          title: "Az akció törölve",
+          description: "A hozzá tartozó kép automatikus törlése nem sikerült; kézi takarítás szükséges.",
+          variant: "destructive",
+        });
+      }
+    }
+    if (form.id === promotion.id) setForm(emptyForm);
     load();
   };
 
@@ -184,32 +333,32 @@ const Admin = () => {
 
   if (checking) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-6 h-6 animate-spin text-primary" />
-      </div>
+      <main id="main-content" tabIndex={-1} className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-6 h-6 animate-spin text-primary" aria-label="Adminjogosultság ellenőrzése" />
+      </main>
     );
   }
 
   if (!isAdmin) {
     return (
-      <main className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center">
+      <main id="main-content" tabIndex={-1} className="min-h-screen flex flex-col items-center justify-center gap-4 px-4 text-center">
         <SEOHead title="Nincs jogosultság | Northwind" description="Adminfelület" noindex />
         <h1 className="text-2xl font-bold text-foreground">Nincs admin jogosultságod</h1>
         <p className="text-muted-foreground max-w-md">
           A fiókod be van jelentkezve, de nincs admin szerepköre. Kérd meg a rendszergazdát, hogy adja hozzá.
         </p>
-        <Button variant="outline" onClick={() => supabase.auth.signOut()}>Kijelentkezés</Button>
+        <Button variant="outline" onClick={signOutAdmin}>Kijelentkezés</Button>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-secondary/40 py-10 px-4">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-secondary/40 py-10 px-4">
       <SEOHead title="Akciók kezelése | Northwind" description="Adminfelület az akciók és bannerek kezeléséhez." noindex />
       <div className="container mx-auto max-w-5xl">
         <div className="flex items-center justify-between gap-4 mb-8 flex-wrap">
           <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Adminfelület</h1>
-          <Button variant="outline" size="sm" onClick={() => supabase.auth.signOut()}>
+          <Button variant="outline" size="sm" onClick={signOutAdmin}>
             <LogOut className="w-4 h-4 mr-2" /> Kijelentkezés
           </Button>
         </div>
@@ -253,7 +402,7 @@ const Admin = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="url">Célhivatkozás</Label>
-                <Input id="url" value={form.button_url} placeholder="/fujitsu vagy #kapcsolat"
+                <Input id="url" value={form.button_url} maxLength={500} placeholder="/fujitsu vagy #kapcsolat"
                   onChange={(e) => setForm({ ...form, button_url: e.target.value })} />
               </div>
               <div className="space-y-2">
@@ -268,7 +417,7 @@ const Admin = () => {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="order">Sorrend</Label>
-                <Input id="order" type="number" value={form.sort_order}
+                <Input id="order" type="number" min={-10000} max={10000} value={form.sort_order}
                   onChange={(e) => setForm({ ...form, sort_order: Number(e.target.value) })} />
               </div>
               <div className="space-y-2">
@@ -311,7 +460,15 @@ const Admin = () => {
               <Eye className="w-4 h-4" /> Előnézet
             </h2>
             <article className="rounded-3xl overflow-hidden border border-border/50 bg-gradient-card shadow-elevated">
-              {previewUrl && <img src={previewUrl} alt={form.title || "Előnézet"} className="w-full h-48 object-cover" />}
+              {previewUrl && (
+                <img
+                  src={previewUrl}
+                  alt={form.title || "Előnézet"}
+                  width={1200}
+                  height={600}
+                  className="w-full h-48 object-cover"
+                />
+              )}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-3">{form.title || "Akció címe"}</h3>
                 {form.description && (
@@ -342,10 +499,20 @@ const Admin = () => {
                     </p>
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm" variant="outline" onClick={() => edit(p)}>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      aria-label={`Akció szerkesztése: ${p.title}`}
+                      onClick={() => edit(p)}
+                    >
                       <Pencil className="w-4 h-4" />
                     </Button>
-                    <Button size="sm" variant="destructive" onClick={() => remove(p.id)}>
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      aria-label={`Akció törlése: ${p.title}`}
+                      onClick={() => remove(p)}
+                    >
                       <Trash2 className="w-4 h-4" />
                     </Button>
                   </div>

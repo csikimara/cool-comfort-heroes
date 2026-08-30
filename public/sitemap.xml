@@ -31,6 +31,21 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://northwind.hu/adatvedelem</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://northwind.hu/impresszum</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://northwind.hu/referenciak/osszes</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://northwind.hu/referenciak/lakossagi-split</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -79,10 +94,5 @@
     <loc>https://northwind.hu/referenciak/fujitsu-vrf</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://northwind.hu/adatvedelem</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
   </url>
 </urlset>

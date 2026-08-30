@@ -1,6 +1,4 @@
-import { ExternalLink, MapPin, ShieldCheck } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { NORTHWIND_ADDRESS, NORTHWIND_MAP_LINK } from "@/lib/external";
+import { MapPin, ShieldCheck } from "lucide-react";
 
 const ContactLocationCard = () => {
   return (
@@ -12,19 +10,15 @@ const ContactLocationCard = () => {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs font-medium text-secondary-foreground">
             <ShieldCheck className="h-3.5 w-3.5" />
-            Helyszín
+            Helyszíni szolgáltatás
           </div>
-          <h3 className="text-lg font-semibold text-foreground">Személyes elérhetőség</h3>
-          <p className="text-muted-foreground">{NORTHWIND_ADDRESS}</p>
+          <h3 className="text-lg font-semibold text-foreground">Kiszállással dolgozunk</h3>
+          <p className="text-muted-foreground">Budapest és Pest vármegye</p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Látogasson el hozzánk személyesen, vagy kérjen útvonaltervet az alábbi gombbal!
+            Ügyfélfogadási helyet nem tartunk fenn. A felmérést, telepítést,
+            karbantartást és javítást az ügyfél helyszínén végezzük, előzetes
+            telefonos vagy írásos egyeztetés alapján.
           </p>
-          <Button asChild className="w-full sm:w-fit">
-            <a href={NORTHWIND_MAP_LINK} target="_blank" rel="noopener noreferrer">
-              Útvonal megnyitása
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
         </div>
       </div>
     </div>

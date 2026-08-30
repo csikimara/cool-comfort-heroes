@@ -2,7 +2,7 @@ import { BadgeCheck, FileText, ShieldCheck } from "lucide-react";
 
 const TransparentPricing = () => {
   return (
-    <section className="py-20 sm:py-28 bg-secondary/50">
+    <section id="arazas" className="scroll-mt-24 py-20 sm:py-28 bg-secondary/50">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
@@ -22,17 +22,17 @@ const TransparentPricing = () => {
               </div>
               <div className="flex-1">
                 <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                  Nálunk az árajánlat nem csak egy becslés, hanem ígéret. Az ingyenes helyszíni felmérés során pontosan 
-                  rögzítjük a szükséges anyagokat és munkafolyamatokat, így a végösszeg pontosan annyi lesz, amennyiben 
-                  megállapodtunk. Nincs 'kiszállási díj' a munka végén, nincsenek váratlan felárak – csak tiszta és 
-                  becsületes elszámolás, amelyhez minden munkánknál következetesen ragaszkodunk.
+                  Előzetes árat látatlanban nem adunk. A helyszíni felmérés során pontosan
+                  rögzítjük a szükséges anyagokat és munkafolyamatokat, majd ezek alapján tételes ajánlatot
+                  készítünk. Az elfogadott ajánlattól eltérő, előre nem látható munkát vagy anyagot
+                  csak előzetes egyeztetés után végzünk el és számolunk fel.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="flex items-center gap-3 px-5 py-3 rounded-xl bg-primary/5 border border-primary/10">
                     <FileText className="w-5 h-5 text-primary flex-shrink-0" />
                     <span className="text-sm font-semibold text-foreground">
-                      Fix munkadíj és tételes anyagelszámolás
+                      Tételes munkadíj- és anyagajánlat
                     </span>
                   </div>
                   <div className="flex items-center gap-3 px-5 py-3 rounded-xl bg-accent/10 border border-accent/20">

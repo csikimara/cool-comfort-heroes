@@ -11,7 +11,7 @@ import TurnstileWidget from "@/components/TurnstileWidget";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "A név megadása kötelező").max(100),
-  email: z.string().trim().email("Érvénytelen email cím").max(255),
+  email: z.string().trim().email("Érvénytelen e-mail-cím").max(255),
   phone: z.string().trim().max(40).optional().or(z.literal("")),
   message: z.string().trim().min(1, "Az üzenet megadása kötelező").max(2000),
 });
@@ -21,16 +21,16 @@ const FISHER_NAVY = "#1f3d66";
 const FisherContactForm = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [gdprAccepted, setGdprAccepted] = useState(false);
+  const [privacyAcknowledged, setPrivacyAcknowledged] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!gdprAccepted) {
+    if (!privacyAcknowledged) {
       toast({
-        title: "Adatkezelési hozzájárulás szükséges",
-        description: "Kérjük, fogadja el az adatkezelési tájékoztatót az üzenet elküldéséhez.",
+        title: "Adatkezelési tájékoztató",
+        description: "Kérjük, jelezze, hogy megismerte az adatkezelési tájékoztatót.",
         variant: "destructive",
       });
       return;
@@ -68,13 +68,17 @@ const FisherContactForm = () => {
         description: "Köszönjük megkeresését, hamarosan felvesszük Önnel a kapcsolatot.",
       });
       setFormData({ name: "", email: "", phone: "", message: "" });
-      setGdprAccepted(false);
+      setPrivacyAcknowledged(false);
       setTurnstileToken(null);
       if (typeof window !== "undefined" && window.turnstile) {
         try { window.turnstile.reset(); } catch { /* noop */ }
       }
-    } catch (err) {
-      console.error("Fisher contact submit error:", err);
+    } catch {
+      // A verified token cannot safely be reused after any later failure.
+      setTurnstileToken(null);
+      if (typeof window !== "undefined" && window.turnstile) {
+        try { window.turnstile.reset(); } catch { /* noop */ }
+      }
       toast({
         title: "Hiba történt",
         description: "Az üzenet küldése sikertelen. Kérjük, próbálja újra később.",
@@ -101,7 +105,9 @@ const FisherContactForm = () => {
             </label>
             <Input
               id="fi-name"
+              name="name"
               type="text"
+              autoComplete="name"
               placeholder="Az Ön neve"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -113,11 +119,13 @@ const FisherContactForm = () => {
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
               <label htmlFor="fi-email" className="block text-sm font-medium text-foreground mb-2">
-                Email *
+                E-mail *
               </label>
               <Input
                 id="fi-email"
+                name="email"
                 type="email"
+                autoComplete="email"
                 placeholder="pelda@email.hu"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -132,7 +140,9 @@ const FisherContactForm = () => {
               </label>
               <Input
                 id="fi-phone"
+                name="phone"
                 type="tel"
+                autoComplete="tel"
                 placeholder="+36 30 123 4567"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -147,6 +157,8 @@ const FisherContactForm = () => {
             </label>
             <Textarea
               id="fi-message"
+              name="message"
+              autoComplete="off"
               placeholder="Írja le, miben segíthetünk..."
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -158,14 +170,14 @@ const FisherContactForm = () => {
           </div>
           <div className="flex items-start gap-3 pt-1">
             <Checkbox
-              id="fi-gdpr"
-              checked={gdprAccepted}
-              onCheckedChange={(c) => setGdprAccepted(c === true)}
+              id="fi-privacy-acknowledgement"
+              checked={privacyAcknowledged}
+              onCheckedChange={(c) => setPrivacyAcknowledged(c === true)}
               className="mt-1"
               required
             />
-            <label htmlFor="fi-gdpr" className="text-sm text-foreground/80 leading-relaxed cursor-pointer">
-              Elfogadom az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót</a>, és hozzájárulok, hogy a Northwind Hűtéstechnika Kft. a megkeresésem megválaszolása, ajánlatadás, illetve a szolgáltatás előkészítése (pl. felmérés, hibafelvétel) céljából kezelje a megadott adataimat és a feltöltött fájlokat. *
+            <label htmlFor="fi-privacy-acknowledgement" className="text-sm text-foreground/80 leading-relaxed cursor-pointer">
+              Megismertem az <a href="/adatvedelem" target="_blank" rel="noopener noreferrer" className="text-primary underline">adatkezelési tájékoztatót (új lapon nyílik)</a>. Tudomásul veszem, hogy az adataimat a megkeresésem megválaszolásához, valamint az általam kért felmérés vagy ajánlat előkészítéséhez kezelik. *
             </label>
           </div>
           <TurnstileWidget onToken={setTurnstileToken} className="min-h-[65px]" />
@@ -190,8 +202,8 @@ const FisherContactForm = () => {
           </Button>
           <p className="text-sm text-foreground/80 mt-3 text-center leading-relaxed">
             <span className="font-semibold text-foreground">Korrekt elszámolás:</span>{" "}
-            Nincsenek rejtett költségek és váratlan kiszállási díjak. Amit a felméréskor
-            rögzítünk, az a végösszeg.
+            Tételes ajánlatot adunk; az esetleges, előre nem látható eltéréseket a munka
+            folytatása előtt egyeztetjük.
           </p>
         </form>
       </div>

@@ -12,6 +12,7 @@ declare global {
           "expired-callback"?: () => void;
           theme?: "light" | "dark" | "auto";
           size?: "normal" | "compact" | "flexible";
+          action?: string;
         },
       ) => string;
       reset: (widgetId?: string) => void;
@@ -79,6 +80,7 @@ const TurnstileWidget = ({ onToken, className }: TurnstileWidgetProps) => {
         if (cancelled || !containerRef.current || !window.turnstile) return;
         widgetIdRef.current = window.turnstile.render(containerRef.current, {
           sitekey: siteKey,
+          action: "contact_form",
           theme: "auto",
           size: "flexible",
           callback: (token: string) => {
@@ -113,7 +115,7 @@ const TurnstileWidget = ({ onToken, className }: TurnstileWidgetProps) => {
     <div className={className}>
       <div ref={containerRef} />
       {hasError && (
-        <p className="mt-2 text-sm text-destructive">{GENERIC_WIDGET_ERROR}</p>
+        <p className="mt-2 text-sm text-destructive" role="alert">{GENERIC_WIDGET_ERROR}</p>
       )}
     </div>
   );
