@@ -5,6 +5,11 @@ import { describe, expect, it } from "vitest";
 import { fisherJsonLd } from "../pages/Fisher";
 import { fujitsuJsonLd } from "../pages/Fujitsu";
 import { GALLERY_META, galleryJsonLd } from "../pages/Galeria";
+import {
+  fisherHeatPumpServiceJsonLd,
+  industrialCoolingServiceJsonLd,
+  residentialClimateServiceJsonLd,
+} from "../lib/structured-data";
 
 const sha256Source = (value: unknown) => {
   const hash = createHash("sha256")
@@ -31,6 +36,9 @@ describe("dynamic JSON-LD CSP allow-list", () => {
     const values = [
       fisherJsonLd,
       fujitsuJsonLd,
+      residentialClimateServiceJsonLd,
+      industrialCoolingServiceJsonLd,
+      fisherHeatPumpServiceJsonLd,
       ...Object.entries(GALLERY_META).map(([slug, meta]) =>
         galleryJsonLd(slug, meta.title),
       ),

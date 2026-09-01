@@ -9,4 +9,8 @@ export const SITE_URL: string;
 export const STATIC_PAGE_META: StaticPageMeta[];
 export const NOT_FOUND_META: StaticPageMeta & { noindex: true };
 
-export function renderStaticPage(template: string, meta: StaticPageMeta): string;
+export function renderStaticPage(
+  template: string,
+  meta: StaticPageMeta,
+  renderedApp?: string,
+): string;

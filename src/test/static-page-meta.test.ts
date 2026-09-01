@@ -10,6 +10,27 @@ import {
 const template = readFileSync(resolve(process.cwd(), "index.html"), "utf8");
 
 describe("static route metadata", () => {
+  it("embeds prerendered application markup in the root container", () => {
+    const renderedApp = "<main><h1>Prerenderelt tartalom</h1></main>";
+    const html = renderStaticPage(template, STATIC_PAGE_META[0], renderedApp);
+
+    expect(html).toContain(`<div id="root">${renderedApp}</div>`);
+    expect(html).not.toContain('<div id="root"></div>');
+  });
+
+  it("keeps the build and browser entry points wired for prerendering and hydration", () => {
+    const packageJson = readFileSync(resolve(process.cwd(), "package.json"), "utf8");
+    const mainEntry = readFileSync(resolve(process.cwd(), "src/main.tsx"), "utf8");
+    const generator = readFileSync(
+      resolve(process.cwd(), "scripts/generate-static-pages.mjs"),
+      "utf8",
+    );
+
+    expect(packageJson).toContain("--ssr src/entry-server.tsx");
+    expect(mainEntry).toContain("hydrateRoot(root, <App />)");
+    expect(generator).toContain("await render(meta.path)");
+  });
+
   it("provides a unique canonical URL and page metadata for each public route", () => {
     const publicRoutes = STATIC_PAGE_META.filter((meta) => !meta.noindex);
     const canonicals = publicRoutes.map((meta) =>

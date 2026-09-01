@@ -1,29 +1,23 @@
-import { useEffect } from "react";
-
 interface JsonLdProps {
   data: Record<string, unknown>;
 }
 
 const JsonLd = ({ data }: JsonLdProps) => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify(data);
-    script.id = `jsonld-${data["@type"] || "default"}`;
-    
-    // Remove existing same-type script
-    const existing = document.getElementById(script.id);
-    if (existing) existing.remove();
-    
-    document.head.appendChild(script);
+  const type = String(data["@type"] || "default")
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, "-");
+  const serialized = JSON.stringify(data).replace(/</g, "\\u003c");
 
-    return () => {
-      const el = document.getElementById(script.id);
-      if (el) el.remove();
-    };
-  }, [data]);
-
-  return null;
+  // Render the structured data as part of the page markup. This keeps it
+  // available to crawlers that do not execute client-side JavaScript and also
+  // lets React hydrate the exact same element in the browser.
+  return (
+    <script
+      id={`jsonld-${type}`}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: serialized }}
+    />
+  );
 };
 
 export default JsonLd;

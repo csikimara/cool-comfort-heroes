@@ -2,10 +2,12 @@ import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
+import JsonLd from "@/components/JsonLd";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useScrollToHash } from "@/hooks/useScrollToHash";
 import { Skeleton } from "@/components/ui/skeleton";
+import { industrialCoolingServiceJsonLd } from "@/lib/structured-data";
 
 const IndustrialCooling = lazy(() => import("@/components/IndustrialCooling"));
 const Footer = lazy(() => import("@/components/Footer"));
@@ -36,6 +38,7 @@ const Reszletek = () => {
         title="Ipari Megoldások – Chiller, AHU, Fan-coil rendszerek | Northwind Hűtéstechnika"
         description="Ipari hűtéstechnika a Northwind Hűtéstechnikától: folyadékhűtők (Chiller), légkezelő egységek (AHU) és Fan-coil rendszerek tervezése, telepítése és karbantartása."
       />
+      <JsonLd data={industrialCoolingServiceJsonLd} />
       <Header />
       <main id="main-content" tabIndex={-1} className="pt-24">
         {/* Page intro */}
