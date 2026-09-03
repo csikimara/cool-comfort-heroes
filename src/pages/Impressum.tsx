@@ -150,11 +150,11 @@ const Impressum = () => {
                 Fogyasztói jogvita bíróságon kívüli rendezésére a fogyasztó lakóhelye vagy
                 tartózkodási helye szerint illetékes békéltető testülethez fordulhat. Budapesti
                 illetékesség esetén: <strong>Budapesti Békéltető Testület</strong>, 1016 Budapest,
-                Krisztina krt. 99. III. em. 310.; levelezési cím: 1253 Budapest, Pf. 10.;
+                Krisztina krt. 99. I. em. 111.; levelezési cím: 1253 Budapest, Pf. 10.;
                 telefon: +36 1 488 2131; e-mail:{" "}
                 <a href="mailto:bekelteto.testulet@bkik.hu">bekelteto.testulet@bkik.hu</a>;{" "}
-                <a href="https://bekeltet.bkik.hu/" target="_blank" rel="noopener noreferrer">
-                  bekeltet.bkik.hu
+                <a href="https://bekeltet.bkik.hu/elerhetosegek" target="_blank" rel="noopener noreferrer">
+                  hivatalos elérhetőség
                 </a>.
               </p>
               <p className="mt-4">

@@ -5,6 +5,7 @@ import Lightbox from "yet-another-react-lightbox";
 import Video from "yet-another-react-lightbox/plugins/video";
 import "yet-another-react-lightbox/styles.css";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import JsonLd from "@/components/JsonLd";
 import NotFound from "@/pages/NotFound";
@@ -21,6 +22,8 @@ import {
 type GalleryMeta = {
   title: string;
   description: string;
+  intro: string;
+  focusPoints: [string, string, string];
   backHref: string;
   backLabel: string;
   /** Actual server folder under /galeria/. Defaults to slug. */
@@ -33,48 +36,104 @@ export const GALLERY_META: Record<string, GalleryMeta> = {
   osszes: {
     title: "Összes referenciamunkánk",
     description: "Válogatás lakossági, hőszivattyús, légtechnikai és ipari munkáinkból.",
+    intro:
+      "A galériában a Northwind lakossági és üzleti kivitelezései között lehet böngészni. A képek nem önmagukban állnak: a bemutatott munkáknál a megfelelő gépválasztás, a rendezett csővezetés, a későbbi hozzáférhetőség és az átadás előtti ellenőrzés egyaránt a kivitelezés része.",
+    focusPoints: [
+      "A feladathoz és az épülethez illesztett megoldás",
+      "Rendezett, szervizelhető kivitelezés",
+      "Lakossági, hőszivattyús és ipari tapasztalat",
+    ],
     backHref: "/",
     backLabel: "Vissza a kezdőlapra",
   },
   "lakossagi-split": {
     title: "Lakossági split és multi-split referenciák",
     description: "Otthoni klímaszerelési munkáink – split és multi-split rendszerek.",
+    intro:
+      "Egy lakossági klímánál nemcsak a készülék típusa számít. A beltéri és kültéri egység helyét, a csőnyomvonalat, a kondenzvíz biztonságos elvezetését, a zajterhelést és a karbantarthatóságot együtt kell megtervezni. A referenciaanyagok ezeket a gyakorlati részleteket is bemutatják.",
+    focusPoints: [
+      "Split és multi-split rendszerek",
+      "Átgondolt elhelyezés és csőnyomvonal",
+      "Beüzemelés és dokumentált átadás",
+    ],
     backHref: "/lakossagi-klima",
     backLabel: "Vissza a lakossági szolgáltatásokhoz",
   },
   hoszivattyu: {
     title: "Hőszivattyús rendszereink",
     description: "Levegő-levegő és levegő-víz hőszivattyús referenciamunkáink.",
+    intro:
+      "A hőszivattyú kiválasztását az épület hőigénye, a hőleadók, a használati melegvíz-igény és a villamos hálózat adottságai alapján kell elvégezni. A galériában levegő–levegő és levegő–víz rendszerek kivitelezési megoldásai jelennek meg, a kültéri elhelyezéstől a gépészeti csatlakozásokig.",
+    focusPoints: [
+      "Hőigényhez méretezett berendezés",
+      "Gépészeti és villamos csatlakozások összehangolása",
+      "Szabályozás és hosszú távú karbantarthatóság",
+    ],
     backHref: "/lakossagi-klima",
     backLabel: "Vissza a lakossági szolgáltatásokhoz",
   },
   legcsatornazhato: {
     title: "Rejtett légcsatornázható rendszerek",
     description: "Álmennyezetbe és padlástérbe rejtett, esztétikus klímamegoldások.",
+    intro:
+      "A légcsatornázható klíma úgy biztosít egyenletes komfortot, hogy a beltéri egység és a légelosztás nagy része rejtve marad. A jó eredményhez pontos légmennyiség, megfelelő befúvó- és visszaszívó felületek, zajcsillapítás, kondenzvíz-elvezetés és később is elérhető szerviznyílás szükséges.",
+    focusPoints: [
+      "Rejtett beltéri egység és rendezett légelosztás",
+      "Légmennyiséghez választott csatornák és rácsok",
+      "Zajcsillapítás és biztos szervizhozzáférés",
+    ],
     backHref: "/lakossagi-klima",
     backLabel: "Vissza a lakossági szolgáltatásokhoz",
   },
   karbantartas: {
     title: "Karbantartás és prémium zsákos klímamosás",
     description: "Alapos klímamosási és rendszeres karbantartási referenciáink.",
+    intro:
+      "A rendszeres karbantartás célja a lerakódások eltávolítása, a kondenzvíz útjának ellenőrzése és a berendezés üzemi állapotának felmérése. A zsákos mosásnál a tisztítás ellenőrzött módon történik, miközben a környezetet védjük a lemosott szennyeződéstől és a tisztítófolyadéktól.",
+    focusPoints: [
+      "Beltéri egység ellenőrzött, zsákos tisztítása",
+      "Kondenzvíz-elvezetés és szűrők vizsgálata",
+      "Rendellenes zajok és működés ellenőrzése",
+    ],
     backHref: "/lakossagi-klima",
     backLabel: "Vissza a lakossági szolgáltatásokhoz",
   },
   "ipari-hutes": {
     title: "Ipari hűtés és Chiller referenciák",
     description: "Komplex ipari hűtési rendszerek és folyadékhűtő telepítések.",
+    intro:
+      "Ipari és kereskedelmi környezetben a hűtés rendelkezésre állása közvetlenül befolyásolhatja az üzemmenetet. A folyadékhűtők, fan-coil hálózatok és kapcsolódó gépészeti egységek kialakításánál ezért a teljesítmény mellett a szabályozhatóság, a tartalékok és a gyors szervizelhetőség is fontos tervezési szempont.",
+    focusPoints: [
+      "Chiller- és fan-coil rendszerek",
+      "Üzemi igényekhez igazított gépészeti kialakítás",
+      "Diagnosztizálható és karbantartható rendszer",
+    ],
     backHref: "/#ipari",
     backLabel: "Vissza az ipari szolgáltatásokhoz",
   },
   legtechnika: {
     title: "Légtechnika és AHU referenciák",
     description: "Központi légkezelők, szűréstechnika és hővisszanyerő rendszerek.",
+    intro:
+      "A központi légtechnika feladata nemcsak a levegő mozgatása: a szükséges frisslevegő-mennyiséget, a szűrést, a hővisszanyerést, a zajt és az üzemi szabályozást rendszerként kell kezelni. A referenciák légkezelőkhöz, csatornahálózatokhoz és kapcsolódó hűtési-fűtési egységekhez mutatnak kivitelezési példákat.",
+    focusPoints: [
+      "Légkezelők és csatornahálózatok",
+      "Szűrés, hővisszanyerés és beszabályozás",
+      "Tisztítható, hozzáférhető gépészeti kialakítás",
+    ],
     backHref: "/#ipari",
     backLabel: "Vissza az ipari szolgáltatásokhoz",
   },
   "fujitsu-lakossagi": {
     title: "Fujitsu lakossági split referenciák",
     description: "Telepített Fujitsu split és multi-split rendszerek otthonokba.",
+    intro:
+      "A Fujitsu lakossági rendszereknél a helyiség terheléséhez és használatához választjuk ki a megfelelő készüléket, majd ehhez igazítjuk az egységek helyét és a nyomvonalat. A kiterjesztett gyártói garancia csak az aktuális regisztrációs és karbantartási feltételek teljesülése mellett vehető igénybe.",
+    focusPoints: [
+      "Fujitsu split és multi-split kivitelezések",
+      "Helyiséghez és használathoz illesztett gépválasztás",
+      "Garanciafeltételekhez igazodó dokumentálás",
+    ],
     backHref: "/fujitsu",
     backLabel: "Vissza a Fujitsu oldalra",
     folder: "lakossagi-split",
@@ -83,6 +142,13 @@ export const GALLERY_META: Record<string, GalleryMeta> = {
   "fujitsu-waterstage": {
     title: "Fujitsu Waterstage hőszivattyú referenciák",
     description: "Levegő-víz hőszivattyús rendszereink Fujitsu Waterstage egységekkel.",
+    intro:
+      "A Fujitsu Waterstage levegő–víz hőszivattyú az épület fűtését, hűtését és a kialakítástól függően a használati melegvíz készítését is elláthatja. A kivitelezés előtt ellenőrizni kell a méretezési hőigényt, a hőleadó rendszert, a hidraulikai kialakítást és a villamos teljesítményt.",
+    focusPoints: [
+      "Waterstage kültéri és hidraulikus egységek",
+      "Fűtési rendszerhez illesztett hidraulika",
+      "Szabályozás, beüzemelés és átadás",
+    ],
     backHref: "/fujitsu",
     backLabel: "Vissza a Fujitsu oldalra",
     folder: "hoszivattyu",
@@ -91,6 +157,13 @@ export const GALLERY_META: Record<string, GalleryMeta> = {
   "fujitsu-legcsatornazhato": {
     title: "Fujitsu légcsatornázható referenciák",
     description: "Álmennyezetbe rejtett Fujitsu légcsatornázható megoldások.",
+    intro:
+      "A Fujitsu légcsatornázható rendszerek diszkréten illeszthetők lakó- és üzleti terekbe, de a komfortot a teljes légoldali kialakítás határozza meg. A gépválasztás mellett a külső statikus nyomást, a befúvási irányokat, a visszaszívást, a hangcsillapítást és a karbantartási hozzáférést is megtervezzük.",
+    focusPoints: [
+      "Rejtett Fujitsu beltéri egységek",
+      "Helyiségenként tervezett befúvás és visszaszívás",
+      "Akusztikai és szervizelési szempontok",
+    ],
     backHref: "/fujitsu",
     backLabel: "Vissza a Fujitsu oldalra",
     folder: "legcsatornazhato",
@@ -99,6 +172,13 @@ export const GALLERY_META: Record<string, GalleryMeta> = {
   "fujitsu-vrf": {
     title: "Fujitsu VRF és folyadékhűtő referenciák",
     description: "Ipari és kereskedelmi Fujitsu VRF rendszerek és chillerek.",
+    intro:
+      "A Fujitsu VRF és folyadékhűtős rendszerek több zóna vagy nagyobb épület összehangolt hűtésére és fűtésére alkalmasak. Ilyen feladatnál a részterhelési működés, a csőhálózat, a központi vezérlés, a hibafelügyelet és a szervizelés egyaránt része a műszaki koncepciónak.",
+    focusPoints: [
+      "Többzónás VRF és folyadékhűtős megoldások",
+      "Központi vezérlés és üzemi felügyelet",
+      "Bővíthető, diagnosztizálható rendszerkialakítás",
+    ],
     backHref: "/fujitsu",
     backLabel: "Vissza a Fujitsu oldalra",
     folder: "ipari-hutes",
@@ -109,6 +189,8 @@ export const GALLERY_META: Record<string, GalleryMeta> = {
 const FALLBACK_META: GalleryMeta = {
   title: "Referenciagaléria",
   description: "Northwind Hűtéstechnika referenciamunkái.",
+  intro: "Northwind Hűtéstechnika referenciamunkái.",
+  focusPoints: ["Szakszerű kivitelezés", "Rendezett munkaterület", "Karbantartható megoldás"],
   backHref: "/",
   backLabel: "Vissza a kezdőlapra",
 };
@@ -144,6 +226,11 @@ type LoadedImage = {
 };
 
 const GALLERY_FETCH_TIMEOUT_MS = 10_000;
+
+const normaliseManifestText = (value: unknown, maxLength: number) =>
+  typeof value === "string"
+    ? value.trim().replace(/\s+/g, " ").slice(0, maxLength)
+    : "";
 
 const Galeria = () => {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -211,16 +298,18 @@ const Galeria = () => {
           const source = typeof item === "string" ? item : item.src;
           const src = safeGalleryMediaUrl(folderName, source);
           if (!src) return null;
+          const suppliedAlt = normaliseManifestText(
+            typeof item === "string" ? undefined : item.alt,
+            300,
+          );
+          const suppliedCaption = normaliseManifestText(
+            typeof item === "string" ? undefined : item.caption,
+            500,
+          );
           return {
             src,
-            alt:
-              typeof item !== "string" && typeof item.alt === "string"
-                ? item.alt.slice(0, 300)
-                : meta.title,
-            title:
-              typeof item !== "string" && typeof item.caption === "string"
-                ? item.caption.slice(0, 500)
-                : undefined,
+            alt: suppliedAlt || meta.title,
+            title: suppliedCaption || undefined,
             type: isGalleryVideoUrl(src) ? "video" : "image",
           } as LoadedImage;
         })
@@ -335,16 +424,37 @@ const Galeria = () => {
 
         <section className="py-12 sm:py-16 bg-background">
           <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto mb-10 rounded-2xl border border-border/60 bg-secondary/25 p-6 sm:p-8">
+              <h2 className="text-2xl font-bold text-foreground mb-3">
+                Szakmai szempontok a kivitelezésnél
+              </h2>
+              <p className="text-muted-foreground leading-relaxed mb-5">{meta.intro}</p>
+              <ul className="grid gap-3 sm:grid-cols-3" aria-label="Kiemelt szakmai szempontok">
+                {meta.focusPoints.map((point) => (
+                  <li
+                    key={point}
+                    className="rounded-xl border border-primary/15 bg-background px-4 py-3 text-sm font-medium text-foreground"
+                  >
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-sm text-muted-foreground leading-relaxed">
+                A közzétett képeket és leírásokat megjelenés előtt személyes adatok, arcok,
+                rendszámok és helyazonosító adatok szempontjából ellenőrizzük.
+              </p>
+            </div>
+
             {status === "loading" && (
               <div className="flex flex-col items-center justify-center py-20 text-muted-foreground">
-                <Loader2 className="w-8 h-8 animate-spin mb-3 text-primary" />
+                <Loader2 className="w-8 h-8 animate-spin mb-3 text-primary" aria-hidden="true" />
                 <p className="text-sm">Képek betöltése...</p>
               </div>
             )}
 
             {status === "empty" && (
               <div className="max-w-xl mx-auto text-center py-16 px-6 rounded-2xl border-2 border-dashed border-primary/30 bg-primary/5">
-                <ImageOff className="w-12 h-12 mx-auto mb-4 text-primary/70" />
+                <ImageOff className="w-12 h-12 mx-auto mb-4 text-primary/70" aria-hidden="true" />
                 <h2 className="text-xl font-bold text-foreground mb-2">
                   Referencia képek feltöltés alatt...
                 </h2>
@@ -361,49 +471,75 @@ const Galeria = () => {
             {status === "ready" && (
               <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
                 {images.map((media, i) => (
-                  <button
-                    key={media.src}
-                    type="button"
-                    aria-label={`${media.alt} megnyitása`}
-                    onClick={() => setOpenIndex(i)}
-                    className="group relative aspect-square overflow-hidden rounded-xl border-2 border-primary/15 bg-secondary/40 hover:border-primary/50 transition-all focus:outline-none focus:ring-2 focus:ring-primary"
-                  >
-                    {media.type === "video" ? (
-                      <video
-                        src={media.src}
-                        loop
-                        muted
-                        playsInline
-                        preload="metadata"
-                        aria-hidden="true"
-                        tabIndex={-1}
-                        onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.pause();
-                          e.currentTarget.currentTime = 0;
-                        }}
-                        onFocus={(e) => e.currentTarget.play().catch(() => {})}
-                        onClick={(e) => {
-                          const v = e.currentTarget;
-                          if (v.paused) v.play().catch(() => {});
-                        }}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <img
-                        src={media.src}
-                        alt={media.alt}
-                        loading="lazy"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                  <figure key={media.src} className="min-w-0">
+                    <button
+                      type="button"
+                      aria-label={`${media.alt} megnyitása`}
+                      onClick={() => setOpenIndex(i)}
+                      className="group relative block w-full aspect-square overflow-hidden rounded-xl border-2 border-primary/15 bg-secondary/40 hover:border-primary/50 transition-all focus:outline-none focus:ring-2 focus:ring-primary"
+                    >
+                      {media.type === "video" ? (
+                        <video
+                          src={media.src}
+                          loop
+                          muted
+                          playsInline
+                          preload="metadata"
+                          aria-hidden="true"
+                          tabIndex={-1}
+                          onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.pause();
+                            e.currentTarget.currentTime = 0;
+                          }}
+                          onFocus={(e) => e.currentTarget.play().catch(() => {})}
+                          onClick={(e) => {
+                            const v = e.currentTarget;
+                            if (v.paused) v.play().catch(() => {});
+                          }}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      ) : (
+                        <img
+                          src={media.src}
+                          alt={media.alt}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      )}
+                    </button>
+                    {media.title && (
+                      <figcaption className="px-1 pt-2 text-sm leading-snug text-muted-foreground">
+                        {media.title}
+                      </figcaption>
                     )}
-                  </button>
+                  </figure>
                 ))}
               </div>
             )}
           </div>
         </section>
+
+        <section className="border-t border-border/50 bg-secondary/30 py-12 sm:py-16">
+          <div className="container mx-auto px-4 text-center">
+            <div className="max-w-2xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                Hasonló megoldást keres?
+              </h2>
+              <p className="text-muted-foreground mb-6">
+                Írja meg röviden a feladatot, vagy hívjon minket; a helyszín és az igények
+                alapján egyeztetjük a következő lépést.
+              </p>
+              <Button asChild size="lg">
+                <Link to="/#kapcsolat">Kapcsolatfelvétel</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <Footer />
 
       <Lightbox
         open={openIndex >= 0}
