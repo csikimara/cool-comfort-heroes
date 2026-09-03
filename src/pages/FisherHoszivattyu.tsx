@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
+import JsonLd from "@/components/JsonLd";
 import { Button } from "@/components/ui/button";
+import { fisherHeatPumpServiceJsonLd } from "@/lib/structured-data";
 import {
   ShieldCheck,
   Award,
@@ -66,6 +68,7 @@ const FisherHoszivattyu = () => {
         title="Fisher e-HeatR Hőszivattyú Telepítés | Fűtés és melegvíz | Northwind"
         description="Fisher e-HeatR levegő-víz hőszivattyúk fűtéshez, hűtéshez és melegvízhez. Modellspecifikus műszaki adatok, H árszabási feltételek és helyszíni felmérés."
       />
+      <JsonLd data={fisherHeatPumpServiceJsonLd} />
       <Header />
       <Suspense fallback={null}>
         <div className="fixed right-0 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 sm:gap-4 items-end"><FujitsuFloatingButton /></div>

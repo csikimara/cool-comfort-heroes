@@ -139,7 +139,7 @@ const replaceMeta = (html, selector, tag) => {
   return html.replace(selector, tag);
 };
 
-export const renderStaticPage = (template, meta) => {
+export const renderStaticPage = (template, meta, renderedApp = "") => {
   const title = escapeHtml(meta.title);
   const description = escapeHtml(meta.description);
   const canonical = `${SITE_URL}${meta.path === "/" ? "/" : meta.path}`;
@@ -189,6 +189,14 @@ export const renderStaticPage = (template, meta) => {
     );
     html = html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/gi, "");
   }
+
+  if (!/<div id="root"><\/div>/i.test(html)) {
+    throw new Error("Missing empty #root application container");
+  }
+  html = html.replace(
+    /<div id="root"><\/div>/i,
+    () => `<div id="root">${renderedApp}</div>`,
+  );
 
   return html;
 };

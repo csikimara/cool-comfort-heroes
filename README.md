@@ -23,7 +23,7 @@ bun run test
 bun run build
 ```
 
-A kiadható statikus állományok a `dist/` mappába készülnek. A build létrehozza a statikus útvonalakat és a sitemapet is.
+A kiadható statikus állományok a `dist/` mappába készülnek. A build létrehozza a statikus útvonalakat és a sitemapet is. A nyilvános oldalak teljes szöveges tartalma és az útvonal-specifikus strukturált adatok már a generált HTML-ben szerepelnek, ezért JavaScript futtatása nélkül is olvashatók a keresők és AI-rendszerek számára.
 
 ## Élesítés
 

@@ -2,7 +2,9 @@ import { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import SEOHead from "@/components/SEOHead";
+import JsonLd from "@/components/JsonLd";
 import { Button } from "@/components/ui/button";
+import { residentialClimateServiceJsonLd } from "@/lib/structured-data";
 import {
   ArrowLeft,
   ArrowRight,
@@ -71,6 +73,7 @@ const LakossagiKlima = () => {
         title="Lakossági Klíma – Klímaszerelés, hőszivattyú, klímamosás | Northwind Hűtéstechnika"
         description="Lakossági klímamegoldások: split és multi-split klímaszerelés, hőszivattyú telepítés és prémium zsákos klímamosás Budapesten és Pest vármegyében."
       />
+      <JsonLd data={residentialClimateServiceJsonLd} />
       <Header />
       <main id="main-content" tabIndex={-1} className="pt-24">
         {/* Page intro */}

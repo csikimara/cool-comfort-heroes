@@ -19,6 +19,9 @@ describe("website legal compliance copy", () => {
     expect(imprint).toContain("25138205-2-43");
     expect(imprint).toContain("Nemzeti Klímavédelmi Hatóság");
     expect(imprint).toContain("Budapesti Békéltető Testület");
+    expect(imprint).toContain("Krisztina krt. 99. I. em. 111.");
+    expect(imprint).not.toContain("Krisztina krt. 99. III. em. 310.");
+    expect(imprint).toContain("https://bekeltet.bkik.hu/elerhetosegek");
     expect(imprint).toContain("30 napon");
     expect(footer).toContain('to="/impresszum"');
     expect(app).toContain('path="/impresszum"');
