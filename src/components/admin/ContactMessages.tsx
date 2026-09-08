@@ -139,7 +139,7 @@ const ContactMessages = () => {
         });
         return;
       }
-      setItems((messagesResult.data ?? []) as unknown as ContactMessage[]);
+      setItems((messagesResult.data ?? []) as ContactMessage[]);
       setTotal(messagesResult.count ?? 0);
       setExpiredCount(retentionResult.count ?? 0);
     },
@@ -165,7 +165,7 @@ const ContactMessages = () => {
       .eq("id", id)
       .maybeSingle()
       .then(({ data, error }) => {
-        if (!cancelled && !error && data) setSelected(data as unknown as ContactMessage);
+        if (!cancelled && !error && data) setSelected(data as ContactMessage);
       });
     return () => {
       cancelled = true;
@@ -321,15 +321,7 @@ const ContactMessages = () => {
     if (!confirmed) return;
 
     setMarkingComplaint(true);
-    // A generált adatbázis-típusok nem tartalmazzák ezt az RPC-t, ezért lazán
-    // tipizált kliensen hívjuk (a függvény a migrációkban létezik).
-    const looseClient = supabase as unknown as {
-      rpc: (
-        fn: string,
-        args: Record<string, unknown>,
-      ) => Promise<{ error: { message: string } | null }>;
-    };
-    const { error } = await looseClient.rpc("set_contact_message_complaint_status", {
+    const { error } = await supabase.rpc("set_contact_message_complaint_status", {
       p_id: selected.id,
       p_is_complaint: true,
     });
