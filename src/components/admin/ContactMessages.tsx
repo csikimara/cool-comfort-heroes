@@ -322,14 +322,14 @@ const ContactMessages = () => {
 
     setMarkingComplaint(true);
     // A generált adatbázis-típusok nem tartalmazzák ezt az RPC-t, ezért lazán
-    // tipizált hívást használunk (a függvény a migrációkban létezik).
-    const rpc = (supabase as unknown as {
+    // tipizált kliensen hívjuk (a függvény a migrációkban létezik).
+    const looseClient = supabase as unknown as {
       rpc: (
         fn: string,
         args: Record<string, unknown>,
       ) => Promise<{ error: { message: string } | null }>;
-    }).rpc;
-    const { error } = await rpc("set_contact_message_complaint_status", {
+    };
+    const { error } = await looseClient.rpc("set_contact_message_complaint_status", {
       p_id: selected.id,
       p_is_complaint: true,
     });
