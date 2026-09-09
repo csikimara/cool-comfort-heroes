@@ -2,15 +2,50 @@
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from './types';
 
-const SUPABASE_URL = "https://dzuygijasogagyduwrns.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR6dXlnaWphc29nYWd5ZHV3cm5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg0NTUyMjYsImV4cCI6MjEwNDAzMTIyNn0.QgE4TRv0kLxD-0Ye4SiWrNoqgrkUJRPgpH1B2uC9VjA";
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const SUPABASE_PROJECT_ID = import.meta.env.VITE_SUPABASE_PROJECT_ID;
+
+const memoryStore = new Map<string, string>();
+const memoryOnlyStorage = {
+  getItem: (key: string) => memoryStore.get(key) ?? null,
+  setItem: (key: string, value: string) => {
+    memoryStore.set(key, value);
+  },
+  removeItem: (key: string) => {
+    memoryStore.delete(key);
+  },
+};
+
+const getTabScopedAuthStorage = () => {
+  try {
+    const storage = window.sessionStorage;
+    const probeKey = "northwind-session-storage-probe";
+    storage.setItem(probeKey, "1");
+    storage.removeItem(probeKey);
+    return storage;
+  } catch {
+    // Keep public API calls usable in storage-restricted contexts. Admin auth
+    // then becomes memory-only and intentionally disappears on page reload.
+    return memoryOnlyStorage;
+  }
+};
+
+// Remove the legacy persistent token once after the switch to tab-scoped
+// sessions. This signs old admin sessions out instead of leaving a refresh
+// token behind in localStorage.
+try {
+  window.localStorage.removeItem(`sb-${SUPABASE_PROJECT_ID}-auth-token`);
+} catch {
+  // Storage may be unavailable in privacy-restricted browser contexts.
+}
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
 export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: {
-    storage: typeof window !== 'undefined' ? localStorage : undefined,
+    storage: getTabScopedAuthStorage(),
     persistSession: true,
     autoRefreshToken: true,
   }
