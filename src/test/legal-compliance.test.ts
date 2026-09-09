@@ -117,10 +117,12 @@ describe("website legal compliance copy", () => {
 
   it("keeps admin refresh tokens tab-scoped instead of persistent", () => {
     const client = read("src/integrations/supabase/client.ts");
+    const authStorage = read("src/lib/supabase-auth-storage.ts");
     const privacy = read("src/pages/PrivacyPolicy.tsx");
     expect(client).toContain("storage: getTabScopedAuthStorage()");
-    expect(client).toContain("window.localStorage.removeItem");
-    expect(client).toContain("memoryOnlyStorage");
+    expect(client).toContain("removeLegacyPersistentAuthToken(SUPABASE_PROJECT_ID)");
+    expect(authStorage).toContain("window.localStorage.removeItem");
+    expect(authStorage).toContain("memoryOnlyStorage");
     expect(privacy).toContain("Admin munkamenet (sessionStorage)");
   });
 
