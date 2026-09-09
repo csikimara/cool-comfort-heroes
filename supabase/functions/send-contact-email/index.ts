@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 import {
   isLocalhostAllowed,
   isLovablePreviewAllowed,
+  NETLIFY_DEPLOY_PREVIEW_HOSTNAME,
   resolveCors,
 } from "../_shared/cors.ts";
 import {
@@ -123,7 +124,10 @@ async function verifyTurnstile(token: string, remoteIp: string): Promise<boolean
       ALLOW_LOVABLE_PREVIEW: Deno.env.get("ALLOW_LOVABLE_PREVIEW") ?? undefined,
     });
     const hostnameAllowed = ALLOWED_TURNSTILE_HOSTNAMES.has(hostname)
-      || (lovablePreviewAllowed && hostname === "cool-comfort-heroes.lovable.app");
+      || (lovablePreviewAllowed && [
+        "cool-comfort-heroes.lovable.app",
+        NETLIFY_DEPLOY_PREVIEW_HOSTNAME,
+      ].includes(hostname));
     if (data.action !== EXPECTED_TURNSTILE_ACTION) {
       console.error("Turnstile action mismatch");
       return false;

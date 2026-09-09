@@ -198,10 +198,13 @@ describe("website legal compliance copy", () => {
   it("binds Turnstile tokens to the contact form action", () => {
     const widget = read("src/components/TurnstileWidget.tsx");
     const edge = read("supabase/functions/send-contact-email/index.ts");
+    const cors = read("supabase/functions/_shared/cors.ts");
     expect(widget).toContain('action: "contact_form"');
     expect(edge).toContain('EXPECTED_TURNSTILE_ACTION = "contact_form"');
     expect(edge).toContain("data.action !== EXPECTED_TURNSTILE_ACTION");
     expect(edge).toContain("AbortSignal.timeout(OUTBOUND_FETCH_TIMEOUT_MS)");
+    expect(edge).toContain("NETLIFY_DEPLOY_PREVIEW_HOSTNAME");
+    expect(cors).toContain('"deploy-preview-7--cool-comfort-heroes.netlify.app"');
   });
 
   it("pins the Edge Function dependency and enforces promotion upload limits", () => {

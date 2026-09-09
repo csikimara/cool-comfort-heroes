@@ -13,6 +13,10 @@ export const PRODUCTION_ALLOWED_ORIGINS = [
   "https://www.northwind.hu",
 ] as const;
 export const LOVABLE_PREVIEW_ORIGIN = "https://cool-comfort-heroes.lovable.app";
+export const NETLIFY_DEPLOY_PREVIEW_HOSTNAME =
+  "deploy-preview-7--cool-comfort-heroes.netlify.app";
+export const NETLIFY_DEPLOY_PREVIEW_ORIGIN =
+  `https://${NETLIFY_DEPLOY_PREVIEW_HOSTNAME}`;
 
 const DEV_ALLOWED_ORIGINS = [
   "http://localhost:8080",
@@ -30,7 +34,9 @@ export function allowedOrigins(
 ): string[] {
   return [
     ...PRODUCTION_ALLOWED_ORIGINS,
-    ...(allowLovablePreview ? [LOVABLE_PREVIEW_ORIGIN] : []),
+    ...(allowLovablePreview
+      ? [LOVABLE_PREVIEW_ORIGIN, NETLIFY_DEPLOY_PREVIEW_ORIGIN]
+      : []),
     ...(allowLocalhost ? DEV_ALLOWED_ORIGINS : []),
   ];
 }
