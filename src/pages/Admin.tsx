@@ -12,6 +12,7 @@ import { Loader2, LogOut, Plus, Trash2, Pencil, Eye } from "lucide-react";
 import { getPromoImageUrl, PROMO_BUCKET, type Promotion } from "@/hooks/usePromotions";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ContactMessages from "@/components/admin/ContactMessages";
+import ReferenceManager from "@/components/admin/ReferenceManager";
 import { safePromotionUrl } from "@/lib/promotion-url";
 import {
   ADMIN_IDLE_TIMEOUT_MS,
@@ -370,8 +371,9 @@ const Admin = () => {
               : "akciok"
           }
         >
-          <TabsList className="mb-6">
+          <TabsList className="mb-6 h-auto flex-wrap justify-start">
             <TabsTrigger value="akciok">Akciók és bannerek</TabsTrigger>
+            <TabsTrigger value="referenciak">Referenciák</TabsTrigger>
             <TabsTrigger value="megkeresesek">Megkeresések</TabsTrigger>
           </TabsList>
 
@@ -521,6 +523,10 @@ const Admin = () => {
             </ul>
           )}
         </section>
+          </TabsContent>
+
+          <TabsContent value="referenciak">
+            <ReferenceManager />
           </TabsContent>
 
           <TabsContent value="megkeresesek">

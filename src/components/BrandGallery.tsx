@@ -18,6 +18,7 @@ import {
   readGalleryManifestText,
   safeGalleryMediaUrl,
 } from "@/lib/gallery-media-url";
+import { loadGalleryReferences, type ReferenceBrand } from "@/hooks/useGalleryReferences";
 
 type Manifest = {
   images?: Array<string | { src: string; alt?: string; caption?: string }>;
@@ -68,6 +69,13 @@ const getFilename = (src: string) => {
   return parts[parts.length - 1] ?? "";
 };
 
+const brandFromPrefix = (prefix: string): ReferenceBrand | undefined => {
+  const normalised = prefix.toLowerCase();
+  if (normalised === "fujitsu_") return "fujitsu";
+  if (normalised === "fisher_") return "fisher";
+  return undefined;
+};
+
 const BrandGallery = ({
   slug,
   filenamePrefix,
@@ -107,13 +115,13 @@ const BrandGallery = ({
       GALLERY_FETCH_TIMEOUT_MS,
     );
 
-    fetch(`${folder}/index.php`, {
+    const loadLegacyImages = () => fetch(`${folder}/index.php`, {
       cache: "no-store",
       credentials: "omit",
       referrerPolicy: "no-referrer",
       signal: controller.signal,
     })
-      .then(async (res) => {
+      .then(async (res): Promise<LoadedMedia[]> => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const text = await readGalleryManifestText(res);
         const raw: Manifest | string[] = JSON.parse(text);
@@ -126,9 +134,7 @@ const BrandGallery = ({
         if (!Array.isArray(data.images)) {
           throw new Error("Invalid gallery manifest items");
         }
-        if (cancelled) return;
-
-        const list = data.images
+        return data.images
           .slice(0, MAX_GALLERY_ITEMS_PER_MANIFEST)
           .map((item) => {
             if (
@@ -159,7 +165,20 @@ const BrandGallery = ({
             const name = getFilename(i.src).toLowerCase();
             return name.startsWith(filenamePrefix.toLowerCase());
           });
+      });
 
+    Promise.all([
+      loadGalleryReferences([slug], brandFromPrefix(filenamePrefix)).catch(() => []),
+      loadLegacyImages().catch(() => []),
+    ])
+      .then(([managedImages, legacyImages]) => {
+        if (cancelled) return;
+        const seen = new Set<string>();
+        const list = [...managedImages, ...legacyImages].filter((item) => {
+          if (seen.has(item.src)) return false;
+          seen.add(item.src);
+          return true;
+        });
         if (list.length === 0) {
           setStatus("empty");
         } else {
