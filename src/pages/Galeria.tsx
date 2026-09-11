@@ -18,6 +18,7 @@ import {
   readGalleryManifestText,
   safeGalleryMediaUrl,
 } from "@/lib/gallery-media-url";
+import { loadGalleryReferences } from "@/hooks/useGalleryReferences";
 
 type GalleryMeta = {
   title: string;
@@ -257,6 +258,7 @@ const Galeria = () => {
     }
 
     const prefix = meta.filenamePrefix?.toLowerCase();
+    const referenceBrand = prefix === "fujitsu_" ? "fujitsu" as const : undefined;
     const folderNames = slug === "osszes"
       ? [...ALL_GALLERY_FOLDERS]
       : [meta.folder ?? slug];
@@ -322,11 +324,14 @@ const Galeria = () => {
         });
     };
 
-    Promise.all(folderNames.map((folder) => loadFolder(folder).catch(() => [])))
-      .then((lists) => {
+    Promise.all([
+      loadGalleryReferences(folderNames, referenceBrand).catch(() => []),
+      Promise.all(folderNames.map((folder) => loadFolder(folder).catch(() => []))),
+    ])
+      .then(([managedImages, legacyLists]) => {
         if (cancelled) return;
         const seen = new Set<string>();
-        const list = lists.flat().filter((item) => {
+        const list = [...managedImages, ...legacyLists.flat()].filter((item) => {
           if (seen.has(item.src)) return false;
           seen.add(item.src);
           return true;

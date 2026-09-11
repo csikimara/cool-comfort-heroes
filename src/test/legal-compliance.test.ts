@@ -232,6 +232,22 @@ describe("website legal compliance copy", () => {
     expect(migration).toContain("starts_at <= ends_at");
   });
 
+  it("keeps reference images private and only exposes active gallery entries", () => {
+    const migration = read(
+      "supabase/migrations/20260910170000_reference_manager.sql",
+    );
+    const manager = read("src/components/admin/ReferenceManager.tsx");
+    const processor = read("src/lib/reference-image.ts");
+
+    expect(migration).toMatch(/'reference-images', 'reference-images', false, 5242880/);
+    expect(migration).toContain("ARRAY['image/webp']");
+    expect(migration).toContain('CREATE POLICY "Public can read active reference images"');
+    expect(migration).toContain("item.is_active = true");
+    expect(migration).toContain("public.has_role(auth.uid(), 'admin'::public.app_role)");
+    expect(manager).toContain("nincs felismerhető személy, rendszám, pontos cím");
+    expect(processor).toContain('new File([blob], `${crypto.randomUUID()}.webp`');
+  });
+
   it("keeps database promotion links free of credentials and encoded separators", () => {
     const migration = read("supabase/migrations/20260814211000_promotion_link_guard.sql");
     expect(migration).toContain("%(25)*(2f|5c)");
