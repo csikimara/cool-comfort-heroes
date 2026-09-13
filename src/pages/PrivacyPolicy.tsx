@@ -46,7 +46,7 @@ const PrivacyPolicy = () => {
           
           <div className="prose prose-lg max-w-none text-muted-foreground space-y-8">
             <p className="text-sm text-muted-foreground">
-              Hatályos: 2026. augusztus 14-től. Verzió: 2.6. A tájékoztató a weboldal
+              Hatályos: 2026. szeptember 13-tól. Verzió: 2.7. A tájékoztató a weboldal
               jelenlegi működését és a hozzá kapcsolódó adatkezeléseket ismerteti.
             </p>
 
@@ -156,7 +156,7 @@ const PrivacyPolicy = () => {
               </p>
               <ul className="list-disc pl-6 space-y-3 mt-4">
                 <li>
-                  <strong>Supabase Pte. Ltd. (adatbázis, hitelesítés, fájltárolás, szerveroldali függvények):</strong>{" "}
+                  <strong>Supabase, Inc. (adatbázis, hitelesítés, fájltárolás, szerveroldali függvények):</strong>{" "}
                   az űrlapbeküldések adatai, a csatolt fájlok, az admin bejelentkezési és jogosultsági
                   adatok, valamint az akciókhoz feltöltött képek tárolása és feldolgozása. A kapcsolati
                   űrlap csatolmányai privát tárolóba kerülnek; az akcióképek viszont a weboldal
@@ -203,9 +203,11 @@ const PrivacyPolicy = () => {
                   Lovable, de a fejlesztési/tesztváltozat kiszolgálásakor a szolgáltató technikai
                   kapcsolati és naplóadatokat kezelhet. A fejlesztési előnézet admin- és
                   bejelentkezési oldala a northwind.hu címre irányít, az előnézeti űrlapbeküldés
-                  pedig alapértelmezetten tiltott; azt csak rövid, felügyelt tesztre lehet engedélyezni.{" "}
-                  <a href="https://lovable.dev/data-processing-agreement" target="_blank" rel="noopener noreferrer">
-                    Adatfeldolgozási feltételek
+                  pedig alapértelmezetten tiltott. Rövid, felügyelt teszt esetén is kizárólag
+                  fiktív tesztadat használható; valós ügyféladatot a Northwind nem továbbít
+                  szándékosan a Lovable fejlesztési környezetébe.{" "}
+                  <a href="https://lovable.dev/privacy" target="_blank" rel="noopener noreferrer">
+                    Adatvédelmi tájékoztató
                   </a>.
                 </li>
                 <li>
@@ -246,12 +248,13 @@ const PrivacyPolicy = () => {
                 alkalmazandó adattovábbításokra. A Resend és a Cloudflare szerződéses
                 feltételei az EU–USA adatvédelmi keretrendszert alkalmazzák, amikor a címzett
                 érvényes részvétele és a továbbítás köre ezt lehetővé teszi, a korlátozott
-                továbbításokra pedig SCC-ket írnak elő. A Lovable adatfeldolgozási
-                megállapodása az EU-n kívüli továbbításokra az SCC-ket építi be. Az
-                al-adatfeldolgozókra és olyan esetre, amikor a megfelelőségi mechanizmus nem
-                alkalmazható, a vonatkozó szerződéses garanciák és szükség esetén kiegészítő
-                intézkedések irányadók. A garanciákról és azok másolatának elérhetőségéről az
-                adatkezelő e-mailben ad további tájékoztatást.
+                továbbításokra pedig SCC-ket írnak elő. A Lovable fejlesztési környezetében
+                valós ügyféladatot nem használunk; az előnézethez kapcsolódó technikai adatok
+                esetleges nemzetközi kezelésére a szolgáltató mindenkor hatályos adatvédelmi
+                feltételei irányadók. Az al-adatfeldolgozókra és olyan esetre, amikor a
+                megfelelőségi mechanizmus nem alkalmazható, a vonatkozó szerződéses garanciák
+                és szükség esetén kiegészítő intézkedések irányadók. A garanciákról és azok
+                másolatának elérhetőségéről az adatkezelő e-mailben ad további tájékoztatást.
               </p>
             </section>
 
@@ -290,7 +293,9 @@ const PrivacyPolicy = () => {
                 </li>
                 <li>
                   <strong>Lovable fejlesztési környezet naplóadatai:</strong> a szolgáltató
-                  nyilvános tájékoztatója szerint legfeljebb 90 nap, jogszabályi kivétellel.
+                  mindenkor hatályos adatvédelmi tájékoztatója szerinti, az adott célhoz
+                  szükséges ideig kezelhetők. A Northwind a fejlesztési előnézetben kizárólag
+                  fiktív tesztadatot használ, valós ügyféladatot nem.
                 </li>
                 <li>
                   <strong>Adminfiók, szerepkör és MFA-faktor:</strong> a hozzáférési igény
