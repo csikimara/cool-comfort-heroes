@@ -41,7 +41,7 @@ describe("website legal compliance copy", () => {
     expect(privacy).toContain("GDPR 6. cikk (1) b)");
     expect(privacy).toContain("GDPR 6. cikk (1) f)");
     expect(privacy).toContain("nem hozzájárulás és nem az adatkezelés jogalapja");
-    expect(privacy).toContain("Verzió: 2.6");
+    expect(privacy).toContain("Verzió: 2.7");
   });
 
   it("does not add a consent banner without non-essential trackers", () => {
@@ -102,9 +102,10 @@ describe("website legal compliance copy", () => {
     const privacy = read("src/pages/PrivacyPolicy.tsx");
     const operations = read("docs/adatvedelmi-uzemeltetesi-rend.md");
 
-    for (const provider of ["Supabase Pte. Ltd.", "Cloudflare, Inc.", "Plus Five Five, Inc.", "Lovable Labs Incorporated", "Websupport Magyarország Kft."]) {
+    for (const provider of ["Supabase, Inc.", "Cloudflare, Inc.", "Plus Five Five, Inc.", "Lovable Labs Incorporated", "Websupport Magyarország Kft."]) {
       expect(privacy).toContain(provider);
     }
+    expect(privacy).not.toContain("Supabase Pte. Ltd. (adatbázis");
     expect(privacy).toContain("a beérkezéstől számított");
     expect(privacy).not.toContain("a megkeresés lezárásától");
     expect(privacy).toContain("legfeljebb 27 hónap");
@@ -112,6 +113,8 @@ describe("website legal compliance copy", () => {
     expect(privacy).toContain("Technikai hozzáférési és biztonsági naplók");
     expect(privacy).toContain("részben adatfeldolgozó, részben önálló adatkezelő");
     expect(privacy).toContain("A gyártói, hatósági, közösségi és más külső weboldalakra");
+    expect(privacy).toContain("fiktív tesztadatot használ, valós ügyféladatot nem");
+    expect(privacy).not.toContain("legfeljebb 90 nap");
     expect(operations).toContain("kód a `northwind@northwind.hu`");
   });
 
