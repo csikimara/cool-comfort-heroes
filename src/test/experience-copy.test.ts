@@ -31,9 +31,9 @@ const sources = Object.fromEntries(
 
 const allCopy = Object.values(sources).join("\n");
 const canonicalExperienceTitle =
-  "Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – szakmai tapasztalat 1993 óta";
+  "Klíma, hőszivattyú, ipari hűtés Budapest | Northwind";
 const canonicalExperienceDescription =
-  "Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta; tételes ajánlat helyszíni felmérés után.";
+  "Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta.";
 
 describe("professional-history copy", () => {
   it("does not use a hard-coded experience counter that becomes stale", () => {
