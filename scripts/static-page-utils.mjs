@@ -61,8 +61,8 @@ const galleries = [
 export const STATIC_PAGE_META = [
   {
     path: "/",
-    title: "Klímaszerelés, hőszivattyú és ipari hűtés Budapest | Northwind – szakmai tapasztalat 1993 óta",
-    description: "Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta; tételes ajánlat helyszíni felmérés után.",
+    title: "Klíma, hőszivattyú, ipari hűtés Budapest | Northwind",
+    description: "Klímaszerelés, hőszivattyú, klímamosás és ipari hűtéstechnika Budapesten és Pest vármegyében. Szakmai tapasztalat 1993 óta.",
   },
   {
     path: "/fujitsu",
